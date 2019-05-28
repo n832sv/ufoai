@@ -69,7 +69,7 @@ static int oldMousePosY = 0;
  * It is related to a captured node (only one at a time), that why it is global.
  */
 static mapDragMode_t mode = MODE_NULL;
-static const float ROTATE_SPEED	= 0.5f;
+static const float ROTATE_SPEED	= 0.1f;
 static const float GLOBE_ROTATE = -90.0f;
 static const float SMOOTHING_STEP_2D = 0.02f;
 static const float SMOOTHACCELERATION = 0.06f;		/**< the acceleration to use during a smooth motion (This affects the speed of the smooth motion) */
@@ -313,8 +313,9 @@ void uiGeoscapeNode::onCapturedMouseMove (uiNode_t* node, int x, int y)
 
 	case MODE_SHIFT3DMAP:
 		/* rotate a model */
-		UI_MAPEXTRADATA(node).angles[PITCH] += ROTATE_SPEED * (mousePosX - oldMousePosX) / UI_MAPEXTRADATACONST(node).zoom;
-		UI_MAPEXTRADATA(node).angles[YAW] -= ROTATE_SPEED * (mousePosY - oldMousePosY) / UI_MAPEXTRADATACONST(node).zoom;
+		UI_MAPEXTRADATA(node).angles[PITCH] += ROTATE_SPEED * (mousePosX - oldMousePosX) * (1 + 0.05f * UI_MAPEXTRADATACONST(node).zoom) ;
+		UI_MAPEXTRADATA(node).angles[YAW] -= ROTATE_SPEED * 0.875 * (mousePosY - oldMousePosY) * (1 + 0.05f * UI_MAPEXTRADATACONST(node).zoom);
+
 
 		/* clamp the UI_MAPEXTRADATACONST(node).angles */
 		while (UI_MAPEXTRADATACONST(node).angles[YAW] > 0.0)

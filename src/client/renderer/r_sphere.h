@@ -47,7 +47,10 @@ typedef struct sphere_s {
 extern sphere_t r_globeEarth;
 extern sphere_t r_globeMoon;
 extern sphere_t r_globeEarthAtmosphere;
+extern sphere_t r_space;
 
 void R_SphereGenerate(sphere_t* sphere, const int tris, const float radius);
 void R_SphereRender(const sphere_t* sphere, const vec3_t pos, const vec3_t rotate, const float scale, const vec4_t lightPos);
 void R_SphereInit(void);
+
+void R_SpaceSphereRender (const sphere_t* sphere, const vec3_t pos, const vec3_t rotate, const float scale, const float t, const float a);

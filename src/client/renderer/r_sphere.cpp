@@ -33,6 +33,7 @@ static cvar_t* r_sphereDetails;
 sphere_t r_globeEarth;
 sphere_t r_globeMoon;
 sphere_t r_globeEarthAtmosphere;
+sphere_t r_space;
 
 static inline float rhoSpiral (const int index, const float deltaRho, const float thetaAngle)
 {
@@ -122,10 +123,11 @@ void R_SphereInit (void)
 	if (r_sphereDetails->integer <= 0)
 		Cvar_SetValue("r_sphereDetails", 1.0);
 
+	R_SphereGenerate(&r_space, 128 * r_sphereDetails->value, SPACE_RADIUS);
 	R_SphereGenerate(&r_globeEarth, 60 * r_sphereDetails->value, EARTH_RADIUS);
 	R_SphereGenerate(&r_globeEarthAtmosphere, 60 * r_sphereDetails->value, EARTH_RADIUS * 1.03);
 	/* the earth has more details than the moon */
-	R_SphereGenerate(&r_globeMoon, 20 * r_sphereDetails->value, MOON_RADIUS);
+	R_SphereGenerate(&r_globeMoon, 20 * r_sphereDetails->value, EARTH_RADIUS * 0.273);
 }
 
 static inline void R_SphereActivateTextureUnit (gltexunit_t* texunit, void* texCoordBuffer)
@@ -272,6 +274,45 @@ void R_SphereRender (const sphere_t* sphere, const vec3_t pos, const vec3_t rota
 		R_SphereShade(sphere); /* otherwise, use basic OpenGL rendering */
 
 	/* cleanup common to both GLSL and normal rendering */
+	R_CheckError();
+
+	/* restore the previous matrix */
+	glPopMatrix();
+
+	refdef.aliasCount += sphere->num_tris * sphere->num_tris;
+
+	R_BindDefaultArray(GL_VERTEX_ARRAY);
+	R_BindDefaultArray(GL_TEXTURE_COORD_ARRAY);
+	R_BindDefaultArray(GL_NORMAL_ARRAY);
+}
+
+void R_SpaceSphereRender (const sphere_t* sphere, const vec3_t pos, const vec3_t rotate, const float scale, const float t, const float a)
+{
+
+	const float todegrees = 180.0f * (1 / M_PI);
+	/* go to a new matrix */
+	glPushMatrix();
+
+	glMatrixMode(GL_TEXTURE);
+	glLoadIdentity();
+	glScalef(2.0f, 1.0f, 1.0f);
+
+	glDisable(GL_LIGHTING);
+
+	glMatrixMode(GL_MODELVIEW);
+	glTranslatef(pos[0], pos[1], pos[2]);
+
+	glScalef(viddef.rx * viddef.viewWidth * scale, viddef.ry * viddef.viewWidth * scale, viddef.viewWidth * scale);
+	R_CheckError();
+
+	/* rotate the globe as given in ccs.angles */
+	glRotatef(-rotate[YAW], 1, 0, 0);
+	glRotatef(rotate[ROLL], 0, 1, 0);
+	glRotatef(rotate[PITCH] - t * todegrees, 0, 0, 1);
+ 	glRotatef(a * todegrees, 1, 0, 0);
+
+	R_SphereShade(sphere); 
+
 	R_CheckError();
 
 	/* restore the previous matrix */

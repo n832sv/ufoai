@@ -30,7 +30,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "r_mesh.h"
 #include "r_draw.h"
 
-#define MARKER_SIZE 60.0
+#define MARKER_SIZE 32.0
 
 /**
  * @brief Draw the day and night images of a flat geoscape
@@ -247,7 +247,8 @@ void R_Draw3DMapMarkers (const vec2_t nodePos, const vec2_t nodeSize, const vec3
 	modelInfo_t mi;
 	vec2_t size;
 	vec3_t scale, center, position, angles;
-	float zoom = 0.4f;
+	const float s = 1/4096.0f;
+	float zoom = 0.32 + s * earthRadius;
 
 	OBJZERO(mi);
 	VectorCopy(vec3_origin, position);
@@ -295,114 +296,9 @@ void R_Draw3DMapMarkers (const vec2_t nodePos, const vec2_t nodeSize, const vec3
 }
 
 /**
- * @brief Half size of Skybox.
- * @note The bigger, the less perspective default you'll have, but the more you'll
- * zoom on the texture (and see it's default).
- * @sa R_DrawStarfield
- * @sa R_Setup2D
- */
-#define SKYBOX_HALFSIZE 800.0f
-
-static const float starFieldVerts[] = {
-	/* face 1 */
-	-SKYBOX_HALFSIZE, -SKYBOX_HALFSIZE, -SKYBOX_HALFSIZE,
-	+SKYBOX_HALFSIZE, -SKYBOX_HALFSIZE, -SKYBOX_HALFSIZE,
-	+SKYBOX_HALFSIZE, +SKYBOX_HALFSIZE, -SKYBOX_HALFSIZE,
-	-SKYBOX_HALFSIZE, +SKYBOX_HALFSIZE, -SKYBOX_HALFSIZE,
-
-	/* face 2 */
-	-SKYBOX_HALFSIZE, -SKYBOX_HALFSIZE, +SKYBOX_HALFSIZE,
-	+SKYBOX_HALFSIZE, -SKYBOX_HALFSIZE, +SKYBOX_HALFSIZE,
-	+SKYBOX_HALFSIZE, +SKYBOX_HALFSIZE, +SKYBOX_HALFSIZE,
-	-SKYBOX_HALFSIZE, +SKYBOX_HALFSIZE, +SKYBOX_HALFSIZE,
-
-	/* face 3 */
-	+SKYBOX_HALFSIZE, -SKYBOX_HALFSIZE, -SKYBOX_HALFSIZE,
-	+SKYBOX_HALFSIZE, -SKYBOX_HALFSIZE, +SKYBOX_HALFSIZE,
-	+SKYBOX_HALFSIZE, +SKYBOX_HALFSIZE, +SKYBOX_HALFSIZE,
-	+SKYBOX_HALFSIZE, +SKYBOX_HALFSIZE, -SKYBOX_HALFSIZE,
-
-	/* face 4 */
-	-SKYBOX_HALFSIZE, -SKYBOX_HALFSIZE, -SKYBOX_HALFSIZE,
-	-SKYBOX_HALFSIZE, -SKYBOX_HALFSIZE, +SKYBOX_HALFSIZE,
-	-SKYBOX_HALFSIZE, +SKYBOX_HALFSIZE, +SKYBOX_HALFSIZE,
-	-SKYBOX_HALFSIZE, +SKYBOX_HALFSIZE, -SKYBOX_HALFSIZE,
-
-	/* face 5 */
-	-SKYBOX_HALFSIZE, +SKYBOX_HALFSIZE, -SKYBOX_HALFSIZE,
-	+SKYBOX_HALFSIZE, +SKYBOX_HALFSIZE, -SKYBOX_HALFSIZE,
-	+SKYBOX_HALFSIZE, +SKYBOX_HALFSIZE, +SKYBOX_HALFSIZE,
-	-SKYBOX_HALFSIZE, +SKYBOX_HALFSIZE, +SKYBOX_HALFSIZE,
-
-	/* face 6 */
-	-SKYBOX_HALFSIZE, -SKYBOX_HALFSIZE, +SKYBOX_HALFSIZE,
-	+SKYBOX_HALFSIZE, -SKYBOX_HALFSIZE, +SKYBOX_HALFSIZE,
-	+SKYBOX_HALFSIZE, -SKYBOX_HALFSIZE, -SKYBOX_HALFSIZE,
-	-SKYBOX_HALFSIZE, -SKYBOX_HALFSIZE, -SKYBOX_HALFSIZE
-};
-
-static const float starFieldTexCoords[] = {
-	0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0,
-	0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0,
-	0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0,
-	0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0,
-	0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0,
-	0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0,
-};
-
-/**
- * @brief Bind and draw starfield.
- * @param[in] texnum The texture id (already uploaded of course)
- * @param[in] pos The earth position
- * @param[in] rotate the rotate angle of the globe
- * @param[in] timeOfDay The earth rotation (time of day) in arcseconds
- * @note We draw a skybox: the camera is inside a cube rotating at earth rotation speed
- * (stars seems to rotate because we see earth as idle, but in reality stars are statics
- * and earth rotate around itself)
- * @sa R_Setup2D
- * @sa R_Draw3DGlobe
- */
-static void R_DrawStarfield (int texnum, const vec3_t pos, const vec3_t rotate, float timeOfDay)
-{
-	vec3_t angle;		/**< Angle of rotation of starfield */
-
-	/* go to a new matrix */
-	glPushMatrix();
-
-	/* we must center the skybox on the camera border of view, and not on the earth, in order
-	 * to see only the inside of the cube */
-	glTranslatef(pos[0], pos[1], -SKYBOX_DEPTH);
-
-	/* rotates starfield: only time and rotation of earth around itself causes starfield to rotate. */
-	VectorSet(angle, rotate[0] - timeOfDay * todeg, rotate[1], rotate[2]);
-	glRotatef(angle[YAW], 1, 0, 0);
-	glRotatef(angle[ROLL], 0, 1, 0);
-	glRotatef(angle[PITCH], 0, 0, 1);
-
-	R_BindTexture(texnum);
-
-	/* alter the array pointers */
-	glVertexPointer(3, GL_FLOAT, 0, starFieldVerts);
-	glTexCoordPointer(2, GL_FLOAT, 0, starFieldTexCoords);
-
-	/* draw the cube */
-#ifdef GL_VERSION_ES_CM_1_0
-	for( int ii = 0; ii < 6; ii++ )
-		glDrawArrays(GL_TRIANGLE_FAN, ii * 4, 4);
-#else
-	glDrawArrays(GL_QUADS, 0, 24);
-#endif
-
-	refdef.batchCount++;
-
-	/* restore previous matrix */
-	glPopMatrix();
-}
-
-/**
  * @brief rotate a planet (sun or moon) with respect to the earth
  */
-static inline void R_RotateCelestialBody (const vec4_t v, vec4_t r, const vec3_t rotate, const vec3_t earthPos, const float celestialDist)
+static inline void R_RotateCelestialBody (const vec4_t v, vec4_t r, const vec3_t rotate)
 {
 	vec4_t v1;
 	vec3_t v2;
@@ -414,7 +310,17 @@ static inline void R_RotateCelestialBody (const vec4_t v, vec4_t r, const vec3_t
 	VectorSet(rotationAxis, 0, 1, 0);
 	RotatePointAroundVector(v2, rotationAxis, v1, -rotate[YAW]);
 
-	Vector4Set(r, earthPos[0] + celestialDist * v2[1], earthPos[1] + celestialDist * v2[0], -celestialDist * v2[2], 0);
+	Vector4Set(r, v2[1], v2[0], -v2[2], 0);
+}
+
+void scalar (vec4_t v, const float s)
+{
+	Vector4Set(v, v[0] * s, v[1] * s, v[2] * s, 0);
+}
+
+void translate (vec4_t v, const vec3_t t)
+{
+	Vector4Set(v, v[0] + t[0], v[1] + t[1], v[2] + t[2], 0);
 }
 
 /**
@@ -433,21 +339,28 @@ void R_Draw3DGlobe (const vec2_t pos, const vec2_t size, int day, int second, co
 	const float fullscale = zoom / STANDARD_3D_ZOOM;
 
 	/* lighting colors */
-	static const vec4_t diffuseLightColor = { 1.75f, 1.75f, 1.75f, 1.0f };
+	static const vec4_t diffuseLightColor = { 1.75f, 1.85f, 2.05f, 1.0f };
 	static const vec4_t specularLightColor = { 2.0f, 1.9f, 1.7f, 1.0f };
 	static const vec4_t darknessLightColor = { 0.0f, 0.0f, 0.0f, 1.0f };
-	static const vec4_t brightDiffuseLightColor = { 5.0f, 5.0f, 5.0f, 1.0f };
-	const vec4_t ambientLightColor = { ambient + 0.2f, ambient + 0.2f, ambient + 0.2f, ambient + 0.2f };
+	static const vec4_t brightDiffuseLightColor = { 4.4f, 5.2f, 5.0f, 1.0f };
+	const vec4_t ambientLightColor = { ambient + 0.18f, ambient + 0.16f, ambient + 0.24f, ambient + 0.175f };
+
 	/* billboard textures */
-	image_t* starfield;
 	image_t* sun;
 	image_t* sunOverlay;
 
 	/* set distance of the sun and moon to make them static on starfield when
 	 * time is stoped.  this distance should be used for any celestial body
 	 * considered at infinite location (sun, moon) */
-	static const float celestialDist = 1.37f * SKYBOX_HALFSIZE;
-	static const float moonSize = 0.025f;
+	static const float scale = 0.64f;
+	float celestialDistance = (viddef.rx * viddef.viewWidth * scale) - 1;
+	static const float moonDistance = EARTH_RADIUS * 60.3358970334;
+	static const float moonSize = 1.000f;
+	static const float em = 1 + 0.0549f; // moon orbit eccentricity
+	static const float e = 1 + 0.0167f; // earth orbit eccentricity
+	static const float im = 5.14f * M_PI / 180.0f; // Moon orbit inclination
+	static const float sim = sin(im);
+	static const float moonPhaseShift = 0;
 	vec4_t sunPos;
 	vec4_t antiSunPos;
 	vec4_t moonLoc;
@@ -462,6 +375,7 @@ void R_Draw3DGlobe (const vec2_t pos, const vec2_t size, int day, int second, co
 	/* Earth center is in the middle of node.
 	 * Due to Orthographic view, this is also camera position */
 	const vec3_t earthPos = { nx + nw / 2.0f, ny + nh / 2.0f, 0.0f };
+	const vec3_t spacePos = { nx + nw / 2.0f, ny + nh / 2.0f, 0.0f };
 
 	/* estimate the progress through the current season so we can do
 	 * smooth transitions between textures.  Currently there are 12
@@ -472,51 +386,80 @@ void R_Draw3DGlobe (const vec2_t pos, const vec2_t size, int day, int second, co
 	const float seasonProgress = season - (float) currSeason;
 
 	/* Compute sun position in absolute frame */
-	const float q = (day % DAYS_PER_YEAR * SECONDS_PER_DAY + second) * (2.0f * M_PI / (SECONDS_PER_DAY * DAYS_PER_YEAR));	/* sun rotation (year) */
+	const float q = ((day + 172) % DAYS_PER_YEAR * SECONDS_PER_DAY + second) * (2.0f * M_PI / (SECONDS_PER_DAY * DAYS_PER_YEAR));	/* sun rotation (year) */
 	const float a = cos(q) * SIN_ALPHA;	/* due to earth obliquity */
-	const float sqrta = sqrt(0.5f * (1 - a * a));
+	const float sqrta = sqrt(1 - a * a);
+
 
 	/* earth rotation (day) */
 	const float p = (second - SECONDS_PER_DAY / 4) * (2.0f * M_PI / SECONDS_PER_DAY);
+	const float t = (second % SECONDS_PER_DAY) * (2.0f * M_PI / SECONDS_PER_DAY);
 	/* lunar orbit */
 	const float m = p + (((double)((10 * day % 249) / 10.0f) + ((double)second / (double)SECONDS_PER_DAY)) / 24.9f) * (2.0f * M_PI);
-
-	glPushMatrix();
-	glMatrixMode(GL_TEXTURE);
-	glLoadIdentity();
-	glMatrixMode(GL_MODELVIEW);
-	glDisable(GL_LIGHTING);
-	/* draw the starfield, rotating with the planet */
-	starfield = R_FindImage(va("pics/geoscape/%s_stars", map), it_wrappic);
-	if (starfield != r_noTexture)
-		R_DrawStarfield(starfield->texnum, earthPos, rotate, p);
-
-	glPopMatrix();
+	const float b = sin(m)*sim;
+	const float sqrtb = sqrt(1 - b * b);
 
 	/* set up position vectors for celestial bodies */
 	Vector4Set(sunPos, cos(p) * sqrta, -sin(p) * sqrta, a, 0);
 	Vector4Set(antiSunPos, -cos(p) * sqrta, sin(p) * sqrta, -a, 0);
 
 	/* Rotate the sun in the relative frame of player view, to get sun location */
-	R_RotateCelestialBody(sunPos, sunLoc, rotate, earthPos, 1.0f);
-	/* load sun texture image */
-	sun = R_FindImage(va("pics/geoscape/%s_sun", map), it_wrappic);
-	sunOverlay = R_FindImage(va("pics/geoscape/%s_sun_overlay", map), it_pic);
-	if (sun != r_noTexture && sunOverlay != r_noTexture && sunLoc[2] > 0 && !disableSolarRender) {
-		const int sunx = earthPos[0] + viddef.rx * (-128.0f + celestialDist * (sunLoc[0] - earthPos[0]));
-		const int suny = earthPos[1] + viddef.ry * (-128.0f + celestialDist * (sunLoc[1] - earthPos[1]));
-
-		R_DrawTexture(sunOverlay->texnum, sunx, suny, 256.0f * viddef.rx, 256.0f * viddef.ry);
-		R_DrawBuffers(2);
-		R_DrawTexture(sun->texnum, sunx, suny, 256.0 * viddef.rx, 256.0 * viddef.ry);
-		R_DrawBuffers(1);
-	}
+	R_RotateCelestialBody(sunPos, sunLoc, rotate);
+//	scalar(sunLoc, celestialDistance);
+	translate(sunLoc, earthPos);
 
 	/* calculate position of the moon (it rotates around earth with a period of
 	 * about 24.9 h, and we must take day into account to avoid moon to "jump"
 	 * every time the day is changing) */
-	VectorSet(moonLoc, cos(m) * sqrta, -sin(m) * sqrta, a);
-	R_RotateCelestialBody(moonLoc, moonLoc, rotate, earthPos, celestialDist);
+	VectorSet(moonLoc, cos(m)*em * sqrta * sqrtb, -sin(m)/em * sqrta * sqrtb, a + b );
+	scalar(moonLoc, moonDistance * fullscale);
+	R_RotateCelestialBody(moonLoc, moonLoc, rotate);
+	translate(moonLoc, earthPos);
+
+
+//	------------------------------------------------
+//		RENDER SPACE
+//	------------------------------------------------
+	
+	r_space.texture = R_FindImage(va("models/sequence/%s_space", map), it_wrappic);
+	R_SpaceSphereRender(&r_space, spacePos, rotate, scale, sqrta * t, a);
+	R_DrawBuffers(1);
+
+//  ----- END --------------------------------------	
+
+
+//	------------------------------------------------
+//		RENDER SUN
+//	------------------------------------------------
+
+	/* load sun texture image */
+	glPushMatrix();
+
+	sun = R_FindImage(va("pics/geoscape/%s_sun", map), it_wrappic);
+	sunOverlay = R_FindImage(va("pics/geoscape/%s_sun_overlay", map), it_pic);
+
+	glMatrixMode(GL_TEXTURE);
+	glLoadIdentity();
+
+	if (sun != r_noTexture && sunOverlay != r_noTexture && sunLoc[2] > 0 && !disableSolarRender) {
+		float vw = viddef.viewWidth;
+		float srx = 0.125f * viddef.rx * vw;
+		float sry = 0.125f * viddef.ry * vw;
+		const int sunx = earthPos[0] + viddef.rx * (-0.0675 * vw + celestialDistance * (sunLoc[0] - earthPos[0]));
+		const int suny = earthPos[1] + viddef.ry * (-0.0675 * vw + celestialDistance * (sunLoc[1] - earthPos[1]));
+
+		R_DrawTexture(sunOverlay->texnum, sunx, suny, srx, sry);
+		R_DrawBuffers(2);
+		R_DrawTexture(sun->texnum, sunx, suny, srx, sry);
+		R_DrawBuffers(1);
+	}
+	glPopMatrix();
+
+//  ----- END --------------------------------------	
+
+//	------------------------------------------------
+//		EARTH TEXTURE MAPPING?
+//	------------------------------------------------
 
 	/* free last month's texture image */
 	if (r_globeEarth.season != currSeason) {
@@ -553,6 +496,12 @@ void R_Draw3DGlobe (const vec2_t pos, const vec2_t size, int day, int second, co
 		r_globeEarth.glowScale = 0.7f;
 	}
 
+//  ----- END --------------------------------------	
+
+//	------------------------------------------------
+//		MOON 
+//	------------------------------------------------
+
 	/* load moon texture image */
 	r_globeMoon.texture = R_FindImage(va("pics/geoscape/%s_moon", map), it_wrappic);
 
@@ -569,15 +518,26 @@ void R_Draw3DGlobe (const vec2_t pos, const vec2_t size, int day, int second, co
 	glLightfv(GL_LIGHT0, GL_AMBIENT, ambientLightColor);
 	glLightfv(GL_LIGHT0, GL_SPECULAR, specularLightColor);
 
+	// Temporary 
+	const float zscale = (1 - (0.5 * moonLoc[2] / moonDistance)); 
+
 	/* draw the moon */
-	if (r_globeMoon.texture != r_noTexture && moonLoc[2] > 0 && !disableSolarRender)
-		R_SphereRender(&r_globeMoon, moonLoc, rotate, moonSize, sunPos);
+	if (r_globeMoon.texture != r_noTexture && moonLoc[2] > -moonDistance * fullscale && !disableSolarRender)
+		R_SphereRender(&r_globeMoon, moonLoc, rotate, zscale * fullscale, sunPos);
+
+//  ----- END --------------------------------------	
 
 	/* activate depth to hide 3D models behind earth */
 	glEnable(GL_DEPTH_TEST);
 
 	/* draw the earth */
 	R_DrawBuffers(2);
+
+
+
+
+
+
 #if 0 /* old rendering code which doesn't render city lights in FFP */
 	if (r_programs->integer == 0) /* ignore alpha channel, since the city-light map is stored there */
 		glBlendFunc(GL_ONE, GL_ZERO);
