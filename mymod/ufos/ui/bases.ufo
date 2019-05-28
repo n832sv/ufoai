@@ -1,0 +1,275 @@
+--!usr/bin/lua
+
+--[[
+-- @file
+-- @brief base view screen
+--]]
+
+--[[
+Copyright (C) 2002-2019 UFO: Alien Invasion.
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+--]]
+
+--[[
+ - @todo Some things here could be simplified
+--]]
+
+require("ufox.lua")
+base = {}
+
+do
+	local baseWindow = ufox.build_window({
+		name = "bases",
+		class = "window",
+		fill = true,
+
+		{
+			name = "base_idx",
+			class = "data",
+			text = "",
+		},
+
+		{
+			name = "basemap",
+			class = "panel",
+			pos = {9, 35},
+			size = {715, 670},
+		},
+
+		-- Employee panel
+		-- @TODO: add support for injured soldiers
+		{
+			name = "cur_employees",
+			class = "panel",
+			pos = {5, 710},
+			size = {495, 48},
+			layout = ufo.LAYOUT_LEFT_RIGHT_FLOW,
+
+			--[[
+			 - @brief Clears the Employee bar
+			--]]
+			clear = function (sender)
+				sender:remove_children()
+			end,
+
+			--[[
+			 - @brief Adds a link to the Employee bar
+			 - @param id Unique identifier for the UI
+			 - @param image Relative path to the image to show
+			 - @param title Translated name of the button (shown as tooltip)
+			 - @param command Command to run on click
+			--]]
+			add = function (sender, id, image, title, command)
+				local link = ufox.build({
+					name = id,
+					class = "EmployeeCount",
+					tooltip = title,
+
+					{ name = "label", class = "string", text = title, },
+					{ name = "icon",  class = "button", icon = image, },
+
+					on_click = function (sender)
+						ufo.cmd(command)
+					end,
+				}, sender)
+			end,
+		},
+
+		{
+			name = "current_employees",
+			class = "confunc",
+
+			--[[
+			 - @brief Current employees of a particular base
+			 - @param soldiers Number of soldiers
+			 - @param pilots Number of pilots
+			 - @param scientists Number of scientists
+			 - @param engineers Number of engineers
+			--]]
+			on_click = function (sender, soldiers, pilots, scientists, engineers)
+				local employee_container = sender:parent():child("cur_employees")
+				-- Update only if base screen is active and employee info is shown
+				if (employee_container:first() ~= nil) then
+					employee_container:child("soldiers"):child("data"):set_text(soldiers)
+					employee_container:child("pilots"):child("data"):set_text(pilots)
+					employee_container:child("scientists"):child("data"):set_text(scientists)
+					employee_container:child("engineers"):child("data"):set_text(engineers)
+				end
+			end,
+		},
+
+		-- Transfers, options, UFOpaedia
+		{
+			name = "buttons",
+			class = "panel",
+			pos = {556, 710},
+			size = {167, 48},
+			layout = ufo.LAYOUT_LEFT_RIGHT_FLOW,
+
+			--[[
+			 - @brief Clears the "quicklink" bar
+			--]]
+			clear = function (sender)
+				sender:remove_children()
+			end,
+
+			--[[
+			 - @brief Adds a link to the "quicklink" bar
+			 - @param id Unique identifier for the UI
+			 - @param image Relative path to the image to show
+			 - @param title Translated name of the button (shown as tooltip)
+			 - @param window Name of the window left mouse click should open
+			--]]
+			add = function (sender, id, image, title, window)
+				local link = ufox.build({
+					name = id,
+					class = "button",
+					size = {56, 48},
+					icon = image,
+					tooltip = title,
+					background = "icons/circle0",
+
+					on_mouseenter = function (sender)
+						sender:set_background("icons/circle")
+					end,
+					on_mouseleave = function (sender)
+						sender:set_background("icons/circle0")
+					end,
+					on_click = function (sender)
+						ufo.push_window(window, nil, nil)
+					end,
+				}, sender)
+			end,
+		},
+
+		-- (right) main base sections
+		{
+			name = "sections",
+			class = "panel",
+			pos = {726, 5},
+			size = {298, 758},
+			layout = ufo.LAYOUT_TOP_DOWN_FLOW,
+			layoutmargin = 2,
+
+			generate = function (sender, base_idx)
+				local sections = {"facilities", "aircraft", "hire", "equip", "buysell", "research", "production", "containment", "hospital" }
+				if (base.section == nil) then
+					base.section = {}
+				end
+				for i, section_name in ipairs(sections) do
+					base.section[section_name] = require(string.format("base.section.%s.lua", section_name))
+					base.section[section_name].register(sender, tonumber(base_idx))
+				end
+				-- Get the parameters needed for this window
+				ufo.cmd(string.format("base_init %d;", tonumber(base_idx)))
+			end,
+		},
+
+		-- Back to geoscape
+		{
+			name = "geoscape_button",
+			class = "Geoscape",
+
+			on_click = function (sender)
+				ufo.pop_window(false)
+			end,
+		},
+
+		{
+			name = "update_basebutton",
+			class = "confunc",
+
+			--[[
+			 - @brief Used to enable/disable the overall base buttons
+			 - @param button
+			 - @param state
+			 - @param tooltip
+			 - @TODO: handle hospital/transfer
+			 - @TODO: some buttons don't have windows
+			 - @TODO: Check tooltips only show when disabled
+			--]]
+			on_click = function (sender, button, state, tooltip)
+				local section = ""
+				-- new-style sections
+				local sections = {"facilities", "aircraft", "hire", "equip", "buysell", "research", "production", "containment", "hospital"}
+				for i, section in ipairs(sections) do
+					if (button == section) then
+						local node = sender:root():child("sections"):child(section)
+						if (node == nil) then
+							-- ufo.print(string.format("update_basebutton section %q not found", section))
+							return
+						end
+						if (state == "true") then
+							node:disable(tooltip)
+						else
+							node:enable(tooltip)
+						end
+						return
+					end
+				end
+			end,
+		},
+
+		{
+			name = "overlay",
+			class = "fuzzyScreen"
+		},
+
+		build = function (sender)
+			local baseidx = tonumber(sender:root():child("base_idx"):as_string())
+			-- / header
+			require("base.header.lua")
+			base.build_header(sender, baseidx)
+			-- / Map
+			require("base.map.lua")
+			base.buildmap(sender, sender:child("basemap"), baseidx)
+			-- / Employee bar
+			sender:root():child("cur_employees"):clear()
+			sender:root():child("cur_employees"):add("scientists", "icons/head_scientist", "_Scientists", "ui_push employees 1;")
+			sender:root():child("cur_employees"):add("engineers",  "icons/head_worker",    "_Engineers",  "ui_push employees 2;")
+			sender:root():child("cur_employees"):add("soldiers",   "icons/head_soldier",   "_Soldiers",   "ui_push employees 0;")
+			sender:root():child("cur_employees"):add("pilots",     "icons/head_pilot",     "_Pilots",     "ui_push employees 3;")
+			-- / "quicklink" buttons
+			sender:root():child("buttons"):clear()
+			sender:root():child("buttons"):add("options",   "icons/options",  "_Options",  "options")
+			sender:root():child("buttons"):add("ufopaedia", "icons/info",     "_UFOpedia", "ufopedia")
+			sender:root():child("buttons"):add("transfers", "icons/transfer", "_Transfer", "transfer")
+			-- / sections
+			sender:root():child("sections"):generate(baseidx)
+		end,
+		on_windowactivate = function (sender)
+			sender:build()
+		end,
+		on_windowopened = function (sender, base_idx)
+			local sections = sender:root():child("sections")
+			sections:set_width(sender:root():width() - sections:left())
+
+			-- Validate and store base_idx
+			if (base_idx == nil or base_idx == "") then
+				ufo.print(string.format("UI bases: Missing base_idx parameter!\n"))
+				ufo.pop_window(false)
+			end
+			sender:root():child("base_idx"):set_text(base_idx)
+			sender:build()
+		end,
+
+		on_windowclosed = function (sender)
+			ufo.cmd("trans_emptyairstorage;")
+			sender:root():child("sections"):remove_children()
+		end,
+	})
+end
