@@ -50,6 +50,14 @@ CASSERT(lengthof(pa_format) == PA_NUM_EVENTS);
  * @brief Translate color value to terrain type to random weather code
  * @param[in] tdef The terrain definition to add
  */
+
+float GET_ENCUMBRANCE_PENALTY(const float weight, const float max) 
+{
+	float m = max * 1000.0f;
+	if (weight < m * 0.2f) { return 1.0f; }
+	return std::min(0.15f, 1.0f - ((weight / m) * (weight / m)));
+}
+
 bool TerrainDefs::add(const TerrainDef* tdef) {
 	/* check for duplicate color code */
 	if (findByColor(tdef->rgbRed, tdef->rgbGreen, tdef->rgbBlue))

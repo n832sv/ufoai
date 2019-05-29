@@ -746,7 +746,7 @@ item pistol2_ammo
 // =======================
 item smg
 {
-	name			"_Submachine Gun COBOLT SMG-22"
+	name			"_COBOLT SMG-22 Submachine Gun"
 	model			"weapons/smg/smg"
 	weapon			true
 	type			"pistol"
@@ -770,7 +770,7 @@ item smg
 // =======================
 item smg2
 {
-	name			"_Submachine Gun R&T 30"
+	name			"_R&T 30 Submachine Gun"
 	model			"weapons/smg2/smg2"
 	weapon			true
 	type			"pistol"

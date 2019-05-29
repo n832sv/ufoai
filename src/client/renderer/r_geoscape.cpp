@@ -340,7 +340,7 @@ void R_Draw3DGlobe (const vec2_t pos, const vec2_t size, int day, int second, co
 
 	/* lighting colors */
 	static const vec4_t diffuseLightColor = { 1.75f, 1.85f, 2.05f, 1.0f };
-	static const vec4_t specularLightColor = { 2.0f, 1.9f, 1.7f, 1.0f };
+	static const vec4_t specularLightColor = { 2.1f, 2.2f, 2.3f, 1.0f };
 	static const vec4_t darknessLightColor = { 0.0f, 0.0f, 0.0f, 1.0f };
 	static const vec4_t brightDiffuseLightColor = { 4.4f, 5.2f, 5.0f, 1.0f };
 	const vec4_t ambientLightColor = { ambient + 0.18f, ambient + 0.16f, ambient + 0.24f, ambient + 0.175f };
@@ -352,7 +352,7 @@ void R_Draw3DGlobe (const vec2_t pos, const vec2_t size, int day, int second, co
 	/* set distance of the sun and moon to make them static on starfield when
 	 * time is stoped.  this distance should be used for any celestial body
 	 * considered at infinite location (sun, moon) */
-	static const float scale = 0.64f;
+	static const float scale = 0.80f;
 	float celestialDistance = (viddef.rx * viddef.viewWidth * scale) - 1;
 	static const float moonDistance = EARTH_RADIUS * 60.3358970334;
 	static const float moonSize = 1.000f;
@@ -400,8 +400,8 @@ void R_Draw3DGlobe (const vec2_t pos, const vec2_t size, int day, int second, co
 	const float sqrtb = sqrt(1 - b * b);
 
 	/* set up position vectors for celestial bodies */
-	Vector4Set(sunPos, cos(p) * sqrta, -sin(p) * sqrta, a, 0);
-	Vector4Set(antiSunPos, -cos(p) * sqrta, sin(p) * sqrta, -a, 0);
+	Vector4Set(sunPos, cos(p) * sqrta, -sin(p) * sqrta, -a, 0);
+	Vector4Set(antiSunPos, -cos(p) * sqrta, sin(p) * sqrta, a, 0);
 
 	/* Rotate the sun in the relative frame of player view, to get sun location */
 	R_RotateCelestialBody(sunPos, sunLoc, rotate);

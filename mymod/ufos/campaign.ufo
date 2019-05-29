@@ -90,7 +90,7 @@ campaign superhuman
 	events				main
 	researchrate		0.65
 	uforeductionrate	0.75
-	healingrate			1
+	healingrate			0.1
 	employeerate		0.8
 	initialinterest		50
 	alienbaseinterest	200

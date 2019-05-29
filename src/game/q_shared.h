@@ -275,17 +275,21 @@ typedef int32_t shoot_types_t;
 
 #define GRAVITY				500.0
 
-#define MAX_SKILL	100
-#define MAX_MAXHP		255
+#define MAX_SKILL			100
+#define MAX_MAXHP			255
 #define MIN_TU				39
-#define WEIGHT_LIGHT	0.2f
-#define WEIGHT_HEAVY	0.5f
+#define WEIGHT_LIGHT		0.2f
+#define WEIGHT_HEAVY		0.5f
 #define WEIGHT_NORMAL_PENALTY	0.3f
 #define WEIGHT_HEAVY_PENALTY	0.6f
-#define WEIGHT_FACTOR	1000.0f
+#define WEIGHT_FACTOR		1000.0f
+#define WEIGHT_EXPR			((weight) / ((max) * WEIGHT_FACTOR))
+#define WEIGHT_SQUARE		((weight) / ((max) * WEIGHT_FACTOR)) * ((weight) / ((max) * WEIGHT_FACTOR))
 
-#define GET_ENCUMBRANCE_PENALTY(weight, max)	(1.0f - ((weight) > (max) * WEIGHT_FACTOR * WEIGHT_HEAVY ? WEIGHT_HEAVY_PENALTY : (weight) > (max) * WEIGHT_FACTOR * WEIGHT_LIGHT ? WEIGHT_NORMAL_PENALTY : 0.0f))
+//      GET_ENCUMBRANCE_PENALTY(weight, max)	(1.0f - ((weight) > (max) * WEIGHT_FACTOR * WEIGHT_HEAVY ? WEIGHT_HEAVY_PENALTY : (weight) > (max) * WEIGHT_FACTOR * WEIGHT_LIGHT ? WEIGHT_NORMAL_PENALTY : 0.0f))
 /** @todo Skill-influence needs some balancing. */
+float GET_ENCUMBRANCE_PENALTY(const float weight, const float max);
+
 #define GET_ACC( ab, sk, pn )   ((pn) - (((float)(ab) - 10) / (MAX_SKILL / 2) + ((float)(sk) - 10) / (MAX_SKILL / 2)) / 2)
 #define GET_MORALE( ab )        (std::min((100 + (ab) * 150/MAX_SKILL), 255))
 #define GET_TU( ab, md )		(MIN_TU * (md) + (ab) * 20 / MAX_SKILL)

@@ -476,7 +476,7 @@ do
 								item:child("buy").on_change = item:child("buy").activate
 								item:child("sell").on_change = item:child("buy").activate
 
-								sender:parent():child("category_height"):set_value(sender:parent():child("category_height"):as_integer() + 30)
+								sender:parent():child("category_height"):set_value(sender:parent():child("category_height"):as_integer() + 26)
 								category_list:set_height(sender:parent():child("category_height"):as_integer())
 							end,
 						},

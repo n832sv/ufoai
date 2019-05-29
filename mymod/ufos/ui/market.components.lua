@@ -47,7 +47,7 @@ do
 		name = "MarketItem",
 		class = "panel",
 		pos = {0, 0},
-		size = {713, 28},
+		size = {713, 24},
 		backgroundcolor = {0.56, 0.81, 0.76, 0.1},
 
 		on_mouseenter = function (sender)
@@ -79,7 +79,7 @@ do
 			class = "button",
 			icon = "icons/windowinfo",
 			tooltip = "_View UFOPaedia entry",
-			pos = {5, 5},
+			pos = {3, 3},
 			size = {18, 18},
 
 			on_click = function (sender)
@@ -92,7 +92,7 @@ do
 			name = "name",
 			class = "string",
 			pos = {30, 0},
-			size = {290, 28},
+			size = {290, 24},
 			color = {0.56, 0.81, 0.76, 0.7},
 			contentalign = ufo.ALIGN_CL,
 			ghost = true,
@@ -102,7 +102,7 @@ do
 			name = "base",
 			class = "string",
 			pos = {320, 0},
-			size = {80, 28},
+			size = {80, 24},
 			color = {0.56, 0.81, 0.76, 1},
 			contentalign = ufo.ALIGN_CR,
 			ghost = true,
@@ -112,7 +112,7 @@ do
 		{
 			name = "buy",
 			class = "spinner",
-			pos = {406, 6},
+			pos = {406, 4},
 			size = {74, 16},
 			topicon = "icons/arrowtext_lft",
 			mode = ufo.SPINNER_ONLY_INCREASE,
@@ -138,7 +138,7 @@ do
 		{
 			name = "buy_price",
 			class = "string",
-			pos = {406, 6},
+			pos = {406, 4},
 			size = {74, 16},
 			color = {0, 0, 0, 1},
 			font = "f_verysmall_bold",
@@ -154,7 +154,7 @@ do
 			iconchecked = "icons/windowlock",
 			iconunchecked = "icons/windowlock_light",
 			iconunknown = "icons/windowlock_light",
-			pos = {484, 5},
+			pos = {484, 3},
 			size = {18, 18},
 			invisible = false,
 
@@ -175,7 +175,7 @@ do
 		{
 			name = "sell",
 			class = "spinner",
-			pos = {508, 6},
+			pos = {508, 4},
 			size = {74, 16},
 			topicon = "icons/arrowtext_rgt",
 			mode = ufo.SPINNER_ONLY_DECREASE,
@@ -201,7 +201,7 @@ do
 		{
 			name = "sell_price",
 			class = "string",
-			pos = {508, 6},
+			pos = {508, 4},
 			size = {74, 16},
 			color = {0, 0, 0, 1},
 			font = "f_verysmall_bold",
@@ -214,7 +214,7 @@ do
 			name = "market",
 			class = "string",
 			pos = {586, 0},
-			size = {100, 28},
+			size = {100, 24},
 			color = {0.56, 0.81, 0.76, 1},
 			contentalign = ufo.ALIGN_CL,
 			ghost = true,

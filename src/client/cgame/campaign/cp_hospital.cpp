@@ -52,20 +52,20 @@ bool HOS_HealCharacter (character_t* chr, bool hospital)
 {
 	assert(chr);
 	float healing = ccs.curCampaign->healingRate;
+	
 
 	if (hospital) {
 		healing *= GET_HP_HEALING(chr->score.skills[ABILITY_POWER]);
-		HOS_HealWounds(chr, healing);
+		if (1 <= healing) {	HOS_HealWounds(chr, healing); }
+		if (healing < 1 && (healing * 100) < (std::rand() % 100) ) { 
+			HOS_HealWounds(chr, 1);  
+			healing = 1;
+		}	
 	}
 
-	if (chr->HP < chr->maxHP) {
-		/* if the character has less that 100 hitpoints, he will be disadvantaged by using the percentage
-		 * method of allocating hitpoints.  So just give the character "healing" as Hitpoints, otherwise
-		 * allocate "healing" as a percentage of the characters total hitpoints. */
-		if (chr->maxHP < INITIAL_HP)
-			chr->HP = std::min(chr->HP + static_cast<int>(healing), chr->maxHP);
-		else
-			chr->HP = std::min(chr->HP + static_cast<int>(((healing / 100.0f) * chr->maxHP)), chr->maxHP);
+	if (chr->HP < chr->maxHP && healing <= 1) {
+
+		chr->HP = std::min(chr->HP + static_cast<int>(healing), chr->maxHP);
 
 		if (chr->HP == chr->maxHP)
 			return false;

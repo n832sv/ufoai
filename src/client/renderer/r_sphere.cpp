@@ -309,7 +309,7 @@ void R_SpaceSphereRender (const sphere_t* sphere, const vec3_t pos, const vec3_t
 	glRotatef(-rotate[YAW], 1, 0, 0);
 	glRotatef(rotate[ROLL], 0, 1, 0);
 	glRotatef(rotate[PITCH] - t * todegrees, 0, 0, 1);
- 	glRotatef(a * todegrees, 1, 0, 0);
+ 	glRotatef(-a * todegrees, 1, 0, 0);
 
 	R_SphereShade(sphere); 
 
