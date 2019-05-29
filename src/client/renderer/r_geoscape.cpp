@@ -352,7 +352,7 @@ void R_Draw3DGlobe (const vec2_t pos, const vec2_t size, int day, int second, co
 	/* set distance of the sun and moon to make them static on starfield when
 	 * time is stoped.  this distance should be used for any celestial body
 	 * considered at infinite location (sun, moon) */
-	static const float scale = 0.80f;
+	static const float scale = 0.50f;
 	float celestialDistance = (viddef.rx * viddef.viewWidth * scale) - 1;
 	static const float moonDistance = EARTH_RADIUS * 60.3358970334;
 	static const float moonSize = 1.000f;
@@ -445,8 +445,8 @@ void R_Draw3DGlobe (const vec2_t pos, const vec2_t size, int day, int second, co
 		float vw = viddef.viewWidth;
 		float srx = 0.125f * viddef.rx * vw;
 		float sry = 0.125f * viddef.ry * vw;
-		const int sunx = earthPos[0] + viddef.rx * (-0.0675 * vw + celestialDistance * (sunLoc[0] - earthPos[0]));
-		const int suny = earthPos[1] + viddef.ry * (-0.0675 * vw + celestialDistance * (sunLoc[1] - earthPos[1]));
+		const int sunx = earthPos[0] + viddef.rx * (-0.0675 * vw + 0.82f * celestialDistance * (sunLoc[0] - earthPos[0]));
+		const int suny = earthPos[1] + viddef.ry * (-0.0675 * vw + 0.82f * celestialDistance * (sunLoc[1] - earthPos[1]));
 
 		R_DrawTexture(sunOverlay->texnum, sunx, suny, srx, sry);
 		R_DrawBuffers(2);

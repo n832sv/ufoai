@@ -78,7 +78,7 @@ campaign superhuman
 	minhappiness		0.42
 	maxdebts			50000
 	xvirate				30
-	firstbase			balanced
+	firstbase			su
 	researched			rslist_phalanx
 	equipment			campaign_player
 	soldierequipment	phalanx_initial

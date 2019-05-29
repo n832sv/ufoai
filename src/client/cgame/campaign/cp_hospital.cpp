@@ -57,21 +57,20 @@ bool HOS_HealCharacter (character_t* chr, bool hospital)
 	if (hospital) {
 		healing *= GET_HP_HEALING(chr->score.skills[ABILITY_POWER]);
 		if (1 <= healing) {	HOS_HealWounds(chr, healing); }
-		if (healing < 1 && (healing * 100) < (std::rand() % 100) ) { 
+		if (healing < 1 && (std::rand() % 100) < (healing * 100) ) { 
 			HOS_HealWounds(chr, 1);  
 			healing = 1;
 		}	
 	}
 
-	if (chr->HP < chr->maxHP && healing <= 1) {
+	if (chr->HP < chr->maxHP && 1 <= healing) {
 
 		chr->HP = std::min(chr->HP + static_cast<int>(healing), chr->maxHP);
-
-		if (chr->HP == chr->maxHP)
-			return false;
-		return true;
 	}
-	return false;
+
+	if (chr->HP == chr->maxHP)
+		return false;
+	return true;
 }
 
 /**

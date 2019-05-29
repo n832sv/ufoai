@@ -252,7 +252,7 @@ building building_laser
 	varcosts		5000
 	map_name		"laser"
 	tech			rs_building_laser
-	max_count		4
+	max_count		2
 	onconstruct		"add_battery laser"
 	onenable		"basedef_updatebatteries laser"
 	ondisable		"basedef_updatebatteries laser"
@@ -288,7 +288,26 @@ basetemplate balanced {
 	building (building_command				"2 4")
 	building (building_hangar				"3 0")
 	building (building_intercept			"3 1")
+	building (building_workshop			"0 4")
 	building (building_radar				"4 1")
 	building (building_lab					"1 3")
 	building (building_hospital			"2 3")
+}
+
+basetemplate su {
+	building (building_entrance				"1 3")
+	building (building_radar				"1 4")
+	building (building_storage				"1 2")
+
+	building (building_quarters				"1 1")
+	building (building_command				"2 1")
+	building (building_quarters				"3 1")
+	building (building_powerplant			"4 1")
+
+	building (building_lab					"4 2")
+	building (building_hospital				"4 3")
+
+	building (building_hangar				"2 3")
+	building (building_intercept			"2 4")
+	building (building_aliencontainment		"3 4")
 }

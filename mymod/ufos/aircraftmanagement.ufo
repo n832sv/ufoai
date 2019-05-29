@@ -135,7 +135,7 @@ aircraft craft_drop_firebird
 	model		"geoscape/drop_firebird"
 	price		20000
 	building	building_hangar
-	numteam		8
+	numteam		10
 	image		"geoscape/air_dropship"
 
 	radar {
@@ -174,7 +174,7 @@ aircraft craft_drop_herakles
 	model		"geoscape/drop_herakles"
 	price		30000
 	building	building_hangar
-	numteam		12
+	numteam		16
 	image		"geoscape/air_dropship"
 
 	radar {
