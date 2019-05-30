@@ -55,7 +55,7 @@ float GET_ENCUMBRANCE_PENALTY(const float weight, const float max)
 {
 	float m = max * 1000.0f;
 	if (weight < m * 0.2f) { return 1.0f; }
-	return std::min(	0.15f, 1.0f - 1.2f * ( (weight / m) * (weight / m) )	);
+	return std::max(	0.15f, 0.98f - 1.1f * ( (weight / m) * (weight / m) )	);
 }
 
 bool TerrainDefs::add(const TerrainDef* tdef) {

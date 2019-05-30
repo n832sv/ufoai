@@ -51,6 +51,7 @@ damagetypes standard
 	"_stun_gas"
 	"smoke"
 	"incendiary"
+	"emp"
 }
 
 // =======================
@@ -275,16 +276,16 @@ item armour_light_alien
 	armourpath	"light"
 
 	protection {
-		normal_spray	10
-		normal_light	15
-		normal_medium	20
+		normal_spray	35
+		normal_light	20
+		normal_medium	15
 		normal_heavy	5
 
 		normal_steelblade			30
 		normal_monomolecularblade	0
 		normal_needle		1
 
-		blast			20
+		blast			10
 
 		fire_medium		25
 		fire_heavy		10

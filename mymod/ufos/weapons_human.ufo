@@ -1028,7 +1028,7 @@ item shotgun2_slug_ammo
 			delaybetweenshots	0
 			time				7
 			damage				"120 40"
-			dmgweight			"normal_medium"
+			dmgweight			"normal_spray"
 			reaction			true
 			shotorg				"3.5 7.5"
 		}

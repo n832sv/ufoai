@@ -53,13 +53,13 @@ bool HOS_HealCharacter (character_t* chr, bool hospital)
 	assert(chr);
 	float healing = ccs.curCampaign->healingRate;
 	
-
 	if (hospital) {
+
 		healing *= GET_HP_HEALING(chr->score.skills[ABILITY_POWER]);
 		if (1 <= healing) {	HOS_HealWounds(chr, healing); }
 		if (healing < 1 && (std::rand() % 100) < (healing * 100) ) { 
 			HOS_HealWounds(chr, 1);  
-			healing = 1;
+			healing = 1.0f;
 		}	
 	}
 

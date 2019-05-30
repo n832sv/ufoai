@@ -143,6 +143,46 @@ private:
 
 static ReactionFireTargets rft;
 
+int G_GetInitialTUVariance(const int tu, const Actor* shooter)
+{
+	int newtu = tu;
+	int min = 3;
+	if (tu <= 0) { return tu; }
+
+/*
+	// HP penalty
+	float hpratio2 = 100.0f * (shooter->HP / shooter->maxHP) * (shooter->HP / shooter->maxHP);
+	int hppenalty = 0;
+	if (hpratio2 < std::rand() % 100) { hppenalty += 1; }
+	if (hpratio2 < std::rand() % 100) { hppenalty += 1; }
+	newtu += hppenalty;
+*/
+
+	// TU bonus
+	int maxtu = G_ActorCalculateMaxTU(shooter);
+	float turatioinverse = 1.0f - shooter->TU / maxtu;
+	float squared = turatioinverse * turatioinverse;
+	int tubonus = 0;
+	if (squared * 0.50f < std::rand() % 100) { tubonus += 1; }
+	newtu -= tubonus;
+
+	// random variance, even = bonus, odd = penalty
+	int roll = std::rand() % 100;
+	int variance = 0;
+	if (roll < 60) 	{ variance = 1; }
+	if (roll < 16) 	{ variance = 2; }
+	if (roll < 6) 	{ variance = 3; }
+	if (roll % 2 == 0) { newtu -= variance; }
+	if (roll % 2 == 1) { newtu += variance; }
+
+	// return newtu	
+	newtu = std::max(min, newtu);
+	if (shooter->TU <  newtu) { return -1; }
+	if (shooter->TU >= newtu) { return newtu; }
+	return -1; // error
+}
+
+
 /**
  * @brief Initialize the reaction fire table for all entities.
  */
@@ -775,7 +815,10 @@ void ReactionFire::updateAllTargets (const Edict* target)
 			const int TUs = G_ReactionFireGetTUsForItem(shooter, target);
 			if (TUs < 0)
 				continue;	/* no suitable weapon */
-			rft.add(shooter, target, TUs);
+			const int TU = G_GetInitialTUVariance(TUs, shooter);
+			if (TU < 0)
+				continue;	/* no suitable weapon */
+			rft.add(shooter, target, TU);
 		} else {
 			rft.remove(shooter, target);
 		}

@@ -28,6 +28,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "g_local.h"
 
+int G_GetInitialTUVariance(const int tu, const Actor* shooter);
 void G_ReactionFirePreShot(const Actor* target, const int fdTime);
 void G_ReactionFirePostShot(Actor* target);
 void G_ReactionFireReset(int team);
