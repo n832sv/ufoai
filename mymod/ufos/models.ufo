@@ -102,6 +102,19 @@ menu_model alien_shevaar
 	anim	"stand_still"
 }
 
+menu_model alien_strigoi_head
+{
+	model	"aliens/strigoi/thed01"
+	tag		"tag_head"
+	parent	alien_strigoi
+}
+menu_model alien_strigoi
+{
+	model	"aliens/strigoi/tbod01"
+	need	alien_strigoi_head
+	anim	"stand_still"
+}
+
 // ============== Civilian female ==================
 menu_model civ_female_head
 {

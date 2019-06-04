@@ -24,6 +24,12 @@ team africa
 		female("civilians/female" "body03" "head04b" 1 1) //body:green dress, head: African, red disguise, black hair, ponytail
 		female("civilians/female" "body03" "head04c" 0 0) //body:blue dress, head: African, blue disguise, black hair
 		female("civilians/female" "body03" "head04c" 1 1) //body:green dress, head: African, blue disguise, black hair
+		female("civilians/female" "body04" "head04a" 0 0) //body:blue dress, head: African, black hair, ponytail
+		female("civilians/female" "body04" "head04a" 1 1) //body:green dress, head: African, black hair, ponytail
+		female("civilians/female" "body04" "head04b" 0 0) //body:blue dress, head: African, red disguise, black hair, ponytail
+		female("civilians/female" "body04" "head04b" 1 1) //body:green dress, head: African, red disguise, black hair, ponytail
+		female("civilians/female" "body04" "head04c" 0 0) //body:blue dress, head: African, blue disguise, black hair
+		female("civilians/female" "body04" "head04c" 1 1) //body:green dress, head: African, blue disguise, black hair
 		male("civilians/male" "body02" "head02" 0 0) //body:arabic looking, head: beard, white hat
 		male("civilians/male" "sheik01" "head04" 0 0) //body:same as scientist's, just in white, head: afro, short black hair
 	}
@@ -66,6 +72,8 @@ team asia
 	models {
 		female("civilians/female" "body03" "head03a" 0 0) //body:green skirt, blue top, head: Asian
 		female("civilians/female" "body03" "head03a" 1 1) //body:black skirt, white top, head: Asian
+		female("civilians/female" "body04" "head03a" 0 0) //body:green skirt, blue top, head: Asian
+		female("civilians/female" "body04" "head03a" 1 1) //body:black skirt, white top, head: Asian
 		male("civilians/male" "sheik01" "sci_head01" 0 0) //body:same as scientist's, just in white, head: Asian, disguised
 	}
 
@@ -105,18 +113,18 @@ team europe
 	names			dummy_names
 
 	models {
-		female("civilians/female" "body01" "head01a" 0 0) //body:green skirt, blue top, head: brown hair, ponytail
-		female("civilians/female" "body01" "head01a" 1 1) //body::black skirt, white top, head: brown hair, ponytail
-		female("civilians/female" "body01" "head01a" 2 2) //body:green skirt, green top, head: brown hair, ponytail
-		female("civilians/female" "body01" "head01a" 3 3) //body::green skirt, flower top, Hawaii-Look head: brown hair, ponytail
-		female("civilians/female" "body02" "head01a" 0 0) //body:grey trousers, blue top, head: brown hair, ponytail
-		female("civilians/female" "body02" "head01a" 1 1) //body::blue trousers, green top, head: brown hair, ponytail
-		female("civilians/female" "body01" "head01b" 0 0) //body:green skirt, blue top, head: blond hair, ponytail
-		female("civilians/female" "body01" "head01b" 1 1) //body::black skirt, white top, head: blond hair, ponytail
-		female("civilians/female" "body01" "head01b" 2 2) //body:green skirt, green top, head: blond hair, ponytail
-		female("civilians/female" "body01" "head01b" 3 3) //body::green skirt, flower top, Hawaii-Look head: blond hair, ponytail
-		female("civilians/female" "body02" "head01b" 0 0) //body:grey trousers, blue top, head: blond hair, ponytail
-		female("civilians/female" "body02" "head01b" 1 1) //body::blue trousers, green top, head: blond hair, ponytail
+		female("civilians/female" "body01" "head01d" 0 0) //body:green skirt, blue top, head: brown hair, ponytail
+		female("civilians/female" "body01" "head01d" 1 1) //body::black skirt, white top, head: brown hair, ponytail
+		female("civilians/female" "body01" "head01d" 2 2) //body:green skirt, green top, head: brown hair, ponytail
+		female("civilians/female" "body01" "head01d" 3 3) //body::green skirt, flower top, Hawaii-Look head: brown hair, ponytail
+		female("civilians/female" "body02" "head01d" 0 0) //body:grey trousers, blue top, head: brown hair, ponytail
+		female("civilians/female" "body02" "head01d" 1 1) //body::blue trousers, green top, head: brown hair, ponytail
+		female("civilians/female" "body01" "head01d" 0 0) //body:green skirt, blue top, head: blond hair, ponytail
+		female("civilians/female" "body01" "head01d" 1 1) //body::black skirt, white top, head: blond hair, ponytail
+		female("civilians/female" "body01" "head01d" 2 2) //body:green skirt, green top, head: blond hair, ponytail
+		female("civilians/female" "body01" "head01d" 3 3) //body::green skirt, flower top, Hawaii-Look head: blond hair, ponytail
+		female("civilians/female" "body02" "head01d" 0 0) //body:grey trousers, blue top, head: blond hair, ponytail
+		female("civilians/female" "body02" "head01d" 1 1) //body::blue trousers, green top, head: blond hair, ponytail
 		female("civilians/female" "body01" "head02a" 0 0) //body:green skirt, blue top, head: long blond hair
 		female("civilians/female" "body01" "head02a" 1 1) //body::black skirt, white top, head: long blond hair
 		female("civilians/female" "body01" "head02a" 2 2) //body:green skirt, green top, head: long blond hair
@@ -137,6 +145,14 @@ team europe
 		female("civilians/female" "body03" "head04b" 1 1) //body::green dress, head: African, red disguise, black hair, ponytail
 		female("civilians/female" "body03" "head04c" 0 0) //body:blue dress, head: African, blue disguise, black hair
 		female("civilians/female" "body03" "head04c" 1 1) //body::green dress, head: African, blue disguise, black hair
+		female("civilians/female" "body04" "head03a" 0 0) //body:blue dress, head: Asian
+		female("civilians/female" "body04" "head03a" 1 1) //body::green dress, head: Asian
+		female("civilians/female" "body04" "head04a" 0 0) //body:blue dress, head: African, black hair, ponytail
+		female("civilians/female" "body04" "head04a" 1 1) //body::green dress, head: African, black hair, ponytail
+		female("civilians/female" "body04" "head04b" 0 0) //body:blue dress, head: African, red disguise, black hair, ponytail
+		female("civilians/female" "body04" "head04b" 1 1) //body::green dress, head: African, red disguise, black hair, ponytail
+		female("civilians/female" "body04" "head04c" 0 0) //body:blue dress, head: African, blue disguise, black hair
+		female("civilians/female" "body04" "head04c" 1 1) //body::green dress, head: African, blue disguise, black hair
 		female("civilians/female" "body05" "head05a" 0 0) //body:blue jeans, red top, head: brown hair, simple cut
 		male("civilians/male" "body01" "head01" 0 0) //body:short blue trousers, red top, fat, head: brown hair, beard, blue hat
 		male("civilians/male" "body01" "head01" 1 1) //body::short cyan trousers, blue top, fat, head: brown hair, beard, blue hat
@@ -276,18 +292,18 @@ team states
 	names			dummy_names
 
 	models {
-		female("civilians/female" "body01" "head01a" 0 0) //body:green skirt, blue top, head: brown hair, ponytail
-		female("civilians/female" "body01" "head01a" 1 1) //body::black skirt, white top, head: brown hair, ponytail
-		female("civilians/female" "body01" "head01a" 2 2) //body:green skirt, green top, head: brown hair, ponytail
-		female("civilians/female" "body01" "head01a" 3 3) //body::green skirt, flower top, Hawaii-Look head: brown hair, ponytail
-		female("civilians/female" "body02" "head01a" 0 0) //body:grey trousers, blue top, head: brown hair, ponytail
-		female("civilians/female" "body02" "head01a" 1 1) //body::blue trousers, green top, head: brown hair, ponytail
-		female("civilians/female" "body01" "head01b" 0 0) //body:green skirt, blue top, head: blond hair, ponytail
-		female("civilians/female" "body01" "head01b" 1 1) //body::black skirt, white top, head: blond hair, ponytail
-		female("civilians/female" "body01" "head01b" 2 2) //body:green skirt, green top, head: blond hair, ponytail
-		female("civilians/female" "body01" "head01b" 3 3) //body::green skirt, flower top, Hawaii-Look head: blond hair, ponytail
-		female("civilians/female" "body02" "head01b" 0 0) //body:grey trousers, blue top, head: blond hair, ponytail
-		female("civilians/female" "body02" "head01b" 1 1) //body::blue trousers, green top, head: blond hair, ponytail
+		female("civilians/female" "body01" "head01d" 0 0) //body:green skirt, blue top, head: brown hair, ponytail
+		female("civilians/female" "body01" "head01d" 1 1) //body::black skirt, white top, head: brown hair, ponytail
+		female("civilians/female" "body01" "head01d" 2 2) //body:green skirt, green top, head: brown hair, ponytail
+		female("civilians/female" "body01" "head01d" 3 3) //body::green skirt, flower top, Hawaii-Look head: brown hair, ponytail
+		female("civilians/female" "body02" "head01d" 0 0) //body:grey trousers, blue top, head: brown hair, ponytail
+		female("civilians/female" "body02" "head01d" 1 1) //body::blue trousers, green top, head: brown hair, ponytail
+		female("civilians/female" "body01" "head01d" 0 0) //body:green skirt, blue top, head: blond hair, ponytail
+		female("civilians/female" "body01" "head01d" 1 1) //body::black skirt, white top, head: blond hair, ponytail
+		female("civilians/female" "body01" "head01d" 2 2) //body:green skirt, green top, head: blond hair, ponytail
+		female("civilians/female" "body01" "head01d" 3 3) //body::green skirt, flower top, Hawaii-Look head: blond hair, ponytail
+		female("civilians/female" "body02" "head01d" 0 0) //body:grey trousers, blue top, head: blond hair, ponytail
+		female("civilians/female" "body02" "head01d" 1 1) //body::blue trousers, green top, head: blond hair, ponytail
 		female("civilians/female" "body01" "head02a" 0 0) //body:green skirt, blue top, head: long blond hair
 		female("civilians/female" "body01" "head02a" 1 1) //body::black skirt, white top, head: long blond hair
 		female("civilians/female" "body01" "head02a" 2 2) //body:green skirt, green top, head: long blond hair
@@ -402,16 +418,16 @@ team russia
 	names			dummy_names
 
 	models {
-		female("civilians/female" "body01" "head01a" 0 0) //body:green skirt, blue top, head: brown hair, ponytail
-		female("civilians/female" "body01" "head01a" 1 1) //body::black skirt, white top, head: brown hair, ponytail
-		female("civilians/female" "body01" "head01a" 2 2) //body:green skirt, green top, head: brown hair, ponytail
-		female("civilians/female" "body02" "head01a" 0 0) //body:grey trousers, blue top, head: brown hair, ponytail
-		female("civilians/female" "body02" "head01a" 1 1) //body::blue trousers, green top, head: brown hair, ponytail
-		female("civilians/female" "body01" "head01b" 0 0) //body:green skirt, blue top, head: blond hair, ponytail
-		female("civilians/female" "body01" "head01b" 1 1) //body::black skirt, white top, head: blond hair, ponytail
-		female("civilians/female" "body01" "head01b" 2 2) //body:green skirt, green top, head: blond hair, ponytail
-		female("civilians/female" "body02" "head01b" 0 0) //body:grey trousers, blue top, head: blond hair, ponytail
-		female("civilians/female" "body02" "head01b" 1 1) //body::blue trousers, green top, head: blond hair, ponytail
+		female("civilians/female" "body01" "head01d" 0 0) //body:green skirt, blue top, head: brown hair, ponytail
+		female("civilians/female" "body01" "head01d" 1 1) //body::black skirt, white top, head: brown hair, ponytail
+		female("civilians/female" "body01" "head01d" 2 2) //body:green skirt, green top, head: brown hair, ponytail
+		female("civilians/female" "body02" "head01d" 0 0) //body:grey trousers, blue top, head: brown hair, ponytail
+		female("civilians/female" "body02" "head01d" 1 1) //body::blue trousers, green top, head: brown hair, ponytail
+		female("civilians/female" "body01" "head01d" 0 0) //body:green skirt, blue top, head: blond hair, ponytail
+		female("civilians/female" "body01" "head01d" 1 1) //body::black skirt, white top, head: blond hair, ponytail
+		female("civilians/female" "body01" "head01d" 2 2) //body:green skirt, green top, head: blond hair, ponytail
+		female("civilians/female" "body02" "head01d" 0 0) //body:grey trousers, blue top, head: blond hair, ponytail
+		female("civilians/female" "body02" "head01d" 1 1) //body::blue trousers, green top, head: blond hair, ponytail
 		female("civilians/female" "body01" "head02a" 0 0) //body:green skirt, blue top, head: long blond hair
 		female("civilians/female" "body01" "head02a" 1 1) //body::black skirt, white top, head: long blond hair
 		female("civilians/female" "body01" "head02a" 2 2) //body:green skirt, green top, head: long blond hair

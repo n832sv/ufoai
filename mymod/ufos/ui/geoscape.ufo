@@ -210,7 +210,6 @@ window geoscape
 			font		"f_small"
 			contentalign	ALIGN_CC
 		}
-
 		// ==================
 		// timecontrol panel
 		// ==================
@@ -386,7 +385,7 @@ window geoscape
 			tooltip		"_INBOX (with unread mails)"
 			color		"0.56 0.81 0.76 1"
 			font		"f_small"
-			pos			"21 500"
+			pos			"21 478"
 			flash		true
 			size		"175 21"
 			selectcolor	"1 1 1 1"
@@ -403,7 +402,7 @@ window geoscape
 			tooltip		"_INBOX"
 			color		"0.56 0.81 0.76 1"
 			font		"f_small"
-			pos			"21 500"
+			pos			"21 478"
 			size		"175 21"
 			selectcolor	"1 1 1 1"
 			background	"ui/button_geoscape"
@@ -415,7 +414,7 @@ window geoscape
 		{
 			string		"_Statistics"
 			tooltip		"_Organisation statistics"
-			pos			"21 522"
+			pos			"21 500"
 			size		"175 21"
 			color		"0.56 0.81 0.76 1"
 			font		"f_small"
@@ -423,6 +422,20 @@ window geoscape
 			background	"ui/button_geoscape"
 
 			onClick		{ cmd "ui_push stats;" }
+		}
+
+		button bt_nations
+		{
+			string		"_Nations"
+			tooltip		"_Nation information"
+			pos			"21 522"
+			size		"175 21"
+			color		"0.56 0.81 0.76 1"
+			font		"f_small"
+			selectcolor	"1 1 1 1"
+			background	"ui/button_geoscape"
+
+			onClick		{ cmd "ui_push nations;" }
 		}
 
 		button bt_ufopedia

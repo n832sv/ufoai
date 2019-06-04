@@ -122,7 +122,7 @@ item assault_ammo
 			impsnd		"impact/bullet-impact"
 			bodysnd 	"impact/bullet-bodyimpact"
 			speed		3000
-			spread		"1 1"
+			spread		"0.92 0.92"
 			crouch		0.75
 			range		100
 			shots		1
@@ -217,7 +217,7 @@ item assault_ammo
 			impsnd		"impact/bullet-impact"
 			bodysnd 	"impact/bullet-bodyimpact"
 			speed		3000
-			spread		"0.9 0.9"
+			spread		"0.85 0.85"
 			crouch		0.75
 			range		100
 			shots		1
@@ -686,7 +686,7 @@ item pistol2_ammo
 			shots		1
 			ammo		1
 			time		4
-			damage		"20 5"
+			damage		"21 5"
 			reaction	true
 			dmgweight	"normal_light"
 			shotorg		"1 9.5"
@@ -709,7 +709,7 @@ item pistol2_ammo
 			ammo				4
 			delaybetweenshots	10
 			time				5
-			damage				"20 5"
+			damage				"21 5"
 			dmgweight			"normal_light"
 			reaction			true
 			shotorg				"1 9.5"
@@ -732,7 +732,7 @@ item pistol2_ammo
 			ammo				10
 			delaybetweenshots	10
 			time				8
-			damage				"20 5"
+			damage				"21 5"
 			dmgweight			"normal_light"
 			reaction			true
 			shotorg				"1 9.5"
@@ -832,7 +832,7 @@ item smg_ammo
 			ammo				3
 			delaybetweenshots	14
 			time				6
-			damage				"22 3"
+			damage				"22 8"
 			dmgweight			"normal_light"
 			reaction			true
 			shotorg				"1 11.5"
@@ -856,7 +856,7 @@ item smg_ammo
 			ammo				3
 			delaybetweenshots	14
 			time				10
-			damage				"22 3"
+			damage				"22 8"
 			dmgweight			"normal_light"
 			reaction			true
 			shotorg				"1 11.5"
@@ -880,7 +880,7 @@ item smg_ammo
 			ammo				12
 			delaybetweenshots	14
 			time				10
-			damage				"22 3"
+			damage				"22 8"
 			dmgweight			"normal_light"
 			reaction			true
 			shotorg				"1 11.5"
@@ -892,12 +892,12 @@ item smg_ammo
 		weapon smg2
 		firedef
 		{
-			name				"_Snapshot"
+			name				"_Snap 2-rounds"
 			skill				"close"
 			projtl				bullet-smg
 			impact				bulletImpact
 			hitbody				null
-			firesnd				"weapons/bullet-smg-1x"
+			firesnd				"weapons/bullet-smg-2xs"
 			impsnd				"impact/bullet-impact"
 			bodysnd 			"impact/bullet-bodyimpact"
 			sndonce				true
@@ -905,10 +905,10 @@ item smg_ammo
 			spread				"1.25 1.25"
 			crouch				0.85
 			range				52
-			shots				1
-			ammo				1
-			delaybetweenshots	14
-			time				5
+			shots				2
+			ammo				2
+			delaybetweenshots	135
+			time				7
 			damage				"32 8"
 			dmgweight			"normal_light"
 			reaction			true
@@ -955,7 +955,7 @@ item smg_ammo
 			range				52
 			shots				2
 			ammo				2
-			delaybetweenshots	60
+			delaybetweenshots	150
 			time				9
 			damage				"32 8"
 			dmgweight			"normal_light"
@@ -1023,11 +1023,11 @@ item shotgun2_slug_ammo
 			spread				"3 3"
 			crouch				0.9
 			range				20
-			shots				1
+			shots				14
 			ammo				1
 			delaybetweenshots	0
 			time				7
-			damage				"120 40"
+			damage				"12 9"
 			dmgweight			"normal_spray"
 			reaction			true
 			shotorg				"3.5 7.5"
@@ -1096,7 +1096,7 @@ item shotgun_micro_ammo
 			ammo				1
 			delaybetweenshots	0
 			time				8
-			damage				"20 5"
+			damage				"11 9"
 			dmgweight			"normal_spray"
 			reaction			true
 			shotorg				"3.5 8"
@@ -1125,7 +1125,7 @@ item shotgun_micro_ammo
 			ammo				1
 			delaybetweenshots	0
 			time				8
-			damage				"20 5"
+			damage				"16 10"
 			dmgweight			"normal_spray"
 			reaction			true
 			shotorg				"3.5 7.5"

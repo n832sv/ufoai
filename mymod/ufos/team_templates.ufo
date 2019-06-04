@@ -133,6 +133,21 @@ chrtemplate alien_shevaar {
 	health	"120 160"
 }
 
+chrtemplate alien_strigoi {
+	strength	"34 44"
+	speed		"30 38"
+	accuracy	"38 62"
+	mind		"48 66"
+	close		"30 60"
+	assault		"30 60"
+	sniper		"30 60"
+	explosive	"30 60"
+	piloting	"0 0"
+	targeting	"0 0"
+	evading		"0 0"
+	health		"100 140"
+}
+
 chrtemplate alien_blood {
 	strength	"55 55"
 	speed	"50 50"

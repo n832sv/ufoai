@@ -69,7 +69,7 @@ alienteam scouts1
 		maxinterest 	279
 		minaliencount	7
 		maxaliencount	13
-		team 			(bloodspider shevaar)
+		team 			(shevaar strigoi)
 	}
 	teaminterest
 	{
@@ -125,7 +125,7 @@ alienteam scouts2
 		maxinterest 	249
 		minaliencount	5
 		maxaliencount	9
-		team 			(hovernet taman/alien_taman)
+		team 			(hovernet taman/alien_taman strigoi)
 	}
 	teaminterest
 	{
@@ -556,7 +556,7 @@ alienteam terror1
 		maxinterest 	10000
 		minaliencount	19
 		maxaliencount	30
-		team 			(bloodspider_adv hovernet_adv ortnok)
+		team 			(bloodspider_adv hovernet_adv ortnok strigoi)
 	}
 }
 
@@ -570,7 +570,7 @@ alienteam full
 		maxinterest 	109
 		minaliencount	12
 		maxaliencount	16
-		team 			(taman/alien_taman_light shevaar hovernet bloodspider)
+		team 			(taman/alien_taman_light shevaar hovernet bloodspider strigoi)
 	}
 	teaminterest
 	{
@@ -578,7 +578,7 @@ alienteam full
 		maxinterest 	199
 		minaliencount	14
 		maxaliencount	18
-		team 			(taman/alien_taman bloodspider hovernet shevaar)
+		team 			(taman/alien_taman bloodspider hovernet shevaar strigoi)
 	}
 	teaminterest
 	{
@@ -586,7 +586,7 @@ alienteam full
 		maxinterest 	249
 		minaliencount	16
 		maxaliencount	22
-		team 			(taman/alien_taman hovernet shevaar bloodspider_adv)
+		team 			(taman/alien_taman hovernet shevaar bloodspider_adv strigoi)
 	}
 	teaminterest
 	{
@@ -594,7 +594,7 @@ alienteam full
 		maxinterest 	279
 		minaliencount	19
 		maxaliencount	25
-		team 			(taman/alien_taman hovernet shevaar bloodspider_adv ortnok)
+		team 			(taman/alien_taman hovernet shevaar bloodspider_adv ortnok strigoi)
 	}
 	teaminterest
 	{
@@ -602,7 +602,7 @@ alienteam full
 		maxinterest 	309
 		minaliencount	22
 		maxaliencount	30
-		team 			(taman/alien_taman shevaar bloodspider_adv ortnok hovernet_adv)
+		team 			(taman/alien_taman shevaar bloodspider_adv ortnok hovernet_adv strigoi)
 	}
 	teaminterest
 	{
@@ -610,6 +610,6 @@ alienteam full
 		maxinterest 	10000
 		minaliencount	22
 		maxaliencount	30
-		team 			(taman/alien_taman_heavy shevaar bloodspider_adv ortnok hovernet_adv)
+		team 			(taman/alien_taman_heavy shevaar bloodspider_adv ortnok hovernet_adv strigoi)
 	}
 }

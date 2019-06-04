@@ -28,6 +28,7 @@ window stats
 
 		panel mainBody
 		{
+
 			{
 				pos				"4 30"
 				size			"916 724"
@@ -35,154 +36,287 @@ window stats
 				bordercolor		"0.527 0.6 0.21 1"
 			}
 
-			panel header
+			panel header 
 			{
-				pos			"1 1"
-				size		"914 32"
-				bgcolor		"0.527 0.6 0.21 0.2"
+				{
+					pos			"1 1"
+					size		"914 32"
+					bgcolor		"0.527 0.6 0.21 0.2"
+				}
 			}
 
-			string costs_string
+			string budget_header
 			{
-				string		"_Costs"
-				pos			"6 40"
-				size		"470 20"
-				contentalign	ALIGN_UC
-				font		"f_small"
+				string			"_Budget"
+				pos				"161 40"
+				size			"160 28"
+				contentalign	ALIGN_CC
+				font			"f_normal"
 			}
 
-			text costs_stats
+			panel budget
 			{
-				dataid		TEXT_STATS_COSTS
-				pos			"6 63"
-				size		"470 396"
-				bgcolor		"0.5 0.5 0.5 0.2"
-				lineheight	22
-				tabwidth	340
-				rows		18
+
+				{
+					pos			"16 68"
+					size		"438 440"
+					bgcolor		"0.58 0.83 0.78 0.2"
+					border			"1"
+					bordercolor		"0.58 0.83 0.78 0.28"
+				}
+
+				string costs_string
+				{
+					string			"_Costs"
+					pos				"6 10"
+					size			"426 20"
+					bgcolor			"0.58 0.83 0.78 0.25"
+					border			"1"
+					bordercolor		"0.58 0.83 0.78 0.28"
+					contentalign	ALIGN_CL
+					font			"f_verysmall_bold"
+				}
+
+				text costs_stats
+				{
+					dataid			TEXT_STATS_COSTS
+					pos				"12 38"
+					size			"414 220"
+					lineheight		14
+					tabwidth		348
+					rows			18
+					color			"0.78 0.88 1.00 1.0"
+					font			"f_verysmall"
+				}
+
+				string funding_string
+				{
+					string			"_Funding"
+					pos				"6 260"
+					size			"426 20"
+					bgcolor			"0.58 0.83 0.78 0.25"
+					border			"1"
+					bordercolor		"0.58 0.83 0.78 0.28"
+					contentalign	ALIGN_CL
+					font			"f_verysmall_bold"
+				}
+
+
 			}
 
-			string nations_string
+			string miscellaneous_header
 			{
-				string		"_Nations"
-				pos			"6 467"
-				size		"470 20"
-				contentalign	ALIGN_UC
-				font		"f_small"
+				string			"_Miscellaneous"
+				pos				"601 40"
+				size			"160 28"
+				contentalign	ALIGN_CC
+				font			"f_normal"
 			}
 
-			/* textlist using tabbed text */
-			text nation_stats
+			panel statistics 
 			{
-				tooltip		"_Click on a nation for its funding graph"
-				dataid		TEXT_STATS_NATIONS
-				pos			"6 490"
-				size		"470 220"
-				bgcolor		"0.5 0.5 0.5 0.2"
-				lineheight  22
-				tabwidth	360
-				rows		10
-				mousefx		true
-				onClick		{ cmd "nation_stats_click <lineselected>;" }
+				{
+					pos 			"462 68"
+					size			"438 440"
+					bgcolor			"0.58 0.83 0.78 0.2"
+					border			"1"
+					bordercolor		"0.58 0.83 0.78 0.28"
+				}
+
+				string base_string
+				{
+					string			"_Bases"
+					pos				"6 10"
+					size			"426 20"
+					bgcolor			"0.58 0.83 0.78 0.25"
+					border			"1"
+					bordercolor		"0.58 0.83 0.78 0.28"
+					contentalign	ALIGN_CL
+					font			"f_verysmall_bold"
+				}
+
+				string ins_string
+				{
+					string			"_Installations"
+					pos				"6 96"
+					size			"426 20"
+					bgcolor			"0.58 0.83 0.78 0.25"
+					border			"1"
+					bordercolor		"0.58 0.83 0.78 0.28"
+					contentalign	ALIGN_CL
+					font			"f_verysmall_bold"
+				}
+
+				string empl_string
+				{
+					string			"_Employees"
+					pos				"6 260"
+					size			"426 20"
+					bgcolor			"0.58 0.83 0.78 0.25"
+					border			"1"
+					bordercolor		"0.58 0.83 0.78 0.28"
+					contentalign	ALIGN_CL
+					font			"f_verysmall_bold"
+				}				
+
+				text base_stats
+				{
+					dataid			TEXT_STATS_BASES
+					pos				"12 38"
+					size			"414 48"
+					lineheight		14
+					tabwidth		348
+					rows			3
+					color			"0.78 0.88 1.00 1.0"
+					font			"f_verysmall"
+				}
+
+				text ins_stats
+				{
+					dataid			TEXT_STATS_INSTALLATIONS
+					pos				"12 124"
+					size			"414 128"
+					lineheight		14
+					tabwidth		348
+					rows			8
+					color			"0.78 0.88 1.00 1.0"
+					font			"f_verysmall"
+				}
+
+				text empl_stats
+				{
+					dataid			TEXT_STATS_EMPLOYEES
+					pos				"12 288"
+					size			"414 128"
+					lineheight		14
+					tabwidth		348
+					rows			8
+					color			"0.78 0.88 1.00 1.0"
+					font			"f_verysmall"
+				}
 			}
 
-			string campaign_string
+			string missions_header
 			{
-				string		"_Campaign"
-				pos			"490 467"
-				size		"413 20"
-				contentalign	ALIGN_UC
-				font		"f_small"
-			}
-			text campaign_stats
-			{
-				dataid		TEXT_GENERIC
-				pos			"490 490"
-				bgcolor		"0.5 0.5 0.5 0.2"
-				size		"413 110"
-				lineheight	22
-				tabwidth	360
-				rows		5
+				string			"_Performance"
+				pos				"601 514"
+				size			"160 28"
+				contentalign	ALIGN_CC
+				font			"f_normal"
 			}
 
-			string mission_string
+			panel missions
 			{
-				string		"_Missions"
-				pos			"490 40"
-				size		"200 20"
-				contentalign	ALIGN_UC
-				font		"f_small"
-			}
-			text mission_stats
-			{
-				dataid		TEXT_STATS_MISSION
-				pos			"490 63"
-				size		"200 140"
-				bgcolor		"0.5 0.5 0.5 0.2"
-				lineheight	22
-				tabwidth	160
-				rows		6
+				{
+					pos 			"462 542"
+					size			"438 166"
+					bgcolor			"0.58 0.83 0.78 0.2"
+					border			"1"
+					bordercolor		"0.58 0.83 0.78 0.28"
+				}
+
+				string campaign_string
+				{
+					string			"_Campaign"
+					pos				"6 10"
+					size			"426 20"
+					bgcolor			"0.58 0.83 0.78 0.25"
+					border			"1"
+					bordercolor		"0.58 0.83 0.78 0.28"
+					contentalign	ALIGN_CL
+					font			"f_verysmall_bold"
+				}
+
+				string mission_string
+				{
+					string			"_Missions"
+					pos				"6 62"
+					size			"426 20"
+					bgcolor			"0.58 0.83 0.78 0.25"
+					border			"1"
+					bordercolor		"0.58 0.83 0.78 0.28"
+					contentalign	ALIGN_CL
+					font			"f_verysmall_bold"
+				}
+
+				text campaign_stats
+				{
+					dataid			TEXT_GENERIC
+					pos				"12 38"
+					size			"414 16"
+					lineheight		14
+					tabwidth		348
+					rows			1
+					color			"0.78 0.88 1.00 1.0"
+					font			"f_verysmall"
+				}
+
+				text mission_stats
+				{
+					dataid			TEXT_STATS_MISSION
+					pos				"12 90"
+					size			"414 32"
+					lineheight		14
+					tabwidth		348
+					rows			2
+					color			"0.78 0.88 1.00 1.0"
+					font			"f_verysmall"
+				}
 			}
 
-			string base_string
+
+
+			string nations_header
 			{
-				string		"_Bases"
-				pos			"490 216"
-				size		"200 20"
-				contentalign	ALIGN_UC
-				font		"f_small"
+				string			"_Nations"
+				pos				"161 514"
+				size			"160 28"
+				contentalign	ALIGN_CC
+				font			"f_normal"
 			}
 
-			text base_stats
+			panel nations_panel 
 			{
-				dataid		TEXT_STATS_BASES
-				pos			"490 244"
-				size		"200 140"
-				bgcolor		"0.5 0.5 0.5 0.2"
-				lineheight	22
-				tabwidth	170
-				rows		6
+				{
+					pos 			"16 542"
+					size			"438 166"
+					bgcolor			"0.58 0.83 0.78 0.2"
+					border			"1"
+					bordercolor		"0.58 0.83 0.78 0.28"
+				}
+
+
+				string nations_string
+				{
+					string				"_Approval rating"
+					pos					"6 10"
+					size				"426 20"
+					bgcolor				"0.58 0.83 0.78 0.25"
+					border				"1"
+					bordercolor			"0.58 0.83 0.78 0.28"
+					contentalign		ALIGN_CL
+					font				"f_verysmall_bold"
+				}
+
+				/* textlist using tabbed text */
+				text nation_stats
+				{
+					tooltip				"_Click on a nation for its funding graph"
+					dataid				TEXT_STATS_NATIONS
+					pos					"12 38"
+					size				"426 116"
+					lineheight			14
+					tabwidth			348
+					rows				2
+					color				"0.78 0.88 1.00 1.0"
+					font				"f_verysmall"
+					mousefx				true
+					onClick				{ cmd "nation_stats_click <lineselected>;" }
+				}
+
 			}
 
-			string ins_string
-			{
-				string		"_Installations"
-				pos			"703 216"
-				size		"200 20"
-				contentalign	ALIGN_UC
-				font		"f_small"
-			}
 
-			text ins_stats
-			{
-				dataid		TEXT_STATS_INSTALLATIONS
-				pos			"703 244"
-				size		"200 140"
-				bgcolor		"0.5 0.5 0.5 0.2"
-				lineheight	22
-				tabwidth	170
-				rows		6
-			}
-
-			string empl_string
-			{
-				string		"_Employees"
-				pos			"703 40"
-				size		"200 20"
-				contentalign	ALIGN_UC
-				font		"f_small"
-			}
-
-			text empl_stats
-			{
-				dataid		TEXT_STATS_EMPLOYEES
-				pos			"703 63"
-				size		"200 140"
-				bgcolor		"0.5 0.5 0.5 0.2"
-				lineheight	22
-				tabwidth	170
-				rows		6
-			}
 		}
 	}
 
@@ -197,324 +331,5 @@ window stats
 	func onWindowOpened
 	{
 		cmd "stats_update;"
-	}
-}
-
-// TODO: add extra button for this:
-// onClick { cmd "ui_push nations;" }
-
-window nations
-{
-	{
-		bgcolor "0 0 0 1"
-	}
-
-	panel natgraph
-	{
-		{
-			pos				"5 5"
-			size			"924 758"
-			border			"2"
-			bordercolor		"0.56 0.81 0.76 1"
-		}
-
-		string title
-		{
-			string		"_Nation Statistics"
-			pos			"0 0"
-			size		"924 30"
-			contentalign	ALIGN_CC
-			font		"f_big"
-		}
-
-		panel mainBody
-		{
-			{
-				pos				"4 30"
-				size			"916 724"
-				border			"2"
-				bordercolor		"0.527 0.6 0.21 1"
-			}
-
-
-			/**
-			 * @brief select a nation
-			 * @param <1> nationid
-			 * @SA MAX_NATIONS
-			 * @note: Number of nations (0-7) defined by MAX_NATIONS
-			 */
-			confunc nation_marksel {
-				*node:parent.nation<1>@invis	= false
-				*node:parent.nation<1>@color	= "1 1 1 1"
-				*node:parent.nat_fund<1>@invis	= false
-				*node:parent.nat_fund<1>@color	= "1 1 1 1"
-			}
-
-			/**
-			 * @brief deselect a nation
-			 * @param <1> nationid
-			 * @SA MAX_NATIONS
-			 */
-			confunc nation_markdesel {
-				*node:parent.nation<1>@invis	= false
-				*node:parent.nation<1>@color	= "0.56 0.81 0.76 1"
-				*node:parent.nat_fund<1>@invis	= false
-				*node:parent.nat_fund<1>@color	= "0.56 0.81 0.76 1"
-			}
-
-			/**
-			 * @brief hide a nation
-			 * @param <1> nationid
-			 * @SA MAX_NATIONS
-			 */
-			confunc nation_hide {
-				*node:parent.nation<1>@invis	= true
-				*node:parent.nat_fund<1>@invis	= true
-			}
-
-			string nation {
-				string		"_Nation"
-				pos			"40  55"
-				size		"260 20"
-			}
-
-			string nation0 {
-				string		*cvar:mn_nat_name0
-				pos			"40 80"
-				size		"260 20"
-				onClick		{ cmd "nation_select 0;" }
-			}
-			string nation1 {
-				string		*cvar:mn_nat_name1
-				pos			"40 105"
-				size		"260 20"
-				onClick		{ cmd "nation_select 1;" }
-			}
-			string nation2 {
-				string		*cvar:mn_nat_name2
-				pos			"40 130"
-				size		"260 20"
-				onClick		{ cmd "nation_select 2;" }
-			}
-			string nation3 {
-				string		*cvar:mn_nat_name3
-				pos			"40 155"
-				size		"260 20"
-				onClick		{ cmd "nation_select 3;" }
-			}
-			string nation4 {
-				string		*cvar:mn_nat_name4
-				pos			"40 180"
-				size		"260 20"
-				onClick		{ cmd "nation_select 4;" }
-			}
-			string nation5 {
-				string		*cvar:mn_nat_name5
-				pos			"40 205"
-				size		"260 20"
-				onClick		{ cmd "nation_select 5;" }
-			}
-			string nation6 {
-				string		*cvar:mn_nat_name6
-				pos			"40 230"
-				size		"260 20"
-				onClick		{ cmd "nation_select 6;" }
-			}
-			string nation7 {
-				string		*cvar:mn_nat_name7
-				pos			"40 255"
-				size		"260 20"
-				onClick		{ cmd "nation_select 7;" }
-			}
-
-			string nat_fund {
-				string		"_Current Funding"
-				pos			"340 55"
-				size		"175 20"
-			}
-			string nat_fund0 {
-				string		*cvar:mn_nat_fund0
-				pos			"340 80"
-				size		"100 20"
-			}
-			string nat_fund1 {
-				string		*cvar:mn_nat_fund1
-				pos			"340 105"
-				size		"100 20"
-			}
-			string nat_fund2 {
-				string		*cvar:mn_nat_fund2
-				pos			"340 130"
-				size		"100 20"
-			}
-			string nat_fund3 {
-				string		*cvar:mn_nat_fund3
-				pos			"340 155"
-				size		"100 20"
-			}
-			string nat_fund4 {
-				string		*cvar:mn_nat_fund4
-				pos			"340 180"
-				size		"100 20"
-			}
-			string nat_fund5 {
-				string		*cvar:mn_nat_fund5
-				pos			"340 205"
-				size		"100 20"
-			}
-			string nat_fund6 {
-				string		*cvar:mn_nat_fund6
-				pos			"340 230"
-				size		"100 20"
-			}
-			string nat_fund7 {
-				string		*cvar:mn_nat_fund7
-				pos			"340 255"
-				size		"100 20"
-			}
-
-			string graph_time {
-				string		"_Month (Relative to current)"
-				pos			"600 295"
-				size		"300 20"
-				contentalign	ALIGN_UC
-				font		"f_small"
-			}
-			/** @todo better display of real month-text (year+month?) */
-			string graph_month0	{
-				string		"0"
-				pos			"600 265"
-				size		"30 20"
-				font "f_small"
-			}
-			string graph_month1	{
-				string		"-1"
-				pos			"625 265"
-				size		"30 20"
-				font		"f_small"
-			}
-			string graph_month2	{
-				string		"-2"
-				pos			"650 265"
-				size		"30 20"
-				font		"f_small"
-			}
-			string graph_month3	{
-				string		"-3"
-				pos			"675 265"
-				size		"30 20"
-				font		"f_small"
-			}
-			string graph_month4	{
-				string		"-4"
-				pos			"700 265"
-				size		"30 20"
-				font		"f_small"
-			}
-			string graph_month5	{
-				string		"-5"
-				pos			"725 265"
-				size		"30 20"
-				font		"f_small"
-			}
-			string graph_month6	{
-				string		"-6"
-				pos			"750 265"
-				size		"30 20"
-				font		"f_small"
-			}
-			string graph_month7	{
-				string		"-7"
-				pos			"775 265"
-				size		"30 20"
-				font		"f_small"
-			}
-			string graph_month8	{
-				string		"-8"
-				pos			"800 265"
-				size		"30 20"
-				font		"f_small"
-			}
-			string graph_month9	{
-				string		"-9"
-				pos			"825 265"
-				size		"30 20"
-				font		"f_small"
-			}
-			string graph_month10	{
-				string		"-10"
-				pos			"850 265"
-				size		"30 20"
-				font		"f_small"
-			}
-			string graph_month11	{
-				string		"-11"
-				pos			"875 265"
-				size		"30 20"
-				font		"f_small"
-			}
-
-			string graph_funding {
-				string		"_Funding"
-				pos			"450 165"
-				size		"140 20"
-				contentalign	ALIGN_UR
-				font		"f_small"
-			}
-			string graph_funding_zero {
-				string		"0"				/** @todo *cvar:mn_nat_fund_zero */
-				pos			"550 255"
-				size		"40 20"
-				contentalign	ALIGN_UR
-				font		"f_small"
-			}
-			string graph_funding_max {
-				string		"_max"			/*< @todo *cvar:mn_nat_fund_max */
-				pos			"550 65"
-				size		"40 20"
-				contentalign	ALIGN_LR
-				font		"f_small"
-			}
-
-			image nation_symbol
-			{
-				src		*cvar:mn_nat_symbol
-				pos			"269 355"
-				size		"486 300"
-				preventratio	true
-			}
-		}
-
-	}
-
-	linechart nation_graph_colors
-	{
-		pos			"310 124"
-		size		"20 200"	/*< 8 x 25 -> (8 x entry-height) */
-		dataid		LINESTRIP_COLOR
-	}
-
-	linechart nation_graph_funding
-	{
-		pos			"600 100"
-		size		"300 200"
-		dataid		LINESTRIP_FUNDING
-		displayaxes	true
-		axescolor	"1 1 1 0.5"
-	}
-
-	Geoscape geoscape_button {
-		onClick { cmd "ui_pop"}
-	}
-
-	fuzzyScreen overlay { }
-	func onWindowOpened
-	{
-		cmd "nation_update;"
-	}
-
-	func onWindowClosed
-	{
-		cmd "del mn_nat_symbol;"
 	}
 }

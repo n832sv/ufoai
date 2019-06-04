@@ -1,0 +1,100 @@
+msgid fraggren_txt {
+text "_Technical Specifications: AEMG M80 Fragmentation Grenade
+
+CLASSIFIED LEVEL YELLOW
+
+PHALANX Extraterrestrial Response Unit
+
+Technical Document, Delta Clearance
+
+Filed: 20 March 2084
+
+By: Cdr. Paul Navarre, R&D: Engineering Division, PHALANX, Atlantic Operations Command
+
+
+
+Overview
+
+The M80 Fragmentation grenade is produced by AEMG industries. Standard composition includes a safety-pin and handle, a timed fuse and an explosive charge, which are held within a fragmentation matrix composed of steel pellets and polymer.
+
+
+Recommended Doctrine
+
+The fragmentation pellets contained within the device have a relatively low armor penetrating capacity and are most effective when used against unarmoured aliens. The M80 model is considerably heavy and has a 7 meter radius of effect."
+}
+
+msgid fraggren2_txt {
+text "_Technical Specifications: AEMG M82 Fragmentation Grenade
+
+CLASSIFIED LEVEL YELLOW
+
+PHALANX Extraterrestrial Response Unit
+
+Technical Document, Delta Clearance
+
+Filed: 21 March 2084
+
+By: Cdr. Paul Navarre, R&D: Engineering Division, PHALANX, Atlantic Operations Command
+
+
+
+Overview
+
+The M82 Fragmentation grenade is produced by AEMG industries. It is a revised model of the predecessor M80 series. 
+Standard composition includes a safety-pin and handle, a timed fuse and an explosive charge, which are held within a fragmentation matrix composed of steel pellets and polymer. 
+The handle and surface texture have been revised, which combined with it's lighter weight, allows for an increased throwing range.
+
+
+Recommended Doctrine
+
+The fragmentation pellets contained within the device have a relatively low armor penetrating capacity and are most effective when used against unarmoured aliens. The M82 model is lighter than M80 and has a 6 meter radius of effect."
+}
+
+msgid hegren_txt {
+text "_Technical Specifications: AEMG M12 High Explosive Grenade
+
+CLASSIFIED LEVEL YELLOW
+
+PHALANX Extraterrestrial Response Unit
+
+Technical Document, Delta Clearance
+
+Filed: 21 March 2084
+
+By: Cdr. Paul Navarre, R&D: Engineering Division, PHALANX, Atlantic Operations Command
+
+
+
+Overview
+
+The M12 High Explosive grenade is produced by AEMG industries. 
+Standard composition includes a cylindrical light polymer exterior, a safety-pin and handle, a timed fuse and a high explosive charge. 
+
+
+Recommended Doctrine
+
+M12 HE grenade has a relatively short radius of effect and is light weight."
+}
+
+msgid empgren_txt {
+text "_Technical Specifications: AEMG M300 Electromagnetic Pulse Grenade
+
+CLASSIFIED LEVEL YELLOW
+
+
+Overview
+
+The M300 Electromagnetic pulse grenade is designed and produced by AEMG industries based on our research.
+It is tailored to defeat the alien drones nicknamed 'bloodspiders' by creating an EMP which overloads the drones' internal circuitry.
+Standard composition includes a cylindrical light polymer exterior, a safety-pin and handle, a timed fuse and a core-device,
+which produces a high intensity, short duration pulse, fueled by an electrochemical reaction.
+
+
+Recommended Doctrine
+
+M300 EMP grenade has a short radius of effect and it has no effect on non-electrical entities."
+}
+
+
+
+

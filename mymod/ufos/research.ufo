@@ -4698,6 +4698,51 @@ tech rs_alien_shevaar_autopsy
 	image	"techs/shevaar_dead"
 }
 
+// STRIGOI
+
+tech rs_alien_strigoi_autopsy
+{
+	name	"_Alien Autopsy - Strigoi"
+	type	"alien"
+	up_chapter	aliens
+
+	description {
+		default "*msgid:strigoi_autopsy_txt"
+//		extra (rs_strigoi_extra "*msgid:strigoi_autopsy_extra_txt")
+	}
+	pre_description {
+		default "*msgid:strigoi_autopsy_pre_txt"
+//		extra (rs_strigoi_extra "*msgid:strigoi_autopsy_extra_pre_txt")
+	}
+
+//	mail_pre
+//	{
+//		from	"*msgid:mail_from_dr_connor"
+//		to		"*msgid:mail_to_base_commander"
+		// subject	defined by "name"
+//		model	"characters/connor"
+//		icon	"icons/mail_alien"
+//	}
+
+	mail
+	{
+		from	"*msgid:mail_from_dr_connor"
+		to		"*msgid:mail_to_base_commander"
+		// subject	defined by "name"
+		model	"characters/connor"
+		icon	"icons/mail_alien"
+	}
+
+	require_AND
+	{
+		alien_dead (strigoi 1)
+	}
+	time	1500
+
+	image	"techs/shevaar_dead" // placeholder
+}
+
+
 // HOVERNET
 
 tech rs_alien_hovernet_autopsy
@@ -6071,7 +6116,7 @@ tech rs_weapon_fraggren2
 	type	"weapon"
 	up_chapter	equipment
 	description {
-		default "*msgid:fraggren_txt"
+		default "*msgid:fraggren2_txt"
 	}
 	// pre_description	"*msgid:fraggren_pre_txt"
 
@@ -6090,7 +6135,7 @@ tech rs_weapon_hegrenade
 	type	"weapon"
 	up_chapter	equipment
 	description {
-		default "*msgid:fraggren_txt"
+		default "*msgid:hegren_txt"
 	}
 	// pre_description	"*msgid:fraggren_pre_txt"
 
@@ -6109,7 +6154,7 @@ tech rs_weapon_empgrenade
 	type	"weapon"
 	up_chapter	equipment
 	description {
-		default "*msgid:fraggren_txt"
+		default "*msgid:empgren_txt"
 	}
 	// pre_description	"*msgid:fraggren_pre_txt"
 
@@ -6117,9 +6162,10 @@ tech rs_weapon_empgrenade
 	{
 		tech rs_skill_explosive
 		tech rs_damage_blast
+		tech rs_alien_bloodspider_autopsy
 	}
 	provides	empgrenade
-	time	0
+	time	400
 	producetime	160
 }
 

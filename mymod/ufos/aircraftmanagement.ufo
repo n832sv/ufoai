@@ -1159,7 +1159,7 @@ craftitem craft_el_fuelpod
 	size				20 // "light"
 	model				"aircraft/craft_item_fuel/fuel"
 
-	fuelsize	+7000
+	fuelsize	+21000
 	speed		0.9
 	maxspeed	0.9
 }
