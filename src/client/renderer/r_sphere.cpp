@@ -286,37 +286,95 @@ void R_SphereRender (const sphere_t* sphere, const vec3_t pos, const vec3_t rota
 	R_BindDefaultArray(GL_NORMAL_ARRAY);
 }
 
+void SpherePerspective (GLfloat zNear, GLfloat zFar)
+{
+	GLfloat xmin, xmax, ymin, ymax, yaspect = (float) viddef.context.height / viddef.context.width;
+	const float alpha = 90.0f * (M_PI / 360.0);
+
+	xmax = zNear * tan(alpha);
+	xmin = -xmax;
+
+	ymin = xmin * yaspect;
+	ymax = xmax * yaspect;
+
+	glFrustum(xmin, xmax, ymin, ymax, zNear, zFar);
+}
+
 void R_SpaceSphereRender (const sphere_t* sphere, const vec3_t pos, const vec3_t rotate, const float scale, const float t, const float a)
 {
-
 	const float todegrees = 180.0f * (1 / M_PI);
-	/* go to a new matrix */
-	glPushMatrix();
+	const float offset = 0.19347826087f;
 
+	// ----------------------------------
+	// save current matrices to the stack 
+	// ----------------------------------
 	glMatrixMode(GL_TEXTURE);
-	glLoadIdentity();
-	glScalef(2.0f, 1.0f, 1.0f);
+	glPushMatrix();
+	glMatrixMode(GL_MODELVIEW);
+	glPushMatrix();
+	glMatrixMode(GL_PROJECTION);
+	glPushMatrix();
+	// ----------------------------------
 
 	glDisable(GL_LIGHTING);
 
+	// switch to texture matrixmode 
+	glMatrixMode(GL_TEXTURE);
+	glLoadIdentity();
+
+	glScalef(2.0f, 1.0f, 1.0f);
+
+	// switch to projection matrixmode
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	float x = viddef.x + (viddef.viewWidth - VID_NORM_WIDTH) / 2.0 - (viddef.virtualWidth - VID_NORM_WIDTH) / 2.0;
+	float y = viddef.y + (viddef.viewHeight - VID_NORM_HEIGHT) / 2.0 - (viddef.virtualHeight - VID_NORM_HEIGHT) / 2.0;
+	/* @todo magic coef, i dont know where it come from */
+	x *=  2.0f / (float) viddef.virtualWidth;
+	y *=  2.0f / (float) viddef.virtualHeight;
+//	glTranslatef(x, -y, 0.0f);
+//	setup perspective, projection.. or something like that
+	SpherePerspective(0.26f, 1.04f);
+
+	// switch to modelview matrix
 	glMatrixMode(GL_MODELVIEW);
-	glTranslatef(pos[0], pos[1], pos[2]);
+	glLoadIdentity();
 
-	glScalef(viddef.rx * viddef.viewWidth * scale, viddef.ry * viddef.viewWidth * scale, viddef.viewWidth * scale);
-	R_CheckError();
+//	glScalef(scale * viddef.rx, scale * viddef.ry, scale);
 
-	/* rotate the globe as given in ccs.angles */
+//	glRotatef(-90.0, 1.0, 0.0, 0.0);	/* put Z going up */
+//	glRotatef(90.0, 0.0, 0.0, 1.0);		/* put Z going up */
+//	glRotatef(-refdef.viewAngles[2], 1.0, 0.0, 0.0);
+//	glRotatef(-refdef.viewAngles[0], 0.0, 1.0, 0.0);
+//	glRotatef(-refdef.viewAngles[1], 0.0, 0.0, 1.0);
+//	glTranslatef(-refdef.viewOrigin[0], -refdef.viewOrigin[1], -refdef.viewOrigin[2]);
+
+//	glTranslatef(pos[0], pos[1], 0.0f);
+	// Coordinate axes are not correct..
+	glTranslatef(-offset, 0.0f, 0.0f);
 	glRotatef(-rotate[YAW], 1, 0, 0);
 	glRotatef(rotate[ROLL], 0, 1, 0);
-	glRotatef(rotate[PITCH] - t * todegrees, 0, 0, 1);
-
-	R_SphereShade(sphere); 
-
+	glRotatef(-rotate[PITCH] + t * todegrees, 0, 0, 1);
 	R_CheckError();
 
-	/* restore the previous matrix */
-	glPopMatrix();
+	R_SphereShade(sphere);
+	R_CheckError();
 
+	R_DrawBuffers(1);
+
+
+	// -----------------------------------
+	// load previous matrices to the stack 
+	// -----------------------------------
+	glMatrixMode(GL_MODELVIEW);
+	glPopMatrix();
+	glMatrixMode(GL_TEXTURE);
+	glPopMatrix();
+	glMatrixMode(GL_PROJECTION);
+	glPopMatrix();
+	// ----------------------------------
+
+	// some stuff I'm not sure what it's about 8(
 	refdef.aliasCount += sphere->num_tris * sphere->num_tris;
 
 	R_BindDefaultArray(GL_VERTEX_ARRAY);

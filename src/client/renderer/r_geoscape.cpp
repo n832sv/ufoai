@@ -420,10 +420,9 @@ void R_Draw3DGlobe (const vec2_t pos, const vec2_t size, int day, int second, co
 //	------------------------------------------------
 //		RENDER SPACE
 //	------------------------------------------------
-	
+
 	r_space.texture = R_FindImage(va("models/sequence/%s_space", map), it_wrappic);
 	R_SpaceSphereRender(&r_space, spacePos, rotate, scale, sqrta * t, a);
-	R_DrawBuffers(1);
 
 //  ----- END --------------------------------------	
 
