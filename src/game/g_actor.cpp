@@ -763,5 +763,27 @@ bool G_ActorReload (Actor* actor, const invDef_t* invDef)
 
 int G_ActorGetModifiedTimeForFiredef (const Edict* const ent, const fireDef_t* const fd, const bool reaction)
 {
-	return fd->time * G_ActorGetInjuryPenalty(ent, reaction ? MODIFIER_REACTION : MODIFIER_SHOOTING);
+	int skillbonus = 0;
+	int min = 3;
+	int tus = fd->time * G_ActorGetInjuryPenalty(ent, reaction ? MODIFIER_REACTION : MODIFIER_SHOOTING);
+	if (fd->weaponSkill == 4) { 
+		if (26 < ent->chr.score.skills[SKILL_CLOSE]) { skillbonus +=1; }
+		if (32 < ent->chr.score.skills[SKILL_CLOSE]) { skillbonus +=1; }
+		if (48 < ent->chr.score.skills[SKILL_CLOSE]) { skillbonus +=1; }
+		if (64 < ent->chr.score.skills[SKILL_CLOSE]) { skillbonus +=1; }
+	} else if (fd->weaponSkill == 6) { 
+		if (26 < ent->chr.score.skills[SKILL_ASSAULT]) { skillbonus +=1; }
+		if (32 < ent->chr.score.skills[SKILL_ASSAULT]) { skillbonus +=1; }
+		if (48 < ent->chr.score.skills[SKILL_ASSAULT]) { skillbonus +=1; }
+		if (64 < ent->chr.score.skills[SKILL_ASSAULT]) { skillbonus +=1; }
+	} else if (fd->weaponSkill == 7) { 
+		if (24 < ent->chr.score.skills[SKILL_SNIPER]) { skillbonus +=1; }
+		if (28 < ent->chr.score.skills[SKILL_SNIPER]) { skillbonus +=1; }
+		if (32 < ent->chr.score.skills[SKILL_SNIPER]) { skillbonus +=1; }
+		if (40 < ent->chr.score.skills[SKILL_SNIPER]) { skillbonus +=1; }
+		if (48 < ent->chr.score.skills[SKILL_SNIPER]) { skillbonus +=1; }
+		if (56 < ent->chr.score.skills[SKILL_SNIPER]) { skillbonus +=1; }
+		if (64 < ent->chr.score.skills[SKILL_SNIPER]) { skillbonus +=1; }
+	} 
+	return std::max(min, tus - skillbonus);
 }

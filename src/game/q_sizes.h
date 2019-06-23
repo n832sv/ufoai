@@ -3,7 +3,7 @@
 /* Sizes of the eye-levels and bounding boxes for actors/units. */
 #define EYE_STAND			15
 #define EYE_CROUCH			3
-#define PLAYER_STAND		20
+#define PLAYER_STAND		18
 #define PLAYER_CROUCH		5
 #define PLAYER_DEAD			-12
 #define PLAYER_MIN			-24

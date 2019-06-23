@@ -344,7 +344,31 @@ int CL_ActorTimeForFireDef (const le_t* le, const fireDef_t* fd, bool reaction)
 	if (!fd)
 		return -1;
 
-	return fd->time * CL_ActorInjuryModifier(le, reaction ? MODIFIER_REACTION : MODIFIER_SHOOTING);
+	const character_t* chr = CL_ActorGetChr(le);
+	int skillbonus = 0;
+	int min = 3;
+	int tus = fd->time * CL_ActorInjuryModifier(le, reaction ? MODIFIER_REACTION : MODIFIER_SHOOTING);
+
+	if (fd->weaponSkill == 4) { 
+		if (26 < chr->score.skills[SKILL_CLOSE]) { skillbonus +=1; }
+		if (32 < chr->score.skills[SKILL_CLOSE]) { skillbonus +=1; }
+		if (48 < chr->score.skills[SKILL_CLOSE]) { skillbonus +=1; }
+		if (64 < chr->score.skills[SKILL_CLOSE]) { skillbonus +=1; }
+	} else if (fd->weaponSkill == 6) { 
+		if (26 < chr->score.skills[SKILL_ASSAULT]) { skillbonus +=1; }
+		if (32 < chr->score.skills[SKILL_ASSAULT]) { skillbonus +=1; }
+		if (48 < chr->score.skills[SKILL_ASSAULT]) { skillbonus +=1; }
+		if (64 < chr->score.skills[SKILL_ASSAULT]) { skillbonus +=1; }
+	} else if (fd->weaponSkill == 7) { 
+		if (24 < chr->score.skills[SKILL_SNIPER]) { skillbonus +=1; }
+		if (28 < chr->score.skills[SKILL_SNIPER]) { skillbonus +=1; }
+		if (32 < chr->score.skills[SKILL_SNIPER]) { skillbonus +=1; }
+		if (40 < chr->score.skills[SKILL_SNIPER]) { skillbonus +=1; }
+		if (48 < chr->score.skills[SKILL_SNIPER]) { skillbonus +=1; }
+		if (56 < chr->score.skills[SKILL_SNIPER]) { skillbonus +=1; }
+		if (64 < chr->score.skills[SKILL_SNIPER]) { skillbonus +=1; }
+	} 
+	return std::max(min, tus - skillbonus);
 }
 
 /*
