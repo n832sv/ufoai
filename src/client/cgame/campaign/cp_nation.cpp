@@ -361,6 +361,7 @@ Parsing
 
 static const value_t nation_vals[] = {
 	{"name", V_TRANSLATION_STRING, offsetof(nation_t, name), 0},
+	{"namelong", V_TRANSLATION_STRING, offsetof(nation_t, namelong), 0},
 	{"pos", V_POS, offsetof(nation_t, pos), MEMBER_SIZEOF(nation_t, pos)},
 	{"color", V_COLOR, offsetof(nation_t, color), MEMBER_SIZEOF(nation_t, color)},
 	{"funding", V_INT, offsetof(nation_t, maxFunding), MEMBER_SIZEOF(nation_t, maxFunding)},
@@ -369,6 +370,11 @@ static const value_t nation_vals[] = {
 	{"scientists", V_INT, offsetof(nation_t, maxScientists), MEMBER_SIZEOF(nation_t, maxScientists)},
 	{"workers", V_INT, offsetof(nation_t, maxWorkers), MEMBER_SIZEOF(nation_t, maxWorkers)},
 	{"pilots", V_INT, offsetof(nation_t, maxPilots), MEMBER_SIZEOF(nation_t, maxPilots)},
+/*
+	{"population", V_INT, offsetof(nation_t, population), MEMBER_SIZEOF(nation_t, population)},
+	{"gdp", V_INT, offsetof(nation_t, population), MEMBER_SIZEOF(nation_t, population)},
+	{"gdpc", V_INT, offsetof(nation_t, population), MEMBER_SIZEOF(nation_t, population)},
+*/
 
 	{nullptr, V_NULL, 0, 0}
 };
@@ -566,7 +572,7 @@ static void NAT_ListStats_f (void)
 			cgi->UI_ExecuteConfunc("%s %s \"%s\" %d %.4f \"%s\" %d \"%f, %f, %f, %f\"",
 				callback,
 				nation->id,
-				_(nation->name),
+				_(nation->namelong),
 				monthIDX,
 				nation->stats[monthIDX].happiness,
 				NAT_GetHappinessString(nation->stats[monthIDX].happiness),
@@ -685,6 +691,11 @@ static void NAT_NationList_f (void)
 		cgi->Com_Printf("...max-scientists %i\n", nation->maxScientists);
 		cgi->Com_Printf("...max-workers %i\n", nation->maxWorkers);
 		cgi->Com_Printf("...max-pilots %i\n", nation->maxPilots);
+/*
+		cgi->Com_Printf("...population %i\n", nation->population);
+		cgi->Com_Printf("...gdp %i\n", nation->gdp);
+		cgi->Com_Printf("...gdpc %i\n", nation->gdpc);
+*/
 		cgi->Com_Printf("...color r:%.2f g:%.2f b:%.2f a:%.2f\n", nation->color[0], nation->color[1], nation->color[2], nation->color[3]);
 		cgi->Com_Printf("...pos x:%.0f y:%.0f\n", nation->pos[0], nation->pos[1]);
 	}

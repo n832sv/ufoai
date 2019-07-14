@@ -42,12 +42,13 @@ typedef struct nationInfo_s {
  * @brief Nation definition
  */
 typedef struct nation_s {
-	const char* id;		/**< Unique ID of this nation. */
-	const char* name;	/**< Full name of the nation. */
-	int idx;			/**< position in the nations array */
+	const char* id;			/**< Unique ID of this nation. */
+	const char* name;		/**< name of the nation. */
+	const char* namelong;	/**< full name of the nation */
+	int idx;				/**< position in the nations array */
 
-	vec4_t color;		/**< The color this nation uses in the color-coded earth-map */
-	vec2_t pos;			/**< Nation position on geoscape. */
+	vec4_t color;			/**< The color this nation uses in the color-coded earth-map */
+	vec2_t pos;				/**< Nation position on geoscape. */
 
 	nationInfo_t stats[MONTHS_PER_YEAR];	/**< Detailed information about the history of this nations relationship toward PHALANX and the aliens.
 									 * The first entry [0] is the current month - all following entries are stored older months.
@@ -60,6 +61,13 @@ typedef struct nation_s {
 	int maxScientists;	/**< How many (monthly) scientists. */
 	int maxWorkers;		/**< How many (monthly) workers. */
 	int maxPilots;		/**< How many (monthly) pilots. */
+
+	// Details 
+/*
+	int population;
+	int gdp;
+	int gdpc;
+*/
 } nation_t;
 
 /**
