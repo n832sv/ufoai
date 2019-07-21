@@ -537,7 +537,7 @@ void E_UnhireAllEmployees (base_t* base, employeeType_t type)
  * @return Pointer to the newly created employee in the global list. nullptr if something goes wrong.
  * @sa E_DeleteEmployee
  */
-Employee* E_CreateEmployee (employeeType_t type, const nation_t* nation, const ugv_t* ugvType)
+Employee* E_CreateEmployee (employeeType_t type, const nation_t* nation, const ugv_t* ugvType, const char* templateId, const char* rankname)
 {
 	const char* teamID;
 	char teamDefName[MAX_VAR];
@@ -553,19 +553,23 @@ Employee* E_CreateEmployee (employeeType_t type, const nation_t* nation, const u
 	/* Generate character stats, models & names. */
 	switch (type) {
 	case EMPL_SOLDIER:
-		rank = "rifleman";
+		if (!rankname) 	{ rank = "seaman"; }
+		if (rankname)	{ rank = rankname; }
 		Q_strncpyz(teamDefName, teamID, sizeof(teamDefName));
 		break;
 	case EMPL_SCIENTIST:
-		rank = "scientist";
+		if (!rankname) 	{ rank = "scientist"; }
+		if (rankname)	{ rank = rankname; }
 		Com_sprintf(teamDefName, sizeof(teamDefName), "%s_scientist", teamID);
 		break;
 	case EMPL_PILOT:
-		rank = "pilot";
+		if (!rankname) 	{ rank = "pilot"; }
+		if (rankname)	{ rank = rankname; }
 		Com_sprintf(teamDefName, sizeof(teamDefName), "%s_pilot", teamID);
 		break;
 	case EMPL_WORKER:
-		rank = "worker";
+		if (!rankname) 	{ rank = "worker"; }
+		if (rankname)	{ rank = rankname; }
 		Com_sprintf(teamDefName, sizeof(teamDefName), "%s_worker", teamID);
 		break;
 	case EMPL_ROBOT:
@@ -580,7 +584,7 @@ Employee* E_CreateEmployee (employeeType_t type, const nation_t* nation, const u
 		cgi->Com_Error(ERR_DROP, "E_CreateEmployee: Unknown employee type\n");
 	}
 
-	cgi->CL_GenerateCharacter(&employee.chr, teamDefName);
+	cgi->CL_GenerateCharacter(&employee.chr, teamDefName, templateId);
 	employee.chr.score.rank = CL_GetRankIdx(rank);
 
 	cgi->Com_DPrintf(DEBUG_CLIENT, "Generate character for type: %i\n", type);

@@ -43,7 +43,7 @@ typedef struct actorSkin_s {
 	bool multiplayer;
 } actorSkin_t;
 
-void CL_GenerateCharacter(character_t* chr, const char* teamDefName);
+void CL_GenerateCharacter(character_t* chr, const char* teamDefName, const char* templateId);
 void CL_UpdateCharacterValues(const character_t* chr);
 const char* CL_ActorGetSkillString(const int skill);
 

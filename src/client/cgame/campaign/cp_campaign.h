@@ -397,7 +397,7 @@ extern ccs_t ccs;
 extern const int DETECTION_INTERVAL;
 extern cvar_t* cp_missiontest;
 
-#define MAX_CREDITS 10000000
+#define MAX_CREDITS 100000000
 
 #include "../cgame.h"
 extern const cgame_import_t* cgi;

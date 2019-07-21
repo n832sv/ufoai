@@ -147,7 +147,11 @@ int G_GetInitialTUVariance(const int tu, const Actor* shooter)
 {
 	int newtu = tu;
 	int min = 3;
+	int default_penalty = 1;
 	if (tu <= 0) { return tu; }
+
+	// Default penalty
+	newtu += default_penalty;
 
 	// HP penalty
 	float hpratio2 = 100.0f * (shooter->HP / shooter->chr.maxHP) * (shooter->HP / shooter->chr.maxHP);
@@ -169,8 +173,10 @@ int G_GetInitialTUVariance(const int tu, const Actor* shooter)
 	// Mind bonus
 	int mindbonus = 0;
 	int mind = shooter->chr.score.skills[ABILITY_MIND];
-	if (std::rand() % 50 < mind - 10) { mindbonus += 1; }
 	if (std::rand() % 50 < mind - 20) { mindbonus += 1; }
+	if (std::rand() % 50 < mind - 27) { mindbonus += 1; }
+	if (std::rand() % 27 < mind - 44) { mindbonus += 1; }
+	if (std::rand() % 12 < mind - 58) { mindbonus += 1; }
 	newtu -= mindbonus;
 
 	// random variance, even = bonus, odd = penalty

@@ -51,6 +51,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "../renderer/r_draw.h"
 #include "../renderer/r_framebuffer.h"
 #include "../renderer/r_geoscape.h"
+#include "../../game/chr_shared.h"
 
 #include <set>
 #include <string>
@@ -250,12 +251,15 @@ void GAME_ResetCharacters (void)
 
 void GAME_AppendTeamMember (int memberIndex, const char* teamDefID, const equipDef_t* ed)
 {
+	const teamDef_t* teamDef = Com_GetTeamDefinitionByID(teamDefID);
+	const char* templateId = CHRSH_GetDefaultTemplateId(teamDef);
+
 	if (ed == nullptr)
 		Com_Error(ERR_DROP, "No equipment definition given");
 
 	character_t* chr = GAME_GetCharacter(memberIndex);
 
-	CL_GenerateCharacter(chr, teamDefID);
+	CL_GenerateCharacter(chr, teamDefID, templateId);
 
 	const objDef_t* weapon = chr->teamDef->onlyWeapon;
 	if (chr->teamDef->robot && !weapon) {

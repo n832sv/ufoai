@@ -370,11 +370,14 @@ static const value_t nation_vals[] = {
 	{"scientists", V_INT, offsetof(nation_t, maxScientists), MEMBER_SIZEOF(nation_t, maxScientists)},
 	{"workers", V_INT, offsetof(nation_t, maxWorkers), MEMBER_SIZEOF(nation_t, maxWorkers)},
 	{"pilots", V_INT, offsetof(nation_t, maxPilots), MEMBER_SIZEOF(nation_t, maxPilots)},
-/*
 	{"population", V_INT, offsetof(nation_t, population), MEMBER_SIZEOF(nation_t, population)},
-	{"gdp", V_INT, offsetof(nation_t, population), MEMBER_SIZEOF(nation_t, population)},
-	{"gdpc", V_INT, offsetof(nation_t, population), MEMBER_SIZEOF(nation_t, population)},
-*/
+	{"gdp", V_INT, offsetof(nation_t, gdp), MEMBER_SIZEOF(nation_t, gdpc)},
+	{"gdpc", V_INT, offsetof(nation_t, gdpc), MEMBER_SIZEOF(nation_t, gdpc)},
+	{"template", V_TRANSLATION_STRING, offsetof(nation_t, templateId), 0},
+	{"template_sf", V_TRANSLATION_STRING, offsetof(nation_t, templateId_sf), 0},
+	{"rank", V_TRANSLATION_STRING, offsetof(nation_t, rankname), 0},
+	{"rank_sf", V_TRANSLATION_STRING, offsetof(nation_t, rankname_sf), 0},
+	{"threshold_sf", V_FLOAT, offsetof(nation_t, threshold_sf), MEMBER_SIZEOF(nation_t, threshold_sf)},
 
 	{nullptr, V_NULL, 0, 0}
 };
@@ -569,7 +572,7 @@ static void NAT_ListStats_f (void)
 			if (argCount >= 4 && monthIDX != -1 * atoi(cgi->Cmd_Argv(3)))
 				continue;
 
-			cgi->UI_ExecuteConfunc("%s %s \"%s\" %d %.4f \"%s\" %d \"%f, %f, %f, %f\"",
+			cgi->UI_ExecuteConfunc("%s %s \"%s\" %d %.4f \"%s\" %d %d %d %d %d %d %d %d \"%f, %f, %f, %f\"",
 				callback,
 				nation->id,
 				_(nation->namelong),
@@ -577,6 +580,13 @@ static void NAT_ListStats_f (void)
 				nation->stats[monthIDX].happiness,
 				NAT_GetHappinessString(nation->stats[monthIDX].happiness),
 				NAT_GetFunding(nation, monthIDX),
+				nation->population,
+				nation->gdp,
+				nation->gdpc,
+				nation->maxSoldiers,
+				nation->maxScientists,
+				nation->maxWorkers,
+				nation->maxPilots,
 				nation->color[0],
 				nation->color[1],
 				nation->color[2],
@@ -691,16 +701,23 @@ static void NAT_NationList_f (void)
 		cgi->Com_Printf("...max-scientists %i\n", nation->maxScientists);
 		cgi->Com_Printf("...max-workers %i\n", nation->maxWorkers);
 		cgi->Com_Printf("...max-pilots %i\n", nation->maxPilots);
-/*
 		cgi->Com_Printf("...population %i\n", nation->population);
 		cgi->Com_Printf("...gdp %i\n", nation->gdp);
 		cgi->Com_Printf("...gdpc %i\n", nation->gdpc);
-*/
 		cgi->Com_Printf("...color r:%.2f g:%.2f b:%.2f a:%.2f\n", nation->color[0], nation->color[1], nation->color[2], nation->color[3]);
 		cgi->Com_Printf("...pos x:%.0f y:%.0f\n", nation->pos[0], nation->pos[1]);
 	}
 }
 #endif
+
+float happiness_probability (float happiness) {
+	const double phi = 1.61803398875;
+	const double x = happiness;
+	double ex3 = std::exp(std::pow((4*x - 2),3));
+	double ex3phi = std::pow(ex3, phi);
+	float result = ex3phi / (ex3phi + 1);
+	return 0.02 + 0.98 * result;
+}
 
 /**
  * @brief Update the nation data from all parsed nation each month
@@ -727,35 +744,56 @@ void NAT_HandleBudget (const campaign_t* campaign)
 		const nationInfo_t* stats = NAT_GetCurrentMonthInfo(nation);
 		const int funding = NAT_GetFunding(nation, 0);
 		int newScientists = 0, newSoldiers = 0, newPilots = 0, newWorkers = 0;
+		int probability_integer = 100 * happiness_probability(stats->happiness) * ccs.curCampaign->employeeRate;
+		const char* templateId;
+		const char* soldierRank;
 
 		totalIncome += funding;
 
-		for (int j = 0; 0.25 + j < (float) nation->maxScientists * stats->happiness * ccs.curCampaign->employeeRate; j++) {
-			/* Create a scientist, but don't auto-hire her. */
-			E_CreateEmployee(EMPL_SCIENTIST, nation, nullptr);
-			newScientists++;
-		}
+		// soldiers
+		for (int j = 0; 0.25 + j < (float) nation->maxSoldiers; j++) {
+			/* Create a soldier. */
+		 	if (probability_integer < std::rand() % 100) {
 
-		if (stats->happiness > 0) {
-			for (int j = 0; 0.25 + j < (float) nation->maxSoldiers * stats->happiness * ccs.curCampaign->employeeRate; j++) {
-				/* Create a soldier. */
-				E_CreateEmployee(EMPL_SOLDIER, nation, nullptr);
+				templateId = nation->templateId;
+				soldierRank = nation->rankname;
+
+				if (nation->threshold_sf < stats->happiness) { 
+					templateId = nation->templateId_sf;  
+					soldierRank = nation->rankname_sf;				
+				}
+
+				E_CreateEmployee(EMPL_SOLDIER, nation, nullptr, templateId, soldierRank);
 				newSoldiers++;
 			}
 		}
-		/* pilots */
-		if (stats->happiness > 0) {
-			for (int j = 0; 0.25 + j < (float) nation->maxPilots * stats->happiness * ccs.curCampaign->employeeRate; j++) {
-				/* Create a pilot. */
-				E_CreateEmployee(EMPL_PILOT, nation, nullptr);
+
+
+		// scientists
+		for (int j = 0; 0.25 + j < (float) nation->maxScientists; j++) {
+			/* Create a scientist, but don't auto-hire her. */
+		 	if (probability_integer < std::rand() % 100) {
+				E_CreateEmployee(EMPL_SCIENTIST, nation, nullptr, "scientist", "scientist");
+				newScientists++;
+			}
+		}
+
+		// pilots 
+		for (int j = 0; 0.25 + j < (float) nation->maxPilots; j++) {
+			/* Create a pilot. */
+		 	if (probability_integer < std::rand() % 100) {
+				E_CreateEmployee(EMPL_PILOT, nation, nullptr, "pilot", "pilot");
 				newPilots++;
 			}
 		}
 
-		for (int j = 0; 0.25 + j * 2 < (float) nation->maxWorkers * stats->happiness * ccs.curCampaign->employeeRate; j++) {
+
+		for (int j = 0; 0.25 + j * 2 < (float) nation->maxWorkers; j++) {
 			/* Create a worker. */
-			E_CreateEmployee(EMPL_WORKER, nation, nullptr);
-			newWorkers++;
+		 	if (probability_integer < std::rand() % 100) {
+				E_CreateEmployee(EMPL_WORKER, nation, nullptr, "worker", "worker");
+				newWorkers++;
+			}
 		}
 
 		Com_sprintf(message, sizeof(message), _("Gained %i %s, %i %s, %i %s, %i %s, and %i %s from nation %s (%s)"),

@@ -25,6 +25,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include "test_shared.h"
 #include "../client/cl_team.h"
+#include "../game/chr_shared.h"
 
 class CharacterTest: public ::testing::Test {
 protected:
@@ -42,7 +43,9 @@ protected:
 static character_t* GetCharacter (const char* teamDefID = "phalanx")
 {
 	static character_t chr;
-	CL_GenerateCharacter(&chr, teamDefID);
+	const teamDef_t* teamDef = Com_GetTeamDefinitionByID(teamDefID);
+	const char* templateId = CHRSH_GetDefaultTemplateId(teamDef);
+	CL_GenerateCharacter(&chr, teamDefID, templateId);
 	return &chr;
 }
 

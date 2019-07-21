@@ -1747,7 +1747,7 @@ static void AI_SetStats (Actor* actor, int team)
 		}
 	}
 
-	CHRSH_CharGenAbilitySkills(&actor->chr, G_IsMultiPlayer(), templateId);
+	CHRSH_CharGenAbilitySkills(&actor->chr, templateId);
 
 	actor->HP = actor->chr.HP;
 	actor->setMorale(actor->chr.morale);

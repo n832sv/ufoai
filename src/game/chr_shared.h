@@ -407,7 +407,8 @@ typedef struct character_s {
 /* ================================ */
 
 const chrTemplate_t* CHRSH_GetTemplateByID(const teamDef_t* teamDef, const char* templateId);
-void CHRSH_CharGenAbilitySkills(character_t* chr, bool multiplayer, const char* templateId = "") __attribute__((nonnull));
+const char* CHRSH_GetDefaultTemplateId(const teamDef_t* teamDef);
+void CHRSH_CharGenAbilitySkills(character_t* chr, const char* templateId = "") __attribute__((nonnull));
 const char* CHRSH_CharGetBody(const character_t* const chr) __attribute__((nonnull));
 const char* CHRSH_CharGetHead(const character_t* const chr) __attribute__((nonnull));
 bool CHRSH_IsTeamDefAlien(const teamDef_t* const td) __attribute__((nonnull));

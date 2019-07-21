@@ -228,7 +228,12 @@ TEST_F(CampaignTest, testEmployeeHandling)
 		employeeType_t type = (employeeType_t)i;
 		if (type != EMPL_ROBOT) {
 			int cnt;
-			Employee* e = E_CreateEmployee(type, nullptr, nullptr);
+			Employee* e;
+			if 		(type == EMPL_SOLDIER) 		{	e = E_CreateEmployee(type, nullptr, nullptr, "soldier", "seaman"); 		}
+			else if (type == EMPL_SCIENTIST) 	{	e = E_CreateEmployee(type, nullptr, nullptr, "scientist", "scientist"); 	}
+			else if (type == EMPL_PILOT) 		{	e = E_CreateEmployee(type, nullptr, nullptr, "pilot", "pilot"); 			}
+			else if (type == EMPL_WORKER) 		{	e = E_CreateEmployee(type, nullptr, nullptr, "worker", "worker"); 		}
+			else 								{	e = E_CreateEmployee(type, nullptr, nullptr, "soldier", "seaman"); 		}
 			ASSERT_TRUE(nullptr != e);
 
 			cnt = E_CountUnhired(type);
@@ -244,7 +249,7 @@ TEST_F(CampaignTest, testEmployeeHandling)
 	{
 		const int amount = 3;
 		for (i = 0; i < amount; i++) {
-			Employee* e = E_CreateEmployee(EMPL_SOLDIER, nullptr, nullptr);
+			Employee* e = E_CreateEmployee(EMPL_SOLDIER, nullptr, nullptr, "soldier", "seaman");
 			ASSERT_TRUE(nullptr != e);
 		}
 		{
@@ -267,7 +272,7 @@ TEST_F(CampaignTest, testEmployeeHandling)
 
 	{
 		const ugv_t* ugvType = Com_GetUGVByID("ugv_ares_w");
-		Employee* e = E_CreateEmployee(EMPL_ROBOT, nullptr, ugvType);
+		Employee* e = E_CreateEmployee(EMPL_ROBOT, nullptr, ugvType, "ugw_ares", "ugw");
 		ASSERT_TRUE(nullptr != e);
 		ASSERT_TRUE(E_DeleteEmployee(e));
 	}
@@ -275,7 +280,7 @@ TEST_F(CampaignTest, testEmployeeHandling)
 	{
 		int i, cnt;
 		for (i = 0; i < 512; i++) {
-			Employee* e = E_CreateEmployee(EMPL_SOLDIER, nullptr, nullptr);
+			Employee* e = E_CreateEmployee(EMPL_SOLDIER, nullptr, nullptr, "soldier", "seaman");
 			ASSERT_TRUE(nullptr != e);
 
 			cnt = E_CountUnhired(EMPL_SOLDIER);
@@ -876,7 +881,7 @@ TEST_F(CampaignTest, testSaveMassEmployees)
 
 	const int employees = 10000;
 	for (int i = 0; i < employees; i++) {
-		Employee* e = E_CreateEmployee(EMPL_SOLDIER, nation);
+		Employee* e = E_CreateEmployee(EMPL_SOLDIER, nation, nullptr, "soldier", "seaman");
 		if (CAP_GetFreeCapacity(base, CAP_EMPLOYEES) > 0) {
 			ASSERT_TRUE(E_HireEmployee(base, e));
 		}

@@ -347,7 +347,7 @@ typedef struct cgame_import_s {
 	const ugv_t* (IMPORT* Com_GetUGVByIDSilent) (const char* ugvID);
 	humanAircraftType_t (IMPORT* Com_DropShipShortNameToID) (const char* token);
 
-	void (IMPORT* CL_GenerateCharacter) (character_t* chr, const char* teamDefName);
+	void (IMPORT* CL_GenerateCharacter) (character_t* chr, const char* teamDefName, const char* templateId);
 	bool (IMPORT* CL_OnBattlescape) (void);
 
 	const char* (IMPORT* CL_ActorGetSkillString) (const int skill);

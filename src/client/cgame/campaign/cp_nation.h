@@ -63,11 +63,17 @@ typedef struct nation_s {
 	int maxPilots;		/**< How many (monthly) pilots. */
 
 	// Details 
-/*
 	int population;
 	int gdp;
 	int gdpc;
-*/
+
+	// Template information
+	const char* templateId;
+	const char* templateId_sf;
+	const char* rankname;
+	const char* rankname_sf;
+	float threshold_sf;
+
 } nation_t;
 
 /**
@@ -105,6 +111,8 @@ city_t* CITY_GetByPos(vec2_t pos);
 void CITY_Parse(const char* name, const char** text);
 
 bool NAT_ScriptSanityCheck(void);
+
+float happiness_probability (float happiness);
 
 void NAT_HandleBudget(const struct campaign_s* campaign);
 void NAT_BackupMonthlyData(void);

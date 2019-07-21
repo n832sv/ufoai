@@ -217,19 +217,38 @@ const implant_t* CHRSH_ApplyImplant (character_t& chr, const implantDef_t& def)
  * @note mulitplayer is a special case here
  * @todo Add modifiers for difficulty setting here!
  */
-void CHRSH_CharGenAbilitySkills (character_t* chr, bool multiplayer, const char* templateId)
+const char* CHRSH_GetDefaultTemplateId(const teamDef_t* teamDef)
+{
+	const char* templateId;
+	int roll;
+
+	if (teamDef->characterTemplates[0]) {
+	
+		templateId = teamDef->characterTemplates[0]-> id;
+
+		if (teamDef->numTemplates > 1) {
+			int roll = std::rand() % teamDef->numTemplates;
+			templateId = teamDef->characterTemplates[roll]->id;
+		}
+
+	} else {
+		Sys_Error("CHRSH_CharGenAbilitySkills: No character template for team %s!", teamDef->id);
+	}
+
+	return templateId;
+}
+
+void CHRSH_CharGenAbilitySkills (character_t* chr, const char* templateId)
 {
 	const chrTemplate_t* chrTemplate;
 	const teamDef_t* teamDef = chr->teamDef;
-
-	if (multiplayer && teamDef->team == TEAM_PHALANX)
-		/* @todo Hard coded template id, remove when possible */
-		templateId = "soldier_mp";
 
 	if (!Q_strnull(templateId)) {
 		chrTemplate = CHRSH_GetTemplateByID(teamDef, templateId);
 		if (!chrTemplate)
 			Sys_Error("CHRSH_CharGenAbilitySkills: Character template not found (%s) in %s", templateId, teamDef->id);
+
+	// fallback template
 	} else if (teamDef->characterTemplates[0]) {
 		if (teamDef->numTemplates > 1) {
 			float sumRate = 0.0f;

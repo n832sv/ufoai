@@ -33,6 +33,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "../../../shared/mathlib_extra.h"
 #include "math.h"
 #include "cp_mission_callbacks.h"
+#include "../../../game/chr_shared.h"
 
 /**
  * @brief Possible types of teams that can fight in an auto mission battle.
@@ -212,8 +213,10 @@ static void AM_FillTeamFromAircraft (autoMissionBattle_t* battle, const autoMiss
  */
 static void AM_CreateUnitChr (autoUnit_t* unit, const teamDef_t* teamDef, const equipDef_t* ed)
 {
+	const char* templateId = CHRSH_GetDefaultTemplateId(teamDef);
+
 	unit->chr = Mem_PoolAllocType(character_t, cp_campaignPool);
-	cgi->CL_GenerateCharacter(unit->chr, teamDef->id);
+	cgi->CL_GenerateCharacter(unit->chr, teamDef->id, templateId);
 
 	cgi->INV_EquipActor(unit->chr, ed, unit->chr->teamDef->onlyWeapon, cgi->GAME_GetChrMaxLoad(unit->chr));
 }

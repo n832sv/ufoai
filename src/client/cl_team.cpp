@@ -232,7 +232,7 @@ void CL_UpdateCharacterValues (const character_t* chr)
  * @param[in] chr The employee to create character data for.
  * @param[in] teamDefName Which team to use for creation.
  */
-void CL_GenerateCharacter (character_t* chr, const char* teamDefName)
+void CL_GenerateCharacter (character_t* chr, const char* teamDefName, const char* templateId)
 {
 	chr->init();
 
@@ -246,7 +246,7 @@ void CL_GenerateCharacter (character_t* chr, const char* teamDefName)
 
 	Com_GetCharacterValues(teamDefName, chr);
 	/* Create attributes. */
-	CHRSH_CharGenAbilitySkills(chr, GAME_IsMultiplayer());
+	CHRSH_CharGenAbilitySkills(chr, templateId);
 
 	chr->RFmode.set(ACTOR_HAND_NOT_SET, -1, nullptr);
 	chr->state |= STATE_REACTION;
