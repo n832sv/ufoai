@@ -556,21 +556,25 @@ Employee* E_CreateEmployee (employeeType_t type, const nation_t* nation, const u
 		if (!rankname) 	{ rank = "seaman"; }
 		if (rankname)	{ rank = rankname; }
 		Q_strncpyz(teamDefName, teamID, sizeof(teamDefName));
+		cgi->CL_GenerateCharacter(&employee.chr, teamDefName, templateId);
 		break;
 	case EMPL_SCIENTIST:
 		if (!rankname) 	{ rank = "scientist"; }
 		if (rankname)	{ rank = rankname; }
 		Com_sprintf(teamDefName, sizeof(teamDefName), "%s_scientist", teamID);
+		cgi->CL_GenerateCharacter(&employee.chr, teamDefName, "");
 		break;
 	case EMPL_PILOT:
 		if (!rankname) 	{ rank = "pilot"; }
 		if (rankname)	{ rank = rankname; }
 		Com_sprintf(teamDefName, sizeof(teamDefName), "%s_pilot", teamID);
+		cgi->CL_GenerateCharacter(&employee.chr, teamDefName, templateId);
 		break;
 	case EMPL_WORKER:
 		if (!rankname) 	{ rank = "worker"; }
 		if (rankname)	{ rank = rankname; }
 		Com_sprintf(teamDefName, sizeof(teamDefName), "%s_worker", teamID);
+		cgi->CL_GenerateCharacter(&employee.chr, teamDefName, "");
 		break;
 	case EMPL_ROBOT:
 		if (ugvType == nullptr)
@@ -584,7 +588,8 @@ Employee* E_CreateEmployee (employeeType_t type, const nation_t* nation, const u
 		cgi->Com_Error(ERR_DROP, "E_CreateEmployee: Unknown employee type\n");
 	}
 
-	cgi->CL_GenerateCharacter(&employee.chr, teamDefName, templateId);
+//	cgi->CL_GenerateCharacter(&employee.chr, teamDefName, templateId);
+
 	employee.chr.score.rank = CL_GetRankIdx(rank);
 
 	cgi->Com_DPrintf(DEBUG_CLIENT, "Generate character for type: %i\n", type);
@@ -766,13 +771,13 @@ void E_InitialEmployees (const campaign_t* campaign)
 
 	/* setup initial employee count */
 	for (i = 0; i < campaign->soldiers; i++)
-		E_CreateEmployee(EMPL_SOLDIER, NAT_GetRandom(), nullptr);
+		E_CreateEmployee(EMPL_SOLDIER, NAT_GetRandom(), nullptr, "soldier", "seaman");
 	for (i = 0; i < campaign->scientists; i++)
-		E_CreateEmployee(EMPL_SCIENTIST, NAT_GetRandom(), nullptr);
+		E_CreateEmployee(EMPL_SCIENTIST, NAT_GetRandom(), nullptr, "scientist", "scientist");
 	for (i = 0; i < campaign->workers; i++)
-		E_CreateEmployee(EMPL_WORKER, NAT_GetRandom(), nullptr);
+		E_CreateEmployee(EMPL_WORKER, NAT_GetRandom(), nullptr, "worker", "worker");
 	for (i = 0; i < campaign->pilots; i++)
-		E_CreateEmployee(EMPL_PILOT, NAT_GetRandom(), nullptr);
+		E_CreateEmployee(EMPL_PILOT, NAT_GetRandom(), nullptr, "pilot", "pilot");
 	for (i = 0; i < campaign->ugvs; i++) {
 		/** @todo don't use hardcoded UGV ids */
 		if (frand() > 0.5)
@@ -812,19 +817,19 @@ static void CL_DebugNewEmployees_f (void)
 	int j;
 	for (j = 0; j < 5; j++)
 		/* Create a scientist */
-		E_CreateEmployee(EMPL_SCIENTIST, nation, nullptr);
+		E_CreateEmployee(EMPL_SCIENTIST, nation, nullptr, "scientist", "scientist");
 
 	for (j = 0; j < 5; j++)
 		/* Create a pilot. */
-		E_CreateEmployee(EMPL_PILOT, nation, nullptr);
+		E_CreateEmployee(EMPL_PILOT, nation, nullptr, "pilot", "pilot");
 
 	for (j = 0; j < 5; j++)
 		/* Create a soldier. */
-		E_CreateEmployee(EMPL_SOLDIER, nation, nullptr);
+		E_CreateEmployee(EMPL_SOLDIER, nation, nullptr, "soldier", "seaman");
 
 	for (j = 0; j < 5; j++)
 		/* Create a worker. */
-		E_CreateEmployee(EMPL_WORKER, nation, nullptr);
+		E_CreateEmployee(EMPL_WORKER, nation, nullptr, "worker", "worker");
 }
 #endif
 

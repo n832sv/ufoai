@@ -246,7 +246,8 @@ void CL_GenerateCharacter (character_t* chr, const char* teamDefName, const char
 
 	Com_GetCharacterValues(teamDefName, chr);
 	/* Create attributes. */
-	CHRSH_CharGenAbilitySkills(chr, templateId);
+
+	CHRSH_CharGenAbilitySkills(chr, templateId); 
 
 	chr->RFmode.set(ACTOR_HAND_NOT_SET, -1, nullptr);
 	chr->state |= STATE_REACTION;

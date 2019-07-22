@@ -245,8 +245,9 @@ void CHRSH_CharGenAbilitySkills (character_t* chr, const char* templateId)
 
 	if (!Q_strnull(templateId)) {
 		chrTemplate = CHRSH_GetTemplateByID(teamDef, templateId);
-		if (!chrTemplate)
+		if (!chrTemplate) {
 			Sys_Error("CHRSH_CharGenAbilitySkills: Character template not found (%s) in %s", templateId, teamDef->id);
+		}
 
 	// fallback template
 	} else if (teamDef->characterTemplates[0]) {
