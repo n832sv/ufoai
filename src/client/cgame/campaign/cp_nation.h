@@ -56,11 +56,12 @@ typedef struct nation_s {
 									 */
 
 	/* Funding */
-	int maxFunding;		/**< How many (monthly) credits. */
-	int maxSoldiers;	/**< How many (monthly) soldiers. */
-	int maxScientists;	/**< How many (monthly) scientists. */
-	int maxWorkers;		/**< How many (monthly) workers. */
-	int maxPilots;		/**< How many (monthly) pilots. */
+	int maxFunding;			/**< How many (monthly) credits. */
+	int maxSoldiers;		/**< How many (monthly) soldiers. */
+	int maxScientists;		/**< How many (monthly) scientists. */
+	int maxWorkers;			/**< How many (monthly) workers. */
+	int maxPilots;			/**< How many (monthly) pilots. */
+	int maxSpecialForces;	// How many (monthly) special forces soldiers
 
 	// Details 
 	int population;

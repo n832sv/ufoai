@@ -56,6 +56,30 @@ Employee* E_GetUnhired (employeeType_t type)
 	return nullptr;
 }
 
+void E_delete_unhired_at_random (const int percent) 
+{
+	E_Foreach(EMPL_SOLDIER, employee) {
+		if (!employee->isHired() && std::rand() % 100 < percent) {
+			E_DeleteEmployee(employee);
+		}
+	}
+	E_Foreach(EMPL_SCIENTIST, employee) {
+		if (!employee->isHired() && std::rand() % 100 < percent) {
+			E_DeleteEmployee(employee);
+		}
+	}
+	E_Foreach(EMPL_PILOT, employee) {
+		if (!employee->isHired() && std::rand() % 100 < percent) {
+			E_DeleteEmployee(employee);
+		}
+	}
+	E_Foreach(EMPL_WORKER, employee) {
+		if (!employee->isHired() && std::rand() % 100 < percent) {
+			E_DeleteEmployee(employee);
+		}
+	}
+}
+
 /**
  * @brief Calculates the employee's actual salary
  * @returns Monthly salary of the employee
