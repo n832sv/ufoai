@@ -615,6 +615,7 @@ Employee* E_CreateEmployee (employeeType_t type, const nation_t* nation, const u
 //	cgi->CL_GenerateCharacter(&employee.chr, teamDefName, templateId);
 
 	employee.chr.score.rank = CL_GetRankIdx(rank);
+	Q_strncpyz(employee.chr.nationality, nation->id, sizeof(employee.chr.nationality));
 
 	cgi->Com_DPrintf(DEBUG_CLIENT, "Generate character for type: %i\n", type);
 
@@ -792,10 +793,14 @@ int E_CountUnassigned (const base_t* const base, employeeType_t type)
 void E_InitialEmployees (const campaign_t* campaign)
 {
 	int i;
+	nation_t* nation;
 
 	/* setup initial employee count */
-	for (i = 0; i < campaign->soldiers; i++)
-		E_CreateEmployee(EMPL_SOLDIER, NAT_GetRandom(), nullptr, "soldier", "seaman");
+	for (i = 0; i < campaign->soldiers; i++) {
+		nation = NAT_GetRandom();
+		E_CreateEmployee(EMPL_SOLDIER, nation, nullptr, nation->templateId, nation->rankname);
+	}
+
 	for (i = 0; i < campaign->scientists; i++)
 		E_CreateEmployee(EMPL_SCIENTIST, NAT_GetRandom(), nullptr, "scientist", "scientist");
 	for (i = 0; i < campaign->workers; i++)

@@ -696,6 +696,7 @@ bool GAME_SaveCharacter (xmlNode_t* p, const character_t* chr)
 	assert(chr);
 	Com_RegisterConstList(saveCharacterConstants);
 	/* Store the character data */
+	XML_AddString(p, SAVE_CHARACTER_NATIONALITY, chr->nationality);
 	XML_AddString(p, SAVE_CHARACTER_NAME, chr->name);
 	XML_AddString(p, SAVE_CHARACTER_BODY, chr->body);
 	XML_AddString(p, SAVE_CHARACTER_PATH, chr->path);
@@ -791,6 +792,7 @@ bool GAME_LoadCharacter (xmlNode_t* p, character_t* chr)
 	Q_strncpyz(chr->body, XML_GetString(p, SAVE_CHARACTER_BODY), sizeof(chr->body));
 	Q_strncpyz(chr->path, XML_GetString(p, SAVE_CHARACTER_PATH), sizeof(chr->path));
 	Q_strncpyz(chr->head, XML_GetString(p, SAVE_CHARACTER_HEAD), sizeof(chr->head));
+	Q_strncpyz(chr->nationality, XML_GetString(p, SAVE_CHARACTER_NATIONALITY), sizeof(chr->nationality));
 
 	const int maxSkins = CL_GetActorSkinCount() - 1;
 	const int bodySkin = XML_GetInt(p, SAVE_CHARACTER_BDOY_SKIN, 0);

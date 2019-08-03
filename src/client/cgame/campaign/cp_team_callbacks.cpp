@@ -277,7 +277,7 @@ static void CP_TEAM_FillEquipSoldierList_f (void)
 			character_t* chr = &employee->chr;
 			CP_SetEquipContainer(chr);
 			const int needsHealing = HOS_NeedsHealing(*chr) ? 1 : 0;
-			cgi->UI_ExecuteConfunc("equipment_soldierlist_add %d \"%s\" %d \"\"", chr->ucn, chr->name, needsHealing);
+			cgi->UI_ExecuteConfunc("equipment_soldierlist_add %d \"%s\" %d \"%s\" \"\"", chr->ucn, chr->name, needsHealing, chr->nationality);
 			count++;
 		}
 	} else {
@@ -292,8 +292,8 @@ static void CP_TEAM_FillEquipSoldierList_f (void)
 			CP_SetEquipContainer(chr);
 			const int needsHealing = HOS_NeedsHealing(*chr) ? 1 : 0;
 			const aircraft_t* assignedCraft = AIR_IsEmployeeInAircraft(employee, nullptr);
-			cgi->UI_ExecuteConfunc("equipment_soldierlist_add %d \"%s\" %d \"%s\"",
-					chr->ucn, chr->name, needsHealing, assignedCraft ? assignedCraft->name : "");
+			cgi->UI_ExecuteConfunc("equipment_soldierlist_add %d \"%s\" %d \"%s\" \"%s\"",
+					chr->ucn, chr->name, needsHealing, chr->nationality, assignedCraft ? assignedCraft->name : "");
 			count++;
 		}
 	}

@@ -214,9 +214,9 @@ typedef enum {
 /* team definitions */
 
 #define MAX_UGV					8
-#define MAX_TEAMDEFS			64
-#define MAX_CHARACTER_TEMPLATES	64
-#define MAX_TEMPLATES_PER_TEAM	64
+#define MAX_TEAMDEFS			128
+#define MAX_CHARACTER_TEMPLATES	128
+#define MAX_TEMPLATES_PER_TEAM	128
 
 typedef enum {
 	NAME_NEUTRAL,
@@ -372,6 +372,7 @@ typedef struct character_s {
 	char path[MAX_VAR];
 	char body[MAX_VAR];
 	char head[MAX_VAR];
+	char nationality[MAX_VAR];	// nationid string
 	int bodySkin;				/**< Index of skin. */
 	int headSkin;				/**< Index of skin. */
 

@@ -401,7 +401,7 @@ static void INV_UpdateActorLoad_f (void)
 	Com_sprintf(label, sizeof(label), "%g/%i %s %s", invWeight / WEIGHT_FACTOR, maxWeight, _("Kg"),
 			(count > 0 ? _("Warning!") : ""));
 	Com_sprintf(tooltip, sizeof(tooltip), "%s %i (%+i)", _("TU:"), tus, tuPenalty);
-	UI_ExecuteConfunc("%s \"%s\" \"%s\" %f %i", Cmd_Argv(1), label, tooltip, WEIGHT_NORMAL_PENALTY - (1.0f - penalty), count);
+	UI_ExecuteConfunc("%s \"%s\" \"%s\" %f %i \"%s\"", Cmd_Argv(1), label, tooltip, WEIGHT_NORMAL_PENALTY - (1.0f - penalty), count, chr->nationality);
 }
 
 void INV_InitCallbacks (void)
