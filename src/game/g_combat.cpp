@@ -34,6 +34,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "g_spawn.h"
 #include "g_utils.h"
 #include "g_vis.h"
+#include <cmath>
 
 #define MAX_WALL_THICKNESS_FOR_SHOOTING_THROUGH 8
 
@@ -124,8 +125,12 @@ static void G_Morale (morale_modifiers type, const Edict* victim, const Edict* a
 				mod *= mof_enemy->value;
 		}
 		/* seeing a civilian die is more "acceptable" */
-		if (G_IsCivilian(victim))
+		if (G_IsCivilian(victim)) {
 			mod *= mof_civilian->value;
+			if (!(G_FrustumVis(actor, victim->origin) && G_ActorVis(actor, victim, false))) { 
+				mod *= 0.25f;
+			}
+		}
 		/* if an ally (or in singleplayermode, as human, a civilian) got shot, lower the morale, don't heighten it. */
 		if (victim->isSameTeamAs(actor) || (G_IsCivilian(victim) && !G_IsAlien(actor) && G_IsSinglePlayer()))
 			mod *= -1;
@@ -394,6 +399,7 @@ static bool G_Damage (Edict* target, const fireDef_t* fd, int damage, Actor* att
 	const bool stunGas = (fd->obj->dmgtype == gi.csi->damStunGas);
 	const bool shock = (fd->obj->dmgtype == gi.csi->damShock);
 	const bool smoke = (fd->obj->dmgtype == gi.csi->damSmoke);
+	const bool blast = (fd->obj->dmgtype == gi.csi->damBlast);
 
 	/* Breakables */
 	if (G_IsBrushModel(target) && G_IsBreakable(target)) {
@@ -459,8 +465,8 @@ static bool G_Damage (Edict* target, const fireDef_t* fd, int damage, Actor* att
 			if (!isRobot) /* Can't stun robots with gas */
 				victim->addStun(damage);
 		} else if (shock) {
-			/* Only do this if it's not one from our own team ... they should have known that there was a flashbang coming. */
-			if (!isRobot && !victim->isSameTeamAs(attacker)) {
+
+			if (!isRobot) {
 				/** @todo there should be a possible protection, too */
 				/* dazed entity wont reaction fire */
 				victim->removeReaction();
@@ -480,6 +486,16 @@ static bool G_Damage (Edict* target, const fireDef_t* fd, int damage, Actor* att
 				/* The 'attacker' is healing the victim. */
 				G_TreatActor(victim, fd, damage, attacker->getTeam());
 			} else {
+				if (blast && !isRobot && std::rand() % 100 < damage) {
+					victim->removeReaction();
+					G_ActorReserveTUs(victim, 0, victim->chr.reservedTus.shot, victim->chr.reservedTus.crouch);
+					/* flashbangs kill TUs */
+					G_ActorSetTU(victim, 0);
+					G_SendStats(*victim);
+					/* entity is dazed */
+					victim->setDazed();
+					G_EventSendState(G_VisToPM(victim->visflags), *victim);
+				}
 				/* Real damage was dealt. */
 				G_DamageActor(victim, damage, impact);
 				/* Update overall splash damage for stats/score. */
@@ -547,6 +563,41 @@ static inline bool G_FireAffectedSurface (const cBspSurface_t* surface, const fi
 	return false;
 }
 
+// Abramowitz and Stegun formula 26.2.23.
+// The absolute value of the error should be less than 4.5 e-4.
+double RationalApproximation(double t)
+{
+	double c[] = {2.515517, 0.802853, 0.010328};
+	double d[] = {1.432788, 0.189269, 0.001308};
+	double numerator = t - ((c[2]*t + c[1])*t + c[0]);
+	double denominator = ((d[2]*t + d[1])*t + d[0])*t + 1.0;
+	return numerator/denominator;
+}
+
+// Adapted from John D. Cook's article
+double NormalCDFInverse(double p)
+{
+	double arg = p < 0 || 1 < p ? 0.5 : p;
+	if (arg < 0.5)
+	{
+	    // F^-1(p) = - G^-1(p)
+	    return -RationalApproximation( sqrt(-2.0*log(arg)) );
+	}
+	else
+	{
+	    // F^-1(p) = G^-1(1-p)
+	    return RationalApproximation( sqrt(-2.0*log(1-arg)) );
+	}
+}
+
+// is supposed to return a normally distributed standard deviation, or z-value
+double normal_distribution() {
+
+	double roll = (double)std::rand() / RAND_MAX;
+	return NormalCDFInverse(roll);
+
+}
+
 /**
  * @brief Deals splash damage to a target and its surroundings.
  * @param[in] ent The shooting actor
@@ -606,7 +657,17 @@ static void G_SplashDamage (Actor* ent, const fireDef_t* fd, vec3_t impact, shot
 			continue;
 
 		/* do damage */
-		const int damage = shock ? 0 : fd->spldmg[0] * (1.0f - dist / fd->splrad);
+		float calculate_damage;
+		float geometric_normal_distribution;
+		if (shock)  { calculate_damage = 0.0f;}
+		if (!shock) { 
+			geometric_normal_distribution 	 = 1.0f + normal_distribution() * 0.1f * fd->spldmg[0]; 
+ 			calculate_damage 				 = fd->spldmg[0] - fd->spldmg[1] * (1.0f - dist / fd->splrad); 
+			calculate_damage				*= geometric_normal_distribution;
+		}
+		if (calculate_damage < 0) { calculate_damage = 0.0f; }
+
+		const int damage = static_cast<int>(std::floor(calculate_damage));
 
 		if (mock)
 			mock->allow_self = true;

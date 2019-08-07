@@ -41,6 +41,10 @@ void CP_SupplyMissionIsSuccess (mission_t* mission)
 {
 	alienBase_t* base;
 	INT_ChangeIndividualInterest(-0.2f, INTERESTCATEGORY_SUPPLY);
+	INT_ChangeIndividualInterest(0.02f, INTERESTCATEGORY_TERROR_ATTACK);
+	INT_ChangeIndividualInterest(0.02f, INTERESTCATEGORY_HARVEST);
+	if (CP_IsXVIStarted())
+		INT_ChangeIndividualInterest(0.04f, INTERESTCATEGORY_XVI);
 
 	/* Spread XVI */
 	base = mission->data.alienBase;

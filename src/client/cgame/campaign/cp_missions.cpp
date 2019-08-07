@@ -1085,6 +1085,9 @@ void CP_MissionStageEnd (const campaign_t* campaign, mission_t* mission)
 	cgi->Com_DPrintf(DEBUG_CLIENT, "Ending mission category %i, stage %i (time: %i day, %i sec)\n",
 		mission->category, mission->stage, ccs.date.day, ccs.date.sec);
 
+	// update nations' happiness 
+	CP_NationsUpdateAfterMissionStage(mission);
+
 	/* Crash mission is on the map for too long: aliens die or go away. End mission */
 	if (mission->crashed) {
 		CP_MissionIsOver(mission);

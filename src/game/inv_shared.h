@@ -158,6 +158,7 @@ typedef struct fireDef_s {
 	vec2_t damage;		/**< G_Damage(), damage[0] is min value of damage, damage[1] is used for randomized calculations
 						 of additional damage; damage[0] < 0 means healing, not applying damage */
 	vec2_t spldmg;		/**< G_SplashDamage(), currently we use only first value (spldmg[0]) for apply splashdamage effect */
+	vec3_t fragment;	// for grenades & explosives
 	float splrad;		/**< splash damage radius */
 	int weaponSkill;	/**< What weapon skill is needed to fire this weapon. */
 	int rounds;			/**< e.g. for incendiary grenades */

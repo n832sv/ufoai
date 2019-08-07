@@ -43,6 +43,7 @@ static void CP_HarvestMissionIsSuccess (mission_t* mission)
 	INT_ChangeIndividualInterest(-0.3f, INTERESTCATEGORY_HARVEST);
 	INT_ChangeIndividualInterest(0.2f, INTERESTCATEGORY_RECON);
 	INT_ChangeIndividualInterest(0.05f, INTERESTCATEGORY_BUILDING);
+	INT_ChangeIndividualInterest(0.01f, INTERESTCATEGORY_TERROR_ATTACK);
 	if (CP_IsXVIStarted())
 		INT_ChangeIndividualInterest(0.1f, INTERESTCATEGORY_XVI);
 

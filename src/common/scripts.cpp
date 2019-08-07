@@ -1571,6 +1571,7 @@ static const value_t fdps[] = {
 	{"damage", V_POS, offsetof(fireDef_t, damage), MEMBER_SIZEOF(fireDef_t, damage)},
 	{"spldmg", V_POS, offsetof(fireDef_t, spldmg), MEMBER_SIZEOF(fireDef_t, spldmg)},
 	{"dmgweight", V_DAMAGE, offsetof(fireDef_t, dmgweight), MEMBER_SIZEOF(fireDef_t, dmgweight)},
+	{"fragment", V_VECTOR, offsetof(fireDef_t, fragment), MEMBER_SIZEOF(fireDef_t, fragment)},
 	{"irgoggles", V_BOOL, offsetof(fireDef_t, irgoggles), MEMBER_SIZEOF(fireDef_t, irgoggles)},
 	{"rounds", V_INT, offsetof(fireDef_t, rounds), MEMBER_SIZEOF(fireDef_t, rounds)},
 	{nullptr, V_NULL, 0, 0}
@@ -1752,10 +1753,18 @@ static bool Com_ParseFire (const char* name, const char** text, fireDef_t* fd)
 		fd->delayBetweenShots = 0.0f;
 	}
 
+	if (fd->fragment == nullptr) {
+		fd->fragment[0] = 0;
+		fd->fragment[1] = 0;
+		fd->fragment[2] = 0;
+	}
+
 	if (fd->name == nullptr) {
 		Com_Printf("firedef without name\n");
 		return false;
 	}
+
+
 
 	return true;
 }

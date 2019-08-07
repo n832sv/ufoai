@@ -41,6 +41,9 @@ typedef struct shot_mock_s {
 	}
 } shot_mock_t;
 
+double RationalApproximation (double t);
+double NormalCDFInverse (double p);
+double normal_distribution();
 int G_ApplyProtection(const Edict* target, const byte dmgWeight, int damage);
 void G_CheckDeathOrKnockout(Actor* target, Actor* attacker, const fireDef_t* fd, int damage);
 bool G_ClientShoot(const Player& player, Actor* actor, const pos3_t at, shoot_types_t shootType, fireDefIndex_t firemode, shot_mock_t* mock, bool allowReaction, int z_align);

@@ -42,6 +42,7 @@ static void CP_ReconMissionIsSuccess (mission_t* mission)
 {
 	INT_ChangeIndividualInterest(-0.2f, INTERESTCATEGORY_RECON);
 	INT_ChangeIndividualInterest(0.1f, INTERESTCATEGORY_HARVEST);
+	INT_ChangeIndividualInterest(0.05f, INTERESTCATEGORY_TERROR_ATTACK);
 	if (AB_GetAlienBaseNumber())
 		INT_ChangeIndividualInterest(0.1f, INTERESTCATEGORY_SUPPLY);
 	if (CP_IsXVIStarted())

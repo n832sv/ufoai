@@ -93,22 +93,22 @@ typedef struct mission_s {
 		installation_t* installation;
 		alienBase_t* alienBase;
 		city_t* city;
-	} data;					/**< may be related to mission type (like pointer to base attacked, or to alien base) */
-	interestCategory_t category;		/**< The category of the event */
-	missionStage_t stage;			/**< in which stage is this event? */
-	int initialOverallInterest;		/**< The overall interest value when this event has been created */
-	int initialIndividualInterest;		/**< The individual interest value (of type type) when this event has been created */
-	date_t startDate;			/**< Date when the event should start */
-	date_t finalDate;			/**< Date when the event should finish (e.g. for aerial recon)
-						 * if finaleDate.day == 0, then delay is not a limitating factor for next stage */
-	vec2_t pos;				/**< Position of the mission */
-	aircraft_t* ufo;			/**< UFO on geoscape fulfilling the mission (may be nullptr) */
-	bool onGeoscape;			/**< Should the mission be displayed on geoscape */
-	bool crashed;				/**< is UFO crashed ? (only used if mission is spawned from a UFO */
+	} data;							// may be related to mission type (like pointer to base attacked, or to alien base) 
+	interestCategory_t category;	// The category of the event 
+	missionStage_t stage;			// in which stage is this event? 
+	int initialOverallInterest;		// The overall interest value when this event has been created 
+	int initialIndividualInterest;	// The individual interest value (of type type) when this event has been created 
+	date_t startDate;				// Date when the event should start 
+	date_t finalDate;				// Date when the event should finish (e.g. for aerial recon)
+									// if finaleDate.day == 0, then delay is not a limitating factor for next stage 
+	vec2_t pos;						// Position of the mission 
+	aircraft_t* ufo;				// UFO on geoscape fulfilling the mission (may be nullptr) 
+	bool onGeoscape;				// Should the mission be displayed on geoscape 
+	bool crashed;					// is UFO crashed ? (only used if mission is spawned from a UFO 
 
-	char onwin[256];			/**< trigger command after you've won a battle, @sa CP_ExecuteMissionTrigger */
-	char onlose[256];			/**< trigger command after you've lost a battle, @sa CP_ExecuteMissionTrigger */
-	bool posAssigned;			/**< is the position of this mission already set? */
+	char onwin[256];				// trigger command after you've won a battle, @sa CP_ExecuteMissionTrigger 
+	char onlose[256];				// trigger command after you've lost a battle, @sa CP_ExecuteMissionTrigger 
+	bool posAssigned;				// is the position of this mission already set? 
 	missionResults_t missionResults;
 } mission_t;
 

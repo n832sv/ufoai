@@ -97,6 +97,7 @@ typedef struct city_s {
 nation_t* NAT_GetNationByID(const char* nationID);
 nation_t* NAT_GetRandom(void);
 
+void CP_NationsUpdateAfterMissionStage (struct mission_s* mission);
 void NAT_UpdateHappinessForAllNations(const float minhappiness);
 void NAT_SetHappiness(const float minhappiness, nation_t* nation, const float happiness);
 int NAT_GetFunding(const nation_t* const nation, int month);

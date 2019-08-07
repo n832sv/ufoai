@@ -249,9 +249,67 @@ bool NAT_SaveXML (xmlNode_t* p)
 	return true;
 }
 
+//	called by CP_MissionStageEnd() when switching from one mission stage to next 
+//	(which implies the stage was successful, i.e. phalanx did not intervene)
+
+void CP_NationsUpdateAfterMissionStage (mission_t* mission)
+{
+	const float terror_penalty_affected_nation 		= -0.120f;
+	const float terror_penalty_other_nations		= -0.030f;
+	const float	harvest_penalty_affected_nation		= -0.090f;
+	const float harvest_penalty_other_nations		= -0.015f;
+	const float xvi_penalty_affected_nation			= -0.040f;
+	const float xvi_penalty_other_nations			= -0.005f;
+//	const float	subvert_penalty_affected_nation		= -0.120f;
+//	const float subvert_penalty_other_nations		= -0.000f;
+
+	nation_t* missionNation;
+	float mission_nation_penalty = 0.0f;
+	float other_nations_penalty = 0.0f;
+
+	if (mission->stage == STAGE_TERROR_MISSION) {
+
+		missionNation = GEO_GetNation(mission->pos);
+		mission_nation_penalty = terror_penalty_affected_nation;
+		other_nations_penalty = terror_penalty_other_nations;
+
+	}
+
+	if (mission->stage == STAGE_HARVEST) {
+
+		missionNation = GEO_GetNation(mission->pos);
+		mission_nation_penalty = harvest_penalty_affected_nation;
+		other_nations_penalty = harvest_penalty_other_nations;
+
+	}
+
+	if (mission->stage == STAGE_SPREAD_XVI) {
+	
+		missionNation = GEO_GetNation(mission->pos);
+		mission_nation_penalty = xvi_penalty_affected_nation;
+		other_nations_penalty = xvi_penalty_other_nations;
+
+	}
+
+	if (missionNation) {
+		NAT_Foreach(nation) {
+			const nationInfo_t* stats = NAT_GetCurrentMonthInfo(nation);
+			const float minHappiness = ccs.curCampaign->minhappiness;
+
+			/* update happiness. */
+			if (nation == missionNation)
+				NAT_SetHappiness(minHappiness, nation, stats->happiness + mission_nation_penalty);
+			else
+				NAT_SetHappiness(minHappiness, nation, stats->happiness + other_nations_penalty);
+		}
+	}
+
+}
+
+
 /**
  * @brief Updates each nation's happiness.
- * Should be called at the completion or expiration of every mission.
+ * Should be called at the completion of battlescape encounters (error: Not expiration of every mission.)
  * The nation where the mission took place will be most affected,
  * surrounding nations will be less affected.
  * @param[in] minHappiness Minimum value of mean happiness before the game is lost
@@ -266,56 +324,218 @@ void CP_HandleNationData (float minHappiness, mission_t* mis, const nation_t* af
 {
 	const float civilianSum = (float) (results->civiliansSurvived + results->civiliansKilled + results->civiliansKilledFriendlyFire);
 	const float alienSum = (float) (results->aliensSurvived + results->aliensKilled + results->aliensStunned);
-	float performance;
-	float performanceAlien;
-	float performanceCivilian;
-	float deltaHappiness = 0.0f;
-	float happinessDivisor = 5.0f;
-	float victoryBonusPerAlien = 0.1f;
 
-	if (mis->mapDef->victoryBonusPerAlien) {
-		victoryBonusPerAlien = mis->mapDef->victoryBonusPerAlien;
+	float delta_happiness_affected_nation = 0.0f;
+	float delta_happiness_other_nations = 0.0f;
+	bool craft_was_downed = mis->crashed;
+	bool craft_was_recovered = results->recovery;
+
+	// shorthand
+	int civilian_save 	= results->civiliansSurvived;
+	int civilian_dead 	= results->civiliansKilled;
+	int civilian_ff 	= results->civiliansKilledFriendlyFire;
+	int own_dead		= results->ownKilled;
+	int own_ff			= results->ownKilledFriendlyFire;
+	int alien_dead		= results->aliensKilled;
+	int alien_stun		= results->aliensStunned;
+
+	// cases
+	// UFO was shotdown and recovered
+	// Harvest mission failed
+	// Terror mission failed
+	// XVI mission failed
+	// Harvest mission won
+	// Terror mission won
+	// XVI mission won
+	// UFO was not shotdown, but was recovered and is not harvest, terror or XVI
+	// Base attack, lost
+	// Base attack, won
+	// Alien base attack, lost
+	// Alien base attack, won
+
+	bool crash_and_recovered 				= craft_was_downed && craft_was_recovered;
+	bool harvest_fail 						= (mis->category == INTERESTCATEGORY_HARVEST && !won);
+	bool terror_fail 						= (mis->category == INTERESTCATEGORY_TERROR_ATTACK && !won);
+	bool xvi_fail 							= (mis->category == INTERESTCATEGORY_XVI && !won);
+	bool harvest_won						= (mis->category == INTERESTCATEGORY_HARVEST && won);
+	bool terror_won 						= (mis->category == INTERESTCATEGORY_TERROR_ATTACK && won);
+	bool xvi_won 							= (mis->category == INTERESTCATEGORY_XVI && won);
+	bool htx 								= (harvest_fail || terror_fail || xvi_fail || harvest_won || terror_won || xvi_won);
+	bool recovered_not_crashed_not_htx		= (craft_was_recovered && !craft_was_downed && !htx);
+	bool base_attack_lost					= (mis->category == INTERESTCATEGORY_BASE_ATTACK && !won);
+	bool base_attack_won					= (mis->category == INTERESTCATEGORY_BASE_ATTACK && won);
+	bool alienbase_won						= (mis->category == INTERESTCATEGORY_ALIENBASE && won);
+	bool alienbase_lost						= (mis->category == INTERESTCATEGORY_ALIENBASE && !won);
+
+	if (crash_and_recovered) {
+		delta_happiness_affected_nation  = 0.0300f; 
+
+		delta_happiness_affected_nation += 0.0025f * alien_dead;
+		delta_happiness_affected_nation += 0.0030f * alien_stun;
+		delta_happiness_affected_nation -= 0.0075f * own_ff;
+		delta_happiness_affected_nation -= 0.0025f * own_dead;
+		delta_happiness_affected_nation -= 0.0025f * civilian_dead;
+		delta_happiness_affected_nation -= 0.0100f * civilian_ff;
+
+		delta_happiness_other_nations 	 = 0.00500f;
 	}
 
-	/** @todo HACK: This should be handled properly, i.e. civilians should only factor into the scoring
-	 * if the mission objective is actually to save civilians. */
-	if (civilianSum <= 1) {
-		performanceCivilian = 0.0f;
-	} else {
-		performanceCivilian = (2 * civilianSum - results->civiliansKilled - 2
-			* results->civiliansKilledFriendlyFire) * 3 / (2 * civilianSum) - 2;
+	if (harvest_fail) {
+		delta_happiness_affected_nation = -0.0200f; 
+
+		delta_happiness_affected_nation += 0.0025f * alien_dead;
+		delta_happiness_affected_nation += 0.0000f * alien_stun;
+		delta_happiness_affected_nation -= 0.0075f * own_ff;
+		delta_happiness_affected_nation -= 0.0035f * own_dead;
+		delta_happiness_affected_nation -= 0.0025f * civilian_dead;
+		delta_happiness_affected_nation -= 0.0100f * civilian_ff;
+
+		delta_happiness_other_nations 	 = 0.00500f;
 	}
 
-	/* Calculate how well the mission went. */
-	/** @todo The score for aliens should be dependent on the mission objective.
-	 * In a mission that has a special objective, the amount of killed aliens should
-	 * only serve to increase the score, not reduce the penalty. */
-	if (won) {
-		performanceAlien = (results->aliensKilled + results->aliensStunned) * victoryBonusPerAlien;
-	} else {
-		performanceAlien = results->aliensKilled + results->aliensStunned - alienSum;
+	if (harvest_won) {
+		delta_happiness_affected_nation  = 0.0400f; 
+
+		delta_happiness_affected_nation += 0.0050f * alien_dead;
+		delta_happiness_affected_nation += 0.0050f * alien_stun;
+		delta_happiness_affected_nation -= 0.0100f * own_ff;
+		delta_happiness_affected_nation -= 0.0050f * own_dead;
+		delta_happiness_affected_nation -= 0.0050f * civilian_dead;
+		delta_happiness_affected_nation -= 0.0200f * civilian_ff;
+		delta_happiness_affected_nation += 0.0075f * civilian_save;
+
+		delta_happiness_other_nations 	 = 0.0050f;
+
+		delta_happiness_other_nations   += 0.0010f * alien_dead;
+		delta_happiness_other_nations   += 0.0010f * alien_stun;
+		delta_happiness_other_nations   -= 0.0025f * own_ff;
+		delta_happiness_other_nations   -= 0.0015f * own_dead;
+		delta_happiness_other_nations   -= 0.0010f * civilian_dead;
+		delta_happiness_other_nations   -= 0.0025f * civilian_ff;
 	}
-	performance = performanceCivilian + performanceAlien;
 
-	/* Calculate the actual happiness delta. The bigger the mission, the more potential influence. */
-	deltaHappiness = 0.004 * civilianSum + 0.004 * alienSum;
+	if (terror_fail) {
+		delta_happiness_affected_nation = -0.0200f; 
 
-	/* There is a maximum base happiness delta. */
-	if (deltaHappiness > HAPPINESS_MAX_MISSION_IMPACT)
-		deltaHappiness = HAPPINESS_MAX_MISSION_IMPACT;
+		delta_happiness_affected_nation += 0.0025f * alien_dead;
+		delta_happiness_affected_nation += 0.0000f * alien_stun;
+		delta_happiness_affected_nation -= 0.0075f * own_ff;
+		delta_happiness_affected_nation -= 0.0035f * own_dead;
+		delta_happiness_affected_nation -= 0.0025f * civilian_dead;
+		delta_happiness_affected_nation -= 0.0100f * civilian_ff;
+
+		delta_happiness_other_nations 	 = 0.0050f;
+		delta_happiness_other_nations   -= 0.0050f * civilian_ff;
+	}
+
+	if (terror_won) {
+		delta_happiness_affected_nation  = 0.0500f; 
+
+		delta_happiness_affected_nation += 0.0050f * alien_dead;
+		delta_happiness_affected_nation += 0.0050f * alien_stun;
+		delta_happiness_affected_nation -= 0.0100f * own_ff;
+		delta_happiness_affected_nation -= 0.0050f * own_dead;
+		delta_happiness_affected_nation -= 0.0075f * civilian_dead;
+		delta_happiness_affected_nation -= 0.0200f * civilian_ff;
+		delta_happiness_affected_nation += 0.0100f * civilian_save;
+
+		delta_happiness_other_nations 	 = 0.0100f;
+
+		delta_happiness_other_nations   += 0.0010f * alien_dead;
+		delta_happiness_other_nations   += 0.0010f * alien_stun;
+		delta_happiness_other_nations   -= 0.0025f * own_ff;
+		delta_happiness_other_nations   -= 0.0015f * own_dead;
+		delta_happiness_other_nations   -= 0.0020f * civilian_dead;
+		delta_happiness_other_nations   -= 0.0050f * civilian_ff;
+	}
+
+	if (xvi_fail) {
+		delta_happiness_affected_nation = -0.0100f; 
+
+		delta_happiness_affected_nation += 0.0010f * alien_dead;
+		delta_happiness_affected_nation += 0.0000f * alien_stun;
+		delta_happiness_affected_nation -= 0.0025f * own_ff;
+		delta_happiness_affected_nation -= 0.0025f * own_dead;
+		delta_happiness_affected_nation -= 0.0010f * civilian_dead;
+		delta_happiness_affected_nation -= 0.0050f * civilian_ff;
+
+		delta_happiness_other_nations 	 = 0.0025f;
+		delta_happiness_other_nations   -= 0.0025f * civilian_ff;
+	}
+
+	if (xvi_won) {
+		delta_happiness_affected_nation  = 0.0200f; 
+
+		delta_happiness_affected_nation += 0.0025f * alien_dead;
+		delta_happiness_affected_nation += 0.0050f * alien_stun;
+		delta_happiness_affected_nation -= 0.0050f * own_ff;
+		delta_happiness_affected_nation -= 0.0025f * own_dead;
+		delta_happiness_affected_nation -= 0.0025f * civilian_dead;
+		delta_happiness_affected_nation -= 0.0100f * civilian_ff;
+		delta_happiness_affected_nation += 0.0025f * civilian_save;
+
+		delta_happiness_other_nations 	 = 0.0025f;
+
+		delta_happiness_other_nations   += 0.0010f * alien_dead;
+		delta_happiness_other_nations   += 0.0010f * alien_stun;
+		delta_happiness_other_nations   -= 0.0025f * own_ff;
+		delta_happiness_other_nations   -= 0.0010f * own_dead;
+		delta_happiness_other_nations   -= 0.0010f * civilian_dead;
+		delta_happiness_other_nations   -= 0.0025f * civilian_ff;
+	}
+
+	if (recovered_not_crashed_not_htx) {
+		delta_happiness_affected_nation  = 0.0100f; 
+
+		delta_happiness_affected_nation += 0.0010f * alien_dead;
+		delta_happiness_affected_nation += 0.0020f * alien_stun;
+		delta_happiness_affected_nation -= 0.0025f * own_ff;
+		delta_happiness_affected_nation -= 0.0010f * own_dead;
+		delta_happiness_affected_nation -= 0.0010f * civilian_dead;
+		delta_happiness_affected_nation -= 0.0050f * civilian_ff;
+
+		delta_happiness_other_nations 	 = 0.0025f;
+
+		delta_happiness_other_nations   += 0.0010f * alien_dead;
+		delta_happiness_other_nations   += 0.0010f * alien_stun;
+		delta_happiness_other_nations   -= 0.0020f * own_ff;
+		delta_happiness_other_nations   -= 0.0010f * own_dead;
+		delta_happiness_other_nations   -= 0.0000f * civilian_dead;
+		delta_happiness_other_nations   -= 0.0020f * civilian_ff;
+	}
+
+	if (base_attack_lost) {
+		delta_happiness_affected_nation = -0.20000f;
+		delta_happiness_other_nations 	= -0.10000f;
+	}
+
+	if (base_attack_won) {
+		delta_happiness_affected_nation = 0.05000f;
+		delta_happiness_other_nations 	= 0.00500f;
+	}
+
+	if (alienbase_won) {
+		delta_happiness_affected_nation = 0.16000f;
+		delta_happiness_other_nations 	= 0.04000f;
+	}
 
 	NAT_Foreach(nation) {
 		const nationInfo_t* stats = NAT_GetCurrentMonthInfo(nation);
-		float happinessFactor;
 
 		/* update happiness. */
 		if (nation == affectedNation)
-			happinessFactor = deltaHappiness;
+			NAT_SetHappiness(minHappiness, nation, stats->happiness + delta_happiness_affected_nation);
 		else
-			happinessFactor = deltaHappiness / happinessDivisor;
-
-		NAT_SetHappiness(minHappiness, nation, stats->happiness + performance * happinessFactor);
+			NAT_SetHappiness(minHappiness, nation, stats->happiness + delta_happiness_other_nations);
 	}
+
+/*
+	if (mis->mapDef->victoryBonusPerAlien) {
+		victoryBonusPerAlien = mis->mapDef->victoryBonusPerAlien;
+	}
+*/
+
+
 }
 
 /**
