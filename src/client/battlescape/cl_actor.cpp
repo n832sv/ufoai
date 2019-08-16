@@ -1752,6 +1752,32 @@ static void CL_TargetingStraight (const pos3_t fromPos, actorSizeEnum_t fromActo
 
 #define GRENADE_PARTITIONS	20
 
+float CL_GetRangeFromStrengthExplosives (const fireDef_t* fd)
+{
+
+	if (fd->launched)		{ return fd->range; }
+	if (!selActor)			{ return fd->range; }
+
+	const character_t* chr = CL_ActorGetChr(selActor);
+
+	bool is_explosive = fd->weaponSkill == SKILL_EXPLOSIVE;
+
+	float oldrange = (float)fd->range;
+	float strength = pow(((float)chr->score.skills[ABILITY_POWER] / 100.0f), 0.2f);
+	float explosives = is_explosive ? (float)chr->score.skills[SKILL_EXPLOSIVE] / 100.0f : 0.32f;
+	float minimum = std::max(fd->range - 1.0f * UNIT_SIZE, 5.0f * UNIT_SIZE);
+
+	float ratio = 5.0f;
+	float a = strength * ( ratio / (ratio + 1.0f) );
+	float b = explosives * ( 1.0f / (ratio + 1.0) );
+	float bonus = 2*(a*a + b*b + 2*a*b);
+
+	float newrange = std::floor(std::max(minimum, oldrange * bonus));
+
+	return newrange;
+}
+
+
 /**
  * @brief Shows targeting for a grenade.
  * @param[in] fromPos The (grid-) position of the aiming actor.
@@ -1790,7 +1816,8 @@ static void CL_TargetingGrenade (const pos3_t fromPos, actorSizeEnum_t fromActor
 
 	/* calculate parabola */
 	vec3_t v0;
-	float dt = Com_GrenadeTarget(from, at, selActor->fd->range, selActor->fd->launched, selActor->fd->rolled, v0);
+	float newrange = CL_GetRangeFromStrengthExplosives(selActor->fd);
+	float dt = Com_GrenadeTarget(from, at, newrange, selActor->fd->launched, selActor->fd->rolled, v0);
 	if (!dt) {
 		CL_ParticleSpawn("cross_no", 0, cross);
 		return;
@@ -1831,7 +1858,7 @@ static void CL_TargetingGrenade (const pos3_t fromPos, actorSizeEnum_t fromActor
 		VectorCopy(next, from);
 	}
 	/* draw targeting cross */
-	if (obstructed || VectorLength(at) > selActor->fd->range)
+	if (obstructed || VectorLength(at) > newrange)
 		CL_ParticleSpawn("cross_no", 0, cross);
 	else
 		CL_ParticleSpawn("cross", 0, cross);

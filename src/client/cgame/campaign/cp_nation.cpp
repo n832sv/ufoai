@@ -254,10 +254,10 @@ bool NAT_SaveXML (xmlNode_t* p)
 
 void CP_NationsUpdateAfterMissionStage (mission_t* mission)
 {
-	const float terror_penalty_affected_nation 		= -0.120f;
-	const float terror_penalty_other_nations		= -0.030f;
+	const float terror_penalty_affected_nation 		= -0.140f;
+	const float terror_penalty_other_nations		= -0.025f;
 	const float	harvest_penalty_affected_nation		= -0.090f;
-	const float harvest_penalty_other_nations		= -0.015f;
+	const float harvest_penalty_other_nations		= -0.010f;
 	const float xvi_penalty_affected_nation			= -0.040f;
 	const float xvi_penalty_other_nations			= -0.005f;
 //	const float	subvert_penalty_affected_nation		= -0.120f;
@@ -390,7 +390,7 @@ void CP_HandleNationData (float minHappiness, mission_t* mis, const nation_t* af
 		delta_happiness_affected_nation -= 0.0025f * civilian_dead;
 		delta_happiness_affected_nation -= 0.0100f * civilian_ff;
 
-		delta_happiness_other_nations 	 = 0.00500f;
+		delta_happiness_other_nations 	 = 0.00000f;
 	}
 
 	if (harvest_won) {
@@ -410,7 +410,7 @@ void CP_HandleNationData (float minHappiness, mission_t* mis, const nation_t* af
 		delta_happiness_other_nations   += 0.0010f * alien_stun;
 		delta_happiness_other_nations   -= 0.0025f * own_ff;
 		delta_happiness_other_nations   -= 0.0015f * own_dead;
-		delta_happiness_other_nations   -= 0.0010f * civilian_dead;
+		delta_happiness_other_nations   -= 0.0005f * civilian_dead;
 		delta_happiness_other_nations   -= 0.0025f * civilian_ff;
 	}
 
@@ -424,7 +424,7 @@ void CP_HandleNationData (float minHappiness, mission_t* mis, const nation_t* af
 		delta_happiness_affected_nation -= 0.0025f * civilian_dead;
 		delta_happiness_affected_nation -= 0.0100f * civilian_ff;
 
-		delta_happiness_other_nations 	 = 0.0050f;
+		delta_happiness_other_nations 	= -0.0050f;
 		delta_happiness_other_nations   -= 0.0050f * civilian_ff;
 	}
 
@@ -445,7 +445,7 @@ void CP_HandleNationData (float minHappiness, mission_t* mis, const nation_t* af
 		delta_happiness_other_nations   += 0.0010f * alien_stun;
 		delta_happiness_other_nations   -= 0.0025f * own_ff;
 		delta_happiness_other_nations   -= 0.0015f * own_dead;
-		delta_happiness_other_nations   -= 0.0020f * civilian_dead;
+		delta_happiness_other_nations   -= 0.0005f * civilian_dead;
 		delta_happiness_other_nations   -= 0.0050f * civilian_ff;
 	}
 
@@ -459,7 +459,7 @@ void CP_HandleNationData (float minHappiness, mission_t* mis, const nation_t* af
 		delta_happiness_affected_nation -= 0.0010f * civilian_dead;
 		delta_happiness_affected_nation -= 0.0050f * civilian_ff;
 
-		delta_happiness_other_nations 	 = 0.0025f;
+		delta_happiness_other_nations 	 = 0.0000f;
 		delta_happiness_other_nations   -= 0.0025f * civilian_ff;
 	}
 
@@ -491,7 +491,7 @@ void CP_HandleNationData (float minHappiness, mission_t* mis, const nation_t* af
 		delta_happiness_affected_nation += 0.0020f * alien_stun;
 		delta_happiness_affected_nation -= 0.0025f * own_ff;
 		delta_happiness_affected_nation -= 0.0010f * own_dead;
-		delta_happiness_affected_nation -= 0.0010f * civilian_dead;
+		delta_happiness_affected_nation -= 0.0004f * civilian_dead;
 		delta_happiness_affected_nation -= 0.0050f * civilian_ff;
 
 		delta_happiness_other_nations 	 = 0.0025f;

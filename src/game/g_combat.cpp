@@ -87,6 +87,12 @@ static bool G_TeamPointVis (int team, const vec3_t point)
 	return false;
 }
 
+float G_MoraleResistanceCoefficient (float mindskill)
+{
+	const float m = mindskill;
+	return 1.0f -  m*m / (m*m + 0.125f);
+}
+
 /**
  * @brief Applies morale changes to actors around a wounded or killed actor.
  * @note only called when mor_panic is not zero
@@ -150,6 +156,12 @@ static void G_Morale (morale_modifiers type, const Edict* victim, const Edict* a
 		/* being hit isn't fun */
 		if (actor == victim)
 			mod *= mor_pain->value;
+		// apply ability mind resistance
+		if (mod < 0) {
+			float mindfloat = (float)actor->chr.score.skills[ABILITY_MIND] / 100.0f;
+			float resistance = G_MoraleResistanceCoefficient(mindfloat);
+			mod *= resistance;
+		}
 		/* clamp new morale */
 		/*+0.9 to allow weapons like flamethrowers to inflict panic (typecast rounding) */
 		const int newMorale = actor->morale + (int) (MORALE_RANDOM(mod) + 0.9);
@@ -661,13 +673,20 @@ static void G_SplashDamage (Actor* ent, const fireDef_t* fd, vec3_t impact, shot
 		float geometric_normal_distribution;
 		if (shock)  { calculate_damage = 0.0f;}
 		if (!shock) { 
-			geometric_normal_distribution 	 = 1.0f + normal_distribution() * 0.1f * fd->spldmg[0]; 
+			geometric_normal_distribution 	 = 1.0f + normal_distribution() * 0.1f; 
  			calculate_damage 				 = fd->spldmg[0] - fd->spldmg[1] * (1.0f - dist / fd->splrad); 
 			calculate_damage				*= geometric_normal_distribution;
+//			gi.DPrintf("geometric_normal_distribution: %f \n", geometric_normal_distribution);
+//			gi.DPrintf("dist, fd->splrad: %f %f \n", dist, fd->splrad);
 		}
 		if (calculate_damage < 0) { calculate_damage = 0.0f; }
-
+	
 		const int damage = static_cast<int>(std::floor(calculate_damage));
+
+//		gi.DPrintf("G_SplashDamage, calculate_damage: %f \n", calculate_damage);
+//		gi.DPrintf("G_SplashDamage, fd->spldmg[0] & fd->spldmg[1]: %f %f \n", fd->spldmg[0], fd->spldmg[1]);
+//		gi.DPrintf("G_SplashDamage, damage: %d \n", damage);
+		//
 
 		if (mock)
 			mock->allow_self = true;
@@ -737,15 +756,40 @@ void G_CalcEffectiveSpread (const Actor* shooter, const fireDef_t* fd, vec2_t ef
 
 	/* Base spread multiplier comes from the firedef's spread values. Soldier skills further modify the spread.
 	 * A good soldier will tighten the spread, a bad one will widen it, for skillBalanceMinimum values between 0 and 1.*/
-	const float commonfactor = std::max(0.0f, WEAPON_BALANCE + SKILL_BALANCE * acc);
-	effSpread[PITCH] = fd->spread[0] * commonfactor;
-	effSpread[YAW] = fd->spread[1] * commonfactor;
+	const float crouch = shooter->isCrouched() && fd->crouch > 0.0f ? fd->crouch : 1.0f;
+	const float crouch_sqrt = shooter->isCrouched() ? std::max(0.50f, sqrt(crouch) - 0.10f) : 1.0f;
+	const float commonfactor = std::max(0.0f, WEAPON_BALANCE + SKILL_BALANCE * acc * crouch);
+	effSpread[PITCH] = fd->spread[0] * commonfactor + WEAPONLESS_BALANCE * acc * acc * crouch_sqrt;
+	effSpread[YAW] = fd->spread[1] * commonfactor + WEAPONLESS_BALANCE * acc * acc * crouch_sqrt;
 
-	/* If the attacker is crouched this modifier is included as well. */
-	if (shooter->isCrouched() && fd->crouch > 0.0f) {
-		effSpread[PITCH] *= fd->crouch;
-		effSpread[YAW] *= fd->crouch;
-	}
+}
+
+float G_GetRangeFromStrengthExplosives (const Item* weapon, const fireDef_t* fd, const Actor* shooter)
+{
+//	gi.DPrintf("fd->range: %f \n", fd->range);
+//	gi.DPrintf("fd->launched: %d \n", fd->launched);
+	if (fd->launched)		{ return fd->range; }
+
+	bool is_explosive = fd->weaponSkill == SKILL_EXPLOSIVE;
+
+	float oldrange = (float)fd->range;
+	float strength = pow(((float)shooter->chr.score.skills[ABILITY_POWER] / 100.0f), 0.2f);
+	float explosives = is_explosive ? (float)shooter->chr.score.skills[SKILL_EXPLOSIVE] / 100.0f : 0.32f;
+	float minimum = std::max(fd->range - 1.0f * UNIT_SIZE, 5.0f * UNIT_SIZE);
+
+	float ratio = 5.0f;
+	float a = strength * ( ratio / (ratio + 1.0f) );
+	float b = explosives * ( 1.0f / (ratio + 1.0) );
+	float bonus = 2*(a*a + b*b + 2*a*b);
+
+	float newrange = std::floor(std::max(minimum, oldrange * bonus));
+//	gi.DPrintf("newrange: %f \n", newrange);
+//	gi.DPrintf("bonus: %f \n", bonus);
+//	gi.DPrintf("strength: %f \n", strength);
+//	gi.DPrintf("explosives: %f \n", explosives);
+//	gi.DPrintf("is_explosive: %d \n", is_explosive);
+
+	return newrange;
 }
 
 #define GRENADE_DT			0.1f
@@ -783,9 +827,11 @@ static void G_ShootGrenade (const Player& player, Actor* shooter, const fireDef_
 	/* prefer to aim grenades at the ground */
 	target[2] -= GROUND_DELTA;
 
+	const float newrange = G_GetRangeFromStrengthExplosives(weapon, fd, shooter);
+
 	/* calculate parabola */
 	vec3_t startV;
-	float dt = gi.GrenadeTarget(last, target, fd->range, fd->launched, fd->rolled, startV);
+	float dt = gi.GrenadeTarget(last, target, newrange, fd->launched, fd->rolled, startV);
 	if (!dt) {
 		if (!mock)
 			G_ClientPrintf(player, PRINT_HUD, _("Can't perform action - impossible throw!"));
@@ -793,7 +839,7 @@ static void G_ShootGrenade (const Player& player, Actor* shooter, const fireDef_
 	}
 
 	/* cap start speed */
-	const float speed = std::min(VectorLength(startV), fd->range);
+	const float speed = std::min(VectorLength(startV), newrange);
 
 	/* add random effects and get new dir */
 	vec3_t angles;

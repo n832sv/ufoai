@@ -143,57 +143,7 @@ private:
 
 static ReactionFireTargets rft;
 
-int G_GetInitialTUVariance(const int tu, const Actor* shooter)
-{
-	int newtu = tu;
-	int min = 3;
-	int default_penalty = 1;
-	if (tu <= 0) { return tu; }
 
-	// Default penalty
-	newtu += default_penalty;
-
-	// HP penalty
-	float hpratio2 = 100.0f * (shooter->HP / shooter->chr.maxHP) * (shooter->HP / shooter->chr.maxHP);
-	int hppenalty = 0;
-	if (hpratio2 < std::rand() % 100) { hppenalty += 1; }
-	if (hpratio2 < std::rand() % 100) { hppenalty += 1; }
-	if (hpratio2 < std::rand() % 100) { hppenalty += 1; }
-	if (hpratio2 < std::rand() % 100) { hppenalty += 1; }
-	newtu += hppenalty;
-
-	// TU bonus
-	int maxtu = G_ActorCalculateMaxTU(shooter);
-	float turatioinverse = 1.0f - shooter->TU / maxtu;
-	float squared = turatioinverse * turatioinverse;
-	int tubonus = 0;
-	if (squared * 0.50f < std::rand() % 100) { tubonus += 1; }
-	newtu -= tubonus;
-
-	// Mind bonus
-	int mindbonus = 0;
-	int mind = shooter->chr.score.skills[ABILITY_MIND];
-	if (std::rand() % 50 < mind - 20) { mindbonus += 1; }
-	if (std::rand() % 50 < mind - 27) { mindbonus += 1; }
-	if (std::rand() % 27 < mind - 44) { mindbonus += 1; }
-	if (std::rand() % 12 < mind - 58) { mindbonus += 1; }
-	newtu -= mindbonus;
-
-	// random variance, even = bonus, odd = penalty
-	int roll = std::rand() % 100;
-	int variance = 0;
-	if (roll < 60) 	{ variance = 1; }
-	if (roll < 16) 	{ variance = 2; }
-	if (roll < 6) 	{ variance = 3; }
-	if (roll % 2 == 0) { newtu -= variance; }
-	if (roll % 2 == 1) { newtu += variance; }
-
-	// return newtu	
-	newtu = std::max(min, newtu);
-	if (shooter->TU <  newtu) { return -1; }
-	if (shooter->TU >= newtu) { return newtu; }
-	return -1; // error
-}
 
 
 /**
@@ -1142,4 +1092,86 @@ void G_ReactionFireNotifyClientEndMove (const Actor* target)
 void G_ReactionFireNotifyClientRFAborted (const Actor* shooter, const Edict* target, int step)
 {
 	rft.notifyClientRFAborted(shooter, target, step);
+}
+
+int G_GetInitialTUVariance(const int tu, const Actor* shooter)
+{
+	int newtu = tu;
+	int min = 3;
+	int default_penalty = 1;
+	const fireDef_t* fd = rf.getFireDef(shooter);
+	if (tu <= 0) { return tu; }
+
+	// Default penalty
+	newtu += default_penalty;
+
+	// HP penalty
+	float hpratio2 = 100.0f * (shooter->HP / shooter->chr.maxHP) * (shooter->HP / shooter->chr.maxHP);
+	int hppenalty = 0;
+	if (hpratio2 < std::rand() % 100) { hppenalty += 1; }
+	if (hpratio2 < std::rand() % 100) { hppenalty += 1; }
+	if (hpratio2 < std::rand() % 100) { hppenalty += 1; }
+	if (hpratio2 < std::rand() % 100) { hppenalty += 1; }
+	newtu += hppenalty;
+
+	// TU bonus
+	int maxtu = G_ActorCalculateMaxTU(shooter);
+	float turatioinverse = 1.0f - shooter->TU / maxtu;
+	float squared = turatioinverse * turatioinverse;
+	int tubonus = 0;
+	if (squared * 0.60f < std::rand() % 100) { tubonus += 1; }
+	if (squared * 0.60f < std::rand() % 100) { tubonus += 1; }
+	newtu -= tubonus;
+
+	// Mind bonus
+	int mindbonus = 0;
+	int mind = shooter->chr.score.skills[ABILITY_MIND];
+	if (std::rand() % 50 < mind - 20) { mindbonus += 1; }
+	if (std::rand() % 50 < mind - 27) { mindbonus += 1; }
+	if (std::rand() % 27 < mind - 44) { mindbonus += 1; }
+	if (std::rand() % 12 < mind - 58) { mindbonus += 1; }
+	newtu -= mindbonus;
+
+	// Weaponskill bonus
+	int skillbonus = 0;
+	int cqc = shooter->chr.score.skills[SKILL_CLOSE];	
+	int ass = shooter->chr.score.skills[SKILL_ASSAULT];
+	int snp = shooter->chr.score.skills[SKILL_SNIPER];
+
+	if (fd->weaponSkill == SKILL_CLOSE) {
+		if (30 < cqc) { skillbonus += 1; }
+		if (45 < cqc) { skillbonus += 1; }
+		if (60 < cqc) { skillbonus += 1; }
+	}
+
+	if (fd->weaponSkill == SKILL_ASSAULT) {
+		if (30 < ass && 50 < std::rand() % 100) { skillbonus += 1; }
+		if (45 < ass && 25 < std::rand() % 100) { skillbonus += 2; }
+		if (60 < ass && 40 < std::rand() % 100) { skillbonus += 2; }
+	}
+
+	if (fd->weaponSkill == SKILL_SNIPER) {
+		int step = std::max(1, (int)std::floor((float)tu*0.32f));
+		if (30 < snp && 10 < std::rand() % 100) { skillbonus += step; }
+		if (45 < snp && 20 < std::rand() % 100) { skillbonus += step; }
+		if (60 < snp && 50 < std::rand() % 100) { skillbonus += step; }
+	}
+
+	newtu -= skillbonus;
+
+
+	// random variance, even = bonus, odd = penalty
+	int roll = std::rand() % 100;
+	int variance = 0;
+	if (roll < 60) 	{ variance = 1; }
+	if (roll < 16) 	{ variance = 2; }
+	if (roll < 6) 	{ variance = 3; }
+	if (roll % 2 == 0) { newtu -= variance; }
+	if (roll % 2 == 1) { newtu += variance; }
+
+	// return newtu	
+	newtu = std::max(min, newtu);
+	if (shooter->TU <  newtu) { return -1; }
+	if (shooter->TU >= newtu) { return newtu; }
+	return -1; // error
 }

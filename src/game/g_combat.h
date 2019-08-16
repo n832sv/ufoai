@@ -41,6 +41,8 @@ typedef struct shot_mock_s {
 	}
 } shot_mock_t;
 
+float G_MoraleResistanceCoefficient (float mindskill);
+float G_GetRangeFromStrengthExplosives (const Item* weapon, const fireDef_t* fd, const Actor* shooter);
 double RationalApproximation (double t);
 double NormalCDFInverse (double p);
 double normal_distribution();

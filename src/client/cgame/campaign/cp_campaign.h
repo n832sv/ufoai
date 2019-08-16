@@ -55,10 +55,10 @@ class Employee;
 #include "cp_component.h"
 
 /* Maximum alien groups per alien team category */
-#define MAX_ALIEN_GROUP_PER_CATEGORY	8
+#define MAX_ALIEN_GROUP_PER_CATEGORY	24
 /* Maximum alien team category defined in scripts */
-#define ALIENCATEGORY_MAX	64
-#define MAX_PROJECTILESONGEOSCAPE 32
+#define ALIENCATEGORY_MAX	128
+#define MAX_PROJECTILESONGEOSCAPE 64
 
 /**
  * @brief The amount of time (in hours) it takes for the interest to increase by 1. Is later affected by difficulty.

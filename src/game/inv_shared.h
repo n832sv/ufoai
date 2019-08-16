@@ -42,6 +42,7 @@ typedef short humanAircraftType_t;
 #define MAX_FIREDEFS_PER_WEAPON 8
 #define WEAPON_BALANCE 0.5f
 #define SKILL_BALANCE 1.0f
+#define WEAPONLESS_BALANCE 0.125f
 
 typedef int32_t containerIndex_t;
 #define CID_RIGHT		0

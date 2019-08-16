@@ -112,69 +112,69 @@ typedef enum aircraftStatus_s {
 
 /** @brief An aircraft with all it's data */
 typedef struct aircraft_s {
-	int idx;					/**< Global index of this aircraft. See also ccs.numAircraft
-							 * For aircraftTemplates[] aircraft this is the index in that array.
-							 */
-	struct aircraft_s* tpl;				/**< Self-link in aircraft_sample list (i.e. templates). */
-	char* id;					/**< Internal id from script file. */
-	char name[MAX_VAR];				/**< Aircraft name (user can change this). */
-	char* defaultName;				/**< Translatable default name for aircraft. */
-	char* image;					/**< Image on geoscape. */
-	char* model;					/**< Model used on geoscape */
-	ufoType_t ufotype;				/**< Type of UFO, see ufoType_t (UFO_NONE if craft is not a UFO). */
-	aircraftStatus_t status;			/**< Status of this aircraft, see aircraftStatus_t. */
+	int idx;										/**< Global index of this aircraft. See also ccs.numAircraft
+							 						* For aircraftTemplates[] aircraft this is the index in that array.
+							 						*/
+	struct aircraft_s* tpl;							/**< Self-link in aircraft_sample list (i.e. templates). */
+	char* id;										/**< Internal id from script file. */
+	char name[MAX_VAR];								/**< Aircraft name (user can change this). */
+	char* defaultName;								/**< Translatable default name for aircraft. */
+	char* image;									/**< Image on geoscape. */
+	char* model;									/**< Model used on geoscape */
+	ufoType_t ufotype;								/**< Type of UFO, see ufoType_t (UFO_NONE if craft is not a UFO). */
+	aircraftStatus_t status;						/**< Status of this aircraft, see aircraftStatus_t. */
 
-	int price;					/**< Price of this aircraft type at game start, it's evolving on the market. */
-	int productionCost;				/**< Production costs of this aircraft type. */
-	int fuel;					/**< Current fuel amount. */
-	int damage;					/**< Current Hit Point of the aircraft */
-	vec3_t pos;					/**< Current position on the geoscape. @todo change to vec2_t - this is long/lat */
-	vec3_t direction;				/**< Direction in which the aircraft is going on 3D geoscape (used for smoothed rotation). */
-	vec3_t projectedPos;				/**< Projected position of the aircraft (latitude and longitude). */
+	int price;										/**< Price of this aircraft type at game start, it's evolving on the market. */
+	int productionCost;								/**< Production costs of this aircraft type. */
+	int fuel;										/**< Current fuel amount. */
+	int damage;										/**< Current Hit Point of the aircraft */
+	vec3_t pos;										/**< Current position on the geoscape. @todo change to vec2_t - this is long/lat */
+	vec3_t direction;								/**< Direction in which the aircraft is going on 3D geoscape (used for smoothed rotation). */
+	vec3_t projectedPos;							/**< Projected position of the aircraft (latitude and longitude). */
 	mapline_t route;
-	int point;					/**< Number of route points that has already been done when aircraft is moving */
-	int time;					/**< Elapsed seconds since aircraft started it's new route */
+	int point;										/**< Number of route points that has already been done when aircraft is moving */
+	int time;										/**< Elapsed seconds since aircraft started it's new route */
 
-	int maxTeamSize;				/**< Max amount of soldiers onboard. */
-	linkedList_t* acTeam;				/**< List of employees. i.e. current team for this aircraft */
+	int maxTeamSize;								/**< Max amount of soldiers onboard. */
+	linkedList_t* acTeam;							/**< List of employees. i.e. current team for this aircraft */
 
-	class Employee* pilot;				/**< Current Pilot assigned to the aircraft. */
+	class Employee* pilot;							/**< Current Pilot assigned to the aircraft. */
 
-	aircraftSlot_t weapons[MAX_AIRCRAFTSLOT];	/**< Weapons assigned to aircraft */
-	int maxWeapons;					/**< Total number of weapon slots aboard this aircraft (empty or not) */
-	aircraftSlot_t shield;				/**< Armour assigned to aircraft (1 maximum) */
+	aircraftSlot_t weapons[MAX_AIRCRAFTSLOT];		/**< Weapons assigned to aircraft */
+	int maxWeapons;									/**< Total number of weapon slots aboard this aircraft (empty or not) */
+	aircraftSlot_t shield;							/**< Armour assigned to aircraft (1 maximum) */
 	aircraftSlot_t electronics[MAX_AIRCRAFTSLOT];	/**< Electronics assigned to aircraft */
-	int maxElectronics;				/**< Total number of electronics slots aboard this aircraft  (empty or not) */
+	int maxElectronics;								/**< Total number of electronics slots aboard this aircraft  (empty or not) */
 
-	struct base_s* homebase;			/**< Pointer to homebase for faster access. */
-	const char* building;				/**< id of the building needed as hangar */
+	struct base_s* homebase;						/**< Pointer to homebase for faster access. */
+	const char* building;							/**< id of the building needed as hangar */
 
-	struct mission_s* mission;			/**< The mission the aircraft is moving to if this is a PHALANX aircraft
-							 * The mission the UFO is involved if this is a UFO */
-	char* missionID;				/**< aircraft loaded before missions, we need this temporary as reference
-							 * AIR_PostLoadInitMissions resolves the pointers after game loaded and frees this */
-	struct aircraft_s* aircraftTarget;		/**< Target of the aircraft (ufo or phalanx) */
-	bool leader;					/**< try to follow this aircraft */
-	struct radar_s radar;				/**< Radar to track ufos */
-	int stats[AIR_STATS_MAX]	;		/**< aircraft parameters for speed, damage and so on
-							 * @note As this is an int, wrange is multiplied by 1000 */
+	struct mission_s* mission;						/**< The mission the aircraft is moving to if this is a PHALANX aircraft
+							 						* The mission the UFO is involved if this is a UFO */
+	char* missionID;								/**< aircraft loaded before missions, we need this temporary as reference
+							 						* AIR_PostLoadInitMissions resolves the pointers after game loaded and frees this */
+	struct aircraft_s* aircraftTarget;				/**< Target of the aircraft (ufo or phalanx) */
+	bool leader;									/**< try to follow this aircraft */
+	struct radar_s radar;							/**< Radar to track ufos */
+	int stats[AIR_STATS_MAX]	;					/**< aircraft parameters for speed, damage and so on
+								 					* @note As this is an int, wrange is multiplied by 1000 */
 
-	struct technology_s* tech;			/**< link to the aircraft tech */
+	struct technology_s* tech;						/**< link to the aircraft tech */
 
-	bool notifySent[MAX_AIR_NOTIFICATIONS];		/* stores if a notification was already sent */
+	bool notifySent[MAX_AIR_NOTIFICATIONS];			/* stores if a notification was already sent */
 
-	bool detected;					/**< Is the ufo detected by a radar? (note that a detected landed ufo has @c detected set to true
-							 * and @c visible set to false: we can't see it on geoscape) */
-	bool landed;					/**< Is ufo landed for a mission? This is used when a UFO lands (a UFO must have both
-							 * @c detected and @c visible set to true to be actually seen on geoscape) */
-	bool notOnGeoscape;				/**< don't let this aircraft appear ever on geoscape (e.g. ufo_carrier) */
-	int ufoInterestOnGeoscape;			/**< interest level at which this ufo should be available on geoscape first */
-	linkedList_t* missionTypes;			/**< missiontype strings this aircraft is useable for */
-	int detectionIdx;				/**< detected UFO number (for descriptions "UFO #4")*/
-	date_t lastSpotted;				/**< date the UFO was detected last time */
+	bool detected;									/**< Is the ufo detected by a radar? (note that a detected landed ufo has @c detected set to true
+							 						* and @c visible set to false: we can't see it on geoscape) */
+	bool landed;									/**< Is ufo landed for a mission? This is used when a UFO lands (a UFO must have both
+							 						* @c detected and @c visible set to true to be actually seen on geoscape) */
+	bool notOnGeoscape;								/**< don't let this aircraft appear ever on geoscape (e.g. ufo_carrier) */
+	int ufoInterestOnGeoscape;						/**< interest level at which this ufo should be available on geoscape first */
+	linkedList_t* missionTypes;						/**< missiontype strings this aircraft is useable for */
+	int detectionIdx;								/**< detected UFO number (for descriptions "UFO #4")*/
+	date_t lastSpotted;								/**< date the UFO was detected last time */
 
-	class AlienCargo* alienCargo;			/**< Cargo of aliens. */
-	class ItemCargo* itemCargo;			/**< Cargo of items. */
+	class AlienCargo* alienCargo;					/**< Cargo of aliens. */
+	class ItemCargo* itemCargo;						/**< Cargo of items. */
 
 	inline ufoType_t getUfoType() const {
 		return ufotype;

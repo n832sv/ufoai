@@ -201,6 +201,9 @@ static void CP_SetAlienTeamByInterest (mission_t* mission, battleParam_t* battle
 		CP_MissionRemove(mission);
 		cgi->Com_Error(ERR_DROP, "CP_SetAlienTeamByInterest: no available alien team for mission '%s': interest = %i -- category = %i",
 			mission->id, mission->initialOverallInterest, mission->category);
+		for (int i = 0; i < INTERESTCATEGORY_MAX; i++) {
+			
+		}
 	}
 
 	/* Pick up one group randomly */
@@ -594,7 +597,8 @@ const char* MIS_GetModel (const mission_t* mission)
 	if (mission->crashed)
 		return "geoscape/ufocrash";
 
-	if (mission->mapDef->storyRelated && mission->category != INTERESTCATEGORY_ALIENBASE)
+	if (mission->mapDef->storyRelated && mission->category != 
+INTERESTCATEGORY_ALIENBASE)
 		return "geoscape/icon_story";
 
 	cgi->Com_DPrintf(DEBUG_CLIENT, "Mission is %s, %d\n", mission->id, mission->category);

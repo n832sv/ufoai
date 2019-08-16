@@ -108,3 +108,5 @@ void CL_ActorTargetAlign_f(void);
 
 void CL_DisplayFloorArrows(void);
 void CL_DisplayObstructionArrows(void);
+
+float CL_GetRangeFromStrengthExplosives (const fireDef_t* fd);
