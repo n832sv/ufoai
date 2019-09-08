@@ -18,17 +18,21 @@ researched rslist_phalanx
 
 	// WEAPONS & ITEMS
 	rs_weapon_assault
+	rs_weapon_assault2
+	rs_weapon_assault3
 	rs_weapon_assault_ammo
+	rs_weapon_assault3_ammo
 	rs_weapon_machinegun
 	rs_weapon_machinegun_ammo
 	rs_weapon_sniper
 	rs_weapon_sniper_ammo
 	rs_weapon_smg
+	rs_weapon_smg2
 	rs_weapon_smg_ammo
 	rs_weapon_shotgun2
 	rs_weapon_shotgun2_slug_ammo
-	rs_weapon_shotgun_micro
-	rs_weapon_shotgun_micro_ammo
+//	rs_weapon_shotgun_micro
+//	rs_weapon_shotgun_micro_ammo
 	rs_weapon_flamer
 	rs_weapon_flamer_ammo
 	rs_weapon_incgren
@@ -45,8 +49,11 @@ researched rslist_phalanx
 	rs_weapon_grenl_ammo
 	rs_weapon_grenl_fle_ammo
 	rs_weapon_grenl_incendiary_ammo
+	rs_weapon_fraggren2
+	rs_weapon_hegrenade
 	rs_medikit
 	rs_irgoggles
+
 
 	// HEAVY EQUIPMENT
 	rs_ugv_phoenix

@@ -16,7 +16,7 @@ item pbeampistol
 	ammo			16
 	reload			14
 	reloadsound		"weapons/reload-pistol"
-	price			3000
+	price			28000
 	size			20
 	is_secondary	true
 	weight			1300
@@ -31,7 +31,7 @@ item pbeampistol_ammo
 	shape			"0 0 1 1"
 	center			"0 0 0"
 	scale			0.97
-	price			1000
+	price			10000
 	size			3
 	is_secondary	true
 	dmgtype			"particlebeam"
@@ -56,7 +56,7 @@ item pbeampistol_ammo
 			range		30
 			shots		1
 			ammo		1
-			time		6
+			time		7
 			damage		"70 10"
 			dmgweight	"particlebeam_light"
 			reaction	true
@@ -79,9 +79,9 @@ item pbeampistol_ammo
 			shots				1
 			ammo				1
 			delaybetweenshots	5
-			time				10
+			time				11
 			damage				"70 10"
-			dmgweight			"particlebeam_light"
+			dmgweight			"particlebeam"
 			shotorg				"1 11.5"
 		}
 	}
@@ -107,7 +107,7 @@ item pbeamrifle
 	ammo			12
 	reload			14
 	reloadsound		"weapons/reload-rifle"
-	price			4000
+	price			45000
 	size			40
 	is_primary		true
 	weight			3400
@@ -122,7 +122,7 @@ item pbeamrifle_ammo
 	shape			"0 0 1 1"
 	center			"0 0 -0.3"
 	scale			1.1
-	price			1300
+	price			11000
 	size			5
 	is_primary		true
 	dmgtype			"particlebeam"
@@ -147,9 +147,9 @@ item pbeamrifle_ammo
 			range		200
 			shots		1
 			ammo		1
-			time		9
+			time		10
 			damage		"110 10"
-			dmgweight	"particlebeam_medium"
+			dmgweight	"particlebeam"
 			reaction	true
 			shotorg		"2 6"
 		}
@@ -172,7 +172,7 @@ item pbeamrifle_ammo
 			delaybetweenshots	5
 			time				15
 			damage				"110 10"
-			dmgweight			"particlebeam_medium"
+			dmgweight			"particlebeam"
 			reaction			true
 			shotorg				"2 6"
 		}
@@ -192,9 +192,9 @@ item pbeamrifle_ammo
 			range		200
 			shots		1
 			ammo		1
-			time		18
+			time		17
 			damage		"110 10"
-			dmgweight	"particlebeam_medium"
+			dmgweight	"particlebeam"
 			shotorg		"2 6"
 		}
 	}
@@ -219,7 +219,7 @@ item pbeamcannon
 	ammo			8
 	reload			18
 	reloadsound		"weapons/reload-rifle"
-	price			5000
+	price			50000
 	size			70
 	is_primary		true
 	is_heavy		true
@@ -235,7 +235,7 @@ item pbeamcannon_ammo
 	shape			"0 0 2 1"
 	center			"0 0 -0.2"
 	scale			1.0
-	price			1400
+	price			14000
 	size			8
 	is_primary		true
 	is_heavy		true
@@ -263,7 +263,7 @@ item pbeamcannon_ammo
 			ammo				1
 			time				13
 			damage				"150 30"
-			dmgweight			"particlebeam_heavy"
+			dmgweight			"particlebeam"
 			reaction			true
 			shotorg				"3.5 4"
 		}
@@ -284,9 +284,9 @@ item pbeamcannon_ammo
 			shots				4
 			ammo				4
 			delaybetweenshots	5
-			time				18
+			time				17
 			damage				"150 30"
-			dmgweight			"particlebeam_heavy"
+			dmgweight			"particlebeam"
 			reaction			true
 			shotorg				"3.5 4"
 		}
@@ -310,7 +310,7 @@ item pbeamcannon_ammo
 			damage		"0 0"
 			spldmg		"250 50"
 			splrad		3
-			dmgweight	"particlebeam_heavy"
+			dmgweight	"particlebeam"
 			shotorg		"3.5 4"
 		}
 	}

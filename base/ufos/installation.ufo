@@ -7,9 +7,9 @@ installation radartower
 	name		"_Radar Tower"
 	model		"geoscape/radar"
 	image		"pics/geoscape/radar"
-	cost		10000
-	radar_range	8
-	radar_tracking_range	19
+	cost		160000
+	radar_range	9
+	radar_tracking_range	16
 	max_damage		1
 	buildtime	7
 	type		"radartower"
@@ -22,7 +22,7 @@ installation ufoyard
 	name		"_UFO Yard"
 	model		"geoscape/ufoyard"
 	image		"pics/geoscape/ufoyard"
-	cost		30000
+	cost		300000
 	radar_range	0
 	max_ufo_stored	6
 	max_damage		100
@@ -37,7 +37,7 @@ installation samsite
 	name		"_SAM Site"
 	model		"geoscape/samlauncher"
 	image		"pics/geoscape/defence"
-	cost		20000
+	cost		128000
 	radar_range	0
 	max_batteries	2
 	max_damage		1
@@ -52,7 +52,7 @@ installation orbit
 	name			"_Orbital Rocket Launcher"
 	model			"geoscape/orbit"
 	image			"pics/geoscape/orbit"
-	cost			200000
+	cost			2000000
 	radar_range		0
 	max_damage		0
 	buildtime		0

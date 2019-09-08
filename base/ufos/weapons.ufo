@@ -11,7 +11,7 @@ item medikit
 	shape		"0 0 2 2"
 	center		"1 0 2"
 	scale		1.1
-	price		80
+	price		1000
 	size		15
 	is_misc	true
 	thrown		false
@@ -87,7 +87,7 @@ item irgoggles
 	shape		"0 0 2 1"
 	center		"0 0 0"
 	scale		1.5
-	price		100
+	price		1000
 	size		15
 	is_misc	true
 	thrown		true
@@ -134,7 +134,7 @@ item irgoggles
 // =======================
 item fraggrenade
 {
-	name		"_Frag Grenade"
+	name		"_AEMG M80 Fragmentation Grenade"
 	model		"weapons/fraggren/fraggren"
 	weapon		true
 	type		"grenade"
@@ -142,12 +142,12 @@ item fraggrenade
 	shape		"0 0 1 1"
 	center		"0 0 0"
 	scale		1.3
-	price		35
+	price		525
 	size		5
 	is_misc	true
 	thrown		true
-	dmgtype "blast"
-	weight		400
+	dmgtype 	"normal_spray"
+	weight		580
 
 	weapon_mod
 	{
@@ -168,14 +168,93 @@ item fraggrenade
 			bounce	10
 			bncfac	0.5
 			spread	"3 3"
-			range	14
+			range	11
 			shots	1
 			ammo	1
 			delaybetweenshots		1
-			time	8
-			spldmg	"110 30"
-			splrad	4
-			dmgweight "blast"
+			time	10
+			spldmg	"130 60"
+			splrad	7
+			dmgweight "normal_spray"
+			shotorg	"7.5 6.5"
+		}
+		firedef
+		{
+			name	"_Roll"
+			skill	"explosive"
+			projtl	fraggren
+			impact	explosionGrenade
+			hitbody explosionGrenade
+			firesnd	"weapons/grenade-pin"
+			impsnd	"weapons/explosion-grenade"
+			bodysnd	"weapons/explosion-grenade"
+			bncsnd	"weapons/grenade-bounce"
+			gravity	true
+			rolled true
+			delay	1
+			bounce	10
+			bncfac	0.5
+			spread	"2 2"
+			range	10
+			shots	1
+			ammo	1
+			delaybetweenshots		1
+			time	10
+			spldmg	"130 60"
+			splrad	7
+			dmgweight "normal_spray"
+			shotorg	"5.5 2"
+		}
+	}
+}
+
+// =======================
+// FRAGMENTATION GRENADE 2
+// =======================
+item fraggren2
+{
+	name		"_AEMG M82 Fragmentation Grenade"
+	model		"weapons/fraggren2/fraggren"
+	weapon		true
+	type		"grenade"
+	animationindex	0
+	shape		"0 0 1 1"
+	center		"0 0 0"
+	scale		1.1
+	price		325
+	size		4
+	is_misc	true
+	thrown		true
+	dmgtype 	"normal_spray"
+	weight		360
+
+	weapon_mod
+	{
+		weapon fraggren2
+		firedef
+		{
+			name	"_Lob"
+			skill	"explosive"
+			projtl	fraggren
+			impact	explosionGrenade
+			hitbody explosionGrenade
+			firesnd	"weapons/grenade-pin"
+			impsnd	"weapons/explosion-grenade"
+			bodysnd	"weapons/explosion-grenade"
+			bncsnd	"weapons/grenade-bounce"
+			gravity	true
+			delay	1
+			bounce	10
+			bncfac	0.5
+			spread	"3 3"
+			range	15
+			shots	1
+			ammo	1
+			delaybetweenshots		1
+			time	10
+			spldmg	"110 50"
+			splrad	6
+			dmgweight "normal_spray"
 			shotorg	"7.5 6.5"
 		}
 		firedef
@@ -199,10 +278,168 @@ item fraggrenade
 			shots	1
 			ammo	1
 			delaybetweenshots		1
-			time	8
-			spldmg	"110 30"
-			splrad	4
+			time	10
+			spldmg	"110 50"
+			splrad	6
+			dmgweight "normal_spray"
+			shotorg	"5.5 2"
+		}
+	}
+}
+
+// =======================
+// HE GRENADE
+// =======================
+item hegrenade
+{
+	name		"_AEMG M12 HE Grenade"
+	model		"weapons/hegren/hegren"
+	weapon		true
+	type		"grenade"
+	animationindex	0
+	shape		"0 0 1 1"
+	center		"0 0 0"
+	scale		1.3
+	price		1250
+	size		5
+	is_misc	true
+	thrown		true
+	dmgtype "blast"
+	weight		250
+
+	weapon_mod
+	{
+		weapon hegrenade
+		firedef
+		{
+			name	"_Lob"
+			skill	"explosive"
+			projtl	smokegren
+			impact	explosionGrenade
+			hitbody explosionGrenade
+			firesnd	"weapons/grenade-pin"
+			impsnd	"weapons/explosion-grenade"
+			bodysnd	"weapons/explosion-grenade"
+			bncsnd	"weapons/grenade-bounce"
+			gravity	true
+			delay	1
+			bounce	10
+			bncfac	0.5
+			spread	"3 3"
+			range	13
+			shots	1
+			ammo	1
+			delaybetweenshots		1
+			time	10
+			spldmg	"150 20"
+			splrad	3
 			dmgweight "blast"
+			shotorg	"7.5 6.5"
+		}
+		firedef
+		{
+			name	"_Roll"
+			skill	"explosive"
+			projtl	smokegren
+			impact	explosionGrenade
+			hitbody explosionGrenade
+			firesnd	"weapons/grenade-pin"
+			impsnd	"weapons/explosion-grenade"
+			bodysnd	"weapons/explosion-grenade"
+			bncsnd	"weapons/grenade-bounce"
+			gravity	true
+			rolled true
+			delay	1
+			bounce	10
+			bncfac	0.5
+			spread	"2 2"
+			range	12
+			shots	1
+			ammo	1
+			delaybetweenshots		1
+			time	10
+			spldmg	"150 20"
+			splrad	3
+			dmgweight "blast"
+			shotorg	"5.5 2"
+		}
+	}
+}
+
+// =======================
+// EMP GRENADE
+// =======================
+item empgrenade
+{
+	name		"_EMP Grenade "
+	model		"weapons/empgren/empgren"
+	weapon		true
+	type		"grenade"
+	animationindex	0
+	shape		"0 0 1 1"
+	center		"0 0 0"
+	scale		1.4
+	price		3750
+	size		5
+	is_misc	true
+	thrown		true
+	dmgtype 	"emp"
+	weight		650
+
+	weapon_mod
+	{
+		weapon empgrenade
+		firedef
+		{
+			name	"_Lob"
+			skill	"explosive"
+			projtl	smokegren
+			impact	flash_explosion
+			hitbody flash_explosion
+			firesnd	"weapons/grenade-pin"
+			impsnd	"weapons/explosion-plasma"
+			bodysnd	"weapons/explosion-plasma"
+			bncsnd	"weapons/grenade-bounce"
+			gravity	true
+			delay	1
+			bounce	10
+			bncfac	0.5
+			spread	"3 3"
+			range	12
+			shots	1
+			ammo	1
+			delaybetweenshots		1
+			time	10
+			spldmg	"220 100"
+			splrad	2
+			dmgweight "emp"
+			shotorg	"7.5 6.5"
+		}
+		firedef
+		{
+			name	"_Roll"
+			skill	"explosive"
+			projtl	smokegren
+			impact	flash_explosion
+			hitbody flash_explosion
+			firesnd	"weapons/grenade-pin"
+			impsnd	"weapons/explosion-plasma"
+			bodysnd	"weapons/explosion-plasma"
+			bncsnd	"weapons/grenade-bounce"
+			gravity	true
+			rolled true
+			delay	1
+			bounce	10
+			bncfac	0.5
+			spread	"2 2"
+			range	11
+			shots	1
+			ammo	1
+			delaybetweenshots		1
+			time	10
+			spldmg	"220 100"
+			splrad	2
+			dmgweight "emp"
 			shotorg	"5.5 2"
 		}
 	}
@@ -222,7 +459,7 @@ item flashbang
 	shape		"0 0 1 1"
 	center		"0 1.5 0.6"
 	scale		2.4
-	price		70
+	price		700
 	size		4
 	is_misc	true
 	thrown		true
@@ -249,11 +486,11 @@ item flashbang
 			bounce	10
 			bncfac	0.5
 			spread	"3 3"
-			range	12
+			range	14
 			shots	1
 			ammo	1
 			delaybetweenshots		1
-			time	6
+			time	10
 			spldmg	"999 0"	// TODO: needed at all?
 			splrad	5
 			dmgweight "shock"
@@ -277,11 +514,11 @@ item flashbang
 			bounce	10
 			bncfac	0.5
 			spread	"2 2"
-			range	8
+			range	13
 			shots	1
 			ammo	1
 			delaybetweenshots		1
-			time	6
+			time	10
 			spldmg	"999 0"	// TODO: needed at all?
 			splrad	5
 			dmgweight "shock"
@@ -303,7 +540,7 @@ item smokegrenade
 	shape		"0 0 1 1"
 	center		"0 0 -0.25"
 	scale		1.5
-	price		25
+	price		125
 	size		5
 	is_misc	true
 	thrown		true
@@ -332,7 +569,7 @@ item smokegrenade
 			shots	1
 			ammo	1
 			delaybetweenshots		1
-			time	8
+			time	10
 			damage	"5 1"	//Smoke field damage
 			spldmg	"1 1"
 			splrad	3
@@ -360,7 +597,7 @@ item smokegrenade
 			shots	1
 			ammo	1
 			delaybetweenshots		1
-			time	8
+			time	10
 			damage	"5 1"	//Smoke field damage
 			spldmg	"1 1"
 			splrad	3
@@ -384,7 +621,7 @@ item stungrenade
 	shape		"0 0 1 1"
 	center		"0 0 0"
 	scale		1.4
-	price		190
+	price		1900
 	size		7
 	is_misc	true
 	thrown		true
@@ -415,7 +652,7 @@ item stungrenade
 			shots	1
 			ammo	1
 			delaybetweenshots		1
-			time	8
+			time	10
 			damage	"45 5"	//Gas field damage
 			spldmg	"140 10"
 			splrad	3
@@ -445,7 +682,7 @@ item stungrenade
 			shots	1
 			ammo	1
 			delaybetweenshots		1
-			time	8
+			time	10
 			damage	"45 5"	//Gas field damage
 			spldmg	"140 10"
 			splrad	3
@@ -470,7 +707,7 @@ item stungrenade_alien
 	shape		"0 0 1 1"
 	center		"0 0 0"
 	scale		1.4
-	price		190
+	price		1900
 	size		7
 	is_misc	true
 	thrown		true
@@ -501,7 +738,7 @@ item stungrenade_alien
 			shots	1
 			ammo	1
 			delaybetweenshots		1
-			time	8
+			time	10
 			damage	"36 10"	//Gas field damage
 			spldmg	"180 20"
 			splrad	4
@@ -531,7 +768,7 @@ item stungrenade_alien
 			shots	1
 			ammo	1
 			delaybetweenshots		1
-			time	8
+			time	10
 			damage	"36 10"	//Gas field damage
 			spldmg	"180 20"
 			splrad	4
@@ -555,7 +792,7 @@ item incgrenade
 	shape		"0 0 1 1"
 	center		"0 0 -0.3"
 	scale		1.4
-	price		150
+	price		1250
 	size		5
 	is_misc	true
 	thrown		true
@@ -586,9 +823,9 @@ item incgrenade
 			shots	1
 			ammo	1
 			delaybetweenshots		1
-			time	8
+			time	10
 			damage	"14 5"	//Fire field damage
-			spldmg	"70 10"
+			spldmg	"45 25"
 			splrad	3
 			dmgweight "incendiary"
 			rounds	4
@@ -616,9 +853,9 @@ item incgrenade
 			shots	1
 			ammo	1
 			delaybetweenshots		1
-			time	8
+			time	10
 			damage	"14 5"	//Fire field damage
-			spldmg	"70 10"
+			spldmg	"45 25"
 			splrad	3
 			dmgweight "incendiary"
 			rounds	4
@@ -640,7 +877,7 @@ item plasmagrenade
 	shape		"0 0 1 1"
 	center		"0 0 -0.25"
 	scale		1.5
-	price		950
+	price		9500
 	size		10
 	is_misc	true
 	thrown		true
@@ -670,8 +907,8 @@ item plasmagrenade
 			shots	1
 			ammo	1
 			delaybetweenshots		1
-			time	8
-			spldmg	"160 20"
+			time	10
+			spldmg	"160 80"
 			splrad	5
 			dmgweight "plasma_heavy"
 			shotorg	"7.5 6.5"
@@ -697,9 +934,88 @@ item plasmagrenade
 			shots	1
 			ammo	1
 			delaybetweenshots		1
-			time	8
-			spldmg	"160 20"
+			time	10
+			spldmg	"160 80"
 			splrad	5
+			dmgweight "plasma_heavy"
+			shotorg	"5.5 2"
+		}
+	}
+}
+
+// ================
+// PLASMA GRENADE 2
+// ================
+item plasmagrenade2
+{
+	name		"_Heavy Plasma Grenade"
+	model		"weapons/plasmagre2/plasmagre2"
+	weapon		true
+	type		"grenade"
+	animationindex	0
+	shape		"0 0 1 1"
+	center		"0 0 -0.25"
+	scale		1.5
+	price		12500
+	size		10
+	is_misc		true
+	thrown		true
+	dmgtype "plasma"
+	weight		1000
+
+	weapon_mod
+	{
+		weapon plasmagrenade2
+		firedef
+		{
+			name	"_Lob"
+			skill	"explosive"
+			projtl	plasmagren
+			impact	plasmaBigExplosion
+			hitbody	plasmaBigExplosion
+			firesnd	"weapons/grenade-pin"
+			impsnd	"weapons/explosion-plasma"
+			bodysnd	"weapons/explosion-plasma"
+			bncsnd	"weapons/grenade-bounce"
+			gravity	true
+			delay	1
+			bounce	8
+			bncfac	0.5
+			spread	"3 3"
+			range	9
+			shots	1
+			ammo	1
+			delaybetweenshots		1
+			time	10
+			spldmg	"220 160"
+			splrad	7
+			dmgweight "plasma_heavy"
+			shotorg	"7.5 6.5"
+		}
+		firedef
+		{
+			name	"_Roll"
+			skill	"explosive"
+			projtl	plasmagren
+			impact	plasmaBigExplosion
+			hitbody	plasmaBigExplosion
+			impsnd	"weapons/explosion-plasma"
+			firesnd	"weapons/grenade-pin"
+			bodysnd	"weapons/explosion-plasma"
+			bncsnd	"weapons/grenade-bounce"
+			gravity	true
+			rolled true
+			delay	1
+			bounce	8
+			bncfac	0.5
+			spread	"2 2"
+			range	8
+			shots	1
+			ammo	1
+			delaybetweenshots		1
+			time	10
+			spldmg	"220 160"
+			splrad	7
 			dmgweight "plasma_heavy"
 			shotorg	"5.5 2"
 		}

@@ -23,106 +23,573 @@
 
 // Current max total funding: 600K credits/month
 
-nation latin
-{
-	name "_The Revolutionary Countries"
-	color "0 1 0.5 1"
-	funding	140000
-	happiness 0.5
-	soldiers 5
-	scientists 2
-	workers 5
-	pilots	1
-	pos "60 -13"
-}
 
-nation states
+
+// unions
+// gdpc chosen by basevalue * 1.5 + 25.0 (which is arbitrary/random)
+// max funding 0.00017% (0.0000017) GDP / year + 23471
+
+// total population: 9299 , 9299 / 20 = 464.95
+
+
+nation africa
 {
-	name "_United America"
-	color "0 0.5 0 1"
-	funding	160000
-	happiness 0.5
-	soldiers 5
-	scientists 3
-	workers 3
-	pilots	2
-	pos "103 48"
+	// 	Countries: 
+	//	Morocco, Algeria, Mauritania, Senegal, Gambia, Cote D'Ivoire, Sierra Leone, Liberia, Mali, Niger, Chad,
+	//	Sudan, Ethiopia, Cameroon, Gabon, Kenya, Rwanda, Tanzania, Mozambique, Malawi, Zambia, Angola,
+	//	Namibia, Botswana, Zimbabwe, South Africa, Lesotho, Swaziland/Eswatini,
+	// 	Madagascar, Cape Verde, Comoros, Mauritius, Seychelles
+	//	pop: 42, 55, 7, 27, 3, 37, 14, 8, 38, 44, 20, 59, 228, 52, 3, 71, 28, 119, 59, 52, 39, 46, 2, 3, 25, 69, 2, 2, 46, 1, 1, 1, 
+	name 			"_African Union"
+	namelong 		"_African Union"
+	funding			464154
+	soldiers 		3
+	scientists 		3
+	workers 		1
+	pilots			1
+	population		1123			// 2.415
+	gdp				3110710 		// Millions
+	gdpc			2770			// unmodified base value 1.8
+	happiness 		0.5
+	pos 			"-12 18"
+	color 			"0.176 0.655 0.333 1"
+	// template info
+	template		"africanunion_enlisted"
+	template_sf		"africanunion_sf"
+	rank			"ableseaman"
+	rank_sf			"cadet"
+	threshold_sf	0.70
+	
 }
 
 nation europe
 {
-	name "_The Greater European Union"
-	color "0 0.5 1 1"
-	pos "-7 49"
-	funding	125000
-	happiness 0.5
-	soldiers 3
-	scientists 3
-	workers 2
-	pilots	2
-}
-
-nation asia
-{
-	name "_The Asian Republic"
-	color "0.5 0.5 0 1"
-	funding	125000
-	happiness 0.5
-	soldiers 5
-	scientists 1
-	workers 3
-	pilots	1
-	pos "-100 33"
+	//	Countries:
+	//	Finland, Sweden, Norway, Iceland, Denmark, Belgium, Netherlands, Germany, Poland, France, United Kingdom, Spain, Portugal,
+	//	Estonia, Lithuania, Latvia, Ukraine, Belarus, Moldova, Hungary, Croatia, Czechia, Slovakia, Albania, Bosnia & Herzegovina,
+	//	Monte Negro, Italy, Cyprus, Austria, Switzerland, Greece, Andorra, Monaco, Ireland, Luxembourg, Macedonia, Romania, Malta, Vatican,
+	//	Liechtenstein, Slovenia, Serbia, Bulgaria, San Marino,
+	//	Turkey, Armenia, Georgia
+	//  pop: 5, 12, 6, 0, 6, 13, 18, 72, 33, 69, 71, 52, 10, 1, 2, 1, 37, 8, 2, 8, 4, 10, 5, 3, 3, 1, 61, 1, 9, 10, 10, 1, 6, 2, 18, 2, 6, 6, 89, 2, 5
+	name 			"_European Union"
+	namelong 		"_European Union"
+	color 			"0.125 0.125 0.741 1"
+	funding			791729
+	happiness 		0.5
+	sf				2				// "special forces"
+	soldiers 		0
+	scientists 		3
+	workers 		1
+	pilots			2
+	population		680				// 1.463
+	gdp				5423000 		// Millions
+	gdpc			7975			// unmodified base value 36.5
+	pos 			"-7 49"
+	// template info
+	template		"soldier"
+	template_sf		"eu_sf"
+	rank			"seaman"
+	rank_sf			"sergeant"
+	threshold_sf	0.60
 }
 
 nation middle
 {
-	name "_The Middle-Eastern Alliance"
-	color "1 1 0 1"
-	funding 80000
-	happiness 0.5
-	soldiers 1
-	scientists 3
-	workers 1
-	pilots	1
-	pos "-46 26"
+	//	Countries:
+	//	Libya, Egypt, Saudi Arabia, Iraq, Iran, Kuwait, UAE, Qatar, Bahrain, Yemen, Oman, Kazakhstan, Kyrgyzstan,
+	//	Tajikistan, Azerbaijan, Afghanistan, Uzbekistan, Jordan, Syria, Lebanon, Turkmenistan
+	//	pop: 9, 138, 4, 77, 105, 4, 8, 3, 2, 46, 5, 22, 7, 12, 11, 64, 35, 11, 31, 6, 7
+	name 			"_Seven Seas League"
+	namelong 		"_League of the Seven Seas" // (the)
+	color 			"0.769 0.545 0.160 1"
+	funding 		625412
+	happiness 		0.5
+	sf				3				// "special forces"
+	soldiers 		6
+	scientists 		0
+	workers 		0
+	pilots			0
+	population		607				// 1.31
+	gdp				4249000 		// Millions
+	gdpc			7000			// unmodified base value 30.0 chosen at random
+	pos 			"-40 28"
+	// template info
+	template		"ssl_enlisted"
+	template_sf		"ssl_sf"
+	rank			"ableseaman"
+	rank_sf			"cadet"
+	threshold_sf	0.75
+
 }
 
-nation africa
+nation asia
 {
-	name "_New Africa"
-	color "1 0.5 0.25 1"
-	funding	105000
-	happiness 0.5
-	soldiers 5
-	scientists 1
-	workers 3
-	pilots	1
-	pos "-20 5"
+	//	Countries:
+	//	Bangladesh, Nepal, Bhutan, Laos, Thailand, Burma/Myanmar, Vietnam, Malaysia, Cambodia, Sri Lanka
+	//	pop: 201, 46, 1, 10, 66, 71, 111, 43, 22, 25
+	name 			"_Siamese Confederation"
+	namelong 		"_Siamese Confederation"
+	color 			"0.292 0.373 0.882 1"
+	funding			285214
+	happiness 		0.5
+	sf				0				// "special forces"
+	soldiers 		2
+	scientists 		2
+	workers 		1
+	pilots			1
+	population		596				// 1.282
+	gdp				1847600 		// Millions
+	gdpc			3100			// unmodified basevalue 4.0 chosen somewhat at random
+	pos 			"-100 14"
+	// template info
+	template		"siamese_enlisted"
+	template_sf		"soldier"
+	rank			"seaman"
+	rank_sf			"seaman"
+	threshold_sf	0.75
+
+}
+
+nation oceania2
+{
+	//	Countries:
+	//	Indonesia, Philippines, Papua New Guinea, New Zealand, Brunei, Singapore, = 507
+	//	Fiji, Marshall Islands, Tonga, Tuvalu, Nauru, Palau, Solomon Islands, Vanuatu, New Caledonia, Samoa, Tahiti (FR), Pitcairn (UK), Norfolk Island (?), 
+	//	Northern Mariana Islands, Federated States of Micronesia, Kiribati, Cook Islands, = 2 at random
+	//	pop: 327, 155, 10, 5, 1, 9, 
+	
+	name 			"_Oceania"
+	namelong 		"_Commonwealth of Oceania"
+	color 			"0.518 0.576 0.890 1"
+	funding			241598
+	happiness 		0.5
+	sf				0				// "special forces"
+	soldiers 		3
+	scientists 		0
+	workers 		2
+	pilots			1
+	population		509			// 1.095
+	gdp				1539725 	// Millions
+	gdpc			3025		// unmodified base value 3.5 chosen somewhat at random
+	pos 			"-136 1"
+	// template info
+	template		"oceania_enlisted"
+	template_sf		"soldier"
+	rank			"seaman"
+	rank_sf			"seaman"
+	threshold_sf	0.75
+
+}
+
+nation africa2
+{
+	//	Countries:
+	//	Guinea, Guinea-Bissau, Burkina Faso, Togo, Benin, Ghana, Democratic Republic of Congo, Republic of the Congo, 
+	//	Equatorial Guinea, Central African Republic, Eritrea, Somalia, Djibouti, Uganda, Rwanda
+	//	pop: 26, 3, 47, 17, 22, 52, 145, 10, 1, 10, 11, 23, 1, 93, 28
+	name 			"_African Coalition"
+	namelong 		"_African Democratic Coalition"
+	color 			"0.612 0.918 0.478 1"
+	funding			218480
+	happiness 		0.5
+	sf				0				// "special forces"
+	soldiers 		2
+	scientists 		1
+	workers 		1
+	pilots			2
+	population		489			// 1.052
+	gdp				1376535 	// Millions
+	gdpc			2815		// unmodified base value 2.1 chosen somewhat at random
+	pos 			"-22 0"
+	// template info
+	template		"coalition_enlisted"
+	template_sf		"soldier"
+	rank			"seaman"
+	rank_sf			"seaman"
+	threshold_sf	0.75
+
+}
+
+nation latin2
+{
+	//	Country:
+	//	Argentina, Belize, Bolivia, Chile, Colombia, Costa Rica, Cuba, Ecuador, El Salvador, Guatemala, Guyana, Haiti, Honduras, Jamaica, Nicaragua, Panama, Paraguay, Peru, Puerto Rico (US), Suriname, Uruguay, Venezuela,  
+	//	pop: 54, 1, 16, 20, 56, 6, 9, 21, 6, 23, 1, 13, 13, 4, 7, 5, 9, 37, 3, 1, 3, 40
+	//
+	//	... Smaller population islands:
+	//	Falkland Islands(UK?), French Guiana(FR),     
+	//	Dominican Republic,  Trinidad & Tobago, Bahamas, Antigua and barbuda,
+	//	St. Lucia, Grenada, St. Vincent and the Grenadines,  Dominica, Guadeloupe, Martinique,
+	//	Barbados, Curaçao, Aruba, Cayman Islands, Saint Kitts and Nevis, Anguilla... Some others? = 2 at random
+
+	
+	name 			"_American Alliance"
+	namelong 		"_South American Alliance"
+	color 			"0.384 0.725 0.729 1"
+	funding			203210
+	happiness 		0.5
+	sf				0				// "special forces"
+	soldiers 		3
+	scientists 		1
+	workers 		2
+	pilots			0
+	population		350			// 0.753
+	gdp				1268750 	// Millions
+	gdpc			3625		// unmodified basevalue chosen somewhat at random 7.5
+	pos 			"68 8"
+	// template info
+	template		"americanalliance_enlisted"
+	template_sf		"soldier"
+	rank			"seaman"
+	rank_sf			"seaman"
+	threshold_sf	0.75
+
+}
+
+
+
+// countries
+
+nation india
+{
+	name 			"_India"
+	namelong 		"_Republic of India"
+	color 			"0.212 0.212 0.878 1"
+	funding			680982
+	happiness 		0.5
+	sf				4			// "special forces"
+	soldiers 		1			// 1.1 MP/kc
+	scientists 		2
+	workers 		0
+	pilots			5
+	population		1657		// 3.564
+	gdp				4641257 	// Millions
+	gdpc			2801		// unmodified basevalue 2.0
+	pos 			"-79 20"
+	// template info
+	template		"india_enlisted"
+	template_sf		"india_sf"
+	rank			"seaman"
+	rank_sf			"corporal"
+	threshold_sf	0.65
+
+}
+
+nation china
+{
+	name 			"_China"
+	namelong 		"_People's Republic of China"
+	color 			"0.255 0.400 0.251 1"
+	funding			829170
+	happiness 		0.5
+	sf				2			// "special forces"
+	soldiers 		4			// 1.5 MP/kc
+	scientists 		2
+	workers 		1
+	pilots			1
+	population		1438		// 3.093
+	gdp				5687290 	// Millions
+	gdpc			3955		// unmodified  basevalue 9.7
+	pos 			"-100 36"
+	// template info
+	template		"china_enlisted"
+	template_sf		"china_sf"
+	rank			"marine"
+	rank_sf			"corporal"
+	threshold_sf	0.75
+
+}
+
+nation usa
+{
+	name 			"_United States"
+	namelong 		"_United States of America"
+	color 			"0.224 0.220 0.431 1"
+	funding			693868
+	happiness 		0.5
+	sf				4			// "special forces"
+	soldiers 		4			// 4.1 MP/kc
+	scientists 		1
+	workers 		0
+	pilots			1
+	population		398			// 0.856
+	gdp				4732220 	// Millions
+	gdpc			11890		// unmodified basevalue 62.6 
+	pos 			"96 39"
+	// template info
+	template		"usa_enlisted"
+	template_sf		"usa_sf"
+	rank			"marine"
+	rank_sf			"ensign"
+	threshold_sf	0.75
+
+}
+
+nation nigeria
+{
+	name 			"_Nigeria"
+	namelong 		"_Federal Republic of Nigeria"
+	color 			"0.169 0.325 0.682 1"
+	funding			180778
+	happiness 		0.5
+	sf				3				// "special forces"
+	soldiers 		0			// 0.6 MP/kc
+	scientists 		3
+	workers 		1
+	pilots			1
+	population		391			// 0.841
+	gdp				1110409 	// Millions
+	gdpc			2797		// unmodified basevalue 2.0
+	pos 			"-11 7"
+	// template info
+	template		"soldier"
+	template_sf		"nigeria_sf"
+	rank			"seaman"
+	rank_sf			"marshal"
+	threshold_sf	0.75
+
+}
+
+nation pakistan
+{
+	name 			"_Pakistan"
+	namelong 		"_Islamic Republic of Pakistan"
+	color 			"0.141 0.624 0.149 1"
+	funding 		135190
+	happiness 		0.5
+	sf				2			// "special forces"
+	soldiers 		2			// 3.1 MP/kc
+	scientists 		0
+	workers 		0
+	pilots			3
+	population		291			// 0.626
+	gdp				788610 		// Millions
+	gdpc			2710		// unmodified basevalue 1.4 
+	pos 			"-69 30"
+	// template info
+	template		"pakistan_enlisted"
+	template_sf		"pakistan_sf"
+	rank			"ableseaman"
+	rank_sf			"sergeant"
+	threshold_sf	0.75
+}
+
+nation brazil
+{
+	name 			"_Brazil"
+	namelong 		"_Federative Republic of Brazil"
+	color 			"0.800 0.965 0.482 1"
+	funding			122766
+	happiness 		0.5
+	sf				3			// "special forces"
+	soldiers 		0			// 1.6 MP/kc
+	scientists 		4
+	workers 		0
+	pilots			0
+	population		238			// 0.512
+	gdp				700910 		// Millions
+	gdpc			2945		// unmodified basevalue 8.9
+	pos 			"46 -9"
+	// template info
+	template		"soldier"
+	template_sf		"brazil_sf"
+	rank			"seaman"
+	rank_sf			"lancecorp"
+	threshold_sf	0.60
+
+}
+
+nation mexico
+{
+	name 			"_Mexico"
+	namelong 		"_United Mexican States"
+	color 			"0.00 0.408 0.271 1"
+	funding			108075
+	happiness 		0.5
+	sf				0			// "special forces"
+	soldiers 		2			// 2.2 MP/kc
+	scientists 		1
+	workers 		1
+	pilots			1
+	population		151			// 0.325
+	gdp				597205 		// Millions
+	gdpc			3955		// unmodified basevalue 9.7
+	pos 			"97 23"
+	// template info
+	template		"mexico_enlisted"
+	template_sf		"soldier"
+	rank			"seaman"
+	rank_sf			"seaman"
+	threshold_sf	0.75
+
 }
 
 nation russia
 {
-	name "_Russia"
-	color "0.5 0 0 1"
-	funding	100000
-	happiness 0.5
-	soldiers 3
-	scientists 3
-	workers 2
-	pilots	2
-	pos "-80 63"
+	name 			"_Russia"
+	namelong 		"_Russian Federation"
+	color 			"0.482 0.550 0.550 1"
+	funding			100452
+	happiness 		0.5
+	sf				4			// "special forces"
+	soldiers 		4			// 7.1 MP/kc
+	scientists 		1
+	workers 		1
+	pilots			0
+	population		130			// 0.280
+	gdp				543400 		// Millions
+	gdpc			4180		// unmodified basevalue 11.2
+	pos 			"-85 65"
+	// template info
+	template		"russia_enlisted"
+	template_sf		"russia_sf"
+	rank			"ableseaman"
+	rank_sf			"ensign"
+	threshold_sf	0.75
+
 }
 
-nation oceania
+nation japan
 {
-	name "_The Commonwealth of Oceania"
-	color "0.5 0 0.5 1"
-	funding	120000
-	happiness 0.5
-	soldiers 5
-	scientists 3
-	workers 2
-	pilots	1
-	pos "-130 -25"
+	name 			"_Japan"
+	namelong 		"_State of Japan"
+	color 			"0.957 0.965 0.439 1"
+	funding			150497
+	happiness 		0.5
+	sf				0			// "special forces"
+	soldiers 		0			// 2.0 MP/kc
+	scientists 		5
+	workers 		0
+	pilots			0
+	population		107			// 0.230
+	gdp				896660 		// Millions
+	gdpc			8380		// unmodified basevalue 39.2
+	pos 			"-144 36"
+	// template info
+	template		"japan_enlisted"
+	template_sf		"soldier"
+	rank			"seaman"
+	rank_sf			"seaman"
+	threshold_sf	0.75
+
 }
+
+nation korea
+{
+	name 			"_Korea"
+	namelong 		"_United Korea"
+	color 			"0.635 0.412 0.569 1"
+	funding			78022
+	happiness 		0.5
+	sf				3			// "special forces"
+	soldiers 		2			// N 37.6 , S 11.7 MP/kc
+	scientists 		1
+	workers 		0
+	pilots			0
+	population		70			// 0.151
+	gdp				385070 		// Millions
+	gdpc			5501		// unmodified basevalue approximated at 20.0
+	pos 			"-128 40"
+	// template info
+	template		"korea_enlisted"
+	template_sf		"korea_sf"
+	rank			"ableseaman"
+	rank_sf			"cadet"
+	threshold_sf	0.80
+
+}
+
+nation canada
+{
+	name 			"_Canada"
+	namelong 		"_Canada"
+	color 			"0.624 0.176 0.165 1"
+	funding			78156
+	happiness 		0.5
+	sf				1			// "special forces"
+	soldiers 		0 			// 1.8 MP/kc
+	scientists 		2
+	workers 		0
+	pilots			0		
+	population		41			// 0.088
+	gdp				386015 		// Millions
+	gdpc			9415		// unmodified basevalue at 46.1
+	pos 			"101 65"
+	// template info
+	template		"soldier"
+	template_sf		"canada_sf"
+	rank			"seaman"
+	rank_sf			"seaman"
+	threshold_sf	0.80
+}
+
+nation australia
+{
+	name 			"_Australia"
+	namelong 		"_Australia"
+	color 			"0.188 0.302 0.941 1"
+	funding			69052
+	happiness 		0.5
+	sf				0			// "special forces"
+	soldiers		3			// 2.5 MP/kc 
+	scientists 		0
+	workers 		0
+	pilots			0
+	population		29			// 0.062
+	gdp				321755 		// Millions
+	gdpc			11095		// unmodified basevalue at 57.3
+	pos 			"-134 -24"
+	// template info
+	template		"australia_enlisted"
+	template_sf		"soldier"
+	rank			"seaman"
+	rank_sf			"seaman"
+	threshold_sf	0.75
+}
+
+nation mongolia
+{
+	name 			"_Mongolia"
+	namelong 		"_Mongolia"
+	color 			"0.353 0.278 0.502 1"
+	funding 		25236
+	happiness 		0.5
+	sf				3			// "special forces"
+	soldiers 		0			// 3.2 MP/kc 
+	scientists 		0
+	workers 		0
+	pilots			0
+	population		4			// 0.009
+	gdp				12460 		// Millions
+	gdpc			3115		// unmodified basevalue at 4.1
+	pos 			"-106 48"
+	// template info
+	template		"soldier"
+	template_sf		"mongolia_sf"
+	rank			"seaman"
+	rank_sf			"cadet"
+	threshold_sf	0.71
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

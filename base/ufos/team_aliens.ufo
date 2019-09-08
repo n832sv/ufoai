@@ -46,13 +46,12 @@ team taman
 
 	//TODO: Balance values
 	resistance {
-		normal_spray 0
-		normal_light 0
-		normal_medium -10
-		normal_heavy -30
+		normal_spray 			-10
+		normal 					-10
+		normal_armour_piercing	0
 
-		normal_steelblade 0
-		normal_monomolecularblade -20
+		normal_steelblade -20
+		normal_monomolecularblade -30
 		normal_needle -2
 
 		blast -20
@@ -64,21 +63,18 @@ team taman
 
 		shock -10
 
-		laser_light 0
-		laser_medium 0
-		laser_heavy 0
+		laser 0
 
-		plasma_light 5
-		plasma_medium 5
-		plasma_heavy 5
-		plasma_pierce		0
+		plasma 5
+		plasma_encased 0				
 
-		particlebeam_light 0
-		particlebeam_medium 0
-		particlebeam_heavy 0
+		particlebeam 0
 
 		stun_electro 0
 		stun_gas 0
+	
+		emp 999
+
 	}
 	templates (
 		alien_taman_light
@@ -130,10 +126,9 @@ team ortnok
 
 	//TODO: Balance values
 	resistance {
-		normal_spray 8
-		normal_light 20
-		normal_medium 20
-		normal_heavy 0
+		normal_spray 			5
+		normal 					5
+		normal_armour_piercing	5
 
 		normal_steelblade 40
 		normal_monomolecularblade 20
@@ -148,21 +143,18 @@ team ortnok
 
 		shock 10
 
-		laser_light 0
-		laser_medium 0
-		laser_heavy 0
+		laser 0
 
-		plasma_light 0
-		plasma_medium 0
-		plasma_heavy 0
-		plasma_pierce		0
+		plasma 				0
+		plasma_encased		0
 
-		particlebeam_light 0
-		particlebeam_medium 0
-		particlebeam_heavy 0
+		particlebeam 		0
 
 		stun_electro 0
 		stun_gas 0
+
+		emp 999
+
 	}
 	templates (
 		alien_ortnok
@@ -204,10 +196,9 @@ team shevaar
 
 	//TODO: Balance values
 	resistance {
-		normal_spray 8
-		normal_light 30
-		normal_medium 20
-		normal_heavy 20
+		normal_spray 				-8
+		normal 						8
+		normal_armour_piercing		12
 
 		normal_steelblade 50
 		normal_monomolecularblade 20
@@ -222,21 +213,18 @@ team shevaar
 
 		shock 0
 
-		laser_light 0
-		laser_medium 0
-		laser_heavy 0
+		laser 0
 
-		plasma_light -10
-		plasma_medium -20
-		plasma_heavy -30
-		plasma_pierce		0
+		plasma 				-10
+		plasma_encased		-5
 
-		particlebeam_light 0
-		particlebeam_medium 0
-		particlebeam_heavy 0
+		particlebeam 0
 
 		stun_electro -10
 		stun_gas -10
+
+		emp 999
+
 	}
 	templates (
 		alien_shevaar
@@ -276,16 +264,15 @@ team bloodspider
 
 	//TODO: Balance values
 	resistance {
-		normal_spray	8
-		normal_light	15
-		normal_medium	20
-		normal_heavy	5
+		normal_spray				60
+		normal						20
+		normal_armour_piercing		2
 
 		normal_steelblade			30
 		normal_monomolecularblade	0
-		normal_needle		1
+		normal_needle				1
 
-		blast			20
+		blast			30
 
 		fire_medium		25
 		fire_heavy		10
@@ -295,21 +282,18 @@ team bloodspider
 
 		shock			0
 
-		laser_light		5
-		laser_medium	5
-		laser_heavy		5
+		laser			5
 
-		plasma_light	30
-		plasma_medium	30
-		plasma_heavy	20
-		plasma_pierce		0
+		plasma			5
+		plasma_encased	2
 
-		particlebeam_light	10
-		particlebeam_medium	20
-		particlebeam_heavy	20
+		particlebeam	10
 
 		stun_electro 999
 		stun_gas 999
+
+		emp -50
+
 	}
 	templates (
 		alien_blood
@@ -349,10 +333,9 @@ team bloodspider_adv
 
 	//TODO: Balance values
 	resistance {
-		normal_spray	25
-		normal_light	60
-		normal_medium	50
-		normal_heavy	25
+		normal_spray				80
+		normal						50
+		normal_armour_piercing		20
 
 		normal_steelblade			60
 		normal_monomolecularblade	15
@@ -368,21 +351,18 @@ team bloodspider_adv
 
 		shock			0
 
-		laser_light		10
-		laser_medium	10
-		laser_heavy		10
+		laser			10
 
-		plasma_light	50
-		plasma_medium	40
-		plasma_heavy	20
-		plasma_pierce		0
+		plasma			10
+		plasma_encased	8
 
-		particlebeam_light	30
-		particlebeam_medium	40
-		particlebeam_heavy	50
+		particlebeam	30
 
 		stun_electro	999
 		stun_gas		999
+
+		emp 			-20
+
 	}
 	templates (
 		alien_blood
@@ -422,10 +402,9 @@ team hovernet
 
 	//TODO: Balance values
 	resistance {
-		normal_spray	8
-		normal_light	15
-		normal_medium	20
-		normal_heavy	5
+		normal_spray				25
+		normal						15
+		normal_armour_piercing		-10
 
 		normal_steelblade			30
 		normal_monomolecularblade	0
@@ -441,21 +420,18 @@ team hovernet
 
 		shock			0
 
-		laser_light		5
-		laser_medium	5
-		laser_heavy		5
+		laser			5
 
-		plasma_light	30
-		plasma_medium	30
-		plasma_heavy	20
-		plasma_pierce		0
+		plasma			30
+		plasma_encased	0
 
-		particlebeam_light	10
-		particlebeam_medium	20
-		particlebeam_heavy	20
+		particlebeam	10
 
 		stun_electro 999
 		stun_gas 999
+
+		emp 			15
+
 	}
 	templates (
 		alien_hovernet
@@ -494,10 +470,9 @@ team hovernet_adv
 
 	//TODO: Balance values
 	resistance {
-		normal_spray	25
-		normal_light	60
-		normal_medium	50
-		normal_heavy	25
+		normal_spray				50
+		normal						30
+		normal_armour_piercing		0
 
 		normal_steelblade			60
 		normal_monomolecularblade	15
@@ -513,23 +488,82 @@ team hovernet_adv
 
 		shock			0
 
-		laser_light		10
-		laser_medium	10
-		laser_heavy		10
+		laser			10
 
-		plasma_light	50
-		plasma_medium	40
-		plasma_heavy	20
-		plasma_pierce		0
+		plasma			25
+		plasma_encased	5
 
-		particlebeam_light	30
-		particlebeam_medium	40
-		particlebeam_heavy	50
+		particlebeam	30
 
 		stun_electro	999
 		stun_gas		999
+
+		emp 			15
+
 	}
 	templates (
 		alien_hovernet
+	)
+}
+
+team strigoi
+{
+	name			"_Strigoi"
+	tech			rs_alien_strigoi_autopsy
+	team			"alien"
+	armour			false
+	size			1
+	hit_particle	blood
+	bodytype		humanoid_standard
+	names			alien_taman_names
+
+	models {
+		neutral("aliens/strigoi" "tbod01" "thed01" 0 0) 
+	}
+
+	actorsounds {
+		neutral {
+			hurtsound "aliens/shevaar/hurt1"
+			hurtsound "aliens/shevaar/hurt2"
+			hurtsound "aliens/shevaar/hurt3"
+			deathsound "aliens/shevaar/die1"
+			deathsound "aliens/shevaar/die2"
+		}
+	}
+
+	//TODO: Balance values
+	resistance {
+		normal_spray 				5
+		normal		 				10
+		normal_armour_piercing		10
+
+		normal_steelblade 			10
+		normal_monomolecularblade 	0
+		normal_needle 				10
+
+		blast 0
+
+		fire_light 					30
+		fire_medium 				20
+		fire_heavy 					10
+		fire_flamer 				10
+
+		shock 						0
+
+		laser						58
+
+		plasma		 				-10
+		plasma_encased				-10
+
+		particlebeam	 			0
+
+		stun_electro 				20
+		stun_gas 					20
+
+		emp 						999
+
+	}
+	templates (
+		alien_strigoi
 	)
 }

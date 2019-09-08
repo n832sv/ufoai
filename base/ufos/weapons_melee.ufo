@@ -11,7 +11,7 @@ item knife
 	shape			"0 0 1 2"
 	center			"-1 0 3"
 	scale			1.0
-	price			50
+	price			100
 	size			6
 	is_secondary	true
 	thrown			true
@@ -34,7 +34,7 @@ item knife
 			speed		0
 			range		1.5
 			shots		1
-			time		4
+			time		6
 			damage		"50 5"
 			dmgweight	"normal_steelblade"
 			reaction	true
@@ -55,7 +55,7 @@ item knife
 			spread		"1.5 1.5"
 			shots		1
 			ammo		1
-			time		8
+			time		11
 			damage		"20 5"
 			dmgweight	"normal_steelblade"
 			reaction	true
@@ -77,7 +77,7 @@ item knifemono
 	shape			"0 0 1 3"
 	center			"-1 0 5"
 	scale			1.0
-	price			1600
+	price			4000
 	size			12
 	is_secondary	true
 	thrown			true
@@ -100,7 +100,7 @@ item knifemono
 			speed		0
 			range		1.5
 			shots		1
-			time		4
+			time		6
 			damage		"80 5"
 			dmgweight	"normal_monomolecularblade"
 			reaction	true
@@ -121,7 +121,7 @@ item knifemono
 			spread		"1.5 1.5"
 			shots		1
 			ammo		1
-			time		8
+			time		11
 			damage		"40 5"
 			dmgweight	"normal_monomolecularblade"
 			reaction	true
@@ -146,7 +146,7 @@ item stunrod
 	shape			"0 1 3 1"
 	center			"3.2 0.5 -2.6"
 	scale			1.05
-	price			800
+	price			6000
 	size			25
 	is_secondary	true
 	thrown			false
@@ -170,7 +170,7 @@ item stunrod
 			range		2
 			shots		1
 			ammo		1
-			time		7
+			time		8
 			damage		"60 20"
 			dmgweight	"stun_electro"
 			reaction	true
@@ -190,7 +190,7 @@ item stunrod
 			shots				2
 			ammo				2
 			delaybetweenshots	5
-			time				11
+			time				12
 			damage				"60 20"
 			dmgweight			"stun_electro"
 			reaction			true
@@ -207,9 +207,9 @@ item stunrod
 			speed		0
 			range		1.5
 			shots		1
-			time		7
+			time		8
 			damage		"30 4"
-			dmgweight	"normal_light"
+			dmgweight	"normal"
 			reaction	true
 			shotorg		"-9 11"
 		}
@@ -233,7 +233,7 @@ item kerrblade
 	shape			"0 1 5 1"
 	center			"6.3 0 3"
 	scale			1.0
-	price			1200
+	price			12000
 	size			40
 	is_primary		true
 	thrown			true
@@ -298,7 +298,7 @@ item plasblade
 	shape			"0 0 1 2"
 	center			"1 4.5 1"
 	scale  			1.5
-	price			3000
+	price			27000
 	size			5
 	is_secondary	true
 	thrown			true
@@ -323,9 +323,9 @@ item plasblade
 			range		1.5
 			spread		"1 1"
 			shots		1
-			time		6
+			time		9
 			damage		"350 20"
-			dmgweight	"plasma_heavy"
+			dmgweight	"plasma"
 			reaction	true
 			shotorg		"-9 11"
 		}

@@ -1,0 +1,37 @@
+msgid strigoi_notes_txt {
+text "_Commander,
+
+We've recovered a new alien corpse from the battlefield. We should begin dissection and assessment as soon as possible.
+
+Sincerely,
+
+Dr. Connor"
+}
+
+msgid strigoi_notes_pre_txt {
+text "_No pre research info available"
+}
+
+msgid strigoi_autopsy_txt {
+text "_Commander,
+
+This alien appears anatomically similar to species nicknamed 'Taman' with two notable major differences.
+First, they have a considerably larger head, which you could tell just by looking at them. 
+Second, and more importantly, the skin of this species appears to consist of rocky minerals with crystalline structure, 
+somewhat comparable to the cartilaginous shell of terrestrial turtles.
+This, combined with the high albedo of the paler skin, makes the species resistant to focused laserbeams, as 
+a large fraction of energy is reflected or alternatively dispersed by the crystals.
+
+We've chosen to name the species 'strigoi' as their pale complexion makes them appear rather ghastly in the dark.
+(Placeholder)"
+}
+
+msgid strigoi_autopsy_pre_txt {
+text "_Commander,
+
+We've recovered a new alien corpse from the battlefield. We should begin dissection and assessment as soon as possible.
+
+Sincerely,
+
+Dr. Connor"
+}

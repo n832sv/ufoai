@@ -38,7 +38,7 @@ function build_budgetreport (rootNode)
 		name = "budget_report",
 		class = "panel",
 		pos = {0, 0},
-		size = {440, 396},
+		size = {480, 300},
 		backgroundcolor = {0.5, 0.5, 0.5, 0.2},
 
 		{
@@ -46,7 +46,7 @@ function build_budgetreport (rootNode)
 			class = "string",
 			text = "_Expenses",
 			pos = {0, 0},
-			size = {440, 20},
+			size = {480, 20},
 			contentalign = ufo.ALIGN_CC,
 			backgroundcolor = {0.527, 0.6, 0.21, 0.2},
 		},
@@ -55,7 +55,7 @@ function build_budgetreport (rootNode)
 			name = "expenses_list",
 			class = "panel",
 			pos = {0, 20},
-			size = {420, 396},
+			size = {480, 396},
 			layout = ufo.LAYOUT_TOP_DOWN_FLOW,
 			wheelscrollable = true,
 
@@ -134,7 +134,7 @@ function build_budgetreport (rootNode)
 			name = "expenses_list_scrollbar",
 			class = "vscrollbar",
 			image = "ui/scrollbar_v",
-			pos = {420, 20},
+			pos = {470, 20},
 			height = 396,
 			current = 0,
 			viewsize = 10,

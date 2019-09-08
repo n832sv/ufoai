@@ -53,11 +53,70 @@
 //		aircraft_factor - part of the equation used to calculate the monthly maintenance costs for aircraft.
 //		aircraft_divisor - part of the equation used to calculate the monthly maintenance costs for aircraft
 //		base_upkeep - monthly maintenance cost per each individual base beyond the actual buildings of the base.
+//		admin_initial - monthly fee to allow for the administration of the employees of Phalanx.
+//		admin_soldier - monthly fee per soldier in Phalanx.
+//		admin_worker - monthly fee per worker in Phalanx.
+//		admin_scientist - monthly fee per scientist in Phalanx.
+//		admin_pilot - monthly fee per pilot in Phalanx.
+//		admin_robot - monthly fee per robot in Phalanx.
 //		debt_interest - the interest rate for all debts that Phalanx has acquired.
 //	---------------------------------------------------------------------
 //	aircraft - initial aircraft for a given campaign.
 //
 //=========================================================================
+
+campaign superhuman
+{
+	name				"_Superhuman"	// Like in X-COM 
+	text				"*msgid:superhuman_campaign_txt"
+	team				"phalanx"
+	soldiers			9
+	scientists			4
+	workers				1
+	pilots				4
+	difficulty			4
+	minhappiness		0.28	// easier, but less arbitrary
+	maxdebts			500000
+	xvirate				30
+	firstbase			su
+	researched			rslist_phalanx
+	equipment			campaign_player
+	soldierequipment	phalanx_initial
+	market				campaign_initial_market
+	asymptotic_market	campaign_asymptotic_market
+	credits				12200000
+	map					"map_earth"
+	visible				true
+	events				main
+	researchrate		0.65
+	uforeductionrate	0.75
+	healingrate			0.2
+	employeerate		0.8
+	initialinterest		50
+	alienbaseinterest	200
+
+	date		"2084 79 6"
+	basecost	1000000
+
+	salary {
+		soldier_base 12500
+		soldier_rankbonus 5550
+		worker_base 5000
+		worker_rankbonus 0
+		scientist_base 20000
+		scientist_rankbonus 0
+		pilot_base 15000
+		pilot_rankbonus 0
+		robot_base 75000
+		robot_rankbonus 0
+		aircraft_factor 1
+		aircraft_divisor 25
+		base_upkeep 200000
+		debt_interest 0.01
+	}
+
+	aircraft ( "craft_drop_firebird" )
+}
 
 campaign veryhard
 {
@@ -70,7 +129,7 @@ campaign veryhard
 	pilots			4
 	difficulty			4
 	minhappiness		0.42
-	maxdebts			50000
+	maxdebts			500000
 	xvirate				30
 	firstbase			balanced
 	researched			rslist_phalanx
@@ -78,7 +137,7 @@ campaign veryhard
 	soldierequipment	phalanx_initial
 	market				campaign_initial_market
 	asymptotic_market	campaign_asymptotic_market
-	credits				1300000
+	credits				13000000
 	map					"map_earth"
 	visible				true
 	events				main
@@ -90,22 +149,22 @@ campaign veryhard
 	alienbaseinterest	200
 
 	date		"2084 79 6"
-	basecost	100000
+	basecost	1000000
 
 	salary {
-		soldier_base 2575
-		soldier_rankbonus 500
-		worker_base 575
+		soldier_base 10000
+		soldier_rankbonus 4250
+		worker_base 5750
 		worker_rankbonus 0
-		scientist_base 1075
+		scientist_base 10750
 		scientist_rankbonus 0
-		pilot_base 1575
+		pilot_base 15750
 		pilot_rankbonus 0
-		robot_base 7650
+		robot_base 76500
 		robot_rankbonus 0
 		aircraft_factor 1
 		aircraft_divisor 25
-		base_upkeep 20000
+		base_upkeep 200000
 		debt_interest 0.01
 	}
 
@@ -123,7 +182,7 @@ campaign hard
 	pilots			6
 	difficulty		2
 	minhappiness	0.35
-	maxdebts		100000
+	maxdebts		1000000
 	xvirate			50
 	firstbase			balanced
 	researched			rslist_phalanx
@@ -131,7 +190,7 @@ campaign hard
 	soldierequipment	phalanx_initial
 	market				campaign_initial_market
 	asymptotic_market	campaign_asymptotic_market
-	credits				1300000
+	credits				13000000
 	map					"map_earth"
 	visible				true
 	events				main
@@ -143,22 +202,22 @@ campaign hard
 	alienbaseinterest	200
 
 	date		"2084 79 6"
-	basecost	100000
+	basecost	1000000
 
 	salary {
-		soldier_base 2075
-		soldier_rankbonus 250
-		worker_base 575
+		soldier_base 9750
+		soldier_rankbonus 2500
+		worker_base 5750
 		worker_rankbonus 0
-		scientist_base 1075
+		scientist_base 10750
 		scientist_rankbonus 0
-		pilot_base 1575
+		pilot_base 15750
 		pilot_rankbonus 0
-		robot_base 7650
+		robot_base 76500
 		robot_rankbonus 0
 		aircraft_factor 1
 		aircraft_divisor 25
-		base_upkeep 20000
+		base_upkeep 200000
 		debt_interest 0.0075
 	}
 
@@ -177,7 +236,7 @@ campaign main
 	pilots			8
 	difficulty		0
 	minhappiness	0.30
-	maxdebts		200000
+	maxdebts		2000000
 	xvirate			70
 	firstbase			balanced
 	researched			rslist_phalanx
@@ -186,7 +245,7 @@ campaign main
 	soldierequipment	phalanx_initial
 	market				campaign_initial_market
 	asymptotic_market	campaign_asymptotic_market
-	credits				1300000
+	credits				13000000
 	map					"map_earth"
 	visible				true
 	events				main
@@ -197,22 +256,22 @@ campaign main
 	alienbaseinterest	200
 
 	date		"2084 79 6"
-	basecost	100000
+	basecost	1000000
 
 	salary {
-		soldier_base 1575
-		soldier_rankbonus 150
-		worker_base 575
+		soldier_base 9250
+		soldier_rankbonus 1500
+		worker_base 5750
 		worker_rankbonus 0
-		scientist_base 1075
+		scientist_base 10750
 		scientist_rankbonus 0
-		pilot_base 1575
+		pilot_base 15750
 		pilot_rankbonus 0
-		robot_base 7650
+		robot_base 76500
 		robot_rankbonus 0
 		aircraft_factor 1
 		aircraft_divisor 25
-		base_upkeep 20000
+		base_upkeep 200000
 		debt_interest 0.005
 	}
 
@@ -230,7 +289,7 @@ campaign easy
 	pilots			12
 	difficulty		-2
 	minhappiness	0.2
-	maxdebts		350000
+	maxdebts		3500000
 	xvirate			80
 	firstbase			balanced
 	researched			rslist_phalanx
@@ -238,7 +297,7 @@ campaign easy
 	soldierequipment	phalanx_initial
 	market				campaign_initial_market
 	asymptotic_market	campaign_asymptotic_market
-	credits				1500000
+	credits				15000000
 	map					"map_earth"
 	visible				true
 	events				main
@@ -249,22 +308,22 @@ campaign easy
 	alienbaseinterest	200
 
 	date		"2084 79 6"
-	basecost	100000
+	basecost	1000000
 
 	salary {
-		soldier_base 1575
-		soldier_rankbonus 100
-		worker_base 575
+		soldier_base 9250
+		soldier_rankbonus 1000
+		worker_base 5750
 		worker_rankbonus 0
-		scientist_base 1075
+		scientist_base 10750
 		scientist_rankbonus 0
-		pilot_base 1575
+		pilot_base 15750
 		pilot_rankbonus 0
-		robot_base 7650
+		robot_base 76500
 		robot_rankbonus 0
 		aircraft_factor 1
 		aircraft_divisor 25
-		base_upkeep 20000
+		base_upkeep 200000
 		debt_interest 0.005
 	}
 
@@ -282,7 +341,7 @@ campaign veryeasy
 	pilots			12
 	difficulty		-4
 	minhappiness	0.1
-	maxdebts		500000
+	maxdebts		5000000
 	xvirate			90
 	firstbase			balanced
 	researched			rslist_phalanx
@@ -290,7 +349,7 @@ campaign veryeasy
 	soldierequipment	phalanx_initial
 	market				campaign_initial_market
 	asymptotic_market	campaign_asymptotic_market
-	credits				2000000
+	credits				20000000
 	map					"map_earth"
 	visible				true
 	events				main
@@ -301,22 +360,22 @@ campaign veryeasy
 	alienbaseinterest	200
 
 	date		"2084 79 6"
-	basecost	100000
+	basecost	1000000
 
 	salary {
-		soldier_base 1575
-		soldier_rankbonus 100
-		worker_base 575
+		soldier_base 9250
+		soldier_rankbonus 1000
+		worker_base 5750
 		worker_rankbonus 0
-		scientist_base 1075
+		scientist_base 10750
 		scientist_rankbonus 0
-		pilot_base 1575
+		pilot_base 15750
 		pilot_rankbonus 0
-		robot_base 7650
+		robot_base 76500
 		robot_rankbonus 0
 		aircraft_factor 1
 		aircraft_divisor 25
-		base_upkeep 20000
+		base_upkeep 200000
 		debt_interest 0.005
 	}
 

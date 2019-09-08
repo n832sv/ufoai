@@ -51,23 +51,25 @@ do
 		{
 			name = "budgetreport",
 			class = "panel",
-			pos = {15, 75},
-			size = {440, 396},
+			pos = {15, 463},
+			size = {440, 302},
 		},
 
 		{
 			name = "nationschart",
 			class = "panel",
-			pos = {465, 320},
-			size = {545, 275},
+			pos = {457, 463},
+			size = {552, 302},
 		},
 
+--[[
 		{
 			name = "campaignstats",
-			class = "panel",
-			pos = {465, 600},
-			size = {545, 160},
+		class = "panel",
+			pos = {15, 483},
+			size = {440, 280},
 		},
+--]]
 
 		-- Back to geoscape
 		{

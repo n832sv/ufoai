@@ -12,20 +12,545 @@
 //
 //========================================================================
 
-chrtemplate soldier {
-	rate	100
-	strength	"30 40"
-	speed	"15 25"
-	accuracy	"20 30"
-	mind	"20 35"
-	close	"15 25"
-	assault	"15 25"
-	sniper	"15 25"
-	explosive	"15 25"
+chrtemplate zerotemplate_enlisted {
+	rate		100
+	strength	"16 25"			// + 3 L min , + 4 L max
+	speed		"10 20"			// + 2 L min , + 3 L max
+	accuracy	"10 16"			// + 3 L min , + 4 L max
+	mind		"10 20"			// + 2 L min , + 3 L max  
+	close		"10 17"			// + 2 L min , + 2 L max , new 3 L
+	assault		"10 17"			// + 2 L min , + 2 L max , new 3 L
+	sniper		"10 17"			// + 2 L min , + 2.5L max , new 3.5 L
+	explosive	"10 16"			// + 2 L min , + 3 L max , new 4 L
 	piloting	"0 0"
 	targeting	"0 0"
-	evading	"0 0"
-	health	"90 110"
+	evading		"0 0"
+	health		"80 90"			// + 4 L min , + 7 L max
+}
+
+chrtemplate zerotemplate_sf {
+	rate		100
+	strength	"21 28"			// + 3 L min , + 4 L max
+	speed		"14 22"			// + 3 L min , + 3 L max 
+	accuracy	"21 25"			// + 3 L min , + 5 L max
+	mind		"14 22"			// + 3 L min , + 4 L max
+	close		"17 24"			// + 2.5 L min , + 2.5 L max , new 4L
+	assault		"17 24"			// + 2.5 L min , + 2.5 L max , new 4L
+	sniper		"17 24"			// + 2.5 L min , + 3 L max , new 4.5L
+	explosive	"17 27"			// + 2.5 L min , + 3 L max , new 4.5L
+	piloting	"0 0"
+	targeting	"0 0"
+	evading		"0 0"
+	health		"96 108"		// + 3 L min , + 6 L max
+}
+
+// African Union
+
+chrtemplate africanunion_enlisted {
+	rate		100
+	strength	"34 49"			// + 3 L min , + 4 L max
+	speed		"22 38"			// + 2 L min , + 3 L max
+	accuracy	"16 24"			// + 3 L min , + 4 L max
+	mind		"14 26"			// + 2 L min , + 3 L max
+	close		"14 23"			// + 2 L min , + 2 L max
+	assault		"14 23"			// + 2 L min , + 2 L max
+	sniper		"12 20"			// + 2 L min , + 2.5L max
+	explosive	"12 20"			// + 2 L min , + 3 L max
+	piloting	"0 0"
+	targeting	"0 0"
+	evading		"0 0"
+	health		"100 125"			// + 4 L min , + 7 L max
+}
+
+chrtemplate africanunion_sf {
+	rate		100
+	strength	"39 52"			// + 3 L min , + 4 L max
+	speed		"32 38"			// + 3 L min , + 3 L max
+	accuracy	"27 35"			// + 3 L min , + 5 L max
+	mind		"20 30"			// + 3 L min , + 4 L max
+	close		"22 32"			// + 2.5 L min , + 2.5 L max
+	assault		"22 32"			// + 2.5 L min , + 2.5 L max
+	sniper		"19 30"			// + 2.5 L min , + 3 L max
+	explosive	"22 36"			// + 2.5 L min , + 3 L max
+	piloting	"0 0"
+	targeting	"0 0"
+	evading		"0 0"
+	health		"111 138"		// + 3 L min , + 6 L max
+}
+
+// European Union 
+
+chrtemplate eu_sf {
+	rate		100
+	strength	"30 40"			// + 3 L min , + 4 L max
+	speed		"26 31"			// + 3 L min , + 3 L max
+	accuracy	"33 50"			// + 3 L min , + 5 L max
+	mind		"20 30"			// + 3 L min , + 4 L max
+	close		"19 27"			// + 2.5 L min , + 2.5 L max
+	assault		"22 32"			// + 2.5 L min , + 2.5 L max
+	sniper		"24 41"			// + 2.5 L min , + 3 L max
+	explosive	"24 35"			// + 2.5 L min , + 3 L max
+	piloting	"0 0"
+	targeting	"0 0"
+	evading		"0 0"
+	health		"105 126"		// + 3 L min , + 6 L max
+}
+
+// Seven Seas League 
+
+chrtemplate ssl_enlisted {
+	rate		100
+	strength	"22 33"			// + 3 L min , + 4 L max
+	speed		"16 29"			// + 2 L min , + 3 L max
+	accuracy	"16 24"			// + 3 L min , + 4 L max
+	mind		"22 38"			// + 2 L min , + 3 L max
+	close		"14 23"			// + 2 L min , + 2 L max
+	assault		"16 26"			// + 2 L min , + 2 L max
+	sniper		"12 20"			// + 2 L min , + 2.5L max
+	explosive	"16 28"			// + 2 L min , + 3 L max
+	piloting	"0 0"
+	targeting	"0 0"
+	evading		"0 0"
+	health		"88 104"		// + 4 L min , + 7 L max
+}
+
+chrtemplate ssl_sf {
+	rate		100
+	strength	"30 40"			// + 3 L min , + 4 L max
+	speed		"26 34"			// + 3 L min , + 3 L max
+	accuracy	"30 40"			// + 3 L min , + 5 L max
+	mind		"32 46"			// + 3 L min , + 4 L max
+	close		"22 44"			// + 2.5 L min , + 2.5 L max
+	assault		"24 35"			// + 2.5 L min , + 2.5 L max
+	sniper		"22 27"			// + 2.5 L min , + 3 L max
+	explosive	"24 31"			// + 2.5 L min , + 3 L max
+	piloting	"0 0"
+	targeting	"0 0"
+	evading		"0 0"
+	health		"105 126"		// + 3 L min , + 6 L max
+}
+
+// Siamese Confederation
+
+chrtemplate siamese_enlisted {
+	rate		100
+	strength	"25 37"			// + 3 L min , + 4 L max
+	speed		"14 26"			// + 2 L min , + 3 L max
+	accuracy	"13 20"			// + 3 L min , + 4 L max
+	mind		"14 26"			// + 2 L min , + 3 L max  
+	close		"20 32"			// + 2 L min , + 2 L max , new 3 L
+	assault		"12 20"			// + 2 L min , + 2 L max , new 3 L
+	sniper		"12 20"			// + 2 L min , + 2.5L max , new 3.5 L
+	explosive	"12 20"			// + 2 L min , + 3 L max , new 4 L
+	piloting	"0 0"
+	targeting	"0 0"
+	evading		"0 0"
+	health		"84 97"			// + 4 L min , + 7 L max
+}
+
+
+// Commonwealth of Oceania
+
+chrtemplate oceania_enlisted {
+	rate		100
+	strength	"22 33"			// + 3 L min , + 4 L max
+	speed		"18 32"			// + 2 L min , + 3 L max
+	accuracy	"13 20"			// + 3 L min , + 4 L max
+	mind		"12 23"			// + 2 L min , + 3 L max
+	close		"14 23"			// + 2 L min , + 2 L max
+	assault		"14 23"			// + 2 L min , + 2 L max
+	sniper		"12 20"			// + 2 L min , + 2.5L max
+	explosive	"12 20"			// + 2 L min , + 3 L max
+	piloting	"0 0"
+	targeting	"0 0"
+	evading		"0 0"
+	health		"92 111"			// + 4 L min , + 7 L max
+}
+
+// African Democratic Coalition
+
+chrtemplate coalition_enlisted {
+	rate		100
+	strength	"31 45"			// + 3 L min , + 4 L max
+	speed		"16 29"			// + 2 L min , + 3 L max
+	accuracy	"19 28"			// + 3 L min , + 4 L max
+	mind		"12 23"			// + 2 L min , + 3 L max  
+	close		"12 20"			// + 2 L min , + 2 L max , new 3 L
+	assault		"12 20"			// + 2 L min , + 2 L max , new 3 L
+	sniper		"12 20"			// + 2 L min , + 2.5L max , new 3.5 L
+	explosive	"18 32"			// + 2 L min , + 3 L max , new 4 L
+	piloting	"0 0"
+	targeting	"0 0"
+	evading		"0 0"
+	health		"96 118"		// + 4 L min , + 7 L max
+}
+
+// South American Alliance
+
+chrtemplate americanalliance_enlisted {
+	rate		100
+	strength	"25 37"			// + 3 L min , + 4 L max
+	speed		"12 23"			// + 2 L min , + 3 L max
+	accuracy	"16 24"			// + 3 L min , + 4 L max
+	mind		"14 26"			// + 2 L min , + 3 L max  
+	close		"12 20"			// + 2 L min , + 2 L max , new 3 L
+	assault		"16 26"			// + 2 L min , + 2 L max , new 3 L
+	sniper		"14 24"			// + 2 L min , + 2.5L max , new 3.5 L
+	explosive	"12 20"			// + 2 L min , + 3 L max , new 4 L
+	piloting	"0 0"
+	targeting	"0 0"
+	evading		"0 0"
+	health		"88 104"		// + 4 L min , + 7 L max
+}
+
+// India
+
+chrtemplate india_enlisted {
+	rate		100
+	strength	"22 33"			// + 3 L min , + 4 L max
+	speed		"18 32"			// + 2 L min , + 3 L max
+	accuracy	"19 28"			// + 3 L min , + 4 L max
+	mind		"14 26"			// + 2 L min , + 3 L max  
+	close		"12 20"			// + 2 L min , + 2 L max , new 3 L
+	assault		"12 20"			// + 2 L min , + 2 L max , new 3 L
+	sniper		"20 35"			// + 2 L min , + 2.5L max , new 3.5 L
+	explosive	"14 24"			// + 2 L min , + 3 L max , new 4 L
+	piloting	"0 0"
+	targeting	"0 0"
+	evading		"0 0"
+	health		"84 97"			// + 4 L min , + 7 L max
+}
+
+chrtemplate india_sf {
+	rate		100
+	strength	"27 36"			// + 3 L min , + 4 L max
+	speed		"26 34"			// + 3 L min , + 3 L max
+	accuracy	"30 40"			// + 3 L min , + 5 L max
+	mind		"23 34"			// + 3 L min , + 4 L max
+	close		"22 28"			// + 2.5 L min , + 2.5 L max
+	assault		"22 28"			// + 2.5 L min , + 2.5 L max
+	sniper		"24 44"			// + 2.5 L min , + 3 L max
+	explosive	"24 39"			// + 2.5 L min , + 3 L max
+	piloting	"0 0"
+	targeting	"0 0"
+	evading		"0 0"
+	health		"102 120"		// + 3 L min , + 6 L max
+}
+
+// China
+
+chrtemplate china_enlisted {
+	rate		100
+	strength	"19 29"			// + 3 L min , + 4 L max
+	speed		"18 32"			// + 2 L min , + 3 L max
+	accuracy	"22 32"			// + 3 L min , + 4 L max
+	mind		"18 32"			// + 2 L min , + 3 L max
+	close		"16 26"			// + 2 L min , + 2 L max
+	assault		"18 29"			// + 2 L min , + 2 L max
+	sniper		"16 27"			// + 2 L min , + 2.5L max
+	explosive	"18 32"			// + 2 L min , + 3 L max
+	piloting	"0 0"
+	targeting	"0 0"
+	evading		"0 0"
+	health		"92 111"		// + 4 L min , + 7 L max
+}
+
+chrtemplate china_sf {
+	rate		100
+	strength	"24 32"			// + 3 L min , + 4 L max
+	speed		"23 31"			// + 3 L min , + 3 L max
+	accuracy	"33 45"			// + 3 L min , + 5 L max
+	mind		"26 38"			// + 3 L min , + 4 L max
+	close		"22 32"			// + 2.5 L min , + 2.5 L max
+	assault		"24 35"			// + 2.5 L min , + 2.5 L max
+	sniper		"22 33"			// + 2.5 L min , + 3 L max
+	explosive	"24 40"			// + 2.5 L min , + 3 L max
+	piloting	"0 0"
+	targeting	"0 0"
+	evading		"0 0"
+	health		"102 120"		// + 3 L min , + 6 L max
+}
+
+
+// USA
+
+chrtemplate usa_enlisted {
+	rate		100
+	strength	"25 37"			// + 3 L min , + 4 L max
+	speed		"16 29"			// + 2 L min , + 3 L max
+	accuracy	"28 40"			// + 3 L min , + 4 L max
+	mind		"14 26"			// + 2 L min , + 3 L max
+	close		"22 35"			// + 2 L min , + 2 L max
+	assault		"18 29"			// + 2 L min , + 2 L max
+	sniper		"16 27"			// + 2 L min , + 2.5L max
+	explosive	"14 24"			// + 2 L min , + 3 L max
+	piloting	"0 0"
+	targeting	"0 0"
+	evading		"0 0"
+	health		"92 111"		// + 4 L min , + 7 L max
+}
+
+chrtemplate usa_sf {
+	rate		100
+	strength	"30 40"			// + 3 L min , + 4 L max
+	speed		"26 34"			// + 3 L min , + 3 L max
+	accuracy	"39 55"			// + 3 L min , + 5 L max
+	mind		"23 34"			// + 3 L min , + 4 L max
+	close		"32 48"			// + 2.5 L min , + 2.5 L max
+	assault		"27 40"			// + 2.5 L min , + 2.5 L max
+	sniper		"24 37"			// + 2.5 L min , + 3 L max
+	explosive	"29 49"			// + 2.5 L min , + 3 L max
+	piloting	"0 0"
+	targeting	"0 0"
+	evading		"0 0"
+	health		"108 132"		// + 3 L min , + 6 L max
+}
+
+// Nigeria
+
+chrtemplate nigeria_sf {
+	rate		100
+	strength	"36 48"			// + 3 L min , + 4 L max
+	speed		"29 37"			// + 3 L min , + 3 L max
+	accuracy	"26 35"			// + 3 L min , + 5 L max
+	mind		"20 30"			// + 3 L min , + 4 L max
+	close		"24 35"			// + 2.5 L min , + 2.5 L max
+	assault		"32 48"			// + 2.5 L min , + 2.5 L max
+	sniper		"19 28"			// + 2.5 L min , + 3 L max
+	explosive	"19 31"			// + 2.5 L min , + 3 L max
+	piloting	"0 0"
+	targeting	"0 0"
+	evading		"0 0"
+	health		"111 138"		// + 3 L min , + 6 L max
+}
+
+// Pakistan
+
+chrtemplate pakistan_enlisted {
+	rate		100
+	strength	"22 33"			// + 3 L min , + 4 L max
+	speed		"18 32"			// + 2 L min , + 3 L max
+	accuracy	"19 28"			// + 3 L min , + 4 L max
+	mind		"18 32"			// + 2 L min , + 3 L max
+	close		"14 23"			// + 2 L min , + 2 L max
+	assault		"16 26"			// + 2 L min , + 2 L max
+	sniper		"14 24"			// + 2 L min , + 2.5L max
+	explosive	"14 24"			// + 2 L min , + 3 L max
+	piloting	"0 0"
+	targeting	"0 0"
+	evading		"0 0"
+	health		"92 111"		// + 4 L min , + 7 L max
+}
+
+chrtemplate pakistan_sf {
+	rate		100
+	strength	"30 40"			// + 3 L min , + 4 L max
+	speed		"23 31"			// + 3 L min , + 3 L max
+	accuracy	"30 40"			// + 3 L min , + 5 L max
+	mind		"29 42"			// + 3 L min , + 4 L max
+	close		"22 28"			// + 2.5 L min , + 2.5 L max
+	assault		"24 42"			// + 2.5 L min , + 2.5 L max
+	sniper		"22 28"			// + 2.5 L min , + 3 L max
+	explosive	"19 31"			// + 2.5 L min , + 3 L max
+	piloting	"0 0"
+	targeting	"0 0"
+	evading		"0 0"
+	health		"105 126"		// + 3 L min , + 6 L max
+}
+
+// Brazil
+
+chrtemplate brazil_sf {
+	rate		100
+	strength	"30 40"			// + 3 L min , + 4 L max
+	speed		"23 31"			// + 3 L min , + 3 L max
+	accuracy	"24 30"			// + 3 L min , + 5 L max
+	mind		"17 26"			// + 3 L min , + 4 L max
+	close		"24 34"			// + 2.5 L min , + 2.5 L max
+	assault		"22 32"			// + 2.5 L min , + 2.5 L max
+	sniper		"22 28"			// + 2.5 L min , + 3 L max
+	explosive	"22 36"			// + 2.5 L min , + 3 L max
+	piloting	"0 0"
+	targeting	"0 0"
+	evading		"0 0"
+	health		"111 138"		// + 3 L min , + 6 L max
+}
+
+// Mexico
+
+chrtemplate mexico_enlisted {
+	rate		100
+	strength	"22 33"			// + 3 L min , + 4 L max
+	speed		"18 32"			// + 2 L min , + 3 L max
+	accuracy	"16 24"			// + 3 L min , + 4 L max
+	mind		"14 26"			// + 2 L min , + 3 L max
+	close		"16 26"			// + 2 L min , + 2 L max
+	assault		"16 26"			// + 2 L min , + 2 L max
+	sniper		"12 20"			// + 2 L min , + 2.5L max
+	explosive	"12 20"			// + 2 L min , + 3 L max
+	piloting	"0 0"
+	targeting	"0 0"
+	evading		"0 0"
+	health		"84 97"			// + 4 L min , + 7 L max
+}
+
+// Russia
+
+chrtemplate russia_enlisted {
+	rate		100
+	strength	"28 41"			// + 3 L min , + 4 L max
+	speed		"16 29"			// + 2 L min , + 3 L max
+	accuracy	"19 28"			// + 3 L min , + 4 L max
+	mind		"14 26"			// + 2 L min , + 3 L max
+	close		"14 23"			// + 2 L min , + 2 L max
+	assault		"20 31"			// + 2 L min , + 2 L max
+	sniper		"14 24"			// + 2 L min , + 2.5L max
+	explosive	"14 24"			// + 2 L min , + 3 L max
+	piloting	"0 0"
+	targeting	"0 0"
+	evading		"0 0"
+	health		"92 111"		// + 4 L min , + 7 L max
+}
+
+chrtemplate russia_sf {
+	rate		100
+	strength	"33 44"			// + 3 L min , + 4 L max
+	speed		"26 34"			// + 3 L min , + 3 L max
+	accuracy	"33 45"			// + 3 L min , + 5 L max
+	mind		"23 34"			// + 3 L min , + 4 L max
+	close		"24 35"			// + 2.5 L min , + 2.5 L max
+	assault		"32 48"			// + 2.5 L min , + 2.5 L max
+	sniper		"32 51"			// + 2.5 L min , + 3 L max
+	explosive	"27 45"			// + 2.5 L min , + 3 L max
+	piloting	"0 0"
+	targeting	"0 0"
+	evading		"0 0"
+	health		"108 132"		// + 3 L min , + 6 L max
+}
+
+//	Japan (initial employee)
+
+chrtemplate japan_enlisted {
+	rate		100
+	strength	"19 29"			// + 3 L min , + 4 L max
+	speed		"18 32"			// + 2 L min , + 3 L max
+	accuracy	"22 32"			// + 3 L min , + 4 L max
+	mind		"32 46"			// (SF6) + 3 L min , + 4 L max
+	close		"18 29"			// + 2 L min , + 2 L max , new 3 L
+	assault		"14 23"			// + 2 L min , + 2 L max , new 3 L
+	sniper		"12 20"			// + 2 L min , + 2.5L max , new 3.5 L
+	explosive	"12 20"			// + 2 L min , + 3 L max , new 4 L
+	piloting	"0 0"
+	targeting	"0 0"
+	evading		"0 0"
+	health		"84 97"			// + 4 L min , + 7 L max
+}
+
+// United Korea
+
+chrtemplate korea_enlisted {
+	rate		100
+	strength	"22 33"			// + 3 L min , + 4 L max
+	speed		"20 35"			// + 2 L min , + 3 L max
+	accuracy	"22 32"			// + 3 L min , + 4 L max
+	mind		"16 29"			// + 2 L min , + 3 L max
+	close		"12 20"			// + 2 L min , + 2 L max
+	assault		"14 23"			// + 2 L min , + 2 L max
+	sniper		"12 20"			// + 2 L min , + 2.5L max
+	explosive	"16 28"			// + 2 L min , + 3 L max
+	piloting	"0 0"
+	targeting	"0 0"
+	evading		"0 0"
+	health		"96 118"		// + 4 L min , + 7 L max
+}
+
+chrtemplate korea_sf {
+	rate		100
+	strength	"24 32"			// + 3 L min , + 4 L max
+	speed		"32 40"			// + 3 L min , + 3 L max
+	accuracy	"36 50"			// + 3 L min , + 5 L max
+	mind		"23 34"			// + 3 L min , + 4 L max
+	close		"22 32"			// + 2.5 L min , + 2.5 L max
+	assault		"22 32"			// + 2.5 L min , + 2.5 L max
+	sniper		"22 33"			// + 2.5 L min , + 3 L max
+	explosive	"32 54"			// + 2.5 L min , + 3 L max
+	piloting	"0 0"
+	targeting	"0 0"
+	evading		"0 0"
+	health		"105 126"		// + 3 L min , + 6 L max
+}
+
+// Canada
+
+chrtemplate canada_sf {
+	rate		100
+	strength	"21 28"			// + 3 L min , + 4 L max
+	speed		"20 28"			// + 3 L min , + 3 L max 
+	accuracy	"33 45"			// + 3 L min , + 5 L max
+	mind		"26 38"			// + 3 L min , + 4 L max
+	close		"22 32"			// + 2.5 L min , + 2.5 L max , new 4L
+	assault		"24 36"			// + 2.5 L min , + 2.5 L max , new 4L
+	sniper		"19 28"			// + 2.5 L min , + 3 L max , new 4.5L
+	explosive	"19 31"			// + 2.5 L min , + 3 L max , new 4.5L
+	piloting	"0 0"
+	targeting	"0 0"
+	evading		"0 0"
+	health		"105 126"		// + 3 L min , + 6 L max
+}
+
+// Australia
+
+chrtemplate australia_enlisted {
+	rate		100
+	strength	"25 37"			// + 3 L min , + 4 L max
+	speed		"14 26"			// + 2 L min , + 3 L max
+	accuracy	"19 28"			// + 3 L min , + 4 L max
+	mind		"14 26"			// + 2 L min , + 3 L max
+	close		"16 26"			// + 2 L min , + 2 L max
+	assault		"16 26"			// + 2 L min , + 2 L max
+	sniper		"14 24"			// + 2 L min , + 2.5L max
+	explosive	"14 24"			// + 2 L min , + 3 L max
+	piloting	"0 0"
+	targeting	"0 0"
+	evading		"0 0"
+	health		"88 104"		// + 4 L min , + 7 L max
+}
+
+// Mongolia
+
+chrtemplate mongolia_sf {
+	rate		100
+	strength	"36 48"			// + 3 L min , + 4 L max
+	speed		"26 34"			// + 3 L min , + 3 L max
+	accuracy	"21 25"			// + 3 L min , + 5 L max
+	mind		"26 38"			// + 3 L min , + 4 L max
+	close		"27 40"			// + 2.5 L min , + 2.5 L max
+	assault		"27 40"			// + 2.5 L min , + 2.5 L max
+	sniper		"22 33"			// + 2.5 L min , + 3 L max
+	explosive	"19 31"			// + 2.5 L min , + 3 L max
+	piloting	"0 0"
+	targeting	"0 0"
+	evading		"0 0"
+	health		"114 144"		// + 3 L min , + 6 L max
+}
+
+//
+
+
+chrtemplate soldier {
+	rate		100
+	strength	"19 25"			// + 3 L min , + 4 L max
+	speed		"12 20"			// + 2 L min , + 3 L max
+	accuracy	"13 16"			// + 3 L min , + 4 L max
+	mind		"12 20"			// + 2 L min , + 3 L max
+	close		"12 18"			// + 2 L min , + 2 L max
+	assault		"12 18"			// + 2 L min , + 2 L max
+	sniper		"12 18"			// + 2 L min , + 2.5L max
+	explosive	"12 18"			// + 2 L min , + 3 L max
+	piloting	"0 0"
+	targeting	"0 0"
+	evading		"0 0"
+	health		"80 96"			// + 4 L min , + 7 L max
 }
 
 chrtemplate pilot {
@@ -34,133 +559,178 @@ chrtemplate pilot {
 	accuracy	"0 0"
 	mind		"0 0"
 	close		"0 0"
-	assault	"0 0"
-	sniper	"0 0"
+	assault		"0 0"
+	sniper		"0 0"
 	explosive	"0 0"
 	piloting	"10 16"
 	targeting	"10 16"
 	evading		"10 16"
-	health		"40 50"
+	health		"50 80"
+}
+
+chrtemplate scientist {
+	strength	"0 0"
+	speed		"0 0"
+	accuracy	"0 0"
+	mind		"0 0"
+	close		"0 0"
+	assault		"0 0"
+	sniper		"0 0"
+	explosive	"0 0"
+	piloting	"0 0"
+	targeting	"0 0"
+	evading		"0 0"
+	health		"40 80"
+}
+
+chrtemplate worker {
+	strength	"0 0"
+	speed		"0 0"
+	accuracy	"0 0"
+	mind		"0 0"
+	close		"0 0"
+	assault		"0 0"
+	sniper		"0 0"
+	explosive	"0 0"
+	piloting	"0 0"
+	targeting	"0 0"
+	evading		"0 0"
+	health		"50 80"
 }
 
 chrtemplate civilian {
 	strength	"15 20"
-	speed	"5 10"
+	speed		"5 10"
 	accuracy	"10 15"
-	mind	"10 15"
-	close	"5 10"
-	assault	"5 10"
-	sniper	"5 10"
+	mind		"10 15"
+	close		"5 10"
+	assault		"5 10"
+	sniper		"5 10"
 	explosive	"5 10"
 	piloting	"0 0"
 	targeting	"0 0"
-	evading	"0 0"
-	health	"20 30"
+	evading		"0 0"
+	health		"40 80"
 }
 
 chrtemplate alien_taman_light {
 	strength	"20 20"
-	speed	"25 35"
+	speed		"25 35"
 	accuracy	"30 40"
-	mind	"50 85"
-	close	"35 50"
-	assault	"35 50"
-	sniper	"35 50"
-	explosive	"35 50"
+	mind		"32 48"
+	close		"20 30"
+	assault		"40 60"
+	sniper		"40 60"
+	explosive	"20 50"
 	piloting	"0 0"
 	targeting	"0 0"
-	evading	"0 0"
-	health	"100 130"
+	evading		"0 0"
+	health		"90 120"
 }
 
 chrtemplate alien_taman {
 	strength	"38 38"
-	speed	"25 35"
+	speed		"25 35"
 	accuracy	"30 40"
-	mind	"50 85"
-	close	"35 50"
-	assault	"35 50"
-	sniper	"35 50"
-	explosive	"35 50"
+	mind		"32 48"
+	close		"20 30"
+	assault		"30 50"
+	sniper		"40 60"
+	explosive	"20 50"
 	piloting	"0 0"
 	targeting	"0 0"
-	evading	"0 0"
-	health	"100 130"
+	evading		"0 0"
+	health		"90 120"
 }
 
 chrtemplate alien_taman_heavy {
-	strength	"60 60"
-	speed	"25 35"
+	strength	"48 48"
+	speed		"25 35"
 	accuracy	"30 40"
-	mind	"50 85"
-	close	"35 50"
-	assault	"35 50"
-	sniper	"35 50"
-	explosive	"35 50"
+	mind		"32 48"
+	close		"20 30"
+	assault		"40 60"
+	sniper		"40 60"
+	explosive	"20 50"
 	piloting	"0 0"
 	targeting	"0 0"
-	evading	"0 0"
-	health	"100 130"
+	evading		"0 0"
+	health		"100 130"
 }
 
 chrtemplate alien_ortnok {
 	strength	"60 80"
-	speed	"20 30"
-	accuracy	"30 45"
-	mind	"20 40"
-	close	"35 50"
-	assault	"35 50"
-	sniper	"35 50"
-	explosive	"35 50"
+	speed		"20 30"
+	accuracy	"20 40"
+	mind		"20 36"
+	close		"20 40"
+	assault		"40 60"
+	sniper		"20 30"
+	explosive	"40 60"
 	piloting	"0 0"
 	targeting	"0 0"
-	evading	"0 0"
-	health	"150 190"
+	evading		"0 0"
+	health		"170 210"
 }
 
 chrtemplate alien_shevaar {
 	strength	"45 55"
-	speed	"30 40"
+	speed		"30 40"
 	accuracy	"30 50"
-	mind	"30 60"
-	close	"35 50"
-	assault	"35 50"
-	sniper	"35 50"
-	explosive	"35 50"
+	mind		"28 44"
+	close		"40 60"
+	assault		"20 50"
+	sniper		"20 40"
+	explosive	"20 40"
 	piloting	"0 0"
 	targeting	"0 0"
-	evading	"0 0"
-	health	"120 160"
+	evading		"0 0"
+	health		"120 160"
+}
+
+chrtemplate alien_strigoi {
+	strength	"34 44"
+	speed		"30 38"
+	accuracy	"38 62"
+	mind		"36 66"
+	close		"20 30"
+	assault		"20 50"
+	sniper		"20 50"
+	explosive	"20 30"
+	piloting	"0 0"
+	targeting	"0 0"
+	evading		"0 0"
+	health		"100 130"
 }
 
 chrtemplate alien_blood {
 	strength	"55 55"
-	speed	"50 50"
+	speed		"50 50"
 	accuracy	"50 50"
-	mind	"50 50"
-	close	"50 50"
-	assault	"50 50"
-	sniper	"50 50"
+	mind		"50 50"
+	close		"50 50"
+	assault		"50 50"
+	sniper		"50 50"
 	explosive	"50 50"
 	piloting	"0 0"
 	targeting	"0 0"
-	evading	"0 0"
-	health	"150 150"
+	evading		"0 0"
+	health		"150 150"
 }
 
 chrtemplate alien_hovernet {
 	strength	"55 55"
-	speed	"70 70"
+	speed		"70 70"
 	accuracy	"30 30"
-	mind	"50 50"
-	close	"35 35"
-	assault	"35 35"
-	sniper	"35 35"
+	mind		"50 50"
+	close		"35 35"
+	assault		"35 35"
+	sniper		"35 35"
 	explosive	"35 35"
 	piloting	"0 0"
 	targeting	"0 0"
-	evading	"0 0"
-	health	"100 100"
+	evading		"0 0"
+	health		"100 100"
 }
 
 chrtemplate robot {

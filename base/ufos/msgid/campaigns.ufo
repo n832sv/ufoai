@@ -1,3 +1,7 @@
+msgid superhuman_campaign_txt {
+text "_This is a very difficult campaign with some imbalanced and adjusted features. Note that the healingrate requires an adjusted c++ file."
+}
+
 msgid veryhard_campaign_txt {
 text "_This is an extremely difficult version of the Standard Campaign. In this scenario, all the odds will be stacked against you, you will receive few recruits, and the nations will be extremely demanding. The aliens will show you no mercy.
 

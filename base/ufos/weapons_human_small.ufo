@@ -1,0 +1,572 @@
+// =======================
+// SHOTGUN2
+// =======================
+item shotgun2
+{
+	name			"_Riot Shotgun"
+	model			"weapons/shotgun2/shotgun"
+	weapon			true
+	type			"rifle"
+	animationindex	1
+	holdtwohanded	false
+	firetwohanded	true
+	shape			"1 0 3 1"
+	shape			"0 1 4 1"
+	center			"1.5 0 3.8"
+	scale			0.98
+	ammo			7
+	reload			14
+	reloadsound		"weapons/reload-shotgun"
+	price			8000
+	size			25
+	is_primary		true
+	weight			3100
+}
+
+item shotgun2_slug_ammo
+{
+	name			"_Saboted Slugs"
+	model			"weapons/shotgun2/shotgun_clip"
+	type			"ammo"
+	animationindex	0
+	shape			"0 0 1 2"
+	center			"0 0 0"
+	scale			2.0
+	price			100
+	size			5
+	is_primary		true
+	dmgtype			"normal_spray"
+	weight			600
+
+	weapon_mod
+	{
+		weapon shotgun2
+		firedef
+		{
+			name				"_Snap Shot"
+			skill				"close"
+			projtl				bullet
+			impact				bulletImpact
+			hitbody				null
+			firesnd				"weapons/bullet-shotgun"
+			impsnd				"impact/bullet-impact"
+			bodysnd 			"impact/bullet-bodyimpact"
+			sndonce				true
+			speed				3000
+			spread				"2.6 2.6"
+			crouch				1.00
+			range				20
+			shots				14
+			ammo				1
+			delaybetweenshots	0
+			time				8
+			damage				"14 7"
+			dmgweight			"normal_spray"
+			reaction			true
+			shotorg				"3.5 7.5"
+		}
+	}
+}
+
+item encased_plasma_shotgun_ammo
+{
+	name			"_Shotgun EP Slugs"
+	model			"weapons/shotgun2/shotgun_ep_clip"
+	type			"ammo"
+	animationindex	0
+	shape			"0 0 1 2"
+	center			"0 0 0"
+	scale			2.0
+	price			4000
+	size			5
+	is_primary		true
+	dmgtype			"normal"
+	weight			600
+
+	weapon_mod
+	{
+		weapon shotgun2
+		firedef
+		{
+			name				"_Snap Shot"
+			skill				"close"
+			projtl				bullet
+			impact				bulletImpact
+			hitbody				null
+			firesnd				"weapons/bullet-shotgun"
+			impsnd				"impact/bullet-impact"
+			bodysnd 			"impact/bullet-bodyimpact"
+			sndonce				true
+			speed				3000
+			spread				"2.7 2.7"
+			crouch				1.0
+			range				20
+			shots				10
+			ammo				1
+			delaybetweenshots	0
+			time				8
+			damage				"21 10"
+			dmgweight			"plasma_encased"
+			reaction			true
+			shotorg				"3.5 7.5"
+		}
+	}
+}
+
+// =======================
+// SHOTGUN MICRO
+// =======================
+item shotgun_micro
+{
+	name			"_Micro Shotgun"
+	model			"weapons/shotgunmicro/shotgunmicro"
+	weapon			true
+	type			"biggun"
+	animationindex	1
+	holdtwohanded	false
+	firetwohanded	true
+	shape			"0 0 3 2"
+	center			"3 0 3"
+	scale			1.2
+	ammo			7
+	reload			8
+	reloadsound		"weapons/reload-shotgun"
+	price			13500
+	size			10
+	is_secondary	true
+	weight			2000
+}
+
+item shotgun_micro_ammo
+{
+	name			"_Flechette Shells"
+	model			"weapons/shotgunmicro/shotgunmicro_clip"
+	type			"ammo"
+	animationindex	0
+	shape			"0 0 1 2"
+	center			"0 0 0"
+	scale			1.2
+	price			350
+	size			4
+	is_primary		true
+	dmgtype			"normal"
+	weight			400
+
+	weapon_mod // weap_fds_idx=0
+	{
+		weapon shotgun_micro
+		firedef
+		{
+			name				"_Snap Shot"
+			skill				"close"
+			projtl				bullet
+			impact				bulletImpact
+			hitbody				null
+			firesnd				"weapons/bullet-shotgun"
+			impsnd				"impact/bullet-impact"
+			bodysnd 			"impact/bullet-bodyimpact"
+			sndonce				true
+			speed				3000
+			spread				"5 5"
+			crouch				0.95
+			range				15
+			shots				8
+			ammo				1
+			delaybetweenshots	0
+			time				9
+			damage				"11 9"
+			dmgweight			"normal_spray"
+			reaction			true
+			shotorg				"3.5 8"
+		}
+	}
+
+	weapon_mod // weap_fds_idx=1
+	{
+		weapon shotgun2
+		firedef
+		{
+			name				"_Snap Shot"
+			skill				"close"
+			projtl				bullet
+			impact				bulletImpact
+			hitbody				null
+			firesnd				"weapons/bullet-shotgunmini"
+			impsnd				"impact/bullet-impact"
+			bodysnd 			"impact/bullet-bodyimpact"
+			sndonce				true
+			speed				3000
+			spread				"4 4"
+			crouch				0.95
+			range				15
+			shots				8
+			ammo				1
+			delaybetweenshots	0
+			time				9
+			damage				"16 10"
+			dmgweight			"normal_spray"
+			reaction			true
+			shotorg				"3.5 7.5"
+		}
+	}
+}
+
+// =======================
+// SMG
+// =======================
+item smg
+{
+	name			"_COBOLT SMG-22 Submachine Gun"
+	model			"weapons/smg/smg"
+	weapon			true
+	type			"pistol"
+	animationindex	1
+	holdtwohanded	false
+	firetwohanded	true
+	shape			"0 0 3 2"
+	center			"6.4 0 1"
+	scale			1.15
+	ammo			30
+	reload			10
+	reloadsound		"weapons/reload-smg"
+	price			8750
+	size			8
+	is_secondary	true
+	weight			2000
+}
+
+// =======================
+// SMG2
+// =======================
+item smg2
+{
+	name			"_R&T 30 Submachine Gun"
+	model			"weapons/smg2/smg2"
+	weapon			true
+	type			"pistol"
+	animationindex	1
+	holdtwohanded	false
+	firetwohanded	true
+	shape			"0 0 3 2"
+	center			"6.4 0 1"
+	scale			1.15
+	ammo			32
+	reload			9
+	reloadsound		"weapons/reload-smg"
+	price			13500
+	size			8
+	is_secondary	true
+	weight			2200
+}
+
+
+
+// =======================
+// SMG AMMO 
+// =======================
+
+item smg_ammo
+{
+	name			"_SMG Magazine"
+	model			"weapons/smg/smg_clip"
+	type			"ammo"
+	animationindex	0
+	shape			"0 0 1 2"
+	center			"0 0 0"
+	scale			1.4
+	price			400
+	size			3
+	is_secondary	true
+	dmgtype			"normal"
+	weight			400
+
+	weapon_mod
+	{
+		weapon smg
+		firedef
+		{
+			name				"_6-Round Burst"
+			skill				"close"
+			projtl				bullet-smg
+			impact				bulletImpact
+			hitbody				null
+			firesnd				"weapons/bullet-smg-6x"
+			impsnd				"impact/bullet-impact"
+			bodysnd 			"impact/bullet-bodyimpact"
+			sndonce				true
+			speed				3000
+			spread				"1.5 1.5"
+			crouch				0.90
+			range				48
+			shots				6
+			ammo				6
+			delaybetweenshots	14
+			time				8
+			damage				"22 8"
+			dmgweight			"normal"
+			reaction			true
+			shotorg				"1 11.5"
+		}
+		firedef
+		{
+			name				"_Full-Auto"
+			skill				"close"
+			projtl				bullet-smg
+			impact				bulletImpact
+			hitbody				null
+			firesnd				"weapons/bullet-smg-12x"
+			impsnd				"impact/bullet-impact"
+			bodysnd 			"impact/bullet-bodyimpact"
+			sndonce				true
+			speed				3000
+			spread				"2.1 1.9"
+			crouch				0.90
+			range				48
+			shots				12
+			ammo				12
+			delaybetweenshots	14
+			time				11
+			damage				"22 8"
+			dmgweight			"normal"
+			reaction			true
+			shotorg				"1 11.5"
+		}
+	}
+
+	weapon_mod
+	{
+		weapon smg2
+		firedef
+		{
+			name				"_Burst 3 rounds"
+			skill				"close"
+			projtl				bullet-smg
+			impact				bulletImpact
+			hitbody				null
+			firesnd				"weapons/bullet-smg-3x"
+			impsnd				"impact/bullet-impact"
+			bodysnd 			"impact/bullet-bodyimpact"
+			sndonce				true
+			speed				3000
+			spread				"1.8 1.7"
+			crouch				0.90
+			range				52
+			shots				3
+			ammo				3
+			delaybetweenshots	14
+			time				8
+			damage				"32 8"
+			dmgweight			"normal"
+			reaction			true
+			shotorg				"1 11.5"
+		}
+		firedef
+		{
+			name				"_Aimed burst 3 rounds"
+			skill				"close"
+			projtl				bullet-smg
+			impact				bulletImpact
+			hitbody				null
+			firesnd				"weapons/bullet-smg-3x"
+			impsnd				"impact/bullet-impact"
+			bodysnd 			"impact/bullet-bodyimpact"
+			sndonce				true
+			speed				3000
+			spread				"1.18 1.14"
+			crouch				0.85
+			range				52
+			shots				3
+			ammo				3
+			delaybetweenshots	14
+			time				11
+			damage				"32 8"
+			dmgweight			"normal"
+			reaction			true
+			shotorg				"1 11.5"
+		}
+	}
+}
+
+
+// =======================
+// PISTOL
+// =======================
+item pistol
+{
+	name			"_7.62mm Pistol"
+	model			"weapons/pistol/pistol"
+	weapon			true
+	type			"pistol"
+	animationindex	2
+	holdtwohanded	false
+	firetwohanded 	false
+	shape			"0 0 2 2"
+	center			"2 0 1"
+	scale			1.35
+	ammo			12
+	reload			6
+	reloadsound		"weapons/reload-pistol"
+	price			1250
+	size			7
+	is_secondary	true
+	weight			1000
+}
+
+item pistol_ammo
+{
+	name			"_7.62mm Pistol Magazine"
+	model			"weapons/pistol/pistol_clip"
+	type			"ammo"
+	animationindex	0
+	shape			"0 0 1 1"
+	center			"0 0 -0.2"
+	scale			1.5
+	price			100
+	size			1
+	is_secondary	true
+	dmgtype			"normal"
+	weight			200
+
+	weapon_mod
+	{
+		weapon pistol
+		firedef
+		{
+			name		"_Snap Shot"
+			skill		"close"
+			projtl		bullet-smg
+			impact		bulletImpact
+			hitbody		null
+			firesnd		"weapons/bullet-pistol"
+			impsnd		"impact/bullet-impact"
+			bodysnd 	"impact/bullet-bodyimpact"
+			speed		3000
+			spread		"2 2"
+			crouch		0.95
+			range		40
+			shots		1
+			ammo		1
+			time		5
+			damage		"32 5"
+			dmgweight	"normal"
+			reaction	true
+			shotorg		"1 10.5"
+		}
+		firedef
+		{
+			name				"_Aimed Shot"
+			skill				"close"
+			projtl				bullet-smg
+			impact				bulletImpact
+			hitbody				null
+			firesnd				"weapons/bullet-pistol"
+			impsnd				"impact/bullet-impact"
+			bodysnd 			"impact/bullet-bodyimpact"
+			speed				3000
+			spread				"1.5 1.5"
+			crouch				0.95
+			range				40
+			shots				1
+			ammo				1
+			delaybetweenshots	10
+			time				8
+			damage				"32 5"
+			dmgweight			"normal"
+			shotorg				"1 10.5"
+		}
+	}
+}
+
+// =======================
+// PISTOL2
+// =======================
+item pistol2
+{
+	name			"_Machine Pistol"
+	model			"weapons/pistol2/pistol2"
+	weapon			true
+	type			"pistol"
+	animationindex	2
+	holdtwohanded	false
+	firetwohanded	false
+	shape			"0 0 2 1"
+	shape			"1 1 1 1"
+	center			"-0.1 0 0"
+	scale			2.0
+	ammo			30
+	reload			10
+	reloadsound		"weapons/reload-pistol"
+	price			4750
+	size			7
+	is_secondary	true
+	weight			1800
+}
+
+item pistol2_ammo
+{
+	name			"_4.2mm MP Magazine"
+	model			"weapons/pistol2/pistol2_clip"
+	type			"ammo"
+	animationindex	0
+	shape			"0 0 1 2"
+	center			"0 0 -0.21"
+	scale			2.5
+	price			200
+	size			2
+	is_secondary	true
+	dmgtype			"normal"
+	weight			500
+
+	weapon_mod
+	{
+		weapon pistol2
+		firedef
+		{
+			name				"_5-Round Burst"
+			skill				"close"
+			projtl				bullet-smg
+			impact				bulletImpact
+			hitbody				null
+			firesnd				"weapons/bullet-pistol2"
+			impsnd				"impact/bullet-impact"
+			bodysnd 			"impact/bullet-bodyimpact"
+			speed				3000
+			spread				"2.5 2.5"
+			crouch				0.95
+			range				40
+			shots				5
+			ammo				5
+			delaybetweenshots	10
+			time				7
+			damage				"21 5"
+			dmgweight			"normal"
+			reaction			true
+			shotorg				"1 9.5"
+		}
+		firedef
+		{
+			name				"_Full-Auto"
+			skill				"close"
+			projtl				bullet-smg
+			impact				bulletImpact
+			hitbody				null
+			firesnd				"weapons/bullet-pistol2"
+			impsnd				"impact/bullet-impact"
+			bodysnd 			"impact/bullet-bodyimpact"
+			speed				3000
+			spread				"3.6 3.6"
+			crouch				0.95
+			range				40
+			shots				11
+			ammo				11
+			delaybetweenshots	10
+			time				9
+			damage				"21 5"
+			dmgweight			"normal"
+			reaction			true
+			shotorg				"1 9.5"
+		}
+	}
+}
+
+

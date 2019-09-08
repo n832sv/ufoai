@@ -1,0 +1,553 @@
+// =======================
+// ASSAULT RIFLE3
+// =======================
+item assault3
+{
+	name			"_KOCH G3D Assault Rifle"
+	model			"weapons/assault3/g3a3d"
+	weapon			true
+	type			"rifle"
+	animationindex	1
+	holdtwohanded	false
+	firetwohanded	true
+	shape			"1 0 4 1"
+	shape			"0 1 5 1"
+	center			"3 -3 1"
+	scale			1.16
+	ammo			28
+	reload			12
+	reloadsound		"weapons/reload-rifle"
+	price			7800
+	size			20
+	is_primary		true
+	weight			3200
+}
+
+item assault3_ammo
+{
+	name			"_G3D Magazine"
+	model			"weapons/assault3/assault3_clip"
+	type			"ammo"
+	animationindex	0
+	shape			"0 0 1 2"
+	center			"0 0 0"
+	scale			1.25
+	price			900
+	size			3
+	is_primary		true
+	dmgtype			"normal"
+	weight			500
+
+	weapon_mod
+	{
+		weapon assault3
+		firedef
+		{
+			name				"_Snap 1 rounds"
+			skill				"assault"
+			projtl				bullet
+			impact				bulletImpact
+			hitbody				null
+			firesnd				"weapons/bullet-rifle-1x"
+			impsnd				"impact/bullet-impact"
+			bodysnd 			"impact/bullet-bodyimpact"
+			sndonce				true
+			speed				3000
+			spread				"1.15 1.15"
+			crouch				0.75
+			range				100
+			shots				1
+			ammo				1
+			delaybetweenshots	4
+			time				9
+			damage				"57 8"
+			dmgweight			"normal"
+			reaction			true
+			shotorg				"3 7"
+		}
+		firedef
+		{
+			name				"_3-Round Burst"
+			skill				"assault"
+			projtl				bullet
+			impact				bulletImpact
+			hitbody				null
+			firesnd				"weapons/bullet-rifle-1x"
+			impsnd				"impact/bullet-impact"
+			bodysnd 			"impact/bullet-bodyimpact"
+			sndonce				false
+			speed				3000
+			spread				"2.52 2.32"
+			crouch				0.88
+			range				100
+			shots				3
+			ammo				3
+			delaybetweenshots	3
+			time				12
+			damage				"57 8"
+			dmgweight			"normal"
+			reaction			true
+			shotorg				"3 7"
+		}
+		firedef
+		{
+			name		"_Aimed Shot"
+			skill		"assault"
+			projtl		bullet
+			impact		bulletImpact
+			hitbody		null
+			firesnd		"weapons/bullet-rifle-1x"
+			impsnd		"impact/bullet-impact"
+			bodysnd 	"impact/bullet-bodyimpact"
+			speed		3000
+			spread		"0.75 0.75"
+			crouch		0.66
+			range		100
+			shots		1
+			ammo		1
+			time		15
+			damage		"57 8"
+			dmgweight	"normal"
+			reaction	true
+			shotorg		"3 7.5"
+		}
+	}
+}
+
+
+// =======================
+// ASSAULT RIFLE2
+// =======================
+item assault2
+{
+	name			"_AR-85 Assault rifle"
+	model			"weapons/assault2/assault2"
+	weapon			true
+	type			"rifle"
+	animationindex	1
+	holdtwohanded	false
+	firetwohanded	true
+	shape			"1 0 4 1"
+	shape			"0 1 5 1"
+	center			"3 -3 1"
+	scale			1.25
+	ammo			30
+	reload			12
+	reloadsound		"weapons/reload-rifle"
+	price			8750
+	size			20
+	is_primary		true
+	weight			3000
+}
+
+// =======================
+// ASSAULT RIFLE
+// =======================
+item assault
+{
+	name			"_AR-80 Assault rifle"
+	model			"weapons/assault/assault"
+	weapon			true
+	type			"rifle"
+	animationindex	1
+	holdtwohanded	false
+	firetwohanded	true
+	shape			"1 0 4 1"
+	shape			"0 1 5 1"
+	center			"3 -3 1"
+	scale			1.25
+	ammo			30
+	reload			12
+	reloadsound		"weapons/reload-rifle"
+	price			9750
+	size			20
+	is_primary		true
+	weight			2800
+}
+
+item assault_ammo
+{
+	name			"_Assault Rifle Magazine"
+	model			"weapons/assault/assault_clip"
+	type			"ammo"
+	animationindex	0
+	shape			"0 0 1 2"
+	center			"0 0 0"
+	scale			1.25
+	price			700
+	size			3
+	is_primary		true
+	dmgtype			"normal"
+	weight			500
+
+	weapon_mod
+	{
+		weapon assault
+		firedef
+		{
+			name				"_Snap 2 rounds"
+			skill				"assault"
+			projtl				bullet
+			impact				bulletImpact
+			hitbody				null
+			firesnd				"weapons/bullet-rifle-2xs"
+			impsnd				"impact/bullet-impact"
+			bodysnd 			"impact/bullet-bodyimpact"
+			sndonce				true
+			speed				3000
+			spread				"1.38 1.38"
+			crouch				0.80
+			range				100
+			shots				2
+			ammo				2
+			delaybetweenshots	4
+			time				10
+			damage				"42 5"
+			dmgweight			"normal"
+			reaction			true
+			shotorg				"3 7"
+		}
+		firedef
+		{
+			name				"_Full-Auto"
+			skill				"assault"
+			projtl				bullet
+			impact				bulletImpact
+			hitbody				null
+			firesnd				"weapons/bullet-rifle-8x"
+			impsnd				"impact/bullet-impact"
+			bodysnd 			"impact/bullet-bodyimpact"
+			sndonce				true
+			speed				3000
+			spread				"3.2 3.0"
+			crouch				0.85
+			range				100
+			shots				8
+			ammo				8
+			delaybetweenshots	10
+			time				13
+			damage				"42 5"
+			dmgweight			"normal"
+			reaction			true
+			shotorg				"3 7"
+		}
+		firedef
+		{
+			name		"_Aimed Shot"
+			skill		"assault"
+			projtl		bullet
+			impact		bulletImpact
+			hitbody		null
+			firesnd		"weapons/bullet-rifle-1x"
+			impsnd		"impact/bullet-impact"
+			bodysnd 	"impact/bullet-bodyimpact"
+			speed		3000
+			spread		"0.79 0.79"
+			crouch		0.74
+			range		100
+			shots		1
+			ammo		1
+			time		16
+			damage		"42 5"
+			dmgweight	"normal"
+			reaction	true
+			shotorg		"3 7.5"
+		}
+	}
+
+	weapon_mod
+	{
+		weapon assault2
+		firedef
+		{
+			name				"_4-Round Burst"
+			skill				"assault"
+			projtl				bullet
+			impact				bulletImpact
+			hitbody				null
+			firesnd				"weapons/bullet-rifle-4x"
+			impsnd				"impact/bullet-impact"
+			bodysnd 			"impact/bullet-bodyimpact"
+			sndonce				true
+			speed				3000
+			spread				"1.8 1.7"
+			crouch				0.85
+			range				100
+			shots				4
+			ammo				4
+			delaybetweenshots	10
+			time				11
+			damage				"38 6"
+			dmgweight			"normal"
+			reaction			true
+			shotorg				"3 6"
+		}
+		firedef
+		{
+			name				"_Full-Auto"
+			skill				"assault"
+			projtl				bullet
+			impact				bulletImpact
+			hitbody				null
+			firesnd				"weapons/bullet-rifle-1x"
+			impsnd				"impact/bullet-impact"
+			bodysnd 			"impact/bullet-bodyimpact"
+			sndonce				false
+			speed				3000
+			spread				"2.7 2.5"
+			crouch				0.85
+			range				100
+			shots				10
+			ammo				10
+			delaybetweenshots	10
+			time				13
+			damage				"38 6"
+			dmgweight			"normal"
+			reaction			true
+			shotorg				"3 6"
+		}
+	}
+
+	weapon_mod
+	{
+		weapon vhs
+		firedef
+		{
+			name		"_Snap Shot"
+			skill		"assault"
+			projtl		bullet
+			impact		bulletImpact
+			hitbody		null
+			firesnd		"weapons/bullet-rifle-1x"
+			impsnd		"impact/bullet-impact"
+			bodysnd 	"impact/bullet-bodyimpact"
+			speed		3000
+			spread		"1 1"
+			crouch		0.80
+			range		100
+			shots		1
+			ammo		1
+			time		10
+			damage		"42 5"
+			dmgweight	"normal"
+			reaction	true
+			shotorg		"4 5.5"
+		}
+		firedef
+		{
+			name				"_3-Round Burst"
+			skill				"assault"
+			projtl				bullet
+			impact				bulletImpact
+			hitbody				null
+			firesnd				"weapons/bullet-rifle-1x"
+			impsnd				"impact/bullet-impact"
+			bodysnd 			"impact/bullet-bodyimpact"
+			speed				3000
+			spread				"2.2 2.0"
+			crouch				0.85
+			range				100
+			shots				3
+			ammo				3
+			delaybetweenshots	5
+			time				10
+			damage				"42 5"
+			dmgweight			"normal"
+			reaction			true
+			shotorg				"4 5.5"
+		}
+		firedef
+		{
+			name				"_Full-Auto"
+			skill				"assault"
+			projtl				bullet
+			impact				bulletImpact
+			hitbody				null
+			firesnd				"weapons/bullet-rifle-1x"
+			impsnd				"impact/bullet-impact"
+			bodysnd 			"impact/bullet-bodyimpact"
+			speed				3000
+			spread				"3.5 3.2"
+			crouch				0.85
+			range				100
+			shots				6
+			ammo				8
+			delaybetweenshots	18
+			time				14
+			damage				"42 5"
+			dmgweight			"normal"
+			reaction			true
+			shotorg				"4 5.5"
+		}
+		firedef
+		{
+			name		"_Aimed Shot"
+			skill		"assault"
+			projtl		bullet
+			impact		bulletImpact
+			hitbody		null
+			firesnd		"weapons/bullet-rifle-1x"
+			impsnd		"impact/bullet-impact"
+			bodysnd 	"impact/bullet-bodyimpact"
+			speed		3000
+			spread		"0.85 0.85"
+			crouch		0.75
+			range		100
+			shots		1
+			ammo		1
+			time		18
+			damage		"42 5"
+			dmgweight	"normal"
+			reaction	true
+			shotorg		"4 5.5"
+		}
+	}
+}
+
+// =======================
+// ENCASED PLASMA ROUNDS
+// =======================
+
+
+item encased_plasma_assault_ammo
+{
+	name			"_Assault Rifle EP Magazine"
+	model			"weapons/assault/enc_plasma_clip"
+	type			"ammo"
+	animationindex	0
+	shape			"0 0 1 2"
+	center			"0 0 0"
+	scale			1.25
+	price			5000
+	size			3
+	is_primary		true
+	dmgtype			"plasma"
+	weight			500
+
+	weapon_mod
+	{
+		weapon assault
+		firedef
+		{
+			name		"_Snap 2 rounds"
+			skill		"assault"
+			projtl		bullet
+			impact		bulletImpact
+			hitbody		null
+			firesnd		"weapons/bullet-rifle-2xs"
+			impsnd		"impact/bullet-impact"
+			bodysnd 	"impact/bullet-bodyimpact"
+			sndonce		true
+			speed		3000
+			spread		"1.385 1.385"
+			crouch		0.80
+			range		100
+			shots		2
+			ammo		2
+			delaybetweenshots	4
+			time		10
+			damage		"90 10"
+			dmgweight	"plasma"
+			reaction	true
+			shotorg		"3 6"
+		}
+		firedef
+		{
+			name				"_Full-Auto"
+			skill				"assault"
+			projtl				bullet
+			impact				bulletImpact
+			hitbody				null
+			firesnd				"weapons/bullet-rifle-8x"
+			impsnd				"impact/bullet-impact"
+			bodysnd 			"impact/bullet-bodyimpact"
+			sndonce				true
+			speed				3000
+			spread				"3.25 3.05"
+			crouch				0.85
+			range				100
+			shots				8
+			ammo				8
+			delaybetweenshots	10
+			time				13
+			damage				"90 10"
+			dmgweight			"plasma"
+			shotorg				"3 6"
+		}
+		firedef
+		{
+			name		"_Aimed Shot"
+			skill		"assault"
+			projtl		bullet
+			impact		bulletImpact
+			hitbody		null
+			firesnd		"weapons/bullet-rifle-1x"
+			impsnd		"impact/bullet-impact"
+			bodysnd 	"impact/bullet-bodyimpact"
+			speed		3000
+			spread		"0.795 0.795"
+			crouch		0.74
+			range		100
+			shots		1
+			ammo		1
+			time		15
+			damage		"90 10"
+			dmgweight	"plasma"
+			shotorg		"3 6"
+		}
+	}
+
+	weapon_mod
+	{
+		weapon assault2
+		firedef
+		{
+			name				"_4-Round Burst"
+			skill				"assault"
+			projtl				bullet
+			impact				bulletImpact
+			hitbody				null
+			firesnd				"weapons/bullet-rifle-4x"
+			impsnd				"impact/bullet-impact"
+			bodysnd 			"impact/bullet-bodyimpact"
+			sndonce				true
+			speed				3000
+			spread				"1.85 1.75"
+			crouch				0.85
+			range				100
+			shots				4
+			ammo				4
+			delaybetweenshots	10
+			time				11
+			damage				"80 10"
+			dmgweight			"plasma"
+			reaction			true
+			shotorg				"3 6"
+		}
+		firedef
+		{
+			name				"_Full-Auto"
+			skill				"assault"
+			projtl				bullet
+			impact				bulletImpact
+			hitbody				null
+			firesnd				"weapons/bullet-rifle-1x"
+			impsnd				"impact/bullet-impact"
+			bodysnd 			"impact/bullet-bodyimpact"
+			sndonce				false
+			speed				3000
+			spread				"2.75 2.55"
+			crouch				0.85
+			range				100
+			shots				10
+			ammo				10
+			delaybetweenshots	10
+			time				13
+			damage				"80 10"
+			dmgweight			"plasma"
+			reaction			true
+			shotorg				"3 6"
+		}
+	}
+
+}

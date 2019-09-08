@@ -2,7 +2,7 @@
 item implant_amphetamine
 {
 	name		"_Amphetamine Implant"
-	price		8000
+	price		40000
 	size		1
 	implant		true
 	image		"implants/implant_amphetamine"
@@ -45,7 +45,7 @@ item implant_amphetamine
 item implant_muscular
 {
 	name		"_Muscle Stimulant"
-	price		8000
+	price		40000
 	size		1
 	implant		true
 	image		"implants/implant_muscular"

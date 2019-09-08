@@ -206,7 +206,7 @@ do
 	local StatBar = ufox.build_component({
 		name = "StatBar",
 		class = "panel",
-		size = {180, 25},
+		size = {200, 25},
 
 		{
 			name = "label",
@@ -221,7 +221,7 @@ do
 			name = "bg",
 			class = "texture",
 			pos = {0, 14},
-			size = {180, 10},
+			size = {200, 10},
 			source = "ui/bar_bg",
 		},
 
@@ -229,7 +229,7 @@ do
 			name = "valuebar",
 			class = "bar",
 			pos = {0, 14},
-			size = {180, 10},
+			size = {200, 10},
 			color = {0.1875, 0.65625, 0.164, 0.8},
 			range = {0, 100},
 			disabled = true,
@@ -241,7 +241,7 @@ do
 			name = "initbar",
 			class = "bar",
 			pos = {0, 14},
-			size = {180, 10},
+			size = {200, 10},
 			color = {0.1875, 0.65625, 0.164, 1},
 			range = {0, 100},
 			disabled = true,
@@ -252,7 +252,7 @@ do
 			name = "valuenum",
 			class = "smallstring",
 			pos = {90, 0},
-			size = {90, 0},
+			size = {110, 0},
 			longlines = ufo.LONGLINES_CHOP,
 			contentalign = ufo.ALIGN_UR,
 		},
@@ -744,14 +744,14 @@ do
 	local SoldierInfo = ufox.build_component({
 		name = "SoldierInfo",
 		class = "panel",
-		pos = {10, 253},
+		pos = {10, 248},
 		size = {240, 40},
 
 		{
 			name =  "missions_lbl",
 			class = "smallstring",
 			pos = {0, 0},
-			size = {180, 20},
+			size = {180, 16},
 			text = "_Missions Performed:",
 		},
 
@@ -759,7 +759,7 @@ do
 			name =  "missions_val",
 			class = "smallstring",
 			pos = {160, 0},
-			size = {80, 20},
+			size = {80, 16},
 			text = "*cvar:mn_chrmis",
 			contentalign = ufo.ALIGN_UR,
 		},
@@ -767,16 +767,16 @@ do
 		{
 			name =  "kills_lbl",
 			class = "smallstring",
-			pos = {0, 20},
-			size = {180, 20},
+			pos = {0, 16},
+			size = {180, 16},
 			text = "_Enemies Killed:",
 		},
 
 		{
 			name =  "kills_val",
 			class = "smallstring",
-			pos = {160, 20},
-			size = {80, 20},
+			pos = {160, 16},
+			size = {80, 16},
 			text = "*cvar:mn_chrkillalien",
 			contentalign = ufo.ALIGN_UR,
 		},
@@ -843,7 +843,7 @@ do
 		{
 			name = "rank_lbl",
 			class = "string",
-			pos = {10, 283},
+			pos = {10, 285},
 			size = {200, 20},
 			text = "*cvar:mn_chrrank",
 		},
@@ -851,7 +851,7 @@ do
 		{
 			name = "soldier_info",
 			class = "SoldierInfo",
-			pos = {10, 253},
+			pos = {10, 248},
 			size = {285, 40},
 		},
 	})

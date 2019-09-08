@@ -376,7 +376,7 @@ component PlayerSquad extends panel
 	panel squad_default_options {
 		{
 			pos		"0 40"
-			size		"500 230"
+			size		"500 210"
 			bgcolor		"0 0 0 1"
 			onMouseEnter {
 				*node:this.squad_default_type.squad_default_type_str@color = "1 1 1 0.9"
@@ -413,7 +413,7 @@ component PlayerSquad extends panel
 	{
 		{
 			pos				"0 40"
-			size			"505 230"
+			size			"505 210"
 			bgcolor			"0 0 0 1"
 			invis			true
 		}
@@ -459,7 +459,7 @@ component PlayerSquad extends panel
 		{
 			{
 				pos		"10 80"
-				size	"495 150"
+				size	"495 130"
 				invis	true
 			}
 
@@ -542,7 +542,7 @@ component PlayerSquad extends panel
 		{
 			{
 				pos		"10 80"
-				size	"495 150"
+				size	"495 130"
 				invis	true
 			}
 
@@ -614,7 +614,7 @@ component PlayerSquad extends panel
 		{
 			{
 				pos		"10 80"
-				size	"495 150"
+				size	"495 130"
 				invis	true
 			}
 
@@ -629,7 +629,7 @@ component PlayerSquad extends panel
 			panel soldierlist
 			{
 				pos				"0 25"
-				size			"495 125"
+				size			"495 105"
 				padding			6
 				layout			LAYOUT_TOP_DOWN_FLOW
 				wheelscrollable	true
@@ -646,7 +646,7 @@ component PlayerSquad extends panel
 			{
 				image			"ui/scrollbar_v"
 				pos				"465 25"
-				height			"125"
+				height			"105"
 				current			0
 				viewsize		4
 				hidewhenunused	true

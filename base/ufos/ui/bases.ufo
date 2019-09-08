@@ -166,7 +166,7 @@ do
 			layoutmargin = 2,
 
 			generate = function (sender, base_idx)
-				local sections = {"facilities", "aircraft", "hire", "buysell", "research", "production", "containment", "hospital"}
+				local sections = {"facilities", "aircraft", "hire", "equip", "buysell", "research", "production", "containment", "hospital" }
 				if (base.section == nil) then
 					base.section = {}
 				end
@@ -205,7 +205,7 @@ do
 			on_click = function (sender, button, state, tooltip)
 				local section = ""
 				-- new-style sections
-				local sections = {"facilities", "aircraft", "hire", "buysell", "research", "production", "containment", "hospital"}
+				local sections = {"facilities", "aircraft", "hire", "equip", "buysell", "research", "production", "containment", "hospital"}
 				for i, section in ipairs(sections) do
 					if (button == section) then
 						local node = sender:root():child("sections"):child(section)

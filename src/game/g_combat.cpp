@@ -459,9 +459,9 @@ static bool G_Damage (Edict* target, const fireDef_t* fd, int damage, Actor* att
 	/* Apply difficulty settings. */
 	if (G_IsSinglePlayer()) {
 		if (G_IsAlien(attacker) && !G_IsAlien(victim))
-			damage *= pow(1.18f, g_difficulty->value);
+			damage *= pow(1.10f, g_difficulty->value);
 		else if (!G_IsAlien(attacker) && G_IsAlien(victim))
-			damage *= pow(1.18f, -g_difficulty->value);
+			damage *= pow(1.05f, -g_difficulty->value);
 	}
 
 	assert(attacker->getTeam() >= 0 && attacker->getTeam() < MAX_TEAMS);

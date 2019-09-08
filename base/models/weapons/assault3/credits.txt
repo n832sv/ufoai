@@ -1,0 +1,3 @@
+Original Author: Tabasco
+Modified version of original 3D blender model retrieved from OpenGameArt,
+part of package titled "Various Small Arms (Assault Rifles, Sniper, Pistol)"

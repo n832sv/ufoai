@@ -31,7 +31,7 @@ do
 		name = "popup_aircraft_actions",
 		class = "window",
 		super = "ipopup",
-		pos = {264, 262},
+		pos = {64, 512},
 		size = {496, 221},
 		dragbutton = true,
 

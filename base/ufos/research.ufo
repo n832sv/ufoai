@@ -105,18 +105,19 @@
 // Ufopedia categories
 //========================
 
-up_chapter concepts_campaign { name "_Basic Concepts (Campaign)" }
-up_chapter concepts_combat { name "_Basic Concepts (Ground Combat)" }
-up_chapter skill { name "_Skills and Abilities" }
-up_chapter news	{ name "_Background" }
-up_chapter crafts { name "_Aircraft" }
+// up_chapter concepts_campaign { name "_Basic Concepts (Campaign)" }
+// up_chapter concepts_combat { name "_Basic Concepts (Ground Combat)" }
+// up_chapter skill { name "_Skills and Abilities" }
+
+up_chapter tech { name "_Research Reports" }
+up_chapter aliens { name "_Autopsies & Observation" }
+up_chapter artifacts { name "_Alien Artifacts" }
 up_chapter buildings { name "_Base Facilities" }
 up_chapter installations { name "_Global Installations" }
-up_chapter tech { name "_Research Reports" }
+up_chapter crafts { name "_Aircraft" }
 up_chapter equipment { name "_Equipment" }
-up_chapter artifacts { name "_Alien Artifacts" }
-up_chapter aliens { name "_Autopsies & Observation" }
 up_chapter threat { name "_The Alien Threat" }
+up_chapter news	{ name "_Background" }
 
 // chapter without name are not displayed into ufopedia
 up_chapter damage {}
@@ -718,7 +719,7 @@ tech rs_weapon_pistol
 
 	provides	pistol
 	time	0
-	producetime	400
+	producetime	200
 }
 
 tech rs_weapon_pistol_ammo
@@ -738,7 +739,7 @@ tech rs_weapon_pistol_ammo
 
 	provides	pistol_ammo
 	time	0
-	producetime	120
+	producetime	40
 }
 
 // Machine Pistol
@@ -759,7 +760,7 @@ tech rs_weapon_pistol2
 
 	provides	pistol2
 	time	0
-	producetime	600
+	producetime	300
 }
 
 tech rs_weapon_pistol2_ammo
@@ -779,7 +780,7 @@ tech rs_weapon_pistol2_ammo
 
 	provides	pistol2_ammo
 	time	0
-	producetime	120
+	producetime	50
 }
 
 tech rs_weapon_vhs
@@ -814,7 +815,43 @@ tech rs_weapon_assault
 	}
 	provides	assault
 	time	0
-	producetime	900
+	producetime	500
+}
+
+tech rs_weapon_assault2
+{
+	type	"weapon"
+	up_chapter	equipment
+	description {
+		default "*msgid:assault2_txt"
+	}
+	// pre_description	"*msgid:assault_pre_txt"
+
+	require_AND
+	{
+		tech rs_skill_assault
+	}
+	provides	assault2
+	time	0
+	producetime	500
+}
+
+tech rs_weapon_assault3
+{
+	type	"weapon"
+	up_chapter	equipment
+	description {
+		default "*msgid:assault2_txt"
+	}
+	// pre_description	"*msgid:assault_pre_txt"
+
+	require_AND
+	{
+		tech rs_skill_assault
+	}
+	provides	assault3
+	time	0
+	producetime	500
 }
 
 tech rs_weapon_assault_ammo
@@ -833,7 +870,26 @@ tech rs_weapon_assault_ammo
 	}
 	provides	assault_ammo
 	time	0
-	producetime	120
+	producetime	40
+}
+
+tech rs_weapon_assault3_ammo
+{
+	type	"weapon"
+	up_chapter	equipment
+	description {
+		default "*msgid:assault_mag_txt"
+	}
+	// pre_description	"*msgid:assault_mag_pre_txt"
+
+	require_AND
+	{
+		tech rs_damage_normal
+		tech rs_weapon_assault3
+	}
+	provides	assault3_ammo
+	time	0
+	producetime	40
 }
 
 tech rs_weapon_machinegun
@@ -851,7 +907,7 @@ tech rs_weapon_machinegun
 	}
 	provides	machinegun
 	time	0
-	producetime	900
+	producetime	700
 }
 
 tech rs_weapon_machinegun_ammo
@@ -870,7 +926,7 @@ tech rs_weapon_machinegun_ammo
 	}
 	provides	machinegun_ammo
 	time	0
-	producetime	120
+	producetime	60
 }
 
 tech rs_weapon_rpg
@@ -1568,7 +1624,6 @@ tech rs_weapon_laserpistol
 	{
 		tech rs_laser
 		tech rs_skill_close
-		tech rs_alien_body_armour
 	}
 	provides	laserpistol
 	time	1000
@@ -1728,7 +1783,6 @@ tech rs_weapon_laserammo
 	{
 		tech rs_laser
 		tech rs_damage_laser
-		tech rs_alien_body_armour
 	}
 	provides	laser_ammo
 	time		750
@@ -2019,6 +2073,53 @@ tech rs_weapon_plasmagren
 	producetime	500
 }
 
+tech rs_weapon_heavyplasmagren
+{
+	name	"_Alien Artifact - Heavy Plasma Grenade"
+	type	"weapon"
+	up_chapter	artifacts
+
+	description {
+		default "*msgid:plasmagren_txt"
+	}
+	pre_description {
+		default "*msgid:plasmagren_pre_txt"
+	}
+
+	mail_pre
+	{
+		from	"*msgid:mail_from_paul_navarre"
+		to		"*msgid:mail_to_base_commander"
+		// subject	defined by "name"
+		icon	"icons/mail_artifact"
+	}
+
+	mail
+	{
+		from	"*msgid:mail_from_paul_navarre"
+		to		"*msgid:mail_to_base_commander"
+		// subject	defined by "name"
+		icon	"icons/mail_artifact"
+	}
+
+	require_AND
+	{
+		tech rs_skill_explosive
+		tech rs_weapon_plasmagren
+		item (plasmagrenade2 1)
+	}
+
+	require_for_production
+	{
+	    item (alienmaterials 10)
+	}
+
+	provides	plasmagrenade2
+	time	1000
+	producetime	700
+}
+
+
 tech rs_weapon_plasrifle
 {
 	name	"_Alien Artifact - Plasma Rifle"
@@ -2090,7 +2191,7 @@ tech rs_weapon_plasrifle_ammo
 
 tech rs_weapon_encased_plasma
 {
-	name	"_Encased Plasma Rounds"
+	name	"_Encased Plasma Pellets"
 	type	"tech"
 	up_chapter	equipment
 
@@ -2119,12 +2220,53 @@ tech rs_weapon_encased_plasma
 
 	require_AND
 	{
-		tech rs_weapon_plasblade
+		tech rs_weapon_plasblaster
 	}
 
 	time	6000
 	producetime -1
 }
+
+tech rs_armour_piercing_rounds
+{
+	name	"_Armour Piercing Rounds"
+	type	"tech"
+	up_chapter	equipment
+
+	description {
+		default "*msgid:encased_plasma_txt"
+	}
+	pre_description {
+		default "*msgid:encased_plasma_pre_txt"
+	}
+
+	mail_pre
+	{
+		from	"*msgid:mail_from_paul_navarre"
+		to		"*msgid:mail_to_base_commander"
+		// subject	defined by "name"
+		icon	"icons/mail_tech"
+	}
+
+	mail
+	{
+		from	"*msgid:mail_from_paul_navarre"
+		to		"*msgid:mail_to_base_commander"
+		// subject	defined by "name"
+		icon	"icons/mail_tech"
+	}
+
+	require_AND
+	{
+		tech rs_weapon_plasblaster
+	}
+
+	time	6000
+	producetime -1
+}
+
+
+
 
 tech rs_weapon_encased_plasma_assault_ammo
 {
@@ -2180,8 +2322,9 @@ tech rs_weapon_encased_plasma_mg_ammo
 	producetime	300
 }
 
-tech rs_weapon_encased_plasma_sniper_ammo
+tech rs_weapon_armour_piercing_sniper_ammo
 {
+
 	type	"weapon"
 	up_chapter	equipment
 
@@ -2194,17 +2337,13 @@ tech rs_weapon_encased_plasma_sniper_ammo
 
 	require_AND
 	{
-		tech rs_weapon_encased_plasma
+		tech rs_alien_hovernet_autopsy
+		tech rs_armour_piercing_rounds
 	}
 
-	require_for_production
-	{
-		item (alienmaterials 5)
-	}
-
-	provides	encased_plasma_sniper_ammo
+	provides	armour_piercing_sniper_ammo
 	time	0
-	producetime	300
+	producetime	50
 }
 
 tech rs_weapon_encased_plasma_shotgun_ammo
@@ -2496,6 +2635,7 @@ tech rs_weapon_shotgun_micro_ammo
 	producetime	120
 }
 
+
 tech rs_weapon_smg
 {
 	type	"weapon"
@@ -2513,6 +2653,25 @@ tech rs_weapon_smg
 	provides	smg
 	time		0
 	producetime	1200
+}
+
+tech rs_weapon_smg2
+{
+	type	"weapon"
+	up_chapter	equipment
+	description {
+		default "*msgid:smg_txt"
+	}
+	// pre_description	"*msgid:smg_pre_txt"
+
+	require_AND
+	{
+		tech rs_skill_close
+	}
+
+	provides	smg2
+	time		0
+	producetime	1300
 }
 
 tech rs_weapon_smg_ammo
@@ -4679,6 +4838,51 @@ tech rs_alien_shevaar_autopsy
 	image	"techs/shevaar_dead"
 }
 
+// STRIGOI
+
+tech rs_alien_strigoi_autopsy
+{
+	name	"_Alien Autopsy - Strigoi"
+	type	"alien"
+	up_chapter	aliens
+
+	description {
+		default "*msgid:strigoi_autopsy_txt"
+//		extra (rs_strigoi_extra "*msgid:strigoi_autopsy_extra_txt")
+	}
+	pre_description {
+		default "*msgid:strigoi_autopsy_pre_txt"
+//		extra (rs_strigoi_extra "*msgid:strigoi_autopsy_extra_pre_txt")
+	}
+
+//	mail_pre
+//	{
+//		from	"*msgid:mail_from_dr_connor"
+//		to		"*msgid:mail_to_base_commander"
+		// subject	defined by "name"
+//		model	"characters/connor"
+//		icon	"icons/mail_alien"
+//	}
+
+	mail
+	{
+		from	"*msgid:mail_from_dr_connor"
+		to		"*msgid:mail_to_base_commander"
+		// subject	defined by "name"
+		model	"characters/connor"
+		icon	"icons/mail_alien"
+	}
+
+	require_AND
+	{
+		alien_dead (strigoi 1)
+	}
+	time	1500
+
+	image	"techs/strigoi_dead" // placeholder
+}
+
+
 // HOVERNET
 
 tech rs_alien_hovernet_autopsy
@@ -6044,3 +6248,64 @@ tech rs_implant_muscular
 	}
 	time		1
 }
+
+//
+
+tech rs_weapon_fraggren2
+{
+	type	"weapon"
+	up_chapter	equipment
+	description {
+		default "*msgid:fraggren2_txt"
+	}
+	// pre_description	"*msgid:fraggren_pre_txt"
+
+	require_AND
+	{
+		tech rs_skill_explosive
+		tech rs_damage_blast
+	}
+	provides	fraggren2
+	time	0
+	producetime	140
+}
+
+tech rs_weapon_hegrenade
+{
+	type	"weapon"
+	up_chapter	equipment
+	description {
+		default "*msgid:hegren_txt"
+	}
+	// pre_description	"*msgid:fraggren_pre_txt"
+
+	require_AND
+	{
+		tech rs_skill_explosive
+		tech rs_damage_blast
+	}
+	provides	hegrenade
+	time	0
+	producetime	120
+}
+
+tech rs_weapon_empgrenade
+{
+	type	"weapon"
+	up_chapter	equipment
+	description {
+		default "*msgid:empgren_txt"
+	}
+	// pre_description	"*msgid:fraggren_pre_txt"
+
+	require_AND
+	{
+		tech rs_skill_explosive
+		tech rs_damage_blast
+		tech rs_alien_bloodspider_autopsy
+	}
+	provides	empgrenade
+	time	400
+	producetime	160
+}
+

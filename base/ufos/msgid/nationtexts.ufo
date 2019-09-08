@@ -1,0 +1,34 @@
+
+// The revolutionary countries
+
+msgid nat_ovw_latin {
+text "_This is the latin countries overview description"
+}
+
+msgid nat_ovw_states {
+text "_This is the latin countries overview description"
+}
+
+msgid nat_ovw_europe {
+text "_This is the latin countries overview description"
+}
+
+msgid nat_ovw_asia {
+text "_This is the latin countries overview description"
+}
+
+msgid nat_ovw_middle {
+text "_This is the latin countries overview description"
+}
+
+msgid nat_ovw_africa {
+text "_This is the latin countries overview description"
+}
+
+msgid nat_ovw_russia {
+text "_This is the latin countries overview description"
+}
+
+msgid nat_ovw_oceania {
+text "_This is the latin countries overview description"
+}

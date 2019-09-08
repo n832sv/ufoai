@@ -570,6 +570,7 @@ equipment alien_troopers7
 
 	// Misc
 	item (plasmagrenade		101)
+	item (plasmagrenade2	001)
 	item (plasblade			001)
 
 	// Armour
@@ -602,6 +603,7 @@ equipment alien_troopers8
 
 	// Misc
 	item (plasmagrenade		101)
+	item (plasmagrenade2	051)
 	item (plasblade			001)
 
 	// Armour
@@ -709,6 +711,7 @@ equipment alien_soldiers6
 
 	// Misc
 	item (plasmagrenade		201)
+	item (plasmagrenade2	001)
 	item (plasblade			101)
 
 	// Armour
@@ -730,6 +733,7 @@ equipment alien_soldiers7
 
 	// Misc
 	item (plasmagrenade		201)
+	item (plasmagrenade2	101)
 	item (plasblade			101)
 
 	// Armour
@@ -755,6 +759,7 @@ equipment alien_soldiers8
 
 	// Misc
 	item (plasmagrenade		201)
+	item (plasmagrenade2	201)
 	item (plasblade			101)
 
 	// Armour
@@ -801,6 +806,7 @@ equipment alien_base2
 
 	// Misc
 	item (plasmagrenade		201)
+	item (plasmagrenade2	101)
 	item (plasblade			101)
 
 	// Armour
@@ -826,6 +832,7 @@ equipment alien_base3
 
 	// Misc
 	item (plasmagrenade		201)
+	item (plasmagrenade2	201)
 	item (plasblade			101)
 
 	// Armour

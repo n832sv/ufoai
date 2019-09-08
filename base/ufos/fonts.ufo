@@ -6,6 +6,12 @@
 
 // The fonts are marked as translatable to let the translators decide which font they want to use
 
+font f_tiny
+{
+	font	"_media/ufofan-medium.otf"
+	size	8
+}
+
 font f_verysmall_bold
 {
 	font	"_media/ufofan-bold.otf"

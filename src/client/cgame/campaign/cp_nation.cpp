@@ -255,9 +255,9 @@ bool NAT_SaveXML (xmlNode_t* p)
 void CP_NationsUpdateAfterMissionStage (mission_t* mission)
 {
 	const float terror_penalty_affected_nation 		= -0.140f;
-	const float terror_penalty_other_nations		= -0.025f;
+	const float terror_penalty_other_nations		= -0.020f;
 	const float	harvest_penalty_affected_nation		= -0.090f;
-	const float harvest_penalty_other_nations		= -0.010f;
+	const float harvest_penalty_other_nations		= -0.008f;
 	const float xvi_penalty_affected_nation			= -0.040f;
 	const float xvi_penalty_other_nations			= -0.005f;
 //	const float	subvert_penalty_affected_nation		= -0.120f;

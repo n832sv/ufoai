@@ -1,237 +1,4 @@
 // =======================
-// ASSAULT RIFLE
-// =======================
-item assault
-{
-	name			"_Assault Rifle"
-	model			"weapons/assault/assault"
-	weapon			true
-	type			"rifle"
-	animationindex	1
-	holdtwohanded	false
-	firetwohanded	true
-	shape			"1 0 4 1"
-	shape			"0 1 5 1"
-	center			"3 -3 1"
-	scale			1.25
-	ammo			30
-	reload			12
-	reloadsound		"weapons/reload-rifle"
-	price			1000
-	size			20
-	is_primary		true
-	weight			2800
-}
-
-item assault_ammo
-{
-	name			"_Assault Rifle Magazine"
-	model			"weapons/assault/assault_clip"
-	type			"ammo"
-	animationindex	0
-	shape			"0 0 1 2"
-	center			"0 0 0"
-	scale			1.25
-	price			70
-	size			3
-	is_primary		true
-	dmgtype			"normal"
-	weight			500
-
-	weapon_mod
-	{
-		weapon assault
-		firedef
-		{
-			name		"_Snap Shot"
-			skill		"assault"
-			projtl		bullet
-			impact		bulletImpact
-			hitbody		null
-			firesnd		"weapons/bullet-rifle-1x"
-			impsnd		"impact/bullet-impact"
-			bodysnd 	"impact/bullet-bodyimpact"
-			speed		3000
-			spread		"1.2 1.2"
-			crouch		0.85
-			range		100
-			shots		1
-			ammo		1
-			time		8
-			damage		"42 5"
-			dmgweight	"normal_medium"
-			reaction	true
-			shotorg		"3 6"
-		}
-		firedef
-		{
-			name				"_3-Round Burst"
-			skill				"assault"
-			projtl				bullet
-			impact				bulletImpact
-			hitbody				null
-			firesnd				"weapons/bullet-rifle-3x"
-			impsnd				"impact/bullet-impact"
-			bodysnd 			"impact/bullet-bodyimpact"
-			sndonce				true
-			speed				3000
-			spread				"1.4 1.4"
-			crouch				0.85
-			range				100
-			shots				3
-			ammo				3
-			delaybetweenshots	10
-			time				12
-			damage				"42 5"
-			dmgweight			"normal_medium"
-			reaction			true
-			shotorg				"3 6"
-		}
-		firedef
-		{
-			name				"_Full-Auto"
-			skill				"assault"
-			projtl				bullet
-			impact				bulletImpact
-			hitbody				null
-			firesnd				"weapons/bullet-rifle-8x"
-			impsnd				"impact/bullet-impact"
-			bodysnd 			"impact/bullet-bodyimpact"
-			sndonce				true
-			speed				3000
-			spread				"1.6 1.6"
-			crouch				0.85
-			range				100
-			shots				8
-			ammo				8
-			delaybetweenshots	10
-			time				16
-			damage				"42 5"
-			dmgweight			"normal_medium"
-			reaction			true
-			shotorg				"3 6"
-		}
-		firedef
-		{
-			name		"_Aimed Shot"
-			skill		"assault"
-			projtl		bullet
-			impact		bulletImpact
-			hitbody		null
-			firesnd		"weapons/bullet-rifle-1x"
-			impsnd		"impact/bullet-impact"
-			bodysnd 	"impact/bullet-bodyimpact"
-			speed		3000
-			spread		"1 1"
-			crouch		0.85
-			range		100
-			shots		1
-			ammo		1
-			time		16
-			damage		"42 5"
-			dmgweight	"normal_medium"
-			reaction	true
-			shotorg		"3 6"
-		}
-	}
-
-	weapon_mod
-	{
-		weapon vhs
-		firedef
-		{
-			name		"_Snap Shot"
-			skill		"assault"
-			projtl		bullet
-			impact		bulletImpact
-			hitbody		null
-			firesnd		"weapons/bullet-rifle-1x"
-			impsnd		"impact/bullet-impact"
-			bodysnd 	"impact/bullet-bodyimpact"
-			speed		3000
-			spread		"1 1"
-			crouch		0.85
-			range		100
-			shots		1
-			ammo		1
-			time		10
-			damage		"42 5"
-			dmgweight	"normal_medium"
-			reaction	true
-			shotorg		"4 5.5"
-		}
-		firedef
-		{
-			name				"_3-Round Burst"
-			skill				"assault"
-			projtl				bullet
-			impact				bulletImpact
-			hitbody				null
-			firesnd				"weapons/bullet-rifle-1x"
-			impsnd				"impact/bullet-impact"
-			bodysnd 			"impact/bullet-bodyimpact"
-			speed				3000
-			spread				"1.2 1.2"
-			crouch				0.85
-			range				100
-			shots				3
-			ammo				3
-			delaybetweenshots	5
-			time				14
-			damage				"42 5"
-			dmgweight			"normal_medium"
-			reaction			true
-			shotorg				"4 5.5"
-		}
-		firedef
-		{
-			name				"_Full-Auto"
-			skill				"assault"
-			projtl				bullet
-			impact				bulletImpact
-			hitbody				null
-			firesnd				"weapons/bullet-rifle-1x"
-			impsnd				"impact/bullet-impact"
-			bodysnd 			"impact/bullet-bodyimpact"
-			speed				3000
-			spread				"1.5 1.5"
-			crouch				0.85
-			range				100
-			shots				6
-			ammo				8
-			delaybetweenshots	18
-			time				16
-			damage				"42 5"
-			dmgweight			"normal_medium"
-			reaction			true
-			shotorg				"4 5.5"
-		}
-		firedef
-		{
-			name		"_Aimed Shot"
-			skill		"assault"
-			projtl		bullet
-			impact		bulletImpact
-			hitbody		null
-			firesnd		"weapons/bullet-rifle-1x"
-			impsnd		"impact/bullet-impact"
-			bodysnd 	"impact/bullet-bodyimpact"
-			speed		3000
-			spread		"0.9 0.9"
-			crouch		0.85
-			range		100
-			shots		1
-			ammo		1
-			time		18
-			damage		"42 5"
-			dmgweight	"normal_medium"
-			reaction	true
-			shotorg		"4 5.5"
-		}
-	}
-}
-
-// =======================
 // MACHINE GUN
 // =======================
 item machinegun
@@ -250,7 +17,7 @@ item machinegun
 	ammo			100
 	reload			24
 	reloadsound		"weapons/reload-rifle"	// @todo better sound?
-	price			1200
+	price			11000
 	size			20
 	is_primary		true
 	is_heavy		true
@@ -266,7 +33,7 @@ item machinegun_ammo
 	shape			"0 0 2 2"
 	center			"0 0 0"
 	scale			1.9
-	price			65
+	price			650
 	size			6
 	is_primary		true
 	is_heavy		true
@@ -288,15 +55,15 @@ item machinegun_ammo
 			bodysnd 			"impact/bullet-bodyimpact"
 			sndonce				true
 			speed				3000
-			spread				"1.8 1.8"
-			crouch				0.85
+			spread				"2.6 2.4"
+			crouch				0.70
 			range				100
 			shots				5
 			ammo				5
 			delaybetweenshots	10
 			time				14
-			damage				"42 5"
-			dmgweight			"normal_medium"
+			damage				"52 5"
+			dmgweight			"normal"
 			reaction			true
 			shotorg				"2 8"
 		}
@@ -312,15 +79,15 @@ item machinegun_ammo
 			bodysnd 			"impact/bullet-bodyimpact"
 			sndonce				true
 			speed				3000
-			spread				"2.4 2.4"
-			crouch				0.85
+			spread				"3.4 3.1"
+			crouch				0.66
 			range				100
 			shots				20
 			ammo				20
 			delaybetweenshots	10
-			time				24
-			damage				"42 5"
-			dmgweight			"normal_medium"
+			time				17
+			damage				"52 5"
+			dmgweight			"normal"
 			reaction			true
 			shotorg				"2 8"
 		}
@@ -336,15 +103,15 @@ item machinegun_ammo
 			bodysnd 			"impact/bullet-bodyimpact"
 			sndonce				true
 			speed				3000
-			spread				"3 20"
-			crouch				0.85
+			spread				"3.4 20"
+			crouch				0.75
 			range				100
 			shots				20
 			ammo				20
 			delaybetweenshots	10
-			time				24
-			damage				"42 5"
-			dmgweight			"normal_medium"
+			time				19
+			damage				"52 5"
+			dmgweight			"normal"
 			reaction			true
 			shotorg				"2 8"
 		}
@@ -352,655 +119,104 @@ item machinegun_ammo
 }
 
 // =======================
-// SNIPER RIFLE
+// ENCASED PLASMA ROUNDS
 // =======================
-item sniper
+
+
+item encased_plasma_mg_ammo
 {
-	name			"_Sniper Rifle"
-	model			"weapons/sniper/sniper"
-	weapon			true
-	type			"rifle"
-	animationindex	1
-	holdtwohanded	false
-	firetwohanded 	true
-	shape			"2 0 3 1"
-	shape			"0 1 5 1"
-	center			"9 0 3"
-	scale			1.05
-	ammo			8
-	reload			12
-	reloadsound		"weapons/reload-sniper"
-	price			1300
-	size			60
-	is_primary		true
-	weight			6400
-}
-
-item sniper_ammo
-{
-	name			"_Sniper Rifle Magazine"
-	model			"weapons/sniper/sniper_clip"
-	type			"ammo"
-	animationindex	0
-	shape			"0 0 1 2"
-	center			"0 0 0"
-	scale			1.15
-	price			85
-	size			8
-	is_primary		true
-	dmgtype			"normal"
-	weight			500
-
-	weapon_mod
-	{
-		weapon sniper
-		firedef
-		{
-			name		"_Snap Shot"
-			skill		"sniper"
-			projtl		bullet_sniper
-			impact		bulletImpact
-			hitbody		null
-			firesnd		"weapons/bullet-sniper"
-			impsnd		"impact/bullet-impact"
-			bodysnd 	"impact/bullet-bodyimpact"
-			speed		3600
-			spread		"2.5 2.5"
-			crouch		0.85
-			range		150
-			shots		1
-			ammo		1
-			time		15
-			damage		"130 20"
-			dmgweight	"normal_medium"
-			reaction	true
-			throughwall 1
-			shotorg		"2 7"
-		}
-		firedef
-		{
-			name		"_Aimed Shot"
-			skill		"sniper"
-			projtl		bullet_sniper
-			impact		bulletImpact
-			hitbody		null
-			firesnd		"weapons/bullet-sniper"
-			impsnd		"impact/bullet-impact"
-			bodysnd 	"impact/bullet-bodyimpact"
-			speed		3600
-			spread		"0.85 0.85"
-			crouch		0.6
-			range		150
-			shots		1
-			ammo		1
-			time		20
-			damage		"130 20"
-			dmgweight	"normal_medium"
-			reaction	true
-			throughwall 1
-			shotorg		"2 7"
-		}
-	}
-}
-
-
-//========================
-// COILGUN
-//========================
-item coilgun
-{
-	name			"_Coilgun"
-	model			"weapons/coilgun/coilgun"
-	weapon			true
-	type			"rifle"
-	animationindex	1
-	holdtwohanded	false
-	firetwohanded 	true
-	shape			"2 0 3 1"
-	shape			"0 1 4 1"
-	center			"9 2.7 3.2"
-	scale			0.9
-	ammo			4
-	reload			12
-	reloadsound		"weapons/reload-sniper"
-	price			3000
-	size			30
-	is_primary		true
-	weight			7600
-}
-
-item coilgun_ammo
-{
-	name			"_Coilgun Clip"
-	model			"weapons/coilgun/coilgun_ammo"
+	name			"_Machine Gun EP Magazine"
+	model			"weapons/machinegun/enc_plasma_clip_mg"
 	type			"ammo"
 	animationindex	0
 	shape			"0 0 2 2"
-	center			"0 0 1.2"
-	scale			1.15
-	price			85
-	size			4
-	is_primary		true
-	dmgtype			"normal"
-	weight			1000
-
-	weapon_mod
-	{
-		weapon coilgun
-		firedef
-		{
-			name		"_Snap Shot"
-			skill		"sniper"
-			projtl		bolter
-			impact		bolterImpact
-			hitbody		null
-			firesnd		"weapons/bullet-gauss"
-			impsnd		"impact/nail-impact"
-			bodysnd 	"impact/nail-bodyimpact"
-			speed		2000
-			spread		"2.5 2.5"
-			crouch		0.85
-			range		250
-			shots		1
-			ammo		1
-			time		16
-			damage		"180 30"
-			dmgweight	"normal_heavy"
-			reaction	true
-			throughwall	3
-			shotorg		"2 6"
-		}
-		firedef
-		{
-			name		"_Aimed Shot"
-			skill		"sniper"
-			projtl		bolter
-			impact		bolterImpact
-			hitbody		null
-			firesnd		"weapons/bullet-gauss"
-			impsnd		"impact/nail-impact"
-			bodysnd 	"impact/nail-bodyimpact"
-			speed		2000
-			spread		"0.55 0.55"
-			crouch		0.6
-			range		250
-			shots		1
-			ammo		1
-			time		24
-			damage		"180 30"
-			dmgweight	"normal_heavy"
-			reaction	true
-			throughwall	3
-			shotorg		"2 6"
-		}
-	}
-}
-
-
-// =======================
-// PISTOL
-// =======================
-item pistol
-{
-	name			"_7.62mm Pistol"
-	model			"weapons/pistol/pistol"
-	weapon			true
-	type			"pistol"
-	animationindex	2
-	holdtwohanded	false
-	firetwohanded 	false
-	shape			"0 0 2 2"
-	center			"2 0 1"
-	scale			1.35
-	ammo			12
-	reload			6
-	reloadsound		"weapons/reload-pistol"
-	price			900
-	size			7
-	is_secondary	true
-	weight			1000
-}
-
-item pistol_ammo
-{
-	name			"_7.62mm Pistol Magazine"
-	model			"weapons/pistol/pistol_clip"
-	type			"ammo"
-	animationindex	0
-	shape			"0 0 1 1"
-	center			"0 0 -0.2"
-	scale			1.5
-	price			20
-	size			1
-	is_secondary	true
-	dmgtype			"normal"
-	weight			200
-
-	weapon_mod
-	{
-		weapon pistol
-		firedef
-		{
-			name		"_Snap Shot"
-			skill		"close"
-			projtl		bullet-smg
-			impact		bulletImpact
-			hitbody		null
-			firesnd		"weapons/bullet-pistol"
-			impsnd		"impact/bullet-impact"
-			bodysnd 	"impact/bullet-bodyimpact"
-			speed		3000
-			spread		"2 2"
-			crouch		0.9
-			range		40
-			shots		1
-			ammo		1
-			time		4
-			damage		"30 5"
-			dmgweight	"normal_light"
-			reaction	true
-			shotorg		"1 10.5"
-		}
-		firedef
-		{
-			name				"_Aimed Shot"
-			skill				"close"
-			projtl				bullet-smg
-			impact				bulletImpact
-			hitbody				null
-			firesnd				"weapons/bullet-pistol"
-			impsnd				"impact/bullet-impact"
-			bodysnd 			"impact/bullet-bodyimpact"
-			speed				3000
-			spread				"1.5 1.5"
-			crouch				0.9
-			range				40
-			shots				1
-			ammo				1
-			delaybetweenshots	10
-			time				8
-			damage				"30 5"
-			dmgweight			"normal_light"
-			shotorg				"1 10.5"
-		}
-	}
-}
-
-// =======================
-// PISTOL2
-// =======================
-item pistol2
-{
-	name			"_Machine Pistol"
-	model			"weapons/pistol2/pistol2"
-	weapon			true
-	type			"pistol"
-	animationindex	2
-	holdtwohanded	false
-	firetwohanded	false
-	shape			"0 0 2 1"
-	shape			"1 1 1 1"
-	center			"-0.1 0 0"
-	scale			2.0
-	ammo			30
-	reload			10
-	reloadsound		"weapons/reload-pistol"
-	price			1000
-	size			7
-	is_secondary	true
-	weight			1800
-}
-
-item pistol2_ammo
-{
-	name			"_4.2mm MP Magazine"
-	model			"weapons/pistol2/pistol2_clip"
-	type			"ammo"
-	animationindex	0
-	shape			"0 0 1 2"
-	center			"0 0 -0.21"
-	scale			2.5
-	price			20
-	size			2
-	is_secondary	true
-	dmgtype			"normal"
-	weight			500
-
-	weapon_mod
-	{
-		weapon pistol2
-		firedef
-		{
-			name		"_Snap Shot"
-			skill		"close"
-			projtl		bullet-smg
-			impact		bulletImpact
-			hitbody		null
-			firesnd		"weapons/bullet-pistol2"
-			impsnd		"impact/bullet-impact"
-			bodysnd 	"impact/bullet-bodyimpact"
-			speed		3000
-			spread		"2 2"
-			crouch		0.9
-			range		40
-			shots		1
-			ammo		1
-			time		6
-			damage		"20 5"
-			reaction	true
-			dmgweight	"normal_light"
-			shotorg		"1 9.5"
-		}
-		firedef
-		{
-			name				"_3-Round Burst"
-			skill				"close"
-			projtl				bullet-smg
-			impact				bulletImpact
-			hitbody				null
-			firesnd				"weapons/bullet-pistol2"
-			impsnd				"impact/bullet-impact"
-			bodysnd 			"impact/bullet-bodyimpact"
-			speed				3000
-			spread				"2.5 2.5"
-			crouch				0.9
-			range				40
-			shots				3
-			ammo				3
-			delaybetweenshots	10
-			time				9
-			damage				"20 5"
-			dmgweight			"normal_light"
-			reaction			true
-			shotorg				"1 9.5"
-		}
-		firedef
-		{
-			name				"_Full-Auto"
-			skill				"close"
-			projtl				bullet-smg
-			impact				bulletImpact
-			hitbody				null
-			firesnd				"weapons/bullet-pistol2"
-			impsnd				"impact/bullet-impact"
-			bodysnd 			"impact/bullet-bodyimpact"
-			speed				3000
-			spread				"3.5 3.5"
-			crouch				0.9
-			range				40
-			shots				10
-			ammo				10
-			delaybetweenshots	10
-			time				12
-			damage				"20 5"
-			dmgweight			"normal_light"
-			reaction			true
-			shotorg				"1 9.5"
-		}
-	}
-}
-
-
-// =======================
-// SMG
-// =======================
-item smg
-{
-	name			"_Submachine Gun"
-	model			"weapons/smg/smg"
-	weapon			true
-	type			"pistol"
-	animationindex	1
-	holdtwohanded	false
-	firetwohanded	true
-	shape			"0 0 3 2"
-	center			"6.4 0 1"
-	scale			1.15
-	ammo			30
-	reload			10
-	reloadsound		"weapons/reload-smg"
-	price			1350
-	size			8
-	is_secondary	true
-	weight			2000
-}
-
-item smg_ammo
-{
-	name			"_SMG Magazine"
-	model			"weapons/smg/smg_clip"
-	type			"ammo"
-	animationindex	0
-	shape			"0 0 1 2"
 	center			"0 0 0"
-	scale			1.4
-	price			40
-	size			3
-	is_secondary	true
-	dmgtype			"normal"
-	weight			400
+	scale			1.9
+	price			10000
+	size			6
+	is_primary		true
+	is_heavy		true
+	dmgtype			"plasma"
+	weight			1500
 
 	weapon_mod
 	{
-		weapon smg
+		weapon machinegun
 		firedef
 		{
-			name				"_5-Round Burst"
-			skill				"close"
-			projtl				bullet-smg
+			name				"_5-Shot Burst"
+			skill				"assault"
+			projtl				bullet-hmg
 			impact				bulletImpact
 			hitbody				null
-			firesnd				"weapons/bullet-smg-5x"
+			firesnd				"weapons/bullet-hmg-5x"
 			impsnd				"impact/bullet-impact"
 			bodysnd 			"impact/bullet-bodyimpact"
 			sndonce				true
 			speed				3000
-			spread				"1.8 1.8"
-			crouch				0.8
-			range				50
+			spread				"2.5 2.3"
+			crouch				0.80
+			range				100
 			shots				5
 			ammo				5
-			delaybetweenshots	14
-			time				7
-			damage				"15 3"
-			dmgweight			"normal_spray"
+			delaybetweenshots	10
+			time				14
+			damage				"90 10"
+			dmgweight			"plasma"
 			reaction			true
-			shotorg				"1 11.5"
+			shotorg				"2 8"
 		}
 		firedef
 		{
 			name				"_Full-Auto"
-			skill				"close"
-			projtl				bullet-smg
+			skill				"assault"
+			projtl				bullet-hmg
 			impact				bulletImpact
 			hitbody				null
-			firesnd				"weapons/bullet-smg-15x"
+			firesnd				"weapons/bullet-hmg-20x"
 			impsnd				"impact/bullet-impact"
 			bodysnd 			"impact/bullet-bodyimpact"
 			sndonce				true
 			speed				3000
-			spread				"2.5 2.5"
-			crouch				0.8
-			range				50
-			shots				15
-			ammo				15
-			delaybetweenshots	14
-			time				12
-			damage				"15 3"
-			dmgweight			"normal_spray"
+			spread				"3.5 3.2"
+			crouch				0.70
+			range				100
+			shots				20
+			ammo				20
+			delaybetweenshots	10
+			time				17
+			damage				"90 10"
+			dmgweight			"plasma"
 			reaction			true
-			shotorg				"1 11.5"
+			shotorg				"2 8"
 		}
-	}
-}
-
-// =======================
-// SHOTGUN2
-// =======================
-item shotgun2
-{
-	name			"_Riot Shotgun"
-	model			"weapons/shotgun2/shotgun"
-	weapon			true
-	type			"rifle"
-	animationindex	1
-	holdtwohanded	false
-	firetwohanded	true
-	shape			"1 0 3 1"
-	shape			"0 1 4 1"
-	center			"1.5 0 3.8"
-	scale			0.98
-	ammo			7
-	reload			14
-	reloadsound		"weapons/reload-shotgun"
-	price			1500
-	size			25
-	is_primary		true
-	weight			3100
-}
-
-item shotgun2_slug_ammo
-{
-	name			"_Saboted Slugs"
-	model			"weapons/shotgun2/shotgun_clip"
-	type			"ammo"
-	animationindex	0
-	shape			"0 0 1 2"
-	center			"0 0 0"
-	scale			2.0
-	price			35
-	size			5
-	is_primary		true
-	dmgtype			"normal"
-	weight			600
-
-	weapon_mod
-	{
-		weapon shotgun2
 		firedef
 		{
-			name				"_Snap Shot"
-			skill				"close"
-			projtl				bullet
+			name				"_Full-Auto Sweep"
+			skill				"assault"
+			projtl				bullet-hmg
 			impact				bulletImpact
 			hitbody				null
-			firesnd				"weapons/bullet-shotgun"
+			firesnd				"weapons/bullet-hmg-20x"
 			impsnd				"impact/bullet-impact"
 			bodysnd 			"impact/bullet-bodyimpact"
 			sndonce				true
 			speed				3000
-			spread				"3 3"
-			crouch				0.9
-			range				20
-			shots				1
-			ammo				1
-			delaybetweenshots	0
-			time				8
-			damage				"120 20"
-			dmgweight			"normal_medium"
+			spread				"3.5 20"
+			crouch				0.75
+			range				100
+			shots				20
+			ammo				20
+			delaybetweenshots	10
+			time				19
+			damage				"90 10"
+			dmgweight			"plasma"
 			reaction			true
-			shotorg				"3.5 7.5"
+			shotorg				"2 8"
 		}
 	}
 }
 
-// =======================
-// SHOTGUN MICRO
-// =======================
-item shotgun_micro
-{
-	name			"_Micro Shotgun"
-	model			"weapons/shotgunmicro/shotgunmicro"
-	weapon			true
-	type			"biggun"
-	animationindex	1
-	holdtwohanded	false
-	firetwohanded	true
-	shape			"0 0 3 2"
-	center			"3 0 3"
-	scale			1.2
-	ammo			7
-	reload			8
-	reloadsound		"weapons/reload-shotgun"
-	price			1350
-	size			10
-	is_secondary	true
-	weight			2000
-}
-
-item shotgun_micro_ammo
-{
-	name			"_Flechette Shells"
-	model			"weapons/shotgunmicro/shotgunmicro_clip"
-	type			"ammo"
-	animationindex	0
-	shape			"0 0 1 2"
-	center			"0 0 0"
-	scale			1.2
-	price			35
-	size			4
-	is_primary		true
-	dmgtype			"normal"
-	weight			400
-
-	weapon_mod // weap_fds_idx=0
-	{
-		weapon shotgun_micro
-		firedef
-		{
-			name				"_Snap Shot"
-			skill				"close"
-			projtl				bullet
-			impact				bulletImpact
-			hitbody				null
-			firesnd				"weapons/bullet-shotgun"
-			impsnd				"impact/bullet-impact"
-			bodysnd 			"impact/bullet-bodyimpact"
-			sndonce				true
-			speed				3000
-			spread				"5 5"
-			crouch				0.9
-			range				15
-			shots				8
-			ammo				1
-			delaybetweenshots	0
-			time				8
-			damage				"20 5"
-			dmgweight			"normal_spray"
-			reaction			true
-			shotorg				"3.5 8"
-		}
-	}
-
-	weapon_mod // weap_fds_idx=1
-	{
-		weapon shotgun2
-		firedef
-		{
-			name				"_Snap Shot"
-			skill				"close"
-			projtl				bullet
-			impact				bulletImpact
-			hitbody				null
-			firesnd				"weapons/bullet-shotgunmini"
-			impsnd				"impact/bullet-impact"
-			bodysnd 			"impact/bullet-bodyimpact"
-			sndonce				true
-			speed				3000
-			spread				"4 4"
-			crouch				0.9
-			range				15
-			shots				8
-			ammo				1
-			delaybetweenshots	0
-			time				8
-			damage				"20 5"
-			dmgweight			"normal_spray"
-			reaction			true
-			shotorg				"3.5 7.5"
-		}
-	}
-}
 
 // =======================
 // FLAMETHROWER
@@ -1020,11 +236,11 @@ item flamer
 	ammo			4
 	reload			20
 	reloadsound		"weapons/reload-pistol"	// @todo better sound?
-	price			1500
+	price			15000
 	size			60
 	is_primary		true
 	is_heavy		true
-	weight			6000
+	weight			6800
 }
 
 item flamer_ammo
@@ -1036,7 +252,7 @@ item flamer_ammo
 	shape			"0 0 2 1"
 	center			"0 0 0"
 	scale			1.1
-	price			170
+	price			1700
 	size			10
 	is_primary		true
 	is_heavy		true
@@ -1062,8 +278,8 @@ item flamer_ammo
 			shots				30
 			ammo				1
 			delaybetweenshots	25
-			time				12
-			damage				"6 2"
+			time				11
+			damage				"8 2"
 			dmgweight			"fire_flamer"
 			reaction			true
 			shotorg				"3.5 7"
@@ -1084,8 +300,8 @@ item flamer_ammo
 			shots				60
 			ammo				2
 			delaybetweenshots	25
-			time				20
-			damage				"6 2"
+			time				18
+			damage				"8 2"
 			dmgweight			"fire_flamer"
 			reaction			true
 			shotorg				"3.5 7"
@@ -1107,7 +323,7 @@ item flamer_ammo
 			ammo				2
 			delaybetweenshots	25
 			time				20
-			damage				"6 2"
+			damage				"8 2"
 			dmgweight			"fire_flamer"
 			reaction			true
 			shotorg				"3.5 7"
@@ -1135,7 +351,7 @@ item rpg
 	ammo			1
 	reload			16
 	reloadsound		"weapons/reload-rocket"
-	price			4000
+	price			16000
 	size			75
 	is_primary		true
 	is_heavy		true
@@ -1151,7 +367,7 @@ item rpg_ammo
 	shape			"0 0 1 2"
 	center			"0 0 0"
 	scale			1.1
-	price			430
+	price			4500
 	size			6
 	is_primary		true
 	is_heavy		true
@@ -1179,7 +395,7 @@ item rpg_ammo
 			ammo		1
 			time		24
 			damage		"0 0"
-			spldmg		"250 20"
+			spldmg		"250 50"
 			splrad		7
 			dmgweight	"blast"
 			shotorg		"3.5 7"
@@ -1196,7 +412,7 @@ item rpg_incendiary_ammo
 	shape			"0 0 1 2"
 	center			"0 0 -0.5"
 	scale			1.1
-	price			630
+	price			6300
 	size			6
 	is_primary		true
 	is_heavy		true
@@ -1224,7 +440,7 @@ item rpg_incendiary_ammo
 			ammo		1
 			time		24
 			damage		"25 10"	//Fire field damage
-			spldmg		"100 20"
+			spldmg		"140 120"
 			splrad		7
 			dmgweight	"incendiary"
 			rounds		4
@@ -1242,7 +458,7 @@ item rpg_hybrid_ammo
 	shape			"0 0 1 2"
 	center			"0 0 0"
 	scale			1.1
-	price			700
+	price			8000
 	size			6
 	is_primary		true
 	is_heavy		true
@@ -1278,6 +494,7 @@ item rpg_hybrid_ammo
 	}
 }
 
+
 // =======================
 // GRENADE LAUNCHER
 // =======================
@@ -1297,7 +514,7 @@ item grenl
 	ammo			6
 	reload			16
 	reloadsound		"weapons/reload-grenade"
-	price			2500
+	price			17500
 	size			60
 	is_primary		true
 	is_heavy		true
@@ -1313,7 +530,7 @@ item grenl_ammo
 	shape			"0 0 1 1"
 	center			"0 0 0"
 	scale			0.7
-	price			135
+	price			800
 	size			6
 	is_primary		true
 	is_heavy		true
@@ -1342,10 +559,10 @@ item grenl_ammo
 			shots				1
 			ammo				1
 			delaybetweenshots	1
-			time				12
+			time				10
 			damage				"0 0"
-			spldmg				"130 20"
-			splrad				3
+			spldmg				"130 40"
+			splrad				4
 			dmgweight			"blast"
 			reaction			false
 			shotorg				"3 7"
@@ -1372,8 +589,8 @@ item grenl_ammo
 			delaybetweenshots	1
 			time				18
 			damage				"0 0"
-			spldmg				"130 20"
-			splrad				3
+			spldmg				"130 40"
+			splrad				4
 			dmgweight			"blast"
 			reaction			false
 			shotorg				"3 7"
@@ -1401,10 +618,10 @@ item grenl_ammo
 			shots				1
 			ammo				1
 			delaybetweenshots	1
-			time				12
+			time				10
 			damage				"0 0"
-			spldmg				"130 20"
-			splrad				3
+			spldmg				"130 40"
+			splrad				4
 			dmgweight			"blast"
 			reaction			false
 			shotorg				"3 7"
@@ -1434,8 +651,8 @@ item grenl_ammo
 			delaybetweenshots	1
 			time				18
 			damage				"0 0"
-			spldmg				"130 20"
-			splrad				3
+			spldmg				"130 40"
+			splrad				4
 			dmgweight			"blast"
 			reaction			false
 			shotorg				"3 7"
@@ -1452,7 +669,7 @@ item grenl_incendiary_ammo
 	shape			"0 0 1 1"
 	center			"0 0 0"
 	scale			0.7
-	price			135
+	price			1350
 	size			6
 	is_primary		true
 	is_heavy		true
@@ -1481,9 +698,9 @@ item grenl_incendiary_ammo
 			shots				1
 			ammo				1
 			delaybetweenshots	1
-			time				12
+			time				10
 			damage				"15 10"	//Fire field damage
-			spldmg				"75 20"
+			spldmg				"60 40"
 			splrad				3
 			dmgweight			"incendiary"
 			reaction			false
@@ -1512,7 +729,7 @@ item grenl_incendiary_ammo
 			delaybetweenshots	1
 			time				18
 			damage				"15 10"	//Fire field damage
-			spldmg				"75 20"
+			spldmg				"60 40"
 			splrad				3
 			dmgweight			"incendiary"
 			reaction			false
@@ -1542,9 +759,9 @@ item grenl_incendiary_ammo
 			shots				1
 			ammo				1
 			delaybetweenshots	1
-			time				12
+			time				10
 			damage				"15 10"	//Fire field damage
-			spldmg				"75 20"
+			spldmg				"60 40"
 			splrad				3
 			dmgweight			"incendiary"
 			reaction			false
@@ -1576,7 +793,7 @@ item grenl_incendiary_ammo
 			delaybetweenshots	1
 			time				18
 			damage				"15 10"	//Fire field damage
-			spldmg				"75 20"
+			spldmg				"60 40"
 			splrad				3
 			dmgweight			"incendiary"
 			reaction			false
@@ -1598,7 +815,7 @@ item grenl_fle_ammo
 	shape			"0 0 1 1"
 	center			"0 0 0"
 	scale			0.7
-	price			135
+	price			1350
 	size			6
 	is_primary		true
 	is_heavy		true
@@ -1623,7 +840,7 @@ item grenl_fle_ammo
 			shots				8
 			ammo				1
 			delaybetweenshots	0
-			time				12
+			time				10
 			damage				"20 5"
 			dmgweight			"normal_spray"
 			reaction			true
@@ -1641,7 +858,7 @@ item grenl_plasma_ammo
 	shape			"0 0 1 1"
 	center			"0 0 0"
 	scale			0.7
-	price			930
+	price			9300
 	size			6
 	is_primary		true
 	is_heavy		true
@@ -1670,7 +887,7 @@ item grenl_plasma_ammo
 			shots				1
 			ammo				1
 			delaybetweenshots	1
-			time				12
+			time				10
 			damage				"0 0"
 			spldmg				"180 20"
 			splrad				3
@@ -1728,7 +945,7 @@ item grenl_plasma_ammo
 			shots				1
 			ammo				1
 			delaybetweenshots	1
-			time				12
+			time				10
 			damage				"0 0"
 			spldmg				"180 20"
 			splrad				3
@@ -1769,167 +986,4 @@ item grenl_plasma_ammo
 }
 
 
-// =======================
-// BOLTER RIFLE
-// =======================
-item bolterrifle
-{
-	name			"_Electromagnetic Rifle"
-	model			"weapons/bolterrifle/bolterrifle"
-	weapon			true
-	type			"biggun"
-	animationindex	1
-	holdtwohanded	false
-	firetwohanded	true
-	shape			"0 0 5 2"
-	center			"4 1 1.1"
-	scale			1.2
-	ammo			2
-	reload			12
-	reloadsound		"weapons/reload-rifle"
-	price			2000
-	size			45
-	is_primary		true
-	is_heavy		true
-	weight			8400
-}
 
-item bolterrifle_ammo
-{
-	name			"_Electromagnetic Rifle Magazine"
-	model			"weapons/bolterrifle/bolterrifle_clip"
-	type			"ammo"
-	animationindex	0
-	shape			"0 0 3 1"
-	center			"0 0 0"
-	scale			1.2
-	price			930
-	size			9
-	is_primary		true
-	is_heavy		true
-	dmgtype			"normal"
-	weight			800
-
-	weapon_mod
-	{
-		weapon bolterrifle
-		firedef
-		{
-			name		"_Snap Shot"
-			skill		"sniper"
-			projtl		bolter
-			impact		bolterImpact
-			hitbody		null
-			firesnd		"weapons/bullet-bolter"
-			impsnd		"impact/nail-impact"
-			bodysnd 	"impact/nail-bodyimpact"
-			sndonce		true
-			speed		2000
-			spread		"2.5 2.5"
-			crouch		0.85
-			range		200
-			shots		1
-			ammo		1
-			time		18
-			damage		"160 20"
-			dmgweight	"normal_heavy"
-			reaction	true
-			throughwall	2
-			shotorg		"3.5 6"
-		}
-
-		firedef
-		{
-			name				"_Aimed Shot"
-			skill				"sniper"
-			projtl				bolter
-			impact				bolterImpact
-			hitbody				null
-			firesnd				"weapons/bullet-bolter"
-			impsnd				"impact/nail-impact"
-			bodysnd 			"impact/nail-bodyimpact"
-			speed				2000
-			spread				"0.55 0.55"
-			crouch				0.6
-			range				200
-			shots				1
-			ammo				1
-			time				24
-			damage				"160 20"
-			dmgweight			"normal_heavy"
-			reaction			true
-			throughwall			2
-			shotorg				"3.5 6"
-		}
-	}
-}
-
-item bolterrifle_am_ammo
-{
-	name			"_Electromagnetic Rifle Antimatter Magazine"
-	model			"weapons/bolterrifle/bolterrifle_am_clip"
-	type			"ammo"
-	animationindex	0
-	shape			"0 0 3 1"
-	center			"0 0 0"
-	scale			1.2
-	price			930
-	size			9
-	is_primary		true
-	is_heavy		true
-	dmgtype			"normal"
-	weight			1400
-
-	weapon_mod
-	{
-		weapon bolterrifle
-		firedef
-		{
-			name		"_Snap Shot"
-			skill		"sniper"
-			projtl		bolter
-			impact		bolterImpact
-			hitbody		null
-			firesnd		"weapons/bullet-bolter"
-			impsnd		"impact/nail-impact"
-			bodysnd 	"impact/nail-bodyimpact"
-			sndonce		true
-			speed		2000
-			spread		"2.5 2.5"
-			crouch		0.85
-			range		200
-			shots		1
-			ammo		1
-			time		18
-			damage		"250 20"
-			dmgweight	"blast"
-			reaction	true
-			throughwall	2
-			shotorg		"3.5 6"
-		}
-
-		firedef
-		{
-			name				"_Aimed Shot"
-			skill				"sniper"
-			projtl				bolter
-			impact				bolterImpact
-			hitbody				null
-			firesnd				"weapons/bullet-bolter"
-			impsnd				"impact/nail-impact"
-			bodysnd 			"impact/nail-bodyimpact"
-			speed				2000
-			spread				"0.55 0.55"
-			crouch				0.6
-			range				200
-			shots				1
-			ammo				1
-			time				24
-			damage				"250 20"
-			dmgweight			"blast"
-			reaction			true
-			throughwall			2
-			shotorg				"3.5 6"
-		}
-	}
-}

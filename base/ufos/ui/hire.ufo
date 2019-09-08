@@ -10,8 +10,8 @@ component cmpEmployee extends panel
 
 	string name
 	{
-		size		"280 38"
-		pos			"30 0"
+		size		"250 38"
+		pos			"58 0"
 		color		"0.56 0.81 0.76 1"
 		contentalign ALIGN_CL
 		onClick		{
@@ -19,6 +19,16 @@ component cmpEmployee extends panel
 			cmd "set_healthbar_color;"
 		}
 	}
+
+	image flag
+	{
+		width			"24"
+		pos				"32 12"
+		src				"nations/africa2_small.png"
+		preventratio 	true
+		invis			true
+	}
+
 	CheckBox select
 	{
 		current		0
@@ -209,11 +219,14 @@ window employees
 				// <2> Employee name
 				// <3> Employee is wounded?
 				// <4> Employee aircraft
+				// <5> Employee nationid
 				confunc hire_addemployee {
 					call *node:parent.employee_list@createChild("bt_employee<1>", "cmpEmployee")
 					*node:parent.employee_list.bt_employee<1>@num = <1>
 					*node:parent.employee_list.bt_employee<1>.name@string = <2>
 					*node:parent.employee_list.bt_employee<1>.status@integer = <3>
+					*node:parent.employee_list.bt_employee<1>.flag@src = "nations/<5>_small.png"
+					*node:parent.employee_list.bt_employee<1>.flag@invis = false
 					if ( <3> == 1) {
 						*node:parent.employee_list.bt_employee<1>.name@color = "1 0.81 0.76 1"
 					}
@@ -230,7 +243,7 @@ window employees
 
 				panel employee_list
 				{
-					size			"360 450"
+					size			"400 450"
 					layout			LAYOUT_TOP_DOWN_FLOW
 					layoutMargin	2
 					wheelscrollable	true
@@ -245,7 +258,7 @@ window employees
 				vscrollbar scroll
 				{
 					image		"ui/scrollbar_v"
-					pos			"368 5"
+					pos			"408 5"
 					height		"448"
 					current		0
 					viewsize	15
@@ -259,8 +272,8 @@ window employees
 			panel placeholder
 			{
 				{
-					pos			"530 75"
-					size		"183 460"
+					pos			"570 75"
+					size		"143 460"
 					contentalign	ALIGN_CC
 				}
 

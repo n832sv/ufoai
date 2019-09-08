@@ -77,6 +77,8 @@ team phalanx
 		female("soldiers/female" "body" "head15" 0 0)
 		female("soldiers/female" "body" "head16" 0 0)
 		female("soldiers/female" "body" "head17" 0 0)
+		female("soldiers/female" "body" "head18" 0 0)
+		female("soldiers/female" "body" "head19" 0 0)
 		male("soldiers/male" "body" "head01" 0 0)
 		male("soldiers/male" "body" "head01" 0 1)
 		male("soldiers/male" "body" "head01" 0 2)
@@ -153,9 +155,43 @@ team phalanx
 			deathsound	"soldiers/maledeath07"
 		}
 	}
+
+	resistance { 
+		normal_armour_piercing	0
+		plasma_encased 			0
+		emp 					999 
+	}
 	templates (
 		soldier
 		soldier_mp // For multiplayer characters ONLY!
+		africanunion_enlisted
+		africanunion_sf
+		eu_sf
+		ssl_enlisted
+		ssl_sf
+		siamese_enlisted
+		oceania_enlisted
+		coalition_enlisted
+		americanalliance_enlisted
+		india_enlisted
+		india_sf
+		china_enlisted
+		china_sf
+		usa_enlisted
+		usa_sf
+		nigeria_sf
+		pakistan_enlisted
+		pakistan_sf
+		brazil_sf
+		mexico_enlisted
+		russia_enlisted
+		russia_sf
+		japan_enlisted
+		korea_enlisted
+		korea_sf
+		canada_sf
+		australia_enlisted
+		mongolia_sf
 	)
 }
 
@@ -357,10 +393,9 @@ team phalanx_ugv_phoenix
 
 	//TODO: Balance values they are the same than bloodspider
 	resistance {
-		normal_light 12
-		normal_spray 6
-		normal_medium 7
-		normal_heavy 6
+		normal_spray 			12
+		normal 					12
+		normal_armour_piercing	0
 
 		normal_steelblade 10
 		normal_monomolecularblade 5
@@ -375,20 +410,18 @@ team phalanx_ugv_phoenix
 
 		shock 999
 
-		laser_light 14
-		laser_medium 12
-		laser_heavy 10
+		laser 14
 
-		plasma_light 12
-		plasma_medium 9
-		plasma_heavy 7
+		plasma 12
+		plasma_encased 2
 
-		particlebeam_light 0
-		particlebeam_medium 0
-		particlebeam_heavy 0
+		particlebeam 0
 
 		stun_electro 6
 		stun_gas 999
+
+		emp 0
+
 	}
 	templates (
 		robot
@@ -414,10 +447,9 @@ team phalanx_ugv_ares_w
 
 	//TODO: Balance values they are the same than bloodspider
 	resistance {
-		normal_light 12
-		normal_spray 6
-		normal_medium 7
-		normal_heavy 6
+		normal_spray 			6
+		normal 					6
+		normal_armour_piercing	0
 
 		normal_steelblade 10
 		normal_monomolecularblade 5
@@ -432,20 +464,18 @@ team phalanx_ugv_ares_w
 
 		shock 999
 
-		laser_light 14
-		laser_medium 12
-		laser_heavy 10
+		laser 14
 
-		plasma_light 12
-		plasma_medium 9
-		plasma_heavy 7
+		plasma 12
+		plasma_encased 4
 
-		particlebeam_light 0
-		particlebeam_medium 0
-		particlebeam_heavy 0
+		particlebeam 0
 
 		stun_electro 6
 		stun_gas 999
+
+		emp 0
+
 	}
 	templates (
 		robot

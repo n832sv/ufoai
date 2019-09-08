@@ -133,14 +133,14 @@ function build_nationcharts (rootNode)
 		name = "nation_charts",
 		class = "panel",
 		pos = {0, 0},
-		size = {545, 275},
+		size = {552, 300},
 		backgroundcolor = {0.5, 0.5, 0.5, 0.2},
 
 		{
 			name = "nation_graph",
 			class = "linechart",
-			pos = {50, 35},
-			size = {492, 200},
+			pos = {20, 32},
+			size = {532, 200},
 			showaxes = true,
 			axescolor = {1, 1, 1, 0.5},
 		},
@@ -148,8 +148,8 @@ function build_nationcharts (rootNode)
 		{
 			name = "xlabels",
 			class = "panel",
-			pos = {40, 235},
-			size = {502, 20},
+			pos = {20, 232},
+			size = {532, 20},
 			layout = ufo.LAYOUT_LEFT_RIGHT_FLOW,
 		},
 
@@ -158,7 +158,7 @@ function build_nationcharts (rootNode)
 			class = "string",
 			text = "_Month (Relative to current)",
 			pos = {50, 255},
-			size = {492, 20},
+			size = {502, 20},
 			contentalign = ufo.ALIGN_CC,
 		},
 	}, rootNode)

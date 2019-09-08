@@ -1,0 +1,97 @@
+// character animations
+// name				start	end		fps
+
+// The death animations that are choosen randomly
+death1				0       27      20
+dead1				26      26      20
+death2				29      47      20
+dead2				46      46      20
+death3				48      58      20
+dead3				58      58      20
+
+stand0				61      61      1
+cwalk0				153     170     30
+walk0				77      94      18
+run0				77      94      18
+panic0				226		230		4
+
+stand1				61      61      1
+stand2				61      61      1
+
+stand_menu			61      61      1
+stand_still			238		239	    4
+
+
+
+
+//death1				0		28		30	// x
+//dead1				28		28		30	// x
+//death2				29		47		30	// x
+//dead2				47		47		30	// x
+//death3				48		60		30	// x
+//dead3				60		60		30	// x
+
+//stand0				61		62		30	// x
+//walk0				153		170		30	// x
+//cstand0				69		70		30	// x
+//cwalk0				282		312		30	//
+
+//stand161			61		62		30	// x
+//walk1				0		30		30	//
+//cstand1				71		72		30	// x
+//cwalk1				88		118		30	// x
+
+//move_rifle			77		77		4	//
+//shoot_rifle			77		81		10	//
+//cmove_rifle			171		188		4	// x
+//cshoot_rifle		167		171		10	//
+
+//move_biggun			77		77		4	//
+//shoot_biggun		77		81		10	//
+//cmove_biggun		208		225		4	//
+//cshoot_biggun		167		171		10	//
+
+//move_melee			100		100		30	//
+//shoot_melee			100		100		30	//
+//cmove_melee			406		406		30	//
+//cshoot_melee		407		453		30	//
+
+//stand2				61		62		30	// x
+//walk2				174		204		30	// x
+//cstand2				73		74		30	// 
+//cwalk2				282		312		30	// 
+
+//move_pistol			115		133		4	//
+//shoot_pistol		252		256		10	//
+//cmove_pistol		189		207		4	//
+//cshoot_pistol		363		367		10	//
+
+//move_pistol_d		272		272		4	//
+//shoot_pistol_d		273		277		10	//
+//cmove_pistol_d		384		384		4	//
+//cshoot_pistol_d		385		389		10	//
+
+//move_grenade		100		100		4	// x
+//shoot_grenade		100		100		10	//
+//cmove_grenade		100		100		4	//
+//cshoot_grenade		100		100		10	//
+
+//move_item			100		100		4	//
+//shoot_item			100		100		10	//
+//cmove_item			315		315		4	//
+//cshoot_item			315		347		20	//
+
+//stand3				61		62		30	//
+//walk3				0		30		30	//
+//cstand3				75		76		30	//
+//cwalk3				88		118		30	//
+
+//move_rpg			134		152		4	//
+//shoot_rpg			77		81		10	//
+//cmove_rpg			166		166		4	//
+//cshoot_rpg			167		171		10	//
+
+//stand_menu			65		66		1	// missing
+//panic0				226		231		4	// x
+
+//stand_still			238		240		1	// x

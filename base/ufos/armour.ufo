@@ -20,14 +20,14 @@
 damagetypes standard
 {
 	"_normal" // Most often for phalanx weapons
-	"normal_light" // Pistols and other light firearms
-	"normal_spray" // SMG, flechette shells and other weapons that spray several bullets
-	"normal_medium"
-	"normal_heavy"
+	"normal_spray" 
+	"normal"
+	"normal_armour_piercing"
 	"normal_steelblade" // Combat knife
 	"normal_monomolecularblade" // Kerrblade and similar blades to ensure superior tech better against armour
 	"normal_needle" // Needler and heavy Needler (very small damage, but large number of shots and high pierce).
 	"_blast"
+	"blast"
 	"_fire"
 	"fire_light" // Currently unused
 	"fire_medium" // Currently unused
@@ -35,22 +35,16 @@ damagetypes standard
 	"fire_flamer" // Flamethrower only for now
 	"_shock" // Flashbang grenade only for now
 	"_laser"
-	"laser_light"
-	"laser_medium"
-	"laser_heavy"
 	"_plasma"
-	"plasma_light"
-	"plasma_medium"
-	"plasma_heavy"
-	"plasma_pierce"
+	"plasma"
+	"plasma_encased"	// shotgun
 	"_particlebeam"
-	"particlebeam_light"
-	"particlebeam_medium"
-	"particlebeam_heavy"
+	"particlebeam"
 	"_stun_electro"
 	"_stun_gas"
 	"smoke"
 	"incendiary"
+	"emp"
 }
 
 // =======================
@@ -65,23 +59,22 @@ item armour_light
 	shape		"0 0 3 4"
 	center		"0 0 -5"
 	scale		0.7
-	price		1400
+	price		4800
 	size		60
 	weight		7000
 	armourpath	"light"
 	useable		"phalanx"
 
 	protection {
-		normal_light		20
-		normal_medium		15
-		normal_heavy		10
-		normal_spray		8
+		normal_spray			30		
+		normal					20
+		normal_armour_piercing	0
 
 		normal_steelblade			10
 		normal_monomolecularblade	5
 		normal_needle		0
 
-		blast				25
+		blast				10
 
 		fire_medium			15
 		fire_heavy			5
@@ -91,21 +84,17 @@ item armour_light
 
 		shock				0
 
-		plasma_light		15
-		plasma_medium		15
-		plasma_heavy		10
-		plasma_pierce		0
+		plasma				15
+		plasma_encased		5
 
-		laser_light			5
-		laser_medium		5
-		laser_heavy			5
+		laser				5
 
-		particlebeam_light	0
-		particlebeam_medium	0
-		particlebeam_heavy	0
+		particlebeam		0
 
 		stun_electro		0
 		stun_gas			0
+
+		emp					999
 	}
 
 	rating {
@@ -129,23 +118,23 @@ item armour_medium
 	shape		"0 0 3 4"
 	center		"0 0 -5"
 	scale		0.7
-	price		7500
+	price		48000
 	size		120
 	weight		9000
 	useable		"phalanx"
 	armourpath	"medium"
 
 	protection {
-		normal_light		40
-		normal_medium		30
-		normal_heavy		30
-		normal_spray        12
+		normal_spray        	50
+		normal					40
+		normal_armour_piercing	10
+
 
 		normal_steelblade		30
 		normal_monomolecularblade	20
 		normal_needle		3
 
-		blast				50
+		blast				30
 
 		fire_medium			30
 		fire_heavy			15
@@ -155,21 +144,17 @@ item armour_medium
 
 		shock				0
 
-		plasma_light		25
-		plasma_medium		30
-		plasma_heavy		40
-		plasma_pierce		0
+		plasma				25
+		plasma_encased		10
 
-		laser_light			10
-		laser_medium		10
-		laser_heavy			10
+		laser				10
 
-		particlebeam_light	10
-		particlebeam_medium	20
-		particlebeam_heavy	20
+		particlebeam		10
 
 		stun_electro		15
 		stun_gas			30
+
+		emp					999
 	}
 
 	rating {
@@ -193,23 +178,22 @@ item armour_power
 	shape		"0 0 3 4"
 	center		"0 0 -5"
 	scale		0.7
-	price		32000
+	price		320000
 	size		150
 	weight		14000
 	useable		"phalanx"
 	armourpath	"power"
 
 	protection {
-		normal_light		50
-		normal_medium		50
-		normal_heavy		50
-		normal_spray        20
+		normal_spray        		70
+		normal						50
+		normal_armour_piercing		15
 
 		normal_steelblade			50
 		normal_monomolecularblade	50
 		normal_needle		5
 
-		blast				70
+		blast				50
 
 		fire_medium			50
 		fire_heavy			50
@@ -219,21 +203,18 @@ item armour_power
 
 		shock				999
 
-		plasma_light		35
-		plasma_medium		50
-		plasma_heavy		60
-		plasma_pierce		0
+		plasma				35
+		plasma_encased		15
 
-		laser_light			15
-		laser_medium		15
-		laser_heavy			15
+		laser				15
 
-		particlebeam_light	30
-		particlebeam_medium	40
-		particlebeam_heavy	50
+		particlebeam		30
 
 		stun_electro		30
 		stun_gas			999
+
+		emp					999
+
 	}
 
 	rating {
@@ -261,23 +242,22 @@ item armour_light_alien
 	shape		"0 0 3 4"
 	center		"0 0 -5"
 	scale		0.7
-	price		1400
+	price		62000
 	weight		7000
 	size		50
 	useable		"alien"
 	armourpath	"light"
 
 	protection {
-		normal_spray	8
-		normal_light	15
-		normal_medium	20
-		normal_heavy	5
+		normal_spray				35
+		normal						20
+		normal_armour_piercing		0
 
 		normal_steelblade			30
 		normal_monomolecularblade	0
-		normal_needle		1
+		normal_needle	1
 
-		blast			20
+		blast			10
 
 		fire_medium		25
 		fire_heavy		10
@@ -287,21 +267,17 @@ item armour_light_alien
 
 		shock			0
 
-		laser_light		5
-		laser_medium	5
-		laser_heavy		5
+		laser			5
 
-		plasma_light	30
-		plasma_medium	30
-		plasma_heavy	20
-		plasma_pierce		0
+		plasma			30
+		plasma_encased	2
 
-		particlebeam_light	10
-		particlebeam_medium	20
-		particlebeam_heavy	20
+		particlebeam	10
 
 		stun_electro	0
 		stun_gas		0
+
+		emp				0
 	}
 
 	rating {
@@ -325,21 +301,20 @@ item armour_medium_alien
 	shape		"0 0 3 4"
 	center		"0 0 -5"
 	scale		0.7
-	price		7500
+	price		80000
 	weight		12000
 	size		75
 	useable		"alien"
 	armourpath	"medium"
 
 	protection {
-		normal_spray	25
-		normal_light	60
-		normal_medium	50
-		normal_heavy	25
+		normal_spray				60
+		normal						60
+		normal_armour_piercing		20
 
 		normal_steelblade			60
 		normal_monomolecularblade	15
-		normal_needle		3
+		normal_needle				3
 
 		blast			50
 
@@ -351,21 +326,17 @@ item armour_medium_alien
 
 		shock			0
 
-		laser_light		30
-		laser_medium	30
-		laser_heavy		30
+		laser			30
 
-		plasma_light	50
-		plasma_medium	40
-		plasma_heavy	25
-		plasma_pierce		0
+		plasma			30
+		plasma_encased	12
 
-		particlebeam_light	30
-		particlebeam_medium	40
-		particlebeam_heavy	50
+		particlebeam	40
 
 		stun_electro	15
 		stun_gas		30
+
+		emp				0
 	}
 
 	rating {

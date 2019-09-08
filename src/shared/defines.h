@@ -38,7 +38,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #define	PLANESIDE_EPSILON	0.001
 
 /* if you increase this, you also have to change the aircraft buy/sell menu scripts */
-#define MAX_ACTIVETEAM	12
+#define MAX_ACTIVETEAM	24
 
 /** @sa CONTENTS_NODE - @todo replace this with CONTENTS_NODE? */
 #define LEAFNODE -1
@@ -125,7 +125,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #define PLAYER_HEIGHT		(UNIT_HEIGHT - 16)
 #define QUANT	4
 /* WALL_SIZE is the distance a wall may protrude from the edge of a cell without interfeeting with an actor entering the cell */
-#define WALL_SIZE 5
+#define WALL_SIZE 6
 
 /** upper design bounds
  * leafbrushes, planes, and verts are still bounded by

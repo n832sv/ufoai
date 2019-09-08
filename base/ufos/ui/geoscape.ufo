@@ -113,196 +113,197 @@ window geoscape
 	// RIGHT (MAIN) PANEL
 	// ===================
 
-	panel control {
+	panel control_wrap {
 		{
-			size		"216 728"
+			size "222 728"
 			align		LAYOUTALIGN_RIGHT
-			border		"2"
-			bordercolor	"0.56 0.81 0.76 1"
-			bgcolor		"0 0 0 0.6"
 		}
-		panel border {
+		
+		panel control {
 			{
-				pos			"0 70"
-				size		"216 465"
+				pos			"0 8"
+				size		"216 720"
+				align		LAYOUTALIGN_LEFT
 				border		"2"
-				bordercolor	"0.56 0.81 0.76 1"
+				bordercolor	"0.56 0.81 0.76 0.4"
+				bgcolor		"0.05 0.08 0.07 0.6"
 			}
-		}
 
-		string date {
-			string		"*cvar:mn_mapdate *cvar:mn_maptime"
-			pos		"18 12"
-			size		"181 20"
-			contentalign	ALIGN_UC
-			color		"1 1 1 1"
-			font		"f_small"
-		}
-
-		button bt_messagesystem
-		{
-			// @todo: better -more verbose- tooltip
-			tooltip		"_Open up messages"
-			padding		0
-			icon		"icons/change_height"
-			pos			"5 5"
-			size		"23 23"
-			onClick	{
-				cmd "add mn_messagesystem 1;"
-				cmd "mod mn_messagesystem 4;"
-				cmd "messagesystem_changemode"
+			image logo
+			{ 
+				src			"phalanx_earth_gray.png"
+				pos			"44 26"
 			}
-			onRClick	{
-				*cvar:mn_messagesystem = 3
-				cmd "messagesystem_changemode"
-			}
-		}
 
-		// ==================
-		// credits strings
-		// ==================
-
-		string txt_credits_caption
-		{
-			string		"_CREDITS"
-			pos			"11 38"
-			size		"97 25"
-			font		"f_small"
-			contentalign	ALIGN_CC
-		}
-
-		string txt_credits
-		{
-			string		*cvar:mn_credits
-			tooltip		"_Organisation capital"
-			pos			"109 38"
-			size		"97 25"
-			font		"f_small"
-			contentalign	ALIGN_CC
-		}
-
-		// ==================
-		// timecontrol panel
-		// ==================
-
-		panel time_panel {
+			string date
 			{
-				pos		"0 70"
-				size	"214 55"
+				string		"*cvar:mn_mapdate"
+				pos			"10 168"
+				size		"195 20"
+				contentalign	ALIGN_UC
+				color		"0.56 0.81 0.76 1"
+				font		"f_normal"
 			}
 
-			func faster {
-				*cvar:mn_fastexit = 0;
-				cmd "game_timefast;"
-			}
-			func slower {
-				*cvar:mn_fastexit = 0;
-				cmd "game_timeslow;"
-			}
-
-			radiobutton bt_timestop0
+			string datetime
 			{
-				tooltip		"_Pause"
-				cvar		*cvar:mn_timelapse_id	value "0"
-				icon		"icons/speed_stop"
-				pos			"28 10"
-				size		"20 20"
-				onChange	{ *cvar:mn_fastexit = 0; cmd "game_settimeid <value>;" }
-				onWheelUp	{ *cvar:mn_fastexit = 0; cmd "game_timefast;" }
-				onWheelDown	{ cmd "game_timeslow;" }
-			}
-
-			radiobutton bt_timeplay1
-			{
-				tooltip		"_Time lapse: 5 seconds"
-				cvar		*cvar:mn_timelapse_id	value "1"
-				icon		"icons/speed_dot"
-				pos			"48 10"
-				size		"20 20"
-				onChange	{ *cvar:mn_fastexit = 0; cmd "game_settimeid <value>;" }
-				onWheelUp	{ cmd "game_timefast;" }
-				onWheelDown	{ cmd "game_timeslow;" }
-			}
-
-			radiobutton bt_timeplay2
-			{
-				tooltip		"_Time lapse: 5 minutes"
-				cvar		*cvar:mn_timelapse_id	value "2"
-				icon		"icons/speed_play1"
-				pos			"68 10"
-				size		"20 20"
-				onChange	{ *cvar:mn_fastexit = 0; cmd "game_settimeid <value>;" }
-				onWheelUp	{ cmd "game_timefast;" }
-				onWheelDown	{ cmd "game_timeslow;" }
-			}
-
-			radiobutton bt_timeplay3
-			{
-				tooltip		"_Time lapse: 20 minutes"
-				cvar		*cvar:mn_timelapse_id	value "3"
-				icon		"icons/speed_dot"
-				pos			"88 10"
-				size		"20 20"
-				onChange	{ *cvar:mn_fastexit = 0; cmd "game_settimeid <value>;" }
-				onWheelUp	{ cmd "game_timefast;" }
-				onWheelDown	{ cmd "game_timeslow;" }
-			}
-
-			radiobutton bt_timeplay4
-			{
-				tooltip		"_Time lapse: 1 hour"
-				cvar		*cvar:mn_timelapse_id	value "4"
-				icon		"icons/speed_play2"
-				pos			"108 10"
-				size		"20 20"
-				onChange	{ *cvar:mn_fastexit = 0; cmd "game_settimeid <value>;" }
-				onWheelUp	{ cmd "game_timefast;" }
-				onWheelDown	{ cmd "game_timeslow;" }
-			}
-
-			radiobutton bt_timeplay5
-			{
-				tooltip		"_Time lapse: 12 hours"
-				cvar		*cvar:mn_timelapse_id	value "5"
-				icon		"icons/speed_dot"
-				pos			"128 10"
-				size		"20 20"
-				onChange	{ *cvar:mn_fastexit = 0; cmd "game_settimeid <value>;" }
-				onWheelUp	{ cmd "game_timefast;" }
-				onWheelDown	{ cmd "game_timeslow;" }
-			}
-
-			radiobutton bt_timeplay6
-			{
-				tooltip		"_Time lapse: 1 day"
-				cvar		*cvar:mn_timelapse_id	value "6"
-				icon		"icons/speed_dot"
-				pos			"148 10"
-				size		"20 20"
-				onChange	{ *cvar:mn_fastexit = 0; cmd "game_settimeid <value>;" }
-				onWheelUp	{ cmd "game_timefast;" }
-				onWheelDown	{ cmd "game_timeslow;" }
-			}
-
-			radiobutton bt_timeplay7
-			{
-				tooltip		"_Time lapse: 5 days"
-				cvar		*cvar:mn_timelapse_id	value "7"
-				icon		"icons/speed_play3"
-				pos			"168 10"
-				size		"20 20"
-				onChange	{ *cvar:mn_fastexit = 0; cmd "game_settimeid <value>;" }
-				onWheelUp	{ cmd "game_timefast;" }
-				onWheelDown	{ cmd "game_timeslow;" }
+				string		"*cvar:mn_maptime"
+				pos			"11 190"
+				size		"195 30"
+				contentalign	ALIGN_UC
+				color		"0.80 0.96 0.94 1"
+				font		"f_verybig"
 			}
 
 			string timelapse
 			{
-				string			*cvar:mn_timelapse
-				pos				"1 32"
-				size			"205 20"
+				string		"*cvar:mn_timelapse"
+				pos			"11 218"
+				size		"195 20"
 				contentalign	ALIGN_UC
-				color			"0.56 0.81 0.76 1"
+				color		"0.52 0.76 0.71 1"
+				font		"f_verysmall"
+			}
+
+			button bt_messagesystem
+			{
+				// @todo: better -more verbose- tooltip
+				tooltip		"_Open up messages"
+				padding		0
+				icon		"icons/change_height"
+				pos			"5 5"
+				size		"23 23"
+				onClick	{
+					cmd "add mn_messagesystem 1;"
+					cmd "mod mn_messagesystem 4;"
+					cmd "messagesystem_changemode"
+				}
+				onRClick	{
+					*cvar:mn_messagesystem = 3
+					cmd "messagesystem_changemode"
+				}
+			}
+
+			// ==================
+			// credits strings
+			// ==================
+
+			string txt_credits_caption
+			{
+				string		"_CREDITS"
+				pos			"11 270"
+				size		"97 25"
+				font		"f_verysmall_bold"
+				contentalign	ALIGN_CC
+			}
+
+			string txt_credits
+			{
+				string		"*cvar:mn_credits"
+				tooltip		"_Organisation capital"
+				pos			"104 270"
+				size		"97 25"
+				font		"f_verysmall_bold"
+				contentalign	ALIGN_CC
+			}
+			// ==================
+			// timecontrol panel
+			// ==================
+
+			panel time_panel {
+				{
+					pos		"0 284"
+					size	"214 55"
+				}
+
+				func faster {
+					*cvar:mn_fastexit = 0;
+					cmd "game_timefast;"
+				}
+				func slower {
+					*cvar:mn_fastexit = 0;
+					cmd "game_timeslow;"
+				}
+
+				radiobutton bt_timestop0
+				{
+					tooltip		"_Pause"
+					cvar		*cvar:mn_timelapse_id	value "0"
+					icon		"icons/speed_stop"
+					pos			"28 10"
+					size		"20 20"
+					onChange	{ *cvar:mn_fastexit = 0; cmd "game_settimeid <value>;" }
+				}
+
+				radiobutton bt_timeplay1
+				{
+					tooltip		"_Time lapse: 5 seconds"
+					cvar		*cvar:mn_timelapse_id	value "1"
+					icon		"icons/speed_dot"
+					pos			"48 10"
+					size		"20 20"
+					onChange	{ *cvar:mn_fastexit = 0; cmd "game_settimeid <value>;" }
+				}
+
+				radiobutton bt_timeplay2
+				{
+					tooltip		"_Time lapse: 5 minutes"
+					cvar		*cvar:mn_timelapse_id	value "2"
+					icon		"icons/speed_play1"
+					pos			"68 10"
+					size		"20 20"
+					onChange	{ *cvar:mn_fastexit = 0; cmd "game_settimeid <value>;" }
+				}
+
+				radiobutton bt_timeplay3
+				{
+					tooltip		"_Time lapse: 20 minutes"
+					cvar		*cvar:mn_timelapse_id	value "3"
+					icon		"icons/speed_dot"
+					pos			"88 10"
+					size		"20 20"
+					onChange	{ *cvar:mn_fastexit = 0; cmd "game_settimeid <value>;" }
+				}
+
+				radiobutton bt_timeplay4
+				{
+					tooltip		"_Time lapse: 1 hour"
+					cvar		*cvar:mn_timelapse_id	value "4"
+					icon		"icons/speed_play2"
+					pos			"108 10"
+					size		"20 20"
+					onChange	{ *cvar:mn_fastexit = 0; cmd "game_settimeid <value>;" }
+				}
+
+				radiobutton bt_timeplay5
+				{
+					tooltip		"_Time lapse: 12 hours"
+					cvar		*cvar:mn_timelapse_id	value "5"
+					icon		"icons/speed_dot"
+					pos			"128 10"
+					size		"20 20"
+					onChange	{ *cvar:mn_fastexit = 0; cmd "game_settimeid <value>;" }
+				}
+
+				radiobutton bt_timeplay6
+				{
+					tooltip		"_Time lapse: 1 day"
+					cvar		*cvar:mn_timelapse_id	value "6"
+					icon		"icons/speed_dot"
+					pos			"148 10"
+					size		"20 20"
+					onChange	{ *cvar:mn_fastexit = 0; cmd "game_settimeid <value>;" }
+				}
+
+				radiobutton bt_timeplay7
+				{
+					tooltip		"_Time lapse: 5 days"
+					cvar		*cvar:mn_timelapse_id	value "7"
+					icon		"icons/speed_play3"
+					pos			"168 10"
+					size		"20 20"
+					onChange	{ *cvar:mn_fastexit = 0; cmd "game_settimeid <value>;" }
+				}
 			}
 		}
 
@@ -313,9 +314,10 @@ window geoscape
 		text description
 		{
 			dataid		TEXT_STANDARD
-			pos			"22 134"
+			pos			"22 365"
 			size		"172 144"
-			lineheight	18
+			lineheight	14
+			font		"f_verysmall"
 			tabwidth	70
 			rows		8
 			onViewChange {
@@ -327,7 +329,7 @@ window geoscape
 
 		vscrollbar description_scroll {
 			image		"ui/scrollbar_v"
-			pos			"185 131"
+			pos			"185 362"
 			height		"144"
 			current		0
 			viewsize	8
@@ -344,145 +346,19 @@ window geoscape
 
 		string daytime
 		{
-			string		*cvar:mn_mapdaytime
-			pos			"11 286"
+			string		"*cvar:mn_mapdaytime"
+			pos			"11 343"
 			size		"195 20"
 			contentalign	ALIGN_UC
 		}
 
-		// ========================
-		// geoscape camera control
-		// ========================
-
-		panel geoscape_control {
-			{
-				pos		"23 322"
-				size	"170 170"
-			}
-
-			image background {
-				pos		"0 0"
-				size	"170 170"
-				texh	"170 170"
-				src	"ui/geo_miniglobe"
-			}
-
-			image globe_effect {
-				pos		"0 0"
-				size	"168 168"
-				texh	"168 168"
-			}
-
-			zone panel_scroll_up
-			{
-				pos			"55 2"
-				size		"70 50"
-				repeat		true
-				clickdelay	100
-				onClick		{ cmd "map_scroll up;" }
-				onMouseEnter { *node:parent.globe_effect@src = "ui/geo_miniglobe_n" }
-				onMouseLeave { *node:parent.globe_effect@src = "" }
-			}
-
-			zone panel_scroll_down
-			{
-				pos			"47 115"
-				size		"70 50"
-				repeat		true
-				clickdelay	100
-				onClick		{ cmd "map_scroll down;" }
-				onMouseEnter { *node:parent.globe_effect@src = "ui/geo_miniglobe_s" }
-				onMouseLeave { *node:parent.globe_effect@src = "" }
-			}
-
-			zone panel_scroll_left
-			{
-				pos			"2 45"
-				size		"50 70"
-				repeat		true
-				clickdelay	100
-				onClick		{ cmd "map_scroll left;" }
-				onMouseEnter { *node:parent.globe_effect@src = "ui/geo_miniglobe_w" }
-				onMouseLeave { *node:parent.globe_effect@src = "" }
-			}
-
-			zone panel_scroll_right
-			{
-				pos			"115 55"
-				size		"50 70"
-				repeat		true
-				clickdelay		100
-				onClick		{ cmd "map_scroll right;" }
-				onMouseEnter { *node:parent.globe_effect@src = "ui/geo_miniglobe_e" }
-				onMouseLeave { *node:parent.globe_effect@src = "" }
-			}
-
-			zone panel_zoom_in
-			{
-				pos			"54 50"
-				size		"25 62"
-				repeat		true
-				clickdelay	100
-				onClick		{ cmd "map_zoom in" }
-				onMouseEnter { *node:parent.globe_effect@src = "ui/geo_miniglobe_in" }
-				onMouseLeave { *node:parent.globe_effect@src = "" }
-			}
-
-			zone panel_zoom_out
-			{
-				pos			"82 50"
-				size		"25 62"
-				repeat		true
-				clickdelay	100
-				onClick		{ cmd "map_zoom out" }
-				onMouseEnter { *node:parent.globe_effect@src = "ui/geo_miniglobe_out" }
-				onMouseLeave { *node:parent.globe_effect@src = "" }
-			}
-
-			// geoscape camera functions
-			func cam_up {
-				cmd "map_scroll up;"
-				*node:parent.globe_effect@src = "ui/geo_miniglobe_n"
-			}
-			func cam_left {
-				cmd "map_scroll left;"
-				*node:parent.globe_effect@src = "ui/geo_miniglobe_w"
-			}
-			func cam_right {
-				cmd "map_scroll right;"
-				*node:parent.globe_effect@src = "ui/geo_miniglobe_e"
-			}
-			func cam_down {
-				cmd "map_scroll down;"
-				*node:parent.globe_effect@src = "ui/geo_miniglobe_s"
-			}
-			func zoom_in {
-				cmd "map_zoom in;"
-				*node:parent.globe_effect@src = "ui/geo_miniglobe_in"
-			}
-			func zoom_out {
-				cmd "map_zoom out;"
-				*node:parent.globe_effect@src = "ui/geo_miniglobe_out"
-			}
-		}
 
 		// ==================
 		// buttons
 		// ==================
 
-		button bt_messagesettings
-		{
-			string		"_Message settings"
-			tooltip		"_Change message and pause settings"
-			color		"0.56 0.81 0.76 1"
-			font		"f_small"
-			pos			"21 540"
-			size		"175 34"
-			selectcolor	"1 1 1 1"
-			background		"ui/button_geoscape"
 
-			onClick		{ cmd "ui_push messageoptions;" }
-		}
+
 
 		button bt_mailclient
 		{
@@ -490,11 +366,12 @@ window geoscape
 
 			string		"_Mailclient"
 			tooltip		"_INBOX (with unread mails)"
-			color		"0.56 0.81 0.76 1"
+			color		"0.78 0.92 0.88 1.00"
+			bgcolor		"0.56 0.81 0.76 0.05"
 			font		"f_small"
-			pos			"21 575"
+			pos			"21 478"
 			flash		true
-			size		"175 34"
+			size		"175 21"
 			selectcolor	"1 1 1 1"
 			background		"ui/button_geoscape"
 
@@ -509,20 +386,47 @@ window geoscape
 			tooltip		"_INBOX"
 			color		"0.56 0.81 0.76 1"
 			font		"f_small"
-			pos			"21 575"
-			size		"175 34"
+			pos			"21 478"
+			size		"175 21"
 			selectcolor	"1 1 1 1"
 			background	"ui/button_geoscape"
 
 			onClick		{ cmd "ui_push mailclient;" }
 		}
 
+		button bt_bases
+		{
+			string		"_Bases"
+			color		"0.56 0.81 0.76 1"
+			pos			"21 500"
+			size		"175 21"
+			font		"f_small"
+			selectcolor	"1 1 1 1"
+			background	"ui/button_geoscape"
+
+			onClick		{ cmd "ui_push popup_bases;" }
+		}
+
+		button bt_aircraft
+		{
+			string		"_Aircraft"
+			color		"0.56 0.81 0.76 1"
+			pos			"21 522"
+			size		"175 21"
+			font		"f_small"
+			selectcolor	"1 1 1 1"
+			background	"ui/button_geoscape"
+
+			onClick		{ cmd "ui_push popup_aircraft;" }
+		}
+
+
 		button bt_stats
 		{
 			string		"_Statistics"
 			tooltip		"_Organisation statistics"
-			pos			"21 610"
-			size		"175 34"
+			pos			"21 544"
+			size		"175 21"
 			color		"0.56 0.81 0.76 1"
 			font		"f_small"
 			selectcolor	"1 1 1 1"
@@ -531,11 +435,25 @@ window geoscape
 			onClick		{ cmd "ui_push stats;" }
 		}
 
+		button bt_nations
+		{
+			string		"_Nations"
+			tooltip		"_Nation information"
+			pos			"21 566"
+			size		"175 21"
+			color		"0.56 0.81 0.76 1"
+			font		"f_small"
+			selectcolor	"1 1 1 1"
+			background	"ui/button_geoscape"
+
+			onClick		{ cmd "ui_push nations;" }
+		}
+
 		button bt_ufopedia
 		{
 			string		"_UFOpaedia"
-			pos			"21 645"
-			size		"175 34"
+			pos			"21 588"
+			size		"175 21"
 			color		"0.56 0.81 0.76 1"
 			font		"f_small"
 			selectcolor	"1 1 1 1"
@@ -544,18 +462,21 @@ window geoscape
 			onClick		{ cmd "ui_push ufopedia;" }
 		}
 
+
 		button bt_installation
 		{
 			string		"_Create installation"
 			color		"0.56 0.81 0.76 1"
-			pos			"21 680"
-			size		"175 34"
+			pos			"21 610"
+			size		"175 21"
 			font		"f_small"
 			selectcolor	"1 1 1 1"
 			background	"ui/button_geoscape"
 
 			onClick		{ cmd "ui_push popup_newinstallation_type;" }
 		}
+
+
 
 		// ==================
 		// small buttons
@@ -564,7 +485,7 @@ window geoscape
 		button bt_show_overlay {
 			tooltip		"_Highlight nation borders"
 			icon		"icons/geo_nations"
-			pos		"20 495"
+			pos		"20 659"
 			size		"32 32"
 			background	"icons/geo_button"
 			onMouseEnter { *node:this@background = "icons/geo_button_hvrd" }
@@ -582,7 +503,7 @@ window geoscape
 		{
 			tooltip		"_Show radar range"
 			icon		"icons/geo_radar"
-			pos			"50 495"
+			pos			"50 659"
 			size		"32 32"
 			background	"icons/geo_button"
 			onMouseEnter { *node:this@background = "icons/geo_button_hvrd" }
@@ -601,7 +522,7 @@ window geoscape
 			visiblewhen	"*cvar:mn_xvimap == 1"
 			tooltip		"_Show XVI map"
 			icon		"icons/geo_xvi"
-			pos			"80 495"
+			pos			"80 659"
 			size		"32 32"
 			background	"icons/geo_button"
 			onMouseEnter { *node:this@background = "icons/geo_button_hvrd" }
@@ -637,8 +558,8 @@ window geoscape
 		{
 			tooltip		"_Center objects on the map"
 			icon		"icons/geo_center"
-			pos			"125 500"
-			size		"28 25"
+			pos			"140 659"
+			size		"32 32"
 			background	"icons/geo_button"
 			onMouseEnter { *node:this@background = "icons/geo_button_hvrd" }
 			onMouseLeave { *node:this@background = "icons/geo_button" }
@@ -649,12 +570,25 @@ window geoscape
 		{
 			tooltip		"_Go to Options"
 			icon		"icons/geo_options"
-			pos			"170 500"
-			size		"28 25"
+			pos			"170 659"
+			size		"32 32"
 			background	"icons/geo_button"
 			onMouseEnter { *node:this@background = "icons/geo_button_hvrd" }
 			onMouseLeave { *node:this@background = "icons/geo_button" }
 			onClick		{ cmd "ui_pop;" }
+		}
+
+		button bt_messagesettings
+		{
+			string		"_Autopause settings"
+			tooltip		"_Change message and pause settings"
+			color		"0.56 0.64 0.58 1"
+			font	 	"f_tiny"
+			pos			"13 692"
+			size		"112 21"
+			selectcolor	"0.9 0.9 1 1"
+			background	"ui/button_geoscape"
+			onClick		{ cmd "ui_push messageoptions;" }
 		}
 
 	}
@@ -715,7 +649,14 @@ window geoscape
 				onMouseLeave {
 					if ( *cvar:mn_messagesystem < 2 ) {
 						cmd "messagesystem_changemode"
+				// Temporary fix
+						if ( *cvar:mn_messagesystem == 0 ) { *node:parent@height = 20 }
+						if ( *cvar:mn_messagesystem == 1 ) { *node:parent@height = 120 }
+						if ( *cvar:mn_messagesystem == 2 ) { *node:parent@height = 256 }
+						if ( *cvar:mn_messagesystem == 3 ) { *node:parent@height = 768 }
+				// end
 					}
+
 				}
 				onViewChange {
 					*node:parent.scroll@fullsize = <fullsize>

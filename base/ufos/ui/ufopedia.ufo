@@ -1,6 +1,9 @@
 // ==============
 // UFOPEDIA MENU
 // ==============
+// 19 57 164 , 0.074 0.222 0.640
+// 136 171 233 , 0.532 0.668 0.910
+
 
 window ufopedia extends objectinfo
 {
@@ -8,19 +11,42 @@ window ufopedia extends objectinfo
 		pos			"0 0"
 		size		"1024 768"
 		dragbutton	true
-		closebutton	true
+		closebutton	false
 		background	"ui/main_bg"
 		color		"1.0 0.75 0 1"
-		string		*cvar:mn_uptitle
+		string		""
 		modal		true				// we can't click out
+	}
+
+	panel headerbg 
+	{
+		{
+			pos 			"12 6"
+			size 			"1000 38"
+			bgcolor 		"0.074 0.222 0.640 0.4"
+			border 			"1"
+			bordercolor 	"0.074 0.222 0.640 0.70"
+		}
+
+
+		string headertext 
+		{
+			string 			"*cvar:mn_uptitle"
+			font 			"f_big"
+			color			"0.80 0.86 0.960 1.00"
+			size			"1000 28"
+			pos				"12 5"
+			contentalign	ALIGN_CC				
+
+		}
 	}
 
 	panel dimbackground
 	{
 		{
-		pos			"0 0"
-		size		"1024 768"
-		bgcolor	 "0 0 0 0.3"
+		pos					"0 0"
+		size				"1024 768"
+			bgcolor 		"0.074 0.222 0.640 0.02"
 		}
 	// ==================
 		// summary
@@ -29,10 +55,11 @@ window ufopedia extends objectinfo
 		panel summary
 		{
 			{
-				pos		"22 88"
-				size	"314 593"
-				layout	LAYOUT_BORDER
-				padding	10
+				pos			"12 88"
+				size		"314 440"
+				bgcolor 	"0.074 0.222 0.640 0.16"
+				layout		LAYOUT_BORDER
+				padding		8
 			}
 
 			optiontree list
@@ -40,8 +67,8 @@ window ufopedia extends objectinfo
 				cvar		*cvar:up_summary_selection
 				dataid		OPTION_UFOPEDIA
 				align		LAYOUTALIGN_MIDDLE
-				font		"f_small"
-				color		"0.56 0.81 0.76 1"
+				font		"f_verysmall"
+				color		"0.532 0.668 0.910 0.94"
 				selectcolor		"1 1 1 1"
 				onChange
 				{
@@ -60,8 +87,9 @@ window ufopedia extends objectinfo
 
 			vscrollbar list_scroll
 			{
-				image		"ui/scrollbar_v"
-				align		LAYOUTALIGN_RIGHT
+				image		"ui/scrollbar_ufopedia"
+				pos			"292 2"
+				height		"438"
 				current		0
 				viewsize	16
 				fullsize	50
@@ -69,51 +97,57 @@ window ufopedia extends objectinfo
 			}
 		}
 
-		panel content
+		panel navigation_panel
 		{
 			{
-				pos		"343 55"
-				size	"668 626"
-			}
-
-			panel navigation_panel
-			{
-				pos		"0 34"
-				size	"668 592"
+			pos		"328 55"
+			size	"684 32"
 			}
 
 			tab navigation
 			{
 				{
-					cvar	*cvar:ufopedia_content
-					pos		"0 2"
-					size	"668 36"
+					cvar			*cvar:ufopedia_content
+					pos				"2 0"
+					size			"680 32"
+					font			"f_verysmall"
+					contentAlign	ALIGN_CL
 					onChange { cmd "update_ufopedia_layout;" }
 				}
 				option preresearch
 				{
 					label	"_Pre-Research Report"
 					value	"preresearch"
-	//				icon	"icons/tab_preresearch"
+					icon	"added/tab_preresearch"
 				}
 				option description
 				{
 					label	"_Description"
 					value	"description"
-	//				icon	"icons/tab_description"
+					icon	"added/tab_description"
 				}
 				option stats
 				{
 					label	"_Statistics"
 					value	"stats"
-	//				icon	"icons/tab_statistics"
+					icon	"added/tab_statistics"
 				}
 				option bigpicture
 				{
 					label	"_The Big Picture"
 					value	"bigpicture"
-	//				icon	"icons/tab_bigpicture"
+					icon	"added/tab_bigpicture"
 				}
+			}
+		}
+
+		panel content
+		{
+			{
+				pos			"328 88"
+				size		"684 440"
+				bgcolor 	"0.074 0.222 0.640 0.05"
+				background	"ui/grid.png"
 			}
 
 			// ==================
@@ -123,14 +157,14 @@ window ufopedia extends objectinfo
 			image image_top
 			{
 				src		*cvar:mn_upimage_top
-				pos			"420 42"
+				pos			"440 42"
 				size		"185 422"
 				preventratio true
 			}
 			image image_top2
 			{
 				src		*cvar:mn_upimage_top2
-				pos			"420 42"
+				pos			"440 42"
 				size		"185 422"
 				preventratio	true
 			}
@@ -139,68 +173,97 @@ window ufopedia extends objectinfo
 				pos		"420 42"
 				size	"185 187"
 			}
-			model mdl_top
+
+			panel model_wrapper 
 			{
-				src			*cvar:mn_upmodel_top
-				angles		"0 0 90"
-				pos			"422 44"
-				size		"182 182"
-				autoscale	true
-				omega		"0 10 0"
-				rotatewithmouse	true
+				{
+					size			"185 186"
+					pos				"456 44"
+					bgcolor			"0.0 0.0 0.0 0.3"
+					border			"1"
+					bordercolor 	"0.80 0.86 0.960 0.30"
+					visibleWhen		"*cvar:mn_upmodel_top ne \"\""
+				}
+
+				model mdl_top
+				{
+					src				*cvar:mn_upmodel_top
+					angles			"0 0 90"
+					pos				"2 2"
+					size			"181 181"
+					autoscale		true
+					omega			"0 10 0"
+					rotatewithmouse	true
+				}
 			}
+
 			panel decoration_panel2
 			{
 				pos		"420 230"
 				size	"185 135"
 			}
-			// ammo models
-			model mdl_bottom
+
+			panel ammomodel_wrapper 
 			{
-				src			*cvar:mn_upmodel_bottom
-				angles		"0 0 90"
-				pos			"422 290"
-				size		"60 60"
-				autoscale	true
-				omega		"0 -10 0"
-				rotatewithmouse	true
+				{
+					size			"185 68"
+					pos				"456 238"
+					bgcolor			"0.0 0.0 0.0 0.3"
+					border			"1"
+					bordercolor 	"0.80 0.86 0.960 0.30"
+					visibleWhen		"*cvar:mn_upmodel_bottom ne \"\""
+				}
+
+				// ammo models
+				model mdl_bottom
+				{
+					src			*cvar:mn_upmodel_bottom
+					angles		"0 0 90"
+					pos			"10 8"
+					size		"50 50"
+					autoscale	true
+					omega		"0 -10 0"
+					rotatewithmouse	true
+				}
+				model mdl_bottom2
+				{
+					src			*cvar:mn_upmodel_bottom
+					angles		"0 0 90"
+					pos			"69 8"
+					size		"50 50"
+					autoscale	true
+					omega		"0 0 10"
+					rotatewithmouse	true
+				}
+				model mdl_bottom3
+				{
+					src			*cvar:mn_upmodel_bottom
+					angles		"0 0 90"
+					pos			"127 8"
+					size		"50 50"
+					autoscale	true
+					omega		"0 10 0"
+					rotatewithmouse	true
+				}
 			}
-			model mdl_bottom2
-			{
-				src			*cvar:mn_upmodel_bottom
-				angles		"0 0 90"
-				pos			"483 240"
-				size		"60 60"
-				autoscale	true
-				omega		"0 0 10"
-				rotatewithmouse	true
-			}
-			model mdl_bottom3
-			{
-				src			*cvar:mn_upmodel_bottom
-				angles		"0 0 90"
-				pos			"544 290"
-				size		"60 60"
-				autoscale	true
-				omega		"0 10 0"
-				rotatewithmouse	true
-			}
+
+
 			panel main_panel_small
 			{
-				pos		"8 42"
-				size	"410 575"
+				pos		"8 20"
+				size	"410 460"
 			}
 			panel main_panel_large
 			{
-				pos		"8 42"
-				size	"597 575"
+				pos		"8 20"
+				size	"597 460"
 			}
 			// The Big Picture picture and model
 			image image_bigpicture
 			{
 				src		*cvar:mn_upimage_top
-				pos			"10 43"
-				size		"594 573"
+				pos			"10 21"
+				size		"594 460"
 				preventratio	true
 				contentalign 	ALIGN_CC
 			}
@@ -208,8 +271,8 @@ window ufopedia extends objectinfo
 			{
 				src			*cvar:mn_upmodel_top
 				angles		"0 25 90"
-				pos			"10 43"
-				size		"594 573"
+				pos			"10 21"
+				size		"594 460"
 				autoscale	true
 				omega		"0 -9 0"
 				rotatewithmouse	true
@@ -229,10 +292,10 @@ window ufopedia extends objectinfo
 			text2 ufopedia
 			{
 				dataid		TEXT_UFOPEDIA
-				pos			"15 47"
-				size		"410 568"
-				font		"f_small"
-				lineheight	20
+				pos			"28 60"
+				size		"400 375"
+				font		"f_verysmall"
+				lineheight	16
 				tabwidth	100
 				onViewChange
 				{
@@ -244,9 +307,9 @@ window ufopedia extends objectinfo
 
 			vscrollbar ufopedia_scroll
 			{
-				image		"ui/scrollbar_v"
-				pos			"639 42"
-				height		"575"
+				image		"ui/scrollbar_ufopedia"
+				pos			"662 2"
+				height		"438"
 				current		0
 				viewsize	26
 				fullsize	50
@@ -256,9 +319,10 @@ window ufopedia extends objectinfo
 			text description
 			{
 				dataid		TEXT_ITEMDESCRIPTION
-				pos			"15 47"
-				size		"405 570"
-				lineheight	20
+				pos			"28 60"
+				size		"400 375"
+				font		"f_verysmall"
+				lineheight	16
 				tabwidth	260
 				rows		28
 				onViewChange	{
@@ -270,9 +334,9 @@ window ufopedia extends objectinfo
 
 			vscrollbar description_scroll
 			{
-				image		"ui/scrollbar_v"
-				pos			"406 42"
-				height		"575"
+				image		"ui/scrollbar_ufopedia"
+				pos			"428 2"
+				height		"438"
 				current		0
 				viewsize	20
 				fullsize	20
@@ -282,7 +346,7 @@ window ufopedia extends objectinfo
 			panel requirement
 			{
 				{
-					pos		"450 446"
+					pos		"456 358"
 					size	"185 150"
 				}
 				string label
@@ -299,7 +363,7 @@ window ufopedia extends objectinfo
 					pos			"15 40"
 					size		"156 92"
 					font		"f_verysmall"
-					color		"0.56 0.81 0.76 1"
+					color		"0.75 0.75 0.85 1.00"
 					selectcolor	"1 1 1 1"
 					onChange		{ cmd "techtree_click <lineselected>;" }
 					onViewChange
@@ -311,7 +375,7 @@ window ufopedia extends objectinfo
 				}
 
 				vscrollbar techtree_scroll {
-					image		"ui/scrollbar_v"
+					image		"ui/scrollbar_ufopedia"
 					invis		true
 					pos			"142 7"
 					height		"117"
@@ -329,7 +393,7 @@ window ufopedia extends objectinfo
 		panel itemdescription
 		{
 			{
-				pos		"360 530"
+				pos		"360 464"
 				size	"350 60"
 			}
 
@@ -342,15 +406,15 @@ window ufopedia extends objectinfo
 				string	"_With:"
 				pos		"10 0"
 				size	"100 30"
-				font	"f_small"
+				font	"f_verysmall"
 			}
 
 			button action_dec
 			{
 				pos		"120 4"
-				icon	"icons/arrow_left"
-				onMouseEnter { *node:this@icon = "icons/arrow_left_on" }
-				onMouseLeave { *node:this@icon = "icons/arrow_left" }
+				icon	"added/arrow_left.png"
+				onMouseEnter { *node:this@icon = "added/arrow_left_on.png" }
+				onMouseLeave { *node:this@icon = "added/arrow_left.png" }
 				size	"24 24"
 				onClick	{ cmd "mn_decreaseitem;" }
 			}
@@ -361,15 +425,15 @@ window ufopedia extends objectinfo
 				pos		"140 0"
 				size	"180 30"
 				contentalign	ALIGN_CC
-				font	"f_small"
+				font	"f_verysmall"
 			}
 
 			button action_inc
 			{
 				pos		"326 4"
-				icon	"icons/arrow_right"
-				onMouseEnter { *node:this@icon = "icons/arrow_right_on" }
-				onMouseLeave { *node:this@icon = "icons/arrow_right" }
+				icon	"added/arrow_right.png"
+				onMouseEnter { *node:this@icon = "added/arrow_right_on.png" }
+				onMouseLeave { *node:this@icon = "added/arrow_right.png" }
 				size	"24 24"
 				onClick	{ cmd "mn_increaseitem;" }
 			}
@@ -383,16 +447,16 @@ window ufopedia extends objectinfo
 				string	"_Firemode:"
 				pos		"10 30"
 				size	"100 30"
-				font	"f_small"
+				font	"f_verysmall"
 			}
 
 			button firemode_dec
 			{
 				tooltip "_Previous firemode"
 				pos		"120 32"
-				icon	"icons/arrow_left"
-				onMouseEnter { *node:this@icon = "icons/arrow_left_on" }
-				onMouseLeave { *node:this@icon = "icons/arrow_left" }
+				icon	"added/arrow_left.png"
+				onMouseEnter { *node:this@icon = "added/arrow_left_on.png" }
+				onMouseLeave { *node:this@icon = "added/arrow_left.png" }
 				size	"24 24"
 				onClick	{ cmd "mn_decreasefiremode;" }
 			}
@@ -403,16 +467,16 @@ window ufopedia extends objectinfo
 				pos		"140 30"
 				size	"180 30"
 				contentalign	ALIGN_CC
-				font	"f_small"
+				font	"f_verysmall"
 			}
 
 			button firemode_inc
 			{
 				tooltip "_Next firemode"
 				pos		"326 32"
-				icon	"icons/arrow_right"
-				onMouseEnter { *node:this@icon = "icons/arrow_right_on" }
-				onMouseLeave { *node:this@icon = "icons/arrow_right" }
+				icon	"added/arrow_right.png"
+				onMouseEnter { *node:this@icon = "added/arrow_right_on.png" }
+				onMouseLeave { *node:this@icon = "added/arrow_right.png" }
 				size	"24 24"
 				onClick	{ cmd "mn_increasefiremode;" }
 			}

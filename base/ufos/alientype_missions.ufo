@@ -25,7 +25,23 @@
 
 // Scout Teams =====================================================*
 
-	// Team Bloodspider Scouts -------------------------------------*
+	// scouts1: Taman Scouts -------------------------------------*
+
+		// min interest: 0 taman
+		// min interest: 70 +bloodspider
+		// min interest: 110 +shevaar
+		// min interest: 140 +hovernet
+		// min interest: 180 +strigoi
+		// min interest: 200 taman (medium)
+
+	// scouts2: Shevaar Scouts -------------------------------------*
+
+		// min interest: 90 shevaar
+		// min interest: 110 +bloodspider
+		// min interest: 130 +taman(light)
+		// min interest: 160 +hovernet
+		// min interest: 190 +strigoi
+		// min interest: 200 +taman (medium)
 
 alienteam scouts1
 {
@@ -34,62 +50,145 @@ alienteam scouts1
 	teaminterest
 	{
 		mininterest 	0
-		maxinterest 	79
-		minaliencount	2
-		maxaliencount	4
-		team 			(bloodspider taman/alien_taman_light)
-	}
-	teaminterest
-	{
-		mininterest 	50
-		maxinterest 	109
-		minaliencount	3
+		maxinterest 	100
+		minaliencount	1
 		maxaliencount	5
-		team 			(bloodspider taman/alien_taman_light)
+		team 			(taman/alien_taman_light)
 	}
 	teaminterest
 	{
-		mininterest 	80
-		maxinterest 	199
-		minaliencount	4
-		maxaliencount	6
-		team 			(bloodspider shevaar)
+		mininterest 	70
+		maxinterest 	139
+		minaliencount	1
+		maxaliencount	5
+		team 			(taman/alien_taman_light bloodspider)
 	}
 	teaminterest
 	{
 		mininterest 	110
-		maxinterest 	249
-		minaliencount	5
-		maxaliencount	9
-		team 			(bloodspider shevaar)
+		maxinterest 	179
+		minaliencount	2
+		maxaliencount	6
+		team 			(taman/alien_taman_light shevaar)
+	}
+	teaminterest
+	{
+		mininterest 	140
+		maxinterest 	269
+		minaliencount	2
+		maxaliencount	6
+		team 			(taman/alien_taman_light hovernet)
+	}
+	teaminterest
+	{
+		mininterest 	140
+		maxinterest 	289
+		minaliencount	2
+		maxaliencount	7
+		team 			(taman/alien_taman_light hovernet shevaar)
+	}
+	teaminterest
+	{
+		mininterest 	140
+		maxinterest 	289
+		minaliencount	2
+		maxaliencount	7
+		team 			(taman/alien_taman_light shevaar bloodspider)
+	}
+	teaminterest
+	{
+		mininterest 	180
+		maxinterest 	300
+		minaliencount	2
+		maxaliencount	7
+		team 			(taman/alien_taman_light strigoi)
+	}
+	teaminterest
+	{
+		mininterest 	190
+		maxinterest 	300
+		minaliencount	2
+		maxaliencount	7
+		team 			(taman/alien_taman_light strigoi bloodspider)
 	}
 	teaminterest
 	{
 		mininterest 	200
-		maxinterest 	279
-		minaliencount	7
-		maxaliencount	13
-		team 			(bloodspider shevaar)
+		maxinterest 	400
+		minaliencount	2
+		maxaliencount	7
+		team 			(taman/alien_taman)
+	}
+	teaminterest
+	{
+		mininterest 	210
+		maxinterest 	400
+		minaliencount	2
+		maxaliencount	7
+		team 			(taman/alien_taman shevaar)
+	}
+	teaminterest
+	{
+		mininterest 	220
+		maxinterest 	400
+		minaliencount	2
+		maxaliencount	7
+		team 			(taman/alien_taman shevaar bloodspider)
+	}
+	teaminterest
+	{
+		mininterest 	230
+		maxinterest 	400
+		minaliencount	2
+		maxaliencount	7
+		team 			(taman/alien_taman strigoi hovernet)
+	}
+	teaminterest
+	{
+		mininterest 	240
+		maxinterest 	400
+		minaliencount	3
+		maxaliencount	7
+		team 			(taman/alien_taman shevaar)
 	}
 	teaminterest
 	{
 		mininterest 	279
-		maxinterest 	379
-		minaliencount	10
-		maxaliencount	18
-		team 			(bloodspider shevaar)
+		maxinterest 	400
+		minaliencount	3
+		maxaliencount	7
+		team 			(taman/alien_taman shevaar hovernet)
 	}
 	teaminterest
 	{
 		mininterest 	310
 		maxinterest 	10000
-		minaliencount	14
-		maxaliencount	24
-		team 			(bloodspider shevaar)
+		minaliencount	3
+		maxaliencount	7
+		team 			(taman/alien_taman strigoi)
 	}
 }
 
-	// Team Hovernet Scouts ----------------------------------------*
+// Scout Teams =====================================================*
+
+	// scouts1: Taman Scouts -------------------------------------*
+
+		// min interest: 0 taman
+		// min interest: 70 +bloodspider
+		// min interest: 110 +shevaar
+		// min interest: 140 +hovernet
+		// min interest: 180 +strigoi
+		// min interest: 200 taman (medium)
+
+	// scouts2: Shevaar Scouts -------------------------------------*
+
+		// min interest: 90 shevaar
+		// min interest: 110 +bloodspider
+		// min interest: 130 +taman(light)
+		// min interest: 160 +hovernet
+		// min interest: 190 +strigoi
+		// min interest: 200 +taman (medium)
+
 
 alienteam scouts2
 {
@@ -97,73 +196,80 @@ alienteam scouts2
 	equipment ("alien_scouts")
 	teaminterest
 	{
-		mininterest 	50
-		maxinterest 	109
-		minaliencount	2
-		maxaliencount	4
-		team 			(hovernet taman/alien_taman_light)
-	}
-	teaminterest
-	{
-		mininterest 	80
-		maxinterest 	109
-		minaliencount	3
-		maxaliencount	5
-		team 			(hovernet taman/alien_taman_light)
-	}
-	teaminterest
-	{
-		mininterest 	110
-		maxinterest 	199
-		minaliencount	4
+		mininterest 	90
+		maxinterest 	159
+		minaliencount	1
 		maxaliencount	6
-		team 			(hovernet taman/alien_taman)
+		team 			(shevaar)
 	}
 	teaminterest
 	{
 		mininterest 	110
-		maxinterest 	249
-		minaliencount	5
-		maxaliencount	9
-		team 			(hovernet taman/alien_taman)
+		maxinterest 	200
+		minaliencount	1
+		maxaliencount	6
+		team 			(shevaar bloodspider)
+	}
+	teaminterest
+	{
+		mininterest 	130
+		maxinterest 	300
+		minaliencount	2
+		maxaliencount	6
+		team 			(shevaar taman/alien_taman_light)
+	}
+	teaminterest
+	{
+		mininterest 	160
+		maxinterest 	300
+		minaliencount	2
+		maxaliencount	7
+		team 			(shevaar hovernet)
+	}
+	teaminterest
+	{
+		mininterest 	190
+		maxinterest 	400
+		minaliencount	2
+		maxaliencount	7
+		team 			(shevaar strigoi)
 	}
 	teaminterest
 	{
 		mininterest 	200
-		maxinterest 	279
-		minaliencount	7
-		maxaliencount	13
-		team 			(hovernet taman/alien_taman)
-	}
-	teaminterest
-	{
-		mininterest 	250
-		maxinterest 	309
-		minaliencount	10
-		maxaliencount	18
-		team 			(hovernet taman/alien_taman)
-	}
-	teaminterest
-	{
-		mininterest 	280
-		maxinterest 	309
-		minaliencount	14
-		maxaliencount	24
-		team 			(hovernet taman/alien_taman)
-	}
-	teaminterest
-	{
-		mininterest 	310
 		maxinterest 	10000
-		minaliencount	19
-		maxaliencount	30
-		team 			(hovernet taman/alien_taman_heavy)
+		minaliencount	2
+		maxaliencount	7
+		team 			(shevaar taman/alien_taman)
+	}
+	teaminterest
+	{
+		mininterest 	220
+		maxinterest 	10000
+		minaliencount	3
+		maxaliencount	7
+		team 			(shevaar taman/alien_taman bloodspider)
+	}
+	teaminterest
+	{
+		mininterest 	300
+		maxinterest 	10000
+		minaliencount	3
+		maxaliencount	7
+		team 			(shevaar taman/alien_taman_heavy hovernet)
 	}
 }
 
 // Harvester Teams =================================================*
 
-	// Team Bloodspider/Shevaar Harvesters -------------------------*
+	// harvesters1: (bloodspider) Harvesters -------------------------------------*
+
+		// min interest: 0 taman
+		// min interest: 70 +bloodspider
+		// min interest: 110 +shevaar
+		// min interest: 140 +hovernet
+		// min interest: 180 +strigoi
+		// min interest: 200 taman (medium)
 
 alienteam harvesters1
 {
@@ -266,7 +372,7 @@ alienteam troopers1
 		maxinterest 	79
 		minaliencount	5
 		maxaliencount	9
-		team 			(taman/alien_taman_light bloodspider hovernet )
+		team 			(taman/alien_taman_light bloodspider hovernet)
 	}
 	teaminterest
 	{
@@ -366,7 +472,19 @@ alienteam troopers2
 
 // Alien Special Forces ============================================*
 
-	// Team Hovernet Soldiers --------------------------------------*
+	// soldiers1: 
+
+		// min interest: 0 shevaar
+		// min interest: 100 +hovernet
+		// min interest: 120 taman
+		// min interest: 140 +hovernet
+		// min interest: 160 strigoi
+		// min interest: 170 +hovernet
+		// min interest: 180 +hovernet +shevaar
+		// min interest: 200 ortnok
+		// min interest: 220 +taman
+		// min interest: 240 +taman +shevaar
+		// min interest: 250 +taman +shevaar +adv_hovernet
 
 alienteam soldiers1
 {
@@ -375,26 +493,74 @@ alienteam soldiers1
 	teaminterest
 	{
 		mininterest 	0
-		maxinterest 	49
+		maxinterest 	200
 		minaliencount	4
 		maxaliencount	6
-		team 			(taman/alien_taman_light bloodspider)
+		team 			(shevaar)
 	}
 	teaminterest
 	{
-		mininterest 	50
-		maxinterest 	109
+		mininterest 	100
+		maxinterest 	200
 		minaliencount	5
 		maxaliencount	9
-		team 			(hovernet taman/alien_taman_light)
+		team 			(shevaar hovernet)
 	}
 	teaminterest
 	{
-		mininterest 	110
+		mininterest 	120
 		maxinterest 	249
 		minaliencount	7
-		maxaliencount	13
-		team 			(hovernet taman/alien_taman)
+		maxaliencount	12
+		team 			(taman/alien_taman)
+	}
+	teaminterest
+	{
+		mininterest 	140
+		maxinterest 	249
+		minaliencount	7
+		maxaliencount	12
+		team 			(taman/alien_taman hovernet)
+	}
+	teaminterest
+	{
+		mininterest 	160
+		maxinterest 	200
+		minaliencount	7
+		maxaliencount	12
+		team 			(strigoi)
+	}
+	teaminterest
+	{
+		mininterest 	180
+		maxinterest 	10000
+		minaliencount	7
+		maxaliencount	12
+		team 			(strigoi shevaar hovernet)
+	}
+	teaminterest
+	{
+		mininterest 	200
+		maxinterest 	249
+		minaliencount	7
+		maxaliencount	12
+		team 			(ortnok)
+	}
+	teaminterest
+	{
+		mininterest 	220
+		maxinterest 	10000
+		minaliencount	7
+		maxaliencount	12
+		team 			(ortnok taman/alien_taman)
+	}
+	teaminterest
+	{
+		mininterest 	240
+		maxinterest 	10000
+		minaliencount	7
+		maxaliencount	12
+		team 			(ortnok taman/alien_taman shevaar)
 	}
 	teaminterest
 	{
@@ -402,15 +568,7 @@ alienteam soldiers1
 		maxinterest 	279
 		minaliencount	10
 		maxaliencount	18
-		team 			(hovernet taman/alien_taman ortnok)
-	}
-	teaminterest
-	{
-		mininterest 	280
-		maxinterest 	309
-		minaliencount	14
-		maxaliencount	24
-		team 			(hovernet_adv taman/alien_taman ortnok)
+		team 			(ortnok taman/alien_taman shevaar hovernet_adv)
 	}
 	teaminterest
 	{
@@ -418,7 +576,7 @@ alienteam soldiers1
 		maxinterest 	10000
 		minaliencount	19
 		maxaliencount	30
-		team 			(hovernet_adv taman/alien_taman_heavy ortnok)
+		team 			(ortnok taman/alien_taman_heavy hovernet_adv)
 	}
 	teaminterest
 	{
@@ -426,7 +584,7 @@ alienteam soldiers1
 		maxinterest 	10000
 		minaliencount	24
 		maxaliencount	30
-		team 			(hovernet_adv taman/alien_taman_heavy ortnok)
+		team 			(ortnok taman/alien_taman_heavy hovernet_adv)
 	}
 }
 
@@ -556,7 +714,7 @@ alienteam terror1
 		maxinterest 	10000
 		minaliencount	19
 		maxaliencount	30
-		team 			(bloodspider_adv hovernet_adv ortnok)
+		team 			(bloodspider_adv hovernet_adv ortnok strigoi)
 	}
 }
 
@@ -570,7 +728,7 @@ alienteam full
 		maxinterest 	109
 		minaliencount	12
 		maxaliencount	16
-		team 			(taman/alien_taman_light shevaar hovernet bloodspider)
+		team 			(taman/alien_taman_light shevaar hovernet bloodspider strigoi)
 	}
 	teaminterest
 	{
@@ -578,7 +736,7 @@ alienteam full
 		maxinterest 	199
 		minaliencount	14
 		maxaliencount	18
-		team 			(taman/alien_taman bloodspider hovernet shevaar)
+		team 			(taman/alien_taman bloodspider hovernet shevaar strigoi)
 	}
 	teaminterest
 	{
@@ -586,7 +744,7 @@ alienteam full
 		maxinterest 	249
 		minaliencount	16
 		maxaliencount	22
-		team 			(taman/alien_taman hovernet shevaar bloodspider_adv)
+		team 			(taman/alien_taman hovernet shevaar bloodspider_adv strigoi)
 	}
 	teaminterest
 	{
@@ -594,7 +752,7 @@ alienteam full
 		maxinterest 	279
 		minaliencount	19
 		maxaliencount	25
-		team 			(taman/alien_taman hovernet shevaar bloodspider_adv ortnok)
+		team 			(taman/alien_taman hovernet shevaar bloodspider_adv ortnok strigoi)
 	}
 	teaminterest
 	{
@@ -602,7 +760,7 @@ alienteam full
 		maxinterest 	309
 		minaliencount	22
 		maxaliencount	30
-		team 			(taman/alien_taman shevaar bloodspider_adv ortnok hovernet_adv)
+		team 			(taman/alien_taman shevaar bloodspider_adv ortnok hovernet_adv strigoi)
 	}
 	teaminterest
 	{
@@ -610,6 +768,6 @@ alienteam full
 		maxinterest 	10000
 		minaliencount	22
 		maxaliencount	30
-		team 			(taman/alien_taman_heavy shevaar bloodspider_adv ortnok hovernet_adv)
+		team 			(taman/alien_taman_heavy shevaar bloodspider_adv ortnok hovernet_adv strigoi)
 	}
 }

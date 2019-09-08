@@ -1,0 +1,89 @@
+--!usr/bin/lua
+
+--[[
+-- @file
+-- @brief New installation popup window
+--]]
+
+--[[
+Copyright (C) 2002-2019 UFO: Alien Invasion.
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+--]]
+
+require("ufox.lua")
+
+do
+	local window = ufox.build_window({
+		name = "popup_bases",
+		class = "window",
+		super = "ipopup",
+		pos = {256, 284},
+		size = {240, 180},
+		closebutton = true,
+		modal = true,
+
+		{
+			name = "title",
+			class = "string",
+			width = 512,
+			text = "_Select base",
+		},
+
+		{
+			name = "bt_cancel",
+			class = "MainMenuCancelBtn",
+			pos = {140, 270},
+			width = 180,
+
+			on_click = function (sender)
+				ufo.pop_window(false)
+			end,
+		},
+
+		{
+			name = "base_selector",
+			class = "panel",
+			pos = {40, 80},
+			size = {160, 16},
+			layout = ufo.LAYOUT_COLUMN,
+			layoutcolumns = 8,
+			layoutmargin = 4,
+		},
+
+
+		{
+			name = "overlay",
+			class = "fuzzyScreen"
+		},
+
+		on_windowopened = function (sender)
+		end,
+
+		on_windowclosed = function (sender)
+			ufo.cmd("mn_mapaction_reset;")
+		end,
+	})
+
+	for i = 0, 7 do
+		local mini = ufox.build({
+			name = "base_" .. i,
+			class = "BaseLayoutMini",
+			baseid = i,
+		}, window:child("base_selector"))
+	end
+
+end

@@ -1,0 +1,421 @@
+// =======================
+// SNIPER RIFLE
+// =======================
+item sniper
+{
+	name			"_Forrester LRWS S1 Sniper Rifle"
+	model			"weapons/sniper/sniper"
+	weapon			true
+	type			"rifle"
+	animationindex	1
+	holdtwohanded	false
+	firetwohanded 	true
+	shape			"2 0 3 1"
+	shape			"0 1 5 1"
+	center			"9 0 3"
+	scale			1.05
+	ammo			8
+	reload			12
+	reloadsound		"weapons/reload-sniper"
+	price			13000
+	size			60
+	is_primary		true
+	weight			6400
+}
+
+item sniper_ammo
+{
+	name			"_Sniper Rifle Magazine"
+	model			"weapons/sniper/sniper_clip"
+	type			"ammo"
+	animationindex	0
+	shape			"0 0 1 2"
+	center			"0 0 0"
+	scale			1.15
+	price			1000
+	size			8
+	is_primary		true
+	dmgtype			"normal"
+	weight			500
+
+	weapon_mod
+	{
+		weapon sniper
+		firedef
+		{
+			name		"_Snap Shot"
+			skill		"sniper"
+			projtl		bullet_sniper
+			impact		bulletImpact
+			hitbody		null
+			firesnd		"weapons/bullet-sniper"
+			impsnd		"impact/bullet-impact"
+			bodysnd 	"impact/bullet-bodyimpact"
+			speed		3600
+			spread		"1.7 1.7"
+			crouch		0.75
+			range		150
+			shots		1
+			ammo		1
+			time		14
+			damage		"121 20"
+			dmgweight	"normal"
+			reaction	true
+			throughwall 1
+			shotorg		"2 8"
+		}
+		firedef
+		{
+			name		"_Aimed Shot"
+			skill		"sniper"
+			projtl		bullet_sniper
+			impact		bulletImpact
+			hitbody		null
+			firesnd		"weapons/bullet-sniper"
+			impsnd		"impact/bullet-impact"
+			bodysnd 	"impact/bullet-bodyimpact"
+			speed		3600
+			spread		"0.82 0.82"
+			crouch		0.55
+			range		150
+			shots		1
+			ammo		1
+			time		19
+			damage		"121 20"
+			dmgweight	"normal"
+			reaction	true
+			throughwall 1
+			shotorg		"2 8"
+		}
+	}
+}
+
+// =======================
+// ENCASED PLASMA ROUNDS
+// =======================
+
+
+item armour_piercing_sniper_ammo
+{
+	name			"_Sniper Rifle AP Magazine"
+	model			"weapons/sniper/enc_plasma_clip_snp"
+	type			"ammo"
+	animationindex	0
+	shape			"0 0 1 2"
+	center			"0 0 0"
+	scale			1.15
+	price			5200
+	size			8
+	is_primary		true
+	dmgtype			"normal"
+	weight			500
+
+	weapon_mod
+	{
+		weapon sniper
+		firedef
+		{
+			name		"_Snap Shot"
+			skill		"sniper"
+			projtl		bullet_sniper
+			impact		bulletImpact
+			hitbody		null
+			firesnd		"weapons/bullet-sniper"
+			impsnd		"impact/bullet-impact"
+			bodysnd 	"impact/bullet-bodyimpact"
+			speed		3600
+			spread		"1.73 1.73"
+			crouch		0.75
+			range		150
+			shots		1
+			ammo		1
+			time		14
+			damage		"111 20"
+			dmgweight	"normal_armour_piercing"
+			reaction	true
+			throughwall 2
+			shotorg		"2 8"
+		}
+		firedef
+		{
+			name		"_Aimed Shot"
+			skill		"sniper"
+			projtl		bullet_sniper
+			impact		bulletImpact
+			hitbody		null
+			firesnd		"weapons/bullet-sniper"
+			impsnd		"impact/bullet-impact"
+			bodysnd 	"impact/bullet-bodyimpact"
+			speed		3600
+			spread		"0.85 0.85"
+			crouch		0.55
+			range		150
+			shots		1
+			ammo		1
+			time		19
+			damage		"111 20"
+			dmgweight	"normal_armour_piercing"
+			reaction	true
+			throughwall 2
+			shotorg		"2 8"
+		}
+	}
+}
+
+
+//========================
+// COILGUN
+//========================
+item coilgun
+{
+	name			"_Coilgun"
+	model			"weapons/coilgun/coilgun"
+	weapon			true
+	type			"rifle"
+	animationindex	1
+	holdtwohanded	false
+	firetwohanded 	true
+	shape			"2 0 3 1"
+	shape			"0 1 4 1"
+	center			"9 2.7 3.2"
+	scale			0.9
+	ammo			4
+	reload			12
+	reloadsound		"weapons/reload-sniper"
+	price			30000
+	size			30
+	is_primary		true
+	weight			7600
+}
+
+item coilgun_ammo
+{
+	name			"_Coilgun Clip"
+	model			"weapons/coilgun/coilgun_ammo"
+	type			"ammo"
+	animationindex	0
+	shape			"0 0 2 2"
+	center			"0 0 1.2"
+	scale			1.15
+	price			850
+	size			4
+	is_primary		true
+	dmgtype			"normal"
+	weight			1000
+
+	weapon_mod
+	{
+		weapon coilgun
+		firedef
+		{
+			name		"_Snap Shot"
+			skill		"sniper"
+			projtl		bolter
+			impact		bolterImpact
+			hitbody		null
+			firesnd		"weapons/bullet-gauss"
+			impsnd		"impact/nail-impact"
+			bodysnd 	"impact/nail-bodyimpact"
+			speed		2000
+			spread		"2.5 2.5"
+			crouch		0.85
+			range		250
+			shots		1
+			ammo		1
+			time		15
+			damage		"180 30"
+			dmgweight	"normal"
+			reaction	true
+			throughwall	3
+			shotorg		"2 6"
+		}
+		firedef
+		{
+			name		"_Aimed Shot"
+			skill		"sniper"
+			projtl		bolter
+			impact		bolterImpact
+			hitbody		null
+			firesnd		"weapons/bullet-gauss"
+			impsnd		"impact/nail-impact"
+			bodysnd 	"impact/nail-bodyimpact"
+			speed		2000
+			spread		"0.55 0.55"
+			crouch		0.6
+			range		250
+			shots		1
+			ammo		1
+			time		21
+			damage		"180 30"
+			dmgweight	"normal"
+			reaction	true
+			throughwall	3
+			shotorg		"2 6"
+		}
+	}
+}
+
+// =======================
+// BOLTER RIFLE
+// =======================
+item bolterrifle
+{
+	name			"_Electromagnetic Rifle"
+	model			"weapons/bolterrifle/bolterrifle"
+	weapon			true
+	type			"biggun"
+	animationindex	1
+	holdtwohanded	false
+	firetwohanded	true
+	shape			"0 0 5 2"
+	center			"4 1 1.1"
+	scale			1.2
+	ammo			2
+	reload			12
+	reloadsound		"weapons/reload-rifle"
+	price			22000
+	size			45
+	is_primary		true
+	is_heavy		true
+	weight			8400
+}
+
+item bolterrifle_ammo
+{
+	name			"_Electromagnetic Rifle Magazine"
+	model			"weapons/bolterrifle/bolterrifle_clip"
+	type			"ammo"
+	animationindex	0
+	shape			"0 0 3 1"
+	center			"0 0 0"
+	scale			1.2
+	price			9300
+	size			9
+	is_primary		true
+	is_heavy		true
+	dmgtype			"normal"
+	weight			800
+
+	weapon_mod
+	{
+		weapon bolterrifle
+		firedef
+		{
+			name		"_Snap Shot"
+			skill		"sniper"
+			projtl		bolter
+			impact		bolterImpact
+			hitbody		null
+			firesnd		"weapons/bullet-bolter"
+			impsnd		"impact/nail-impact"
+			bodysnd 	"impact/nail-bodyimpact"
+			sndonce		true
+			speed		2000
+			spread		"2.5 2.5"
+			crouch		0.85
+			range		200
+			shots		1
+			ammo		1
+			time		16
+			damage		"160 20"
+			dmgweight	"normal"
+			reaction	true
+			throughwall	2
+			shotorg		"3.5 6"
+		}
+
+		firedef
+		{
+			name				"_Aimed Shot"
+			skill				"sniper"
+			projtl				bolter
+			impact				bolterImpact
+			hitbody				null
+			firesnd				"weapons/bullet-bolter"
+			impsnd				"impact/nail-impact"
+			bodysnd 			"impact/nail-bodyimpact"
+			speed				2000
+			spread				"0.55 0.55"
+			crouch				0.6
+			range				200
+			shots				1
+			ammo				1
+			time				24
+			damage				"160 20"
+			dmgweight			"normal"
+			reaction			true
+			throughwall			2
+			shotorg				"3.5 6"
+		}
+	}
+}
+
+item bolterrifle_am_ammo
+{
+	name			"_Electromagnetic Rifle Antimatter Magazine"
+	model			"weapons/bolterrifle/bolterrifle_am_clip"
+	type			"ammo"
+	animationindex	0
+	shape			"0 0 3 1"
+	center			"0 0 0"
+	scale			1.2
+	price			9300
+	size			9
+	is_primary		true
+	is_heavy		true
+	dmgtype			"normal"
+	weight			1400
+
+	weapon_mod
+	{
+		weapon bolterrifle
+		firedef
+		{
+			name		"_Snap Shot"
+			skill		"sniper"
+			projtl		bolter
+			impact		bolterImpact
+			hitbody		null
+			firesnd		"weapons/bullet-bolter"
+			impsnd		"impact/nail-impact"
+			bodysnd 	"impact/nail-bodyimpact"
+			sndonce		true
+			speed		2000
+			spread		"2.5 2.5"
+			crouch		0.85
+			range		200
+			shots		1
+			ammo		1
+			time		16
+			damage		"250 20"
+			dmgweight	"blast"
+			reaction	true
+			throughwall	2
+			shotorg		"3.5 6"
+		}
+
+		firedef
+		{
+			name				"_Aimed Shot"
+			skill				"sniper"
+			projtl				bolter
+			impact				bolterImpact
+			hitbody				null
+			firesnd				"weapons/bullet-bolter"
+			impsnd				"impact/nail-impact"
+			bodysnd 			"impact/nail-bodyimpact"
+			speed				2000
+			spread				"0.55 0.55"
+			crouch				0.6
+			range				200
+			shots				1
+			ammo				1
+			time				24
+			damage				"250 20"
+			dmgweight			"blast"
+			reaction			true
+			throughwall			2
+			shotorg				"3.5 6"
+		}
+	}
+}

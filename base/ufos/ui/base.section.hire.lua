@@ -30,10 +30,10 @@ do
 
 	local sectionHire = {
 		register = function (root_node, base_idx)
-			local section = base.build_section(root_node, "hire", "_Soldiers", "icons/crouch")
+			local section = base.build_section(root_node, "hire", "_Hire", "added/head_worker_hire")
 			section:child("header").on_click = function (sender)
 				-- @TODO ufo.push_window() doesn't support parameters
-				ufo.cmd("ui_push equipment -1;")
+				ufo.cmd("ui_push employees 1;")
 			end
 		end,
 	}

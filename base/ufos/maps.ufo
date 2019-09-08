@@ -980,6 +980,7 @@ mapdef military_convoy
 	map				"+forest"
 	params			("convoy")
 	description		"_Military Convoy Ambush Site"
+	campaign		false
 	civilianteam	armysoldier
 	maxaliens		15
 
@@ -1308,6 +1309,7 @@ mapdef fueldump
 	map				"+frozen"
 	params			("fueldump")
 	description		"_Fuel Depot"
+	campaign		false
 	civilianteam	worker
 	maxaliens		10
 
@@ -5129,6 +5131,7 @@ mapdef pipes_const
 {
 	map				"pipes_const"
 	description		"_Sewage Pipe Construction"
+	campaign		false
 	civilianteam	miner
 	maxaliens		21
 
@@ -5223,6 +5226,7 @@ mapdef rivertown
 {
 	map				"rivertown"
 	description		"_Old Town Center"
+	campaign		false
 	maxaliens		16
 
 	multiplayer		true
@@ -5369,6 +5373,7 @@ mapdef wilderness
 {
 	map				"wilderness"
 	description		"_Wilderness"
+	campaign		false
 	maxaliens		16
 
 	multiplayer		true
