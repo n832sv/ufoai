@@ -1,0 +1,220 @@
+//====================
+// Ballistics
+//====================
+tech rs_weapon_advanced_ballistics
+{
+	name	"_Advanced Ballistics"
+	type	"tech"
+	up_chapter	equipment
+
+	description {
+		default "*msgid:encased_plasma_txt"
+	}
+	pre_description {
+		default "*msgid:encased_plasma_pre_txt"
+	}
+
+	mail_pre
+	{
+		from	"*msgid:mail_from_paul_navarre"
+		to		"*msgid:mail_to_base_commander"
+		// subject	defined by "name"
+		icon	"icons/mail_tech"
+	}
+
+	mail
+	{
+		from	"*msgid:mail_from_paul_navarre"
+		to		"*msgid:mail_to_base_commander"
+		// subject	defined by "name"
+		icon	"icons/mail_tech"
+	}
+
+	time	6000
+	producetime -1
+}
+
+tech rs_weapon_encased_plasma
+{
+	name	"_Encased Plasma Pellets"
+	type	"tech"
+	up_chapter	equipment
+
+	description {
+		default "*msgid:encased_plasma_txt"
+	}
+	pre_description {
+		default "*msgid:encased_plasma_pre_txt"
+	}
+
+	mail_pre
+	{
+		from	"*msgid:mail_from_paul_navarre"
+		to		"*msgid:mail_to_base_commander"
+		// subject	defined by "name"
+		icon	"icons/mail_tech"
+	}
+
+	mail
+	{
+		from	"*msgid:mail_from_paul_navarre"
+		to		"*msgid:mail_to_base_commander"
+		// subject	defined by "name"
+		icon	"icons/mail_tech"
+	}
+
+	require_AND
+	{
+		tech rs_weapon_plasblaster
+		tech rs_weapon_advanced_ballistics
+	}
+
+	time	6000
+	producetime -1
+}
+
+tech rs_armour_piercing_rounds
+{
+	name	"_Armour Piercing Rounds"
+	type	"tech"
+	up_chapter	equipment
+
+	description {
+		default "*msgid:encased_plasma_txt"
+	}
+	pre_description {
+		default "*msgid:encased_plasma_pre_txt"
+	}
+
+	mail_pre
+	{
+		from	"*msgid:mail_from_paul_navarre"
+		to		"*msgid:mail_to_base_commander"
+		// subject	defined by "name"
+		icon	"icons/mail_tech"
+	}
+
+	mail
+	{
+		from	"*msgid:mail_from_paul_navarre"
+		to		"*msgid:mail_to_base_commander"
+		// subject	defined by "name"
+		icon	"icons/mail_tech"
+	}
+
+	require_AND
+	{
+		tech rs_alien_hovernet_autopsy
+		tech rs_weapon_advanced_ballistics
+	}
+
+	time	6000
+	producetime -1
+}
+
+
+
+
+tech rs_weapon_encased_plasma_assault_ammo
+{
+	type	"weapon"
+	up_chapter	equipment
+
+	description {
+		default "*msgid:encased_plasma_txt"
+	}
+	pre_description {
+		default "*msgid:encased_plasma_pre_txt"
+	}
+
+	require_AND
+	{
+		tech rs_weapon_encased_plasma
+	}
+
+	require_for_production
+	{
+		item (alienmaterials 5)
+	}
+
+	provides	encased_plasma_assault_ammo
+	time	0
+	producetime	300
+}
+
+tech rs_weapon_encased_plasma_mg_ammo
+{
+	type	"weapon"
+	up_chapter	equipment
+
+	description {
+		default "*msgid:encased_plasma_txt"
+	}
+	pre_description {
+		default "*msgid:encased_plasma_pre_txt"
+	}
+
+	require_AND
+	{
+		tech rs_weapon_encased_plasma
+	}
+
+	require_for_production
+	{
+		item (alienmaterials 5)
+	}
+
+	provides	encased_plasma_mg_ammo
+	time	0
+	producetime	300
+}
+
+tech rs_weapon_armour_piercing_sniper_ammo
+{
+
+	type	"weapon"
+	up_chapter	equipment
+
+	description {
+		default "*msgid:encased_plasma_txt"
+	}
+	pre_description {
+		default "*msgid:encased_plasma_pre_txt"
+	}
+
+	require_AND
+	{
+		tech rs_armour_piercing_rounds
+	}
+
+	provides	armour_piercing_sniper_ammo
+	time	0
+	producetime	50
+}
+
+tech rs_weapon_encased_plasma_shotgun_ammo
+{
+	type	"weapon"
+	up_chapter	equipment
+
+	description {
+		default "*msgid:encased_plasma_txt"
+	}
+	pre_description {
+		default "*msgid:encased_plasma_pre_txt"
+	}
+
+	require_AND
+	{
+		tech rs_weapon_encased_plasma
+	}
+
+	require_for_production
+	{
+		item (alienmaterials 5)
+	}
+
+	provides	encased_plasma_shotgun_ammo
+	time	0
+	producetime	300
+}

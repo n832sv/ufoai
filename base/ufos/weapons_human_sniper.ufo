@@ -58,7 +58,7 @@ item sniper_ammo
 			shots		1
 			ammo		1
 			time		14
-			damage		"121 20"
+			damage		"111 20"
 			dmgweight	"normal"
 			reaction	true
 			throughwall 1
@@ -81,7 +81,7 @@ item sniper_ammo
 			shots		1
 			ammo		1
 			time		19
-			damage		"121 20"
+			damage		"111 20"
 			dmgweight	"normal"
 			reaction	true
 			throughwall 1
@@ -130,7 +130,7 @@ item armour_piercing_sniper_ammo
 			shots		1
 			ammo		1
 			time		14
-			damage		"111 20"
+			damage		"93 20"
 			dmgweight	"normal_armour_piercing"
 			reaction	true
 			throughwall 2
@@ -153,7 +153,7 @@ item armour_piercing_sniper_ammo
 			shots		1
 			ammo		1
 			time		19
-			damage		"111 20"
+			damage		"93 20"
 			dmgweight	"normal_armour_piercing"
 			reaction	true
 			throughwall 2

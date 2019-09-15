@@ -1,0 +1,650 @@
+//====================
+// Basic Game Concepts
+//====================
+tech rs_concept_research
+{
+	name			"_Research"
+	type			"news"
+	up_chapter		concepts_campaign
+	description {	default "*msgid:concept_research_txt"	}
+	time		0
+}
+tech rs_concept_production
+{
+	name			"_Production"
+	type			"news"
+	up_chapter		concepts_campaign
+	description {	default "*msgid:concept_production_txt"	}
+	time		0
+}
+tech rs_concept_interception
+{
+	name			"_UFO Interception"
+	type			"news"
+	up_chapter		concepts_campaign
+	description {	default "*msgid:concept_interception_txt"	}
+	time		0
+}
+tech rs_concept_disassembly
+{
+	name			"_UFO Disassembly"
+	type			"news"
+	up_chapter		concepts_campaign
+	description {	default "*msgid:concept_disassembly_txt"	}
+	time		0
+}
+tech rs_concept_nation_happiness
+{
+	name			"_Nation Happiness"
+	type			"news"
+	up_chapter		concepts_campaign
+	description {	default "*msgid:concept_nation_happiness_txt"	}
+	time		0
+}
+tech rs_concept_time_units
+{
+	name			"_Time Units"
+	type			"news"
+	up_chapter		concepts_combat
+	description {	default "*msgid:concept_time_units_txt"	}
+	time		0
+}
+tech rs_concept_reaction_fire
+{
+	name			"_Reaction Fire"
+	type			"news"
+	up_chapter		concepts_combat
+	description {	default "*msgid:concept_reaction_fire_txt"	}
+	time		0
+}
+tech rs_concept_weight
+{
+	name			"_Soldier Weight and Encumbrance"
+	type			"news"
+	up_chapter		concepts_combat
+	description {	default "*msgid:concept_weight_txt"	}
+	time		0
+}
+tech rs_concept_wounds
+{
+	name			"_Wounds and Healing"
+	type			"news"
+	up_chapter		concepts_combat
+	description {	default "*msgid:concept_wounds_txt"	}
+	time		0
+}
+tech rs_concept_equipment
+{
+	name			"_Auxiliary Equipment"
+	type			"news"
+	up_chapter		concepts_combat
+	description {	default "*msgid:concept_equipment_txt"	}
+	time		0
+}
+
+//========================
+// Damage Types
+//========================
+
+tech rs_damage_blast
+{
+	type	"tech"
+	name	"_Blast Damage Type"
+	up_chapter damage
+	description {
+		default "*msgid:none"
+	}
+
+	time	0
+//	image	"techs/blast_damage"
+}
+
+tech rs_damage_fire
+{
+	type	"tech"
+	name	"_Fire Damage Type"
+	up_chapter	damage
+	description {
+		default "*msgid:none"
+	}
+
+	time	0
+//	image	"techs/fire_damage"
+}
+
+tech rs_damage_laser
+{
+	type	"tech"
+	name	"_Laser Damage Type"
+	up_chapter	damage
+	description {
+		default "*msgid:none"
+	}
+
+	require_AND
+	{
+		tech rs_laser
+	}
+
+	time	0
+//	image	"techs/laser_damage"
+}
+
+tech rs_damage_normal
+{
+	type	"tech"
+	name	"_Impact Damage Type"
+	up_chapter	damage
+	description {
+		default "*msgid:none"
+	}
+
+	time	0
+//	image	"techs/normal_damage"
+}
+
+tech rs_damage_shock
+{
+	type	"tech"
+	name "_Shock Damage Type"
+	up_chapter	damage
+	description {
+		default "*msgid:none"
+	}
+
+	time	0
+//	image	"techs/shock_damage"
+}
+
+tech rs_damage_plasma
+{
+	type		"tech"
+	name		"_Plasma Damage Type"
+	up_chapter	damage
+	description {
+		default "*msgid:none"
+	}
+
+	require_OR
+	{
+		tech rs_weapon_plasatomizer
+		tech rs_weapon_plasblaster
+		tech rs_weapon_plasrifle
+		tech rs_weapon_plasmagren
+	}
+
+	time	0
+//	image	"techs/plasma_damage"
+}
+
+tech rs_damage_stun
+{
+	type		"tech"
+	name		"_Stun Damage Type"
+	up_chapter	damage
+	description {
+		default "*msgid:none"
+	}
+
+	time	0
+//	image	"techs/stun_damage"
+}
+
+tech rs_damage_pbeam
+{
+	type		"tech"
+	name		"_Particle Beam Damage Type"
+	up_chapter	damage
+	description {
+		default "*msgid:none"
+	}
+
+
+	time	0
+//	image	"techs/pbeam_damage"
+}
+
+//========================
+// Soldier Skills
+//========================
+
+tech rs_skill_accuracy
+{
+	type		"tech"
+	name		"_Accuracy Attribute"
+	up_chapter	skill
+	description {
+		default "*msgid:skill_accuracy_txt"
+	}
+
+	time	0
+//	image	"techs/accuracy_skill"
+}
+
+tech rs_skill_assault
+{
+	type		"tech"
+	name		"_Assault Guns Proficiency"
+	up_chapter	skill
+	description {
+		default "*msgid:skill_assault_txt"
+	}
+
+	time	0
+//	image	"techs/assault_skill"
+}
+
+tech rs_skill_close
+{
+	type		"tech"
+	name		"_Close Combat Proficiency"
+	up_chapter	skill
+	description {
+		default "*msgid:skill_close_txt"
+	}
+
+	time	0
+//	image	"techs/close_skill"
+}
+
+tech rs_skill_explosive
+{
+	type		"tech"
+	name		"_High-Explosives Proficiency"
+	up_chapter	skill
+	description {
+		default "*msgid:skill_explosive_txt"
+	}
+
+	time	0
+//	image	"techs/explosive_skill"
+}
+
+tech rs_skill_mind
+{
+	type		"tech"
+	name		"_Mind Attribute"
+	up_chapter	skill
+	description {
+		default "*msgid:skill_mind_txt"
+	}
+
+	time	0
+//	image	"techs/mind_skill"
+}
+
+tech rs_skill_power
+{
+	type		"tech"
+	name		"_Power Attribute"
+	up_chapter	skill
+	description {
+		default "*msgid:skill_power_txt"
+	}
+
+	time	0
+//	image	"techs/power_skill"
+}
+
+tech rs_skill_sniper
+{
+	type		"tech"
+	name		"_Sniper Rifles Proficiency"
+	up_chapter	skill
+	description {
+		default "*msgid:skill_sniper_txt"
+	}
+
+	time	0
+//	image	"techs/sniper_skill"
+}
+
+tech rs_skill_speed
+{
+	type		"tech"
+	name		"_Speed Attribute"
+	up_chapter	skill
+	description {
+		default "*msgid:skill_speed_txt"
+	}
+
+	time	0
+//	image	"techs/speed_skill"
+}
+
+//========================
+// News
+//========================
+
+tech news_init_political_situation
+{
+	type	"news"
+	name	"_Political Situation Before The Invasion"
+	description {
+		default "*msgid:news_initial_political_situation_txt"
+	}
+	up_chapter	news
+
+	time	0
+}
+
+tech news_after_the_war
+{
+	type	"news"
+	name	"_After The War"
+	description {
+		default "*msgid:news_after_the_war_txt"
+	}
+	up_chapter	news
+
+	time	0
+}
+
+tech news_phalanx_mumbai_aftermath
+{
+	type	"news"
+	name	"_PHALANX And The Mumbai Aftermath"
+	description {
+		default "*msgid:news_phalanx_and_mumbai_aftermath_txt"
+	}
+	up_chapter	news
+
+	time	0
+}
+
+tech news_new_twist
+{
+	name		"_A New Twist"
+	type		"news"
+	up_chapter	news
+
+	description {
+		default "*msgid:news_new_twist_txt"
+	}
+
+	mail
+	{
+		from	"*msgid:mail_from_dr_connor"
+		to		"*msgid:mail_to_base_commander"
+		// subject	defined by "name"
+		model	"characters/connor"
+		icon	"icons/mail_intelligence"
+	}
+
+	require_AND
+	{
+		tech rs_alien_xvi_event
+	}
+
+	time		0
+	image		"techs/news_new_twist"
+}
+
+tech rs_enemy_on_earth
+{
+	name		"_The Enemy On Earth"
+	type		"tech"
+	up_chapter	news
+
+	description {
+		default "*msgid:enemy_on_earth_txt"
+	}
+	pre_description {
+		default "*msgid:enemy_on_earth_pre_txt"
+	}
+
+	mail
+	{
+		from	"*msgid:mail_from_dr_connor"
+		to	"*msgid:mail_to_base_commander"
+		// subject	defined by "name"
+		model	"characters/connor"
+		icon	"icons/mail_intelligence"
+	}
+	mail_pre
+	{
+		from	"*msgid:mail_from_dr_connor"
+		to	"*msgid:mail_to_base_commander"
+		// subject	defined by "name"
+		model	"characters/connor"
+		icon	"icons/mail_intelligence"
+	}
+	require_AND
+	{
+		tech rs_craft_ufo_corrupter
+	}
+
+	time		2000
+	image		"techs/enemy_on_earth"
+}
+
+tech rs_xvi_census
+{
+	name		"_XVI Census"
+	type		"tech"
+	up_chapter	news
+
+	description {
+		default "*msgid:xvi_census_txt"
+	}
+	pre_description {
+		default "*msgid:xvi_census_pre_txt"
+	}
+
+	mail_pre
+	{
+		from	"*msgid:mail_from_col_falkland"
+		to	"*msgid:mail_to_base_commander"
+		// subject	defined by "name"
+		model	"characters/falkland"
+		icon	"icons/mail_intelligence"
+	}
+
+	mail
+	{
+		from	"*msgid:mail_from_col_falkland"
+		to	"*msgid:mail_to_base_commander"
+		// subject	defined by "name"
+		model	"characters/falkland"
+		icon	"icons/mail_intelligence"
+	}
+
+	require_AND
+	{
+		tech rs_enemy_on_earth
+	}
+
+	time		6000
+	image		"techs/xvi"
+}
+
+tech rs_alien_strategy
+{
+	name		"_The Alien Strategy"
+	type		"tech"
+	up_chapter	news
+	description {
+		default "*msgid:alien_strategy_txt"
+	}
+	pre_description {
+		default "*msgid:alien_strategy_pre_txt"
+	}
+
+	mail_pre
+	{
+		from	"*msgid:mail_from_col_falkland"
+		to	"*msgid:mail_to_base_commander"
+		// subject	defined by "name"
+		model	"characters/falkland"
+		icon	"icons/mail_intelligence"
+	}
+
+	mail
+	{
+		from	"*msgid:mail_from_col_falkland"
+		to	"*msgid:mail_to_base_commander"
+		// subject	defined by "name"
+		model	"characters/falkland"
+		icon	"icons/mail_intelligence"
+	}
+	require_OR
+	{
+		tech	rs_craft_ufo_harvester
+	}
+
+	time		1000
+	image		"techs/alien_strategy"
+}
+
+tech rs_orbital_ufo_activity
+{
+	name		"_Orbital UFO Activity"
+	type		"tech"
+	up_chapter	news
+
+	description {
+		default "*msgid:orbital_ufo_activity_txt"
+	}
+	pre_description {
+		default "*msgid:orbital_ufo_activity_pre_txt"
+	}
+
+	mail_pre
+	{
+		from	"*msgid:mail_from_col_falkland"
+		to	"*msgid:mail_to_base_commander"
+		// subject	defined by "name"
+		model	"characters/falkland"
+		icon	"icons/mail_intelligence"
+	}
+
+	mail
+	{
+		from	"*msgid:mail_from_col_falkland"
+		to	"*msgid:mail_to_base_commander"
+		// subject	defined by "name"
+		model	"characters/falkland"
+		icon	"icons/mail_intelligence"
+	}
+
+	require_AND
+	{
+		tech	rs_craft_ufo_bomber
+	}
+
+	provides	orbit
+	time		20000
+	image		"techs/orbital_ufo_activity"
+	event		"cp_spawn_ufocarrier 105 40"
+}
+
+tech rs_alien_psi_device
+{
+	name		"_Alien Psi Device"
+	type		"tech"
+	up_chapter	news
+
+	description {
+		default "*msgid:alien_psi_device_txt"
+	}
+	pre_description {
+		default "*msgid:alien_psi_device_pre_txt"
+	}
+
+	mail
+	{
+		from	"*msgid:mail_from_col_falkland"
+		to	"*msgid:mail_to_base_commander"
+		// subject	defined by "name"
+		model	"characters/falkland"
+		icon	"icons/mail_intelligence"
+	}
+	require_AND
+	{
+		// this is activated manually
+		tech	rs_alien_psi_device
+	}
+
+	time		2000
+	model			wormhole_device
+}
+
+tech rs_human_vaccine
+{
+	name		"_Human Vaccine"
+	type		"tech"
+	up_chapter	news
+
+	description {
+		default "*msgid:human_vaccine_txt"
+	}
+	pre_description {
+		default "*msgid:human_vaccine_pre_txt"
+	}
+
+	mail
+	{
+		from	"*msgid:mail_from_dr_connor"
+		to	"*msgid:mail_to_base_commander"
+		// subject	defined by "name"
+		model	"characters/connor"
+		icon	"icons/mail_intelligence"
+	}
+	require_AND
+	{
+		// Make the tech not researchable yet because vaccine has no effect.
+		tech	rs_human_vaccine
+	}
+
+	time		2000
+	image		"techs/human_vaccine"
+}
+
+tech rs_implant_amphetamine
+{
+	name		"_Amphetamine Implant"
+	type		"tech"
+	up_chapter	"skill"
+	provides	implant_amphetamine
+	image		"techs/implant_amphetamine"
+	description {
+		default "*msgid:implant_amphetamine_txt"
+	}
+	pre_description {
+		default "*msgid:implant_amphetamine_pre_txt"
+	}
+	mail
+	{
+		from	"*msgid:mail_from_dr_connor"
+		to	"*msgid:mail_to_base_commander"
+		// subject	defined by "name"
+		model	"characters/connor"
+		icon	"icons/mail_intelligence"
+	}
+	time		1
+}
+
+tech rs_implant_muscular
+{
+	name		"_Muscle Stimulant"
+	type		"tech"
+	up_chapter	"skill"
+	provides	implant_muscular
+	image		"techs/implant_muscular"
+	description {
+		default "*msgid:implant_muscular_txt"
+	}
+	pre_description {
+		default "*msgid:implant_muscular_pre_txt"
+	}
+	mail
+	{
+		from	"*msgid:mail_from_dr_connor"
+		to	"*msgid:mail_to_base_commander"
+		// subject	defined by "name"
+		model	"characters/connor"
+		icon	"icons/mail_intelligence"
+	}
+	time		1
+}
+

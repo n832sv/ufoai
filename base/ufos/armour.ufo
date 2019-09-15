@@ -308,15 +308,15 @@ item armour_medium_alien
 	armourpath	"medium"
 
 	protection {
-		normal_spray				60
-		normal						60
+		normal_spray				70
+		normal						50
 		normal_armour_piercing		20
 
 		normal_steelblade			60
 		normal_monomolecularblade	15
 		normal_needle				3
 
-		blast			50
+		blast			40
 
 		fire_medium		35
 		fire_heavy		10

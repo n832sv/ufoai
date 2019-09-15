@@ -60,7 +60,7 @@ item assault3_ammo
 			ammo				1
 			delaybetweenshots	4
 			time				9
-			damage				"57 8"
+			damage				"69 8"
 			dmgweight			"normal"
 			reaction			true
 			shotorg				"3 7"
@@ -84,7 +84,7 @@ item assault3_ammo
 			ammo				3
 			delaybetweenshots	3
 			time				12
-			damage				"57 8"
+			damage				"69 8"
 			dmgweight			"normal"
 			reaction			true
 			shotorg				"3 7"
@@ -106,7 +106,7 @@ item assault3_ammo
 			shots		1
 			ammo		1
 			time		15
-			damage		"57 8"
+			damage		"69 8"
 			dmgweight	"normal"
 			reaction	true
 			shotorg		"3 7.5"
@@ -202,7 +202,7 @@ item assault_ammo
 			ammo				2
 			delaybetweenshots	4
 			time				10
-			damage				"42 5"
+			damage				"51 5"
 			dmgweight			"normal"
 			reaction			true
 			shotorg				"3 7"
@@ -226,7 +226,7 @@ item assault_ammo
 			ammo				8
 			delaybetweenshots	10
 			time				13
-			damage				"42 5"
+			damage				"51 5"
 			dmgweight			"normal"
 			reaction			true
 			shotorg				"3 7"
@@ -248,7 +248,7 @@ item assault_ammo
 			shots		1
 			ammo		1
 			time		16
-			damage		"42 5"
+			damage		"51 5"
 			dmgweight	"normal"
 			reaction	true
 			shotorg		"3 7.5"
@@ -277,7 +277,7 @@ item assault_ammo
 			ammo				4
 			delaybetweenshots	10
 			time				11
-			damage				"38 6"
+			damage				"42 6"
 			dmgweight			"normal"
 			reaction			true
 			shotorg				"3 6"
@@ -301,7 +301,7 @@ item assault_ammo
 			ammo				10
 			delaybetweenshots	10
 			time				13
-			damage				"38 6"
+			damage				"42 6"
 			dmgweight			"normal"
 			reaction			true
 			shotorg				"3 6"
@@ -446,7 +446,7 @@ item encased_plasma_assault_ammo
 			ammo		2
 			delaybetweenshots	4
 			time		10
-			damage		"90 10"
+			damage		"60 10"
 			dmgweight	"plasma"
 			reaction	true
 			shotorg		"3 6"
@@ -470,7 +470,7 @@ item encased_plasma_assault_ammo
 			ammo				8
 			delaybetweenshots	10
 			time				13
-			damage				"90 10"
+			damage				"60 10"
 			dmgweight			"plasma"
 			shotorg				"3 6"
 		}
@@ -491,7 +491,7 @@ item encased_plasma_assault_ammo
 			shots		1
 			ammo		1
 			time		15
-			damage		"90 10"
+			damage		"60 10"
 			dmgweight	"plasma"
 			shotorg		"3 6"
 		}
@@ -519,7 +519,7 @@ item encased_plasma_assault_ammo
 			ammo				4
 			delaybetweenshots	10
 			time				11
-			damage				"80 10"
+			damage				"55 10"
 			dmgweight			"plasma"
 			reaction			true
 			shotorg				"3 6"
@@ -543,7 +543,7 @@ item encased_plasma_assault_ammo
 			ammo				10
 			delaybetweenshots	10
 			time				13
-			damage				"80 10"
+			damage				"55 10"
 			dmgweight			"plasma"
 			reaction			true
 			shotorg				"3 6"

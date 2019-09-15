@@ -62,7 +62,7 @@ item machinegun_ammo
 			ammo				5
 			delaybetweenshots	10
 			time				14
-			damage				"52 5"
+			damage				"56 5"
 			dmgweight			"normal"
 			reaction			true
 			shotorg				"2 8"
@@ -86,7 +86,7 @@ item machinegun_ammo
 			ammo				20
 			delaybetweenshots	10
 			time				17
-			damage				"52 5"
+			damage				"56 5"
 			dmgweight			"normal"
 			reaction			true
 			shotorg				"2 8"
@@ -110,7 +110,7 @@ item machinegun_ammo
 			ammo				20
 			delaybetweenshots	10
 			time				19
-			damage				"52 5"
+			damage				"56 5"
 			dmgweight			"normal"
 			reaction			true
 			shotorg				"2 8"

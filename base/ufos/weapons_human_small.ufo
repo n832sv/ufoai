@@ -56,7 +56,7 @@ item shotgun2_slug_ammo
 			spread				"2.6 2.6"
 			crouch				1.00
 			range				20
-			shots				14
+			shots				15
 			ammo				1
 			delaybetweenshots	0
 			time				8
@@ -105,7 +105,7 @@ item encased_plasma_shotgun_ammo
 			ammo				1
 			delaybetweenshots	0
 			time				8
-			damage				"21 10"
+			damage				"22 8"
 			dmgweight			"plasma_encased"
 			reaction			true
 			shotorg				"3.5 7.5"
@@ -216,7 +216,7 @@ item shotgun_micro_ammo
 // =======================
 item smg
 {
-	name			"_COBOLT SMG-22 Submachine Gun"
+	name			"_COBOLT SMG-28 Submachine Gun"
 	model			"weapons/smg/smg"
 	weapon			true
 	type			"pistol"
@@ -302,7 +302,7 @@ item smg_ammo
 			ammo				6
 			delaybetweenshots	14
 			time				8
-			damage				"22 8"
+			damage				"28 8"
 			dmgweight			"normal"
 			reaction			true
 			shotorg				"1 11.5"
@@ -326,7 +326,7 @@ item smg_ammo
 			ammo				12
 			delaybetweenshots	14
 			time				11
-			damage				"22 8"
+			damage				"28 8"
 			dmgweight			"normal"
 			reaction			true
 			shotorg				"1 11.5"
@@ -355,7 +355,7 @@ item smg_ammo
 			ammo				3
 			delaybetweenshots	14
 			time				8
-			damage				"32 8"
+			damage				"38 8"
 			dmgweight			"normal"
 			reaction			true
 			shotorg				"1 11.5"
@@ -379,7 +379,7 @@ item smg_ammo
 			ammo				3
 			delaybetweenshots	14
 			time				11
-			damage				"32 8"
+			damage				"38 8"
 			dmgweight			"normal"
 			reaction			true
 			shotorg				"1 11.5"
@@ -447,7 +447,7 @@ item pistol_ammo
 			shots		1
 			ammo		1
 			time		5
-			damage		"32 5"
+			damage		"34 5"
 			dmgweight	"normal"
 			reaction	true
 			shotorg		"1 10.5"
@@ -470,7 +470,7 @@ item pistol_ammo
 			ammo				1
 			delaybetweenshots	10
 			time				8
-			damage				"32 5"
+			damage				"34 5"
 			dmgweight			"normal"
 			shotorg				"1 10.5"
 		}
@@ -537,8 +537,8 @@ item pistol2_ammo
 			shots				5
 			ammo				5
 			delaybetweenshots	10
-			time				7
-			damage				"21 5"
+			time				6
+			damage				"24 5"
 			dmgweight			"normal"
 			reaction			true
 			shotorg				"1 9.5"
@@ -560,8 +560,8 @@ item pistol2_ammo
 			shots				11
 			ammo				11
 			delaybetweenshots	10
-			time				9
-			damage				"21 5"
+			time				8
+			damage				"24 5"
 			dmgweight			"normal"
 			reaction			true
 			shotorg				"1 9.5"

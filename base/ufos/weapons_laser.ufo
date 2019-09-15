@@ -113,7 +113,7 @@ item laser_ammo
 			range				60
 			shots				3
 			ammo				3
-			time				8
+			time				7
 			damage				"25 5"
 			dmgweight			"laser"
 			reaction			true
@@ -255,7 +255,7 @@ item laser_ammo_stun
 			shots		1
 			ammo		1
 			time		13
-			damage		"30 6"
+			damage		"50 6"
 			dmgweight	"stun_electro"
 			reaction	true
 			shotorg		"3.5 6"

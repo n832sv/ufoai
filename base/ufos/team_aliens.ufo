@@ -533,8 +533,8 @@ team strigoi
 
 	//TODO: Balance values
 	resistance {
-		normal_spray 				5
-		normal		 				10
+		normal_spray 				2
+		normal		 				5
 		normal_armour_piercing		10
 
 		normal_steelblade 			10

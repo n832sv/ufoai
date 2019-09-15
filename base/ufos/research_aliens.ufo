@@ -1,0 +1,500 @@
+//========================
+// Aliens
+//========================
+
+// BLOODSPIDER
+tech rs_alien_bloodspider_autopsy
+{
+	name	"_Alien Autopsy - Bloodspider"
+	type	"alien"
+	up_chapter	aliens
+
+	description {
+		default "*msgid:bloodspider_autopsy_txt"
+	}
+	pre_description {
+		default "*msgid:bloodspider_autopsy_pre_txt"
+	}
+
+	mail_pre
+	{
+		from	"*msgid:mail_from_dr_connor"
+		to		"*msgid:mail_to_base_commander"
+		// subject	defined by "name"
+		model	"characters/connor"
+		icon	"icons/mail_alien"
+	}
+
+	mail
+	{
+		from	"*msgid:mail_from_dr_connor"
+		to		"*msgid:mail_to_base_commander"
+		// subject	defined by "name"
+		model	"characters/connor"
+		icon	"icons/mail_alien"
+	}
+
+	require_AND
+	{
+		alien_dead (bloodspider 1)
+	}
+	time	1500
+
+	image "techs/bloodspider_dead"
+}
+
+tech rs_weapon_bloodspider
+{
+	type		"weapon"
+	up_chapter	equipment
+
+	require_AND
+	{
+		tech rs_alien_bloodspider_autopsy
+	}
+	provides	bloodspider_weapon
+	time		0
+	producetime	-1
+}
+
+tech rs_alien_bloodspider_adv_autopsy
+{
+	name	"_Alien Autopsy - Combat Bloodspider"
+	type	"alien"
+	up_chapter	aliens
+
+	description {
+		default "*msgid:bloodspider_adv_autopsy_txt"
+	}
+	pre_description {
+		default "*msgid:bloodspider_adv_autopsy_pre_txt"
+	}
+
+	mail_pre
+	{
+		from	"*msgid:mail_from_dr_connor"
+		to		"*msgid:mail_to_base_commander"
+		// subject	defined by "name"
+		model	"characters/connor"
+		icon	"icons/mail_alien"
+	}
+
+	mail
+	{
+		from	"*msgid:mail_from_dr_connor"
+		to		"*msgid:mail_to_base_commander"
+		// subject	defined by "name"
+		model	"characters/connor"
+		icon	"icons/mail_alien"
+	}
+
+	require_AND
+	{
+		alien_dead (bloodspider_adv 1)
+	}
+	time	1500
+
+	image "techs/bloodspider_adv_dead"
+}
+
+tech rs_weapon_bloodspider_adv
+{
+	type		"weapon"
+	up_chapter	equipment
+
+	require_AND
+	{
+		tech rs_weapon_bloodspider_adv
+	}
+	provides	bloodspider_adv_weapon
+	time		0
+	producetime	-1
+}
+
+// ORTNOK
+
+tech rs_alien_ortnok_autopsy
+{
+	name	"_Alien Autopsy - Ortnok"
+	type	"alien"
+	up_chapter	aliens
+
+	description {
+		default "*msgid:ortnok_autopsy_txt"
+		extra (rs_ortnok_extra "*msgid:ortnok_autopsy_extra_txt")
+	}
+	pre_description {
+		default "*msgid:ortnok_autopsy_pre_txt"
+		extra (rs_ortnok_extra "*msgid:ortnok_autopsy_extra_pre_txt")
+	}
+
+	mail_pre
+	{
+		from	"*msgid:mail_from_dr_connor"
+		to		"*msgid:mail_to_base_commander"
+		// subject	defined by "name"
+		model	"characters/connor"
+		icon	"icons/mail_alien"
+	}
+
+	mail
+	{
+		from	"*msgid:mail_from_dr_connor"
+		to		"*msgid:mail_to_base_commander"
+		// subject	defined by "name"
+		model	"characters/connor"
+		icon	"icons/mail_alien"
+	}
+
+	require_AND
+	{
+		alien_dead (ortnok 1)
+	}
+	time	1500
+
+	image	"techs/ortnok_dead"
+}
+
+// TAMAN
+
+tech rs_alien_taman_autopsy
+{
+	name	"_Alien Autopsy - Taman"
+	type	"alien"
+	up_chapter	aliens
+
+	description {
+		default "*msgid:taman_autopsy_txt"
+		extra (rs_taman_extra "*msgid:taman_autopsy_extra_txt")
+	}
+	pre_description {
+		default "*msgid:taman_autopsy_pre_txt"
+		extra (rs_taman_extra "*msgid:taman_autopsy_extra_pre_txt")
+	}
+
+	mail_pre
+	{
+		from	"*msgid:mail_from_dr_connor"
+		to		"*msgid:mail_to_base_commander"
+		// subject	defined by "name"
+		model	"characters/connor"
+		icon	"icons/mail_alien"
+	}
+
+	mail
+	{
+		from	"*msgid:mail_from_dr_connor"
+		to		"*msgid:mail_to_base_commander"
+		// subject	defined by "name"
+		model	"characters/connor"
+		icon	"icons/mail_alien"
+	}
+
+	require_OR
+	{
+		alien_dead (taman 1)
+	}
+	time	1500
+
+	image	"techs/taman_dead"
+}
+
+// SHEVAAR
+
+tech rs_alien_shevaar_autopsy
+{
+	name	"_Alien Autopsy - Shevaar"
+	type	"alien"
+	up_chapter	aliens
+
+	description {
+		default "*msgid:shevaar_autopsy_txt"
+		extra (rs_shevaar_extra "*msgid:shevaar_autopsy_extra_txt")
+	}
+	pre_description {
+		default "*msgid:shevaar_autopsy_pre_txt"
+		extra (rs_shevaar_extra "*msgid:shevaar_autopsy_extra_pre_txt")
+	}
+
+	mail_pre
+	{
+		from	"*msgid:mail_from_dr_connor"
+		to		"*msgid:mail_to_base_commander"
+		// subject	defined by "name"
+		model	"characters/connor"
+		icon	"icons/mail_alien"
+	}
+
+	mail
+	{
+		from	"*msgid:mail_from_dr_connor"
+		to		"*msgid:mail_to_base_commander"
+		// subject	defined by "name"
+		model	"characters/connor"
+		icon	"icons/mail_alien"
+	}
+
+	require_AND
+	{
+		alien_dead (shevaar 1)
+	}
+	time	1500
+
+	image	"techs/shevaar_dead"
+}
+
+// STRIGOI
+
+tech rs_alien_strigoi_autopsy
+{
+	name	"_Alien Autopsy - Strigoi"
+	type	"alien"
+	up_chapter	aliens
+
+	description {
+		default "*msgid:strigoi_autopsy_txt"
+//		extra (rs_strigoi_extra "*msgid:strigoi_autopsy_extra_txt")
+	}
+	pre_description {
+		default "*msgid:strigoi_autopsy_pre_txt"
+//		extra (rs_strigoi_extra "*msgid:strigoi_autopsy_extra_pre_txt")
+	}
+
+//	mail_pre
+//	{
+//		from	"*msgid:mail_from_dr_connor"
+//		to		"*msgid:mail_to_base_commander"
+		// subject	defined by "name"
+//		model	"characters/connor"
+//		icon	"icons/mail_alien"
+//	}
+
+	mail
+	{
+		from	"*msgid:mail_from_dr_connor"
+		to		"*msgid:mail_to_base_commander"
+		// subject	defined by "name"
+		model	"characters/connor"
+		icon	"icons/mail_alien"
+	}
+
+	require_AND
+	{
+		alien_dead (strigoi 1)
+	}
+	time	1500
+
+	image	"techs/strigoi_dead" // placeholder
+}
+
+
+// HOVERNET
+
+tech rs_alien_hovernet_autopsy
+{
+	name	"_Alien Autopsy - Hovernet"
+	type	"alien"
+	up_chapter	aliens
+
+	description {
+		default "*msgid:hovernet_autopsy_txt"
+	}
+	pre_description {
+		default "*msgid:hovernet_autopsy_pre_txt"
+	}
+
+	mail_pre
+	{
+		from	"*msgid:mail_from_dr_connor"
+		to		"*msgid:mail_to_base_commander"
+		// subject	defined by "name"
+		model	"characters/connor"
+		icon	"icons/mail_alien"
+	}
+
+	mail
+	{
+		from	"*msgid:mail_from_dr_connor"
+		to		"*msgid:mail_to_base_commander"
+		// subject	defined by "name"
+		model	"characters/connor"
+		icon	"icons/mail_alien"
+	}
+
+	require_AND
+	{
+		alien_dead (hovernet 1)
+	}
+	time	1500
+
+	image	"techs/hovernet_dead"
+}
+
+tech rs_weapon_hovernet_plasma
+{
+	type		"weapon"
+	up_chapter	artifacts
+
+	require_AND
+	{
+		tech rs_weapon_hovernet_plasma
+	}
+	provides	hovernet_plasma
+	time		0
+	producetime	-1
+}
+
+// COMBAT HOVERNET
+
+tech rs_alien_hovernet_adv_autopsy
+{
+	name	"_Alien Autopsy - Combat Hovernet"
+	type	"alien"
+	up_chapter	aliens
+
+	description {
+		default "*msgid:hovernet_adv_autopsy_txt"
+	}
+	pre_description {
+		default "*msgid:hovernet_adv_autopsy_pre_txt"
+	}
+
+	mail_pre
+	{
+		from	"*msgid:mail_from_dr_connor"
+		to		"*msgid:mail_to_base_commander"
+		// subject	defined by "name"
+		model	"characters/connor"
+		icon	"icons/mail_alien"
+	}
+
+	mail
+	{
+		from	"*msgid:mail_from_dr_connor"
+		to		"*msgid:mail_to_base_commander"
+		// subject	defined by "name"
+		model	"characters/connor"
+		icon	"icons/mail_alien"
+	}
+
+	require_AND
+	{
+		alien_dead (hovernet_adv 1)
+	}
+	time	1500
+
+	image	"techs/hovernet_adv_dead"
+}
+
+tech rs_weapon_hovernet_adv_plasma
+{
+	type		"weapon"
+	up_chapter	artifacts
+
+	require_AND
+	{
+		tech rs_weapon_hovernet_adv_plasma
+	}
+	provides	hovernet_adv_plasma
+	time		0
+	producetime	-1
+}
+
+//========================
+// UGVs
+//========================
+
+tech rs_ugv_phoenix
+{
+	type	"ugv"
+	model	ugv_phoenix
+
+	up_chapter	equipment
+	name	"_Phoenix UGV"
+	description {
+		default "*msgid:ugv_phoenix_txt"
+	}
+	pre_description {
+		default "*msgid:ugv_phoenix_pre_txt"
+	}
+
+	provides	ugv_phoenix
+	time	0
+	producetime	4000
+}
+
+// UGV with wheels
+tech rs_ugv_ares_w
+{
+	type	"ugv"
+	model	ugv_ares_w
+
+	up_chapter	equipment
+	name	"_Ares W (UGV)"
+	description {
+		default "*msgid:ugv_ares_w_txt"
+	}
+	pre_description {
+		default "*msgid:ugv_ares_w_pre_txt"
+	}
+
+	provides	ugv_ares_w
+	time	0
+	producetime	2000
+}
+
+tech rs_ugv_chaingun
+{
+	type	"weapon"
+//	model			ares_w_turret // we do not need this here, but this is the correct model
+
+	up_chapter	equipment
+/* @todo use-me
+	description {
+		default "*msgid:ugv_chaingun_txt"
+	}
+	pre_description {
+		default "*msgid:ugv_chaingun_pre_txt"
+	}
+*/
+	provides	ugv_chaingun
+	time	0
+	producetime	500	// Not really needed since this should (at least in the beginning) be produced with the tank itself.
+}
+
+tech rs_ugv_chaingun_belt
+{
+	type	"weapon"
+//	model	ugv_phoenix // we do not need this here
+
+	up_chapter	equipment
+/* @todo use-me
+	description {
+		default "*msgid:ugv_chaingun_belt_txt"
+	}
+	pre_description {
+		default "*msgid:ugv_chaingun_belt_pre_txt"
+	}
+*/
+	provides	ugv_chaingun_belt
+	time	0
+	producetime	100	// @todo fixme
+}
+
+tech rs_ugv_weapon_autocannon
+{
+	type	"weapon"
+	model	ugv_phoenix	// @todo fixme
+
+	up_chapter	equipment
+	description {
+		default "*msgid:ugv_weapon_autocannon_txt"
+	}
+	pre_description {
+		default "*msgid:ugv_weapon_autocannon_pre_txt"
+	}
+
+	provides	ugv_weapon_autocannon
+	time	0
+	producetime	500
+}

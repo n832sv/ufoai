@@ -1,0 +1,357 @@
+//========================
+// Buildings
+//========================
+
+tech rs_building_aliencontainment
+{
+	type	"building"
+	description {
+		default "*msgid:b_aliencontainment_txt"
+	}
+	// pre_description	"*msgid:b_aliencontainment_pre_txt"
+	up_chapter	buildings
+
+	require_AND
+	{
+		tech rs_building_powerplant
+	}
+
+	provides	building_aliencontainment
+	time		0
+}
+
+tech rs_building_command
+{
+	type	"building"
+	description {
+		default "*msgid:b_command_txt"
+	}
+	// pre_description	"*msgid:b_command_pre_txt"
+	up_chapter	buildings
+
+	require_AND
+	{
+		tech rs_building_powerplant
+	}
+
+	provides	building_command
+	time		0
+}
+
+tech rs_building_entrance
+{
+	type	"building"
+	description {
+		default "*msgid:b_entrance_txt"
+	}
+	// pre_description	"*msgid:b_entrance_pre_txt"
+	up_chapter	buildings
+
+	provides	building_entrance
+	time	0
+}
+
+tech rs_building_missile
+{
+	type	"building"
+	description {
+		default "*msgid:b_missile_txt"
+	}
+	// pre_description	"*msgid:b_missile_pre_txt"
+	up_chapter	buildings
+
+	require_AND
+	{
+		tech rs_building_command
+	}
+
+	provides	building_missile
+	time	0
+}
+
+tech rs_building_laser
+{
+	type	"building"
+	description {
+		default "*msgid:b_baselaser_txt"
+	}
+	// pre_description	"*msgid:b_baselaser_pre_txt"
+	up_chapter	buildings
+
+	require_AND
+	{
+		tech rs_building_command
+		tech rs_laser
+		tech rs_damage_laser
+		tech rs_baselaser
+	}
+
+	provides	building_laser
+	time	0
+}
+
+tech rs_building_large_hangar
+{
+	type	"building"
+	description {
+		default "*msgid:b_large_hangar_txt"
+	}
+	// pre_description	"*msgid:b_large_hangar_pre_txt"
+	up_chapter	buildings
+
+	require_AND
+	{
+		tech rs_building_powerplant
+	}
+
+	provides	building_hangar
+	time	0
+}
+
+tech rs_building_hospital
+{
+	type	"building"
+	description {
+		default "*msgid:b_hospital_txt"
+	}
+	// pre_description	"*msgid:b_hospital_pre_txt"
+	up_chapter	buildings
+
+	require_AND
+	{
+		tech rs_building_powerplant
+	}
+
+	provides	building_hospital
+	time	0
+}
+
+tech rs_building_small_hangar
+{
+	type	"building"
+	description {
+		default "*msgid:b_small_hangar_txt"
+	}
+	// pre_description	"*msgid:b_small_hangar_pre_txt"
+	up_chapter	buildings
+
+	require_AND
+	{
+		tech rs_building_powerplant
+	}
+
+	provides	building_intercept
+	time	0
+}
+
+tech rs_building_lab
+{
+	type	"building"
+	description {
+		default "*msgid:b_lab_txt"
+	}
+	// pre_description	"*msgid:b_lab_pre_txt"
+	up_chapter	buildings
+
+	require_AND
+	{
+		tech rs_building_command
+	}
+
+	provides	building_lab
+	time	0
+}
+
+tech rs_building_powerplant
+{
+	type	"building"
+	description {
+		default "*msgid:b_powerplant_txt"
+	}
+	// pre_description	"*msgid:b_powerplant_pre_txt"
+	up_chapter	buildings
+
+	require_AND
+	{
+		tech rs_building_entrance
+	}
+
+	provides	building_powerplant
+	time	0
+}
+
+tech rs_building_quarters
+{
+	type	"building"
+	description {
+		default "*msgid:b_quarters_txt"
+	}
+	// pre_description	"*msgid:b_quarters_pre_txt"
+	up_chapter	buildings
+
+	provides	building_quarters
+	time	0
+}
+
+tech rs_building_radar
+{
+	type	"building"
+	description {
+		default "*msgid:b_radar_txt"
+	}
+	// pre_description	"*msgid:b_radar_pre_txt"
+	up_chapter	buildings
+
+	require_AND
+	{
+		tech rs_building_command
+	}
+
+	provides	building_radar
+	time	0
+}
+
+tech rs_building_radar_adv
+{
+	type	"building"
+	description {
+		default "*msgid:b_radar_adv_txt"
+	}
+	// pre_description	"*msgid:b_radar_adv_pre_txt"
+	up_chapter	buildings
+
+	require_AND
+	{
+		tech rs_building_command
+		tech rs_craft_alien_detection
+	}
+
+	provides	building_radar_adv
+	time	0
+}
+
+tech rs_building_storage
+{
+	type	"building"
+	description {
+		default "*msgid:b_storage_txt"
+	}
+	// pre_description	"*msgid:b_storage_pre_txt"
+	up_chapter	buildings
+
+	require_AND
+	{
+		tech rs_building_entrance
+	}
+
+	provides	building_storage
+	time	0
+}
+
+tech rs_building_workshop
+{
+	type	"building"
+	description {
+		default "*msgid:b_workshop_txt"
+	}
+	// pre_description	"*msgid:b_workshop_pre_txt"
+	up_chapter	buildings
+
+	require_AND
+	{
+		tech rs_building_command
+	}
+
+	provides	building_workshop
+	time	0
+}
+
+tech rs_building_antimatter
+{
+	name	"_Antimatter Storage"
+	type		"building"
+	up_chapter	buildings
+
+	description {
+		default "*msgid:b_antimatter_txt"
+	}
+
+	require_AND
+	{
+		tech rs_antimatter
+	}
+
+	mail
+	{
+		from	"*msgid:mail_from_paul_navarre"
+		to		"*msgid:mail_to_base_commander"
+		// subject	defined by "name"
+		icon	"icons/mail_alien"
+	}
+
+	provides	building_amstorage
+	time		0
+}
+
+//========================
+// Installations
+//========================
+tech rs_installation_radar
+{
+	name	"_Radar Tower"
+	type	"tech"
+	description {
+		default "*msgid:installation_radar_txt"
+	}
+	up_chapter	installations
+
+	provides	radar_tower
+	time	0
+	model		"geoscape/radar"
+}
+tech rs_installation_ufo_yard
+{
+	name	"_UFO Yard"
+	type	"tech"
+	description {
+		default "*msgid:installation_ufo_yard_txt"
+	}
+	up_chapter	installations
+
+	provides	ufoyard
+	time	0
+	model		"geoscape/ufoyard"
+}
+tech rs_installation_sam_site
+{
+	name	"_SAM Site"
+	type	"tech"
+	description {
+		default "*msgid:installation_sam_site_txt"
+	}
+	up_chapter	installations
+
+	provides	samsite
+	time	0
+	model		"geoscape/samlauncher"
+}
+tech rs_installation_orbital_launcher
+{
+	name	"_Orbital Rocket Launcher"
+	type	"tech"
+	description {
+		default "*msgid:orbital_ufo_activity_txt"
+	}
+	pre_description {
+		default "*msgid:orbital_ufo_activity_pre_txt"
+	}
+	up_chapter	installations
+
+	require_AND
+	{
+		tech	rs_orbital_ufo_activity
+	}
+
+	time	0
+}
+

@@ -57,7 +57,7 @@ item plaspistol_ammo
 			shots				1
 			ammo				1
 			time				8
-			damage				"50 10"
+			damage				"42 10"
 			dmgweight			"plasma_light"
 			reaction			true
 			shotorg				"1 8"
@@ -80,7 +80,7 @@ item plaspistol_ammo
 			ammo				3
 			delaybetweenshots	5
 			time				10
-			damage				"50 10"
+			damage				"42 10"
 			dmgweight			"plasma_light"
 			reaction			true
 			shotorg				"1 8"
@@ -96,14 +96,14 @@ item plaspistol_ammo
 			impsnd				"impact/plasma-impact"
 			bodysnd 			"impact/plasma-bodyimpact"
 			speed				1500
-			spread				"1.8 1.8"
+			spread				"1.9 1.9"
 			crouch				0.95
 			range				40
 			shots				1
 			ammo				1
 			delaybetweenshots	5
 			time				12
-			damage				"50 10"
+			damage				"42 10"
 			dmgweight			"plasma"
 			reaction			false
 			shotorg				"1 8"
@@ -164,7 +164,7 @@ item plasrifle_ammo
 			firesnd				"weapons/plasma-medium"
 			impsnd				"impact/plasma-impact"
 			bodysnd 			"impact/plasma-bodyimpact"
-			speed				1300
+			speed				1800
 			spread				"1.2 1.2"
 			crouch				0.80
 			range				70
@@ -186,7 +186,7 @@ item plasrifle_ammo
 			firesnd				"weapons/plasma-medium"
 			impsnd				"impact/plasma-impact"
 			bodysnd 			"impact/plasma-bodyimpact"
-			speed				1300
+			speed				1800
 			spread				"2.0 2.0"
 			crouch				0.85
 			range				70
@@ -209,7 +209,7 @@ item plasrifle_ammo
 			firesnd				"weapons/plasma-medium"
 			impsnd				"impact/plasma-impact"
 			bodysnd 			"impact/plasma-bodyimpact"
-			speed				1700
+			speed				1800
 			spread				"4.0 3.5"
 			crouch				0.85
 			range				70
@@ -232,7 +232,7 @@ item plasrifle_ammo
 			firesnd				"weapons/plasma-medium"
 			impsnd				"impact/plasma-impact"
 			bodysnd 			"impact/plasma-bodyimpact"
-			speed				1300
+			speed				1800
 			spread				"1 1"
 			crouch				0.80
 			range				70

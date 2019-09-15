@@ -1,0 +1,753 @@
+//=================================
+// Initial weapons and items
+//=================================
+
+tech rs_weapon_pistol
+{
+	type	"weapon"
+	up_chapter	equipment
+	description {
+		default "*msgid:pistol_txt"
+	}
+	// pre_description	"*msgid:pistol_pre_txt"
+
+	require_AND
+	{
+		tech rs_skill_close
+	}
+
+	provides	pistol
+	time	0
+	producetime	200
+}
+
+tech rs_weapon_pistol_ammo
+{
+	type	"weapon"
+	up_chapter	equipment
+	description {
+		default "*msgid:pistol_mag_txt"
+	}
+	// pre_description	"*msgid:pistol_mag_pre_txt"
+
+	require_AND
+	{
+		tech rs_damage_normal
+		tech rs_weapon_pistol
+	}
+
+	provides	pistol_ammo
+	time	0
+	producetime	40
+}
+
+// Machine Pistol
+tech rs_weapon_pistol2
+{
+	type	"weapon"
+	up_chapter	equipment
+
+	description {
+		default "*msgid:pistol2_txt"
+	}
+	// pre_description	"*msgid:pistol2_pre_txt"
+
+	require_AND
+	{
+		tech rs_skill_close
+	}
+
+	provides	pistol2
+	time	0
+	producetime	300
+}
+
+tech rs_weapon_pistol2_ammo
+{
+	type	"weapon"
+	up_chapter	equipment
+	description {
+		default "*msgid:pistol2_mag_txt"
+	}
+	// pre_description	"*msgid:pistol2_mag_pre_txt"
+
+	require_AND
+	{
+		tech rs_damage_normal
+		tech rs_weapon_pistol2
+	}
+
+	provides	pistol2_ammo
+	time	0
+	producetime	50
+}
+
+tech rs_weapon_vhs
+{
+	type	"weapon"
+	up_chapter	equipment
+	description {
+		default "*msgid:vhs_assault_txt"
+	}
+
+	require_AND
+	{
+		tech rs_skill_assault
+	}
+	provides	vhs
+	time	-1
+	producetime	-1
+}
+
+tech rs_weapon_assault
+{
+	type	"weapon"
+	up_chapter	equipment
+	description {
+		default "*msgid:assault_txt"
+	}
+	// pre_description	"*msgid:assault_pre_txt"
+
+	require_AND
+	{
+		tech rs_skill_assault
+	}
+	provides	assault
+	time	0
+	producetime	500
+}
+
+tech rs_weapon_assault2
+{
+	type	"weapon"
+	up_chapter	equipment
+	description {
+		default "*msgid:assault2_txt"
+	}
+	// pre_description	"*msgid:assault_pre_txt"
+
+	require_AND
+	{
+		tech rs_skill_assault
+	}
+	provides	assault2
+	time	0
+	producetime	500
+}
+
+tech rs_weapon_assault3
+{
+	type	"weapon"
+	up_chapter	equipment
+	description {
+		default "*msgid:assault2_txt"
+	}
+	// pre_description	"*msgid:assault_pre_txt"
+
+	require_AND
+	{
+		tech rs_skill_assault
+	}
+	provides	assault3
+	time	0
+	producetime	500
+}
+
+tech rs_weapon_assault_ammo
+{
+	type	"weapon"
+	up_chapter	equipment
+	description {
+		default "*msgid:assault_mag_txt"
+	}
+	// pre_description	"*msgid:assault_mag_pre_txt"
+
+	require_AND
+	{
+		tech rs_damage_normal
+		tech rs_weapon_assault
+	}
+	provides	assault_ammo
+	time	0
+	producetime	40
+}
+
+tech rs_weapon_assault3_ammo
+{
+	type	"weapon"
+	up_chapter	equipment
+	description {
+		default "*msgid:assault_mag_txt"
+	}
+	// pre_description	"*msgid:assault_mag_pre_txt"
+
+	require_AND
+	{
+		tech rs_damage_normal
+		tech rs_weapon_assault3
+	}
+	provides	assault3_ammo
+	time	0
+	producetime	40
+}
+
+tech rs_weapon_machinegun
+{
+	type	"weapon"
+	up_chapter	equipment
+	description {
+		default "*msgid:machinegun_txt"
+	}
+	// pre_description	"*msgid:machinegun_pre_txt"
+
+	require_AND
+	{
+		tech rs_skill_assault
+	}
+	provides	machinegun
+	time	0
+	producetime	700
+}
+
+tech rs_weapon_machinegun_ammo
+{
+	type	"weapon"
+	up_chapter	equipment
+	description {
+		default "*msgid:machinegun_mag_txt"
+	}
+	// pre_description	"*msgid:machinegun_mag_pre_txt"
+
+	require_AND
+	{
+		tech rs_damage_normal
+		tech rs_weapon_machinegun
+	}
+	provides	machinegun_ammo
+	time	0
+	producetime	60
+}
+
+tech rs_weapon_rpg
+{
+	type	"weapon"
+	up_chapter	equipment
+	description {
+		default "*msgid:rpg_txt"
+	}
+	// pre_description	"*msgid:rpg_pre_txt"
+
+	require_AND
+	{
+		tech rs_skill_explosive
+	}
+
+	provides	rpg
+	time	0
+	producetime	1200
+}
+
+tech rs_weapon_rpg_ammo
+{
+	type	"weapon"
+	up_chapter	equipment
+	description {
+		default "*msgid:rpg_ammo_txt"
+	}
+	// pre_description	"*msgid:rpg_ammo_pre_txt"
+
+	require_AND
+	{
+		tech rs_damage_blast
+		tech rs_weapon_rpg
+	}
+
+	provides	rpg_ammo
+	time	0
+	producetime	240
+}
+
+tech rs_weapon_rpg_incendiary_ammo
+{
+	type	"weapon"
+	up_chapter	equipment
+	description {
+		default "*msgid:rpg_incendiary_ammo_txt"
+	}
+	// pre_description	"*msgid:rpg_incendiary_ammo_pre_txt"
+
+	require_AND
+	{
+		tech rs_damage_fire
+		tech rs_weapon_rpg
+	}
+
+	provides	rpg_incendiary_ammo
+	time	0
+	producetime	300
+}
+
+
+tech rs_weapon_combatknife
+{
+	type	"weapon"
+	up_chapter	equipment
+	description {
+		default "*msgid:combatknife_txt"
+	}
+	// pre_description	"*msgid:combatknife_pre_txt"
+
+	require_AND
+	{
+		tech rs_skill_close
+		tech rs_damage_normal
+	}
+	provides	knife
+	time	0
+	producetime	120
+}
+
+tech rs_weapon_flamer
+{
+	type	"weapon"
+	up_chapter	equipment
+	description {
+		default "*msgid:flamer_txt"
+	}
+	// pre_description	"*msgid:flamer_pre_txt"
+
+
+	require_AND
+	{
+		tech rs_skill_close
+	}
+	provides	flamer
+	time	0
+	producetime	1200
+}
+
+tech rs_weapon_flamer_ammo
+{
+	type	"weapon"
+	up_chapter	equipment
+	description {
+		default "*msgid:flamer_mag_txt"
+	}
+	// pre_description	"*msgid:flamer_mag_pre_txt"
+
+	require_AND
+	{
+		tech rs_damage_fire
+		tech rs_weapon_flamer
+	}
+	provides	flamer_ammo
+	time	0
+	producetime	240
+}
+
+tech rs_weapon_flashbang
+{
+	type	"weapon"
+	up_chapter	equipment
+	description {
+		default "*msgid:flashbang_txt"
+	}
+	// pre_description	"*msgid:flashbang_pre_txt"
+
+	require_AND
+	{
+		tech rs_skill_explosive
+		tech rs_damage_shock
+	}
+	provides	flashbang
+	time	0
+	producetime	120
+}
+
+tech rs_weapon_fraggren
+{
+	type	"weapon"
+	up_chapter	equipment
+	description {
+		default "*msgid:fraggren_txt"
+	}
+	// pre_description	"*msgid:fraggren_pre_txt"
+
+	require_AND
+	{
+		tech rs_skill_explosive
+		tech rs_damage_blast
+	}
+	provides	fraggrenade
+	time	0
+	producetime	120
+}
+
+tech rs_weapon_incgren
+{
+	type	"weapon"
+	up_chapter	equipment
+	description {
+		default "*msgid:incgren_txt"
+	}
+	// pre_description	"*msgid:incgren_pre_txt"
+
+	require_AND
+	{
+		tech rs_skill_explosive
+		tech rs_damage_fire
+	}
+	provides	incgrenade
+	time	0
+	producetime	200
+}
+
+tech rs_weapon_grenl
+{
+	type	"weapon"
+	up_chapter	equipment
+	description {
+		default "*msgid:grenl_txt"
+	}
+	// pre_description	"*msgid:grenl_pre_txt"
+
+	require_AND
+	{
+		tech rs_skill_explosive
+	}
+	provides	grenl
+	time	0
+	producetime	1200
+}
+
+tech rs_weapon_grenl_ammo
+{
+	type	"weapon"
+	up_chapter	equipment
+	description {
+		default "*msgid:grenl_ammo_txt"
+	}
+	// pre_description	"*msgid:grenl_ammo_pre_txt"
+
+	require_AND
+	{
+		tech rs_damage_blast
+		tech rs_weapon_grenl
+	}
+	provides	grenl_ammo
+	time	0
+	producetime	200
+}
+
+tech rs_weapon_grenl_fle_ammo
+{
+	type	"weapon"
+	up_chapter	equipment
+	description {
+		default "*msgid:grenl_fle_ammo_txt"
+	}
+	// pre_description	"*msgid:grenl_fle_ammo_pre_txt"
+
+	require_AND
+	{
+		tech rs_damage_normal
+		tech rs_weapon_grenl
+	}
+	provides	grenl_fle_ammo
+	time	0
+	producetime	140
+}
+
+tech rs_weapon_grenl_incendiary_ammo
+{
+	type	"weapon"
+	up_chapter	equipment
+	description {
+		default "*msgid:grenl_incendiary_ammo_txt"
+	}
+	// pre_description	"*msgid:grenl_incendiary_ammo_pre_txt"
+
+	require_AND
+	{
+		tech rs_damage_fire
+		tech rs_weapon_grenl
+	}
+	provides	grenl_incendiary_ammo
+	time	0
+	producetime	300
+}
+
+
+tech rs_irgoggles
+{
+	type	"weapon"
+
+	up_chapter	equipment
+	description {
+		default "*msgid:irgoggles_txt"
+	}
+	// pre_description	"*msgid:irgoggles_pre_txt"
+
+	require_AND
+	{
+		tech rs_skill_mind
+	}
+	provides	irgoggles
+	time	0
+	producetime	800
+}
+
+tech rs_medikit
+{
+	type	"weapon"
+	up_chapter	equipment
+	description {
+		default "*msgid:medikit_txt"
+	}
+	// pre_description	"*msgid:medikit_pre_txt"
+
+	require_AND
+	{
+		tech rs_skill_mind
+	}
+	provides	medikit
+	time	0
+	producetime	600
+}
+
+
+tech rs_weapon_shotgun2
+{
+	// Riot Shotgun
+	type		"weapon"
+	up_chapter	equipment
+	description {
+		default "*msgid:shotgun2_txt"
+	}
+	// pre_description	"*msgid:shotgun2_pre_txt"
+
+	require_AND
+	{
+		tech rs_skill_close
+	}
+
+	provides	shotgun2
+	time		0
+	producetime	1400
+}
+
+tech rs_weapon_shotgun2_slug_ammo
+{
+	type		"weapon"
+	up_chapter	equipment
+	description {
+		default "*msgid:shotgun2_slug_ammo_txt"
+	}
+	// pre_description	"*msgid:shotgun2_slug_ammo_pre_txt"
+
+	require_AND
+	{
+		tech rs_damage_blast
+		tech rs_weapon_shotgun2
+	}
+
+	provides	shotgun2_slug_ammo
+	time		0
+	producetime	180
+}
+
+tech rs_weapon_shotgun_micro
+{
+	type	"weapon"
+
+	up_chapter	equipment
+	description {
+		default "*msgid:shotgun_micro_txt"
+	}
+	// pre_description	"*msgid:shotgun_micro_pre_txt"
+
+	require_AND
+	{
+		tech rs_skill_close
+	}
+
+	provides	shotgun_micro
+	time		0
+	producetime	800
+}
+
+tech rs_weapon_shotgun_micro_ammo
+{
+	type		"weapon"
+	up_chapter	equipment
+	description {
+		default "*msgid:shotgun_micro_ammo_txt"
+	}
+	// pre_description	"*msgid:shotgun_micro_ammo_pre_txt"
+
+	require_AND
+	{
+		tech rs_damage_blast
+		tech rs_weapon_shotgun_micro
+	}
+
+	provides	shotgun_micro_ammo
+	time		0
+	producetime	120
+}
+
+
+tech rs_weapon_smg
+{
+	type	"weapon"
+	up_chapter	equipment
+	description {
+		default "*msgid:smg_txt"
+	}
+	// pre_description	"*msgid:smg_pre_txt"
+
+	require_AND
+	{
+		tech rs_skill_close
+	}
+
+	provides	smg
+	time		0
+	producetime	1200
+}
+
+tech rs_weapon_smg2
+{
+	type	"weapon"
+	up_chapter	equipment
+	description {
+		default "*msgid:smg_txt"
+	}
+	// pre_description	"*msgid:smg_pre_txt"
+
+	require_AND
+	{
+		tech rs_skill_close
+	}
+
+	provides	smg2
+	time		0
+	producetime	1300
+}
+
+tech rs_weapon_smg_ammo
+{
+	type		"weapon"
+	up_chapter	equipment
+	description {
+		default "*msgid:smg_mag_txt"
+	}
+	// pre_description	"*msgid:smg_mag_pre_txt"
+
+	require_AND
+	{
+		tech rs_damage_normal
+		tech rs_weapon_smg
+	}
+
+	provides	smg_ammo
+	time		0
+	producetime	120
+}
+
+tech rs_weapon_smokegren
+{
+	type		"weapon"
+	up_chapter	equipment
+	description {
+		default "*msgid:smokegren_txt"
+	}
+	// pre_description	"*msgid:smokegren_pre_txt"
+
+	require_AND
+	{
+		tech rs_skill_explosive
+	}
+
+	provides	smokegrenade
+	time		0
+	producetime	200
+}
+
+tech rs_weapon_sniper
+{
+	type		"weapon"
+	up_chapter	equipment
+	description {
+		default "*msgid:sniper_txt"
+	}
+	// pre_description	"*msgid:sniper_pre_txt"
+
+	require_AND
+	{
+		tech rs_skill_sniper
+	}
+
+	provides	sniper
+	time		0
+	producetime	1200
+}
+
+tech rs_weapon_sniper_ammo
+{
+	type		"weapon"
+	up_chapter	equipment
+	description {
+		default "*msgid:sniper_mag_txt"
+	}
+	// pre_description	"*msgid:sniper_mag_pre_txt"
+
+	require_AND
+	{
+		tech rs_damage_normal
+		tech rs_weapon_sniper
+	}
+
+	provides	sniper_ammo
+	time		0
+	producetime	120
+}
+
+tech rs_weapon_fraggren2
+{
+	type	"weapon"
+	up_chapter	equipment
+	description {
+		default "*msgid:fraggren2_txt"
+	}
+	// pre_description	"*msgid:fraggren_pre_txt"
+
+	require_AND
+	{
+		tech rs_skill_explosive
+		tech rs_damage_blast
+	}
+	provides	fraggren2
+	time	0
+	producetime	140
+}
+
+tech rs_weapon_hegrenade
+{
+	type	"weapon"
+	up_chapter	equipment
+	description {
+		default "*msgid:hegren_txt"
+	}
+	// pre_description	"*msgid:fraggren_pre_txt"
+
+	require_AND
+	{
+		tech rs_skill_explosive
+		tech rs_damage_blast
+	}
+	provides	hegrenade
+	time	0
+	producetime	120
+}
+

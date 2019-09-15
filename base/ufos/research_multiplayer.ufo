@@ -1,0 +1,73 @@
+// 
+// Multiplayer only
+//
+
+tech rs_weapon_chaingun
+{
+	// Note: Multiplayer only
+	type	"weapon"
+	up_chapter	equipment
+	description {
+		default "*msgid:chaingun_txt"
+	}
+	pre_description {
+		default "*msgid:chaingun_pre_txt"
+	}
+
+	provides	chaingun
+	time	-1
+	producetime	-1
+}
+
+tech rs_weapon_chaingun_ammo
+{
+	// Note: Multiplayer only
+	type	"weapon"
+	up_chapter	equipment
+
+	redirect	rs_weapon_chaingun
+
+	provides	chaingun_ammo
+	time	-1
+	producetime	-1
+}
+
+tech rs_weapon_shotgun
+{
+	// Note: Multiplayer only
+	type	"weapon"
+	up_chapter	equipment
+	description {
+		default "*msgid:shotgun_txt"
+	}
+	// pre_description	"*msgid:shotgun_pre_txt"
+
+// multiplayer only thus not needed at production menu
+//	require_AND
+//	{
+//		tech rs_skill_close
+//	}
+
+	provides	shotgun
+	time	-1
+	producetime	-1
+}
+
+tech rs_weapon_shotgun_ammo
+{
+	// Note: Multiplayer only
+	type	"weapon"
+	up_chapter	equipment
+
+	redirect	rs_weapon_shotgun
+
+	require_AND
+	{
+		tech rs_damage_blast
+		tech rs_weapon_shotgun
+	}
+
+	provides	shotgun_ammo
+	time	-1
+	producetime	-1
+}
